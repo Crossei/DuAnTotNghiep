@@ -94,7 +94,7 @@ public class forgotPasswordController {
 		
 	}
 	
-	@GetMapping("/reset_password")
+	@GetMapping("/reset-password")
 	public String showResetPasswordForm(@Param (value = "token")String token, Model model) {
 		User user = service.get(token);
 		if(user == null) {

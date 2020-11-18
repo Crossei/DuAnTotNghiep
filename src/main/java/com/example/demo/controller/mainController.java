@@ -47,6 +47,14 @@ public class mainController {
 	public String homePage() {
 		return "home";
 	}
+	@RequestMapping("/datlich")
+	public String datLich() {
+		return "datlich";
+	}
+	@RequestMapping("/about")
+	public String about() {
+		return "about";
+	}
 
 	@RequestMapping("/login")
 	public String loginPage() {
@@ -70,7 +78,7 @@ public class mainController {
 
 	@RequestMapping("/logout-success")
 	public String logoutPage() {
-		return "logout.jsp";
+		return "logout";
 	}
 
 	@PostMapping("/register")
