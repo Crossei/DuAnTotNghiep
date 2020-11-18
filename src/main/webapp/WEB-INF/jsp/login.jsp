@@ -38,7 +38,7 @@
 						<div class="form-group form-check">
 							<input type="checkbox" class="form-check-input"
 								id="exampleCheck1"> <label class="form-check-label"
-								for="chkremember">Remember password</label> <a href=""
+								for="chkremember">Remember password</label> <a href="/forgot-password"
 								class="forgot">Quên mật khẩu</a>
 						</div>
 

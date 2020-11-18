@@ -10,32 +10,37 @@
 <link href="static/css/register.css" rel="stylesheet">
 <script src="static/bootstrap/js/jquery-1.11.1.min.js"></script>
 <script src="static/bootstrap/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="static/js/index.js"></script>
 <body>
-	<section class="form-register">
+		<section class="form-register">
 		<div class="background-register">
 			<div class="row">
 				<div class="col-lg-6">
 					<img src="static/img/register.jpg" class="img-bg-register">
 				</div>
 				<div class="col-lg-6">
-					<div>
-						<p class="text-danger">${error}</p>
-					</div>
-					<form action="register" method="post">
+					<form action="changePass" method="post">
 						<div class="form-group">
-							<label>Họ và tên</label>
+							<label>Email</label>
 							<div class="login-content">
-								<input type="text" name="name" id="name" class="form-control" />
+								<input type="text" name="username" id="username" class="form-control" />
 								<div class="invalid-feedback">
 									<div>Họ và tên không được bỏ trống</div>
 								</div>
 							</div>
 						</div>
 						<div class="form-group">
-							<label>Email address</label>
+							<label>Mật khẩu cũ</label>
 							<div class="login-content">
-								<input type="text" name="username" id="username"
+								<input type="password" name="password1" id="password1" class="form-control" />
+								<div class="invalid-feedback">
+									<div>Họ và tên không được bỏ trống</div>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label>Mật khẩu mới:</label>
+							<div class="login-content">
+								<input type="password" name="password" id="password"
 									class="form-control" />
 								<div class="invalid-feedback">
 									<div>Email is required</div>
@@ -44,37 +49,25 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<label>Mật khẩu</label>
+							<label>Nhập lại mật khẩu mới:</label>
 							<div class="login-content">
 								<input type="password" name="password" id="password"
-									class="form-control" required autofocus
-									placeholder="Nhập mật khẩu của bạn" />
-							
+									class="form-control" />
+								<div class="invalid-feedback">
+									<div>Password is required</div>
+									<div>Password must be at least 6 characters</div>
+								</div>
 							</div>
 						</div>
-						<div class="form-group">
-							<label>Xác nhận mật khẩu</label>
-							<div class="login-content">
-								<input type="password" name="rpassword" id="rpassword"
-									class="form-control" required autofocus
-									placeholder="Nhập lại mật khẩu của bạn"							
-									 />
-
-							</div>
-						</div>
-
-						<button type="submit" class="btn btn-primary">Đăng ký</button>
+						<button type="submit" class="btn btn-primary">Đổi Mật khẩu</button>
 						<hr>
 						<div class="text-center">
-							<a class="content-text" href="/login">Bạn đã có tài khoản ?
-								Đăng nhập tại đây</a>
+							<a class="content-text" href="/login">Quay lại đăng nhập</a>
 						</div>
 					</form>
 				</div>
 			</div>
 		</div>
-
-
 	</section>
 </body>
 </html>
