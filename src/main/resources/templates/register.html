@@ -39,7 +39,6 @@
                         <label>Mật khẩu</label>
                         <div class="login-content">
                             <input type="password" name="password" id="password" class="form-control"/>
-
                         </div>
                     </div>
                     <div class="form-group">
@@ -62,30 +61,40 @@
 </section>
 <script>
     function code() {
-        var name = document.getElementById("name").value;
-        var email = document.getElementById("email").value;
-        var pass = document.getElementById("password").value;
-        var cfpass = document.getElementById("cfpassword").value;
+        // check trong
+        var name = document.getElementById("name").value.trim();
+        var email = document.getElementById("email").value.trim();
+        var pass = document.getElementById("password").value.trim();
+        var cfpass = document.getElementById("cfpassword").value.trim();
+        var filter = /^[a-zA-Z-' ]*$/;
 
-        if (name == "") {
+
+        if (name.trim().length == 0) {
             alert("Mời bạn nhập họ và tên");
             return false;
         }
-        if (email == "") {
+        if (email.trim().length == 0) {
             alert("Mời bạn nhập email");
             return false;
         }
-        if (pass == "") {
+        if (!filter.test(email.value)) {
+            alert('Please provide a valid email address');
+            email.focus;
+            return false;
+        }
+
+        if (pass.trim().length == 0) {
             alert("Mời bạn nhập mật khẩu");
             return false;
         }
-        if (cfpass == "") {
+        if (cfpass.trim().length == 0) {
             alert("Mời bạn nhập lại mật khẩu");
             return false;
         }
-        console.log("alo");
 
+        return true;
     }
 </script>
+
 </body>
 </html>
