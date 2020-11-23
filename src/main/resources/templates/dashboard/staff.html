@@ -231,11 +231,21 @@
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Hiển thị danh sách nhân viên</h6>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <h6 class="m-0 font-weight-bold text-primary">Hiển thị chi tiết danh sách các nhân viên</h6>
+                            <button class="btn btn-primary">Thêm mới nhân viên</button>
+                        </div>
+                        <div class="form-group pull-right">
+                            <input type="text" id="myInput" class="search form-control" placeholder="Search...."
+                            >
+                        </div>
+                    </div>
                 </div>
+                <br>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <table class="table table-bordered" cellspacing="0">
                             <thead>
                             <tr>
                                 <th>STT</th>
@@ -247,9 +257,10 @@
                                 <th>Email</th>
                                 <th>Số điện thoại</th>
                                 <th>Thông tin khác</th>
+                                <th>Hành động</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody tbody class="text-justify" id="myTable">
                             <tr>
                                 <td>1</td>
                                 <td>Trần Trung Hiếu</td>
@@ -260,6 +271,33 @@
                                 <td>hieutt@gmail.com</td>
                                 <td>0123456789</td>
                                 <td>Đẹp trai</td>
+                                <td>
+                                    <button class="btn btn-info">Sửa</button>
+                                    <a href="#myModal" class="btn btn-danger" data-toggle="modal">Xóa</a>
+                                    <div id="myModal" class="modal fade">
+                                        <div class="modal-dialog modal-confirm">
+                                            <div class="modal-content">
+                                                <div class="modal-header flex-column">
+
+                                                    <h4 class="modal-title w-100">Bạn có chắc chắn muốn xóa lịch làm
+                                                        việc này chứ ?</h4>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                            aria-hidden="true">&times;
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>Bạn có muốn lịch làm việc này chứ ?</p>
+                                                </div>
+                                                <div class="modal-footer justify-content-center">
+                                                    <button type="button" class="btn btn-danger">Delete</button>
+                                                    <button type="button" class="btn btn-secondary"
+                                                            data-dismiss="modal">Cancel
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
                                 <td>2</td>
@@ -271,6 +309,33 @@
                                 <td>namlv@gmail.com</td>
                                 <td>0123456789</td>
                                 <td>Đẹp trai</td>
+                                <td>
+                                    <button class="btn btn-info">Sửa</button>
+                                    <a href="#myModal" class="btn btn-danger" data-toggle="modal">Xóa</a>
+                                    <div id="myModal" class="modal fade">
+                                        <div class="modal-dialog modal-confirm">
+                                            <div class="modal-content">
+                                                <div class="modal-header flex-column">
+
+                                                    <h4 class="modal-title w-100">Bạn có chắc chắn muốn xóa lịch làm
+                                                        việc này chứ ?</h4>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                            aria-hidden="true">&times;
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>Bạn có muốn lịch làm việc này chứ ?</p>
+                                                </div>
+                                                <div class="modal-footer justify-content-center">
+                                                    <button type="button" class="btn btn-danger">Delete</button>
+                                                    <button type="button" class="btn btn-secondary"
+                                                            data-dismiss="modal">Cancel
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
                                 <td>3</td>
@@ -282,6 +347,33 @@
                                 <td>thuyntt@gmail.com</td>
                                 <td>0123456789</td>
                                 <td>Nothing</td>
+                                <td>
+                                    <button class="btn btn-info">Sửa</button>
+                                    <a href="#myModal" class="btn btn-danger" data-toggle="modal">Xóa</a>
+                                    <div id="myModal" class="modal fade">
+                                        <div class="modal-dialog modal-confirm">
+                                            <div class="modal-content">
+                                                <div class="modal-header flex-column">
+
+                                                    <h4 class="modal-title w-100">Bạn có chắc chắn muốn xóa lịch làm
+                                                        việc này chứ ?</h4>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                            aria-hidden="true">&times;
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>Bạn có muốn lịch làm việc này chứ ?</p>
+                                                </div>
+                                                <div class="modal-footer justify-content-center">
+                                                    <button type="button" class="btn btn-danger">Delete</button>
+                                                    <button type="button" class="btn btn-secondary"
+                                                            data-dismiss="modal">Cancel
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
                                 <td>4</td>
@@ -293,6 +385,33 @@
                                 <td>sanglm2207@gmail.com</td>
                                 <td>0123456789</td>
                                 <td>Đẹp trai</td>
+                                <td>
+                                    <button class="btn btn-info">Sửa</button>
+                                    <a href="#myModal" class="btn btn-danger" data-toggle="modal">Xóa</a>
+                                    <div id="myModal" class="modal fade">
+                                        <div class="modal-dialog modal-confirm">
+                                            <div class="modal-content">
+                                                <div class="modal-header flex-column">
+
+                                                    <h4 class="modal-title w-100">Bạn có chắc chắn muốn xóa lịch làm
+                                                        việc này chứ ?</h4>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                            aria-hidden="true">&times;
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>Bạn có muốn lịch làm việc này chứ ?</p>
+                                                </div>
+                                                <div class="modal-footer justify-content-center">
+                                                    <button type="button" class="btn btn-danger">Delete</button>
+                                                    <button type="button" class="btn btn-secondary"
+                                                            data-dismiss="modal">Cancel
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
                             </tr>
 
                             </tbody>
@@ -325,7 +444,17 @@
 
 <!-- Custom Theme JavaScript -->
 <script src="/webjars/startbootstrap-sb-admin-2/1.0.2/js/sb-admin-2.js"></script>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $("#myInput").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#myTable tr").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+</script>
 </body>
 
 </html>
