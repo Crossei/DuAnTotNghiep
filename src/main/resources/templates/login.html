@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Insert title here</title>
+</head>
+
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="css/login.css" rel="stylesheet">
+</head>
+<body>
+	<section class="form-login">
+		<div class="background-login">
+			<div class="row">
+				<div class="col-lg-6">
+					<img src="img/register.jpg" class="img-fluid" id="img-bg">
+				</div>
+				<div class="col-lg-6">
+					<form action="login" method="post" class="login-group">
+						<div class="form-group">
+							<label for="email">Email address</label>
+							<div class="login-content">
+								<input type="email" class="form-control" name="username"
+									id="email">
+
+							</div>
+
+						</div>
+						<div class="form-group">
+							<label for="pwd">Password</label>
+							
+							<div class="login-content">
+								<input type="password" name="password" class="form-control"
+									id="pwd">
+
+							</div>
+						</div>
+						<div class="form-group form-check">
+							<input type="checkbox" class="form-check-input"
+								id="exampleCheck1"> <label class="form-check-label"
+								for="chkremember">Remember password</label> <a href="/forgot-password"
+								class="forgot">Quên mật khẩu</a>
+						</div>
+
+						<button type="submit" class="btn btn-primary">Login</button>
+						<a class="btn btn-primary" href="/register">Đăng ký</a>
+					</form>
+
+				</div>
+			</div>
+		</div>
+
+
+	</section>
+	<script src="bootstrap/js/jquery-1.11.1.min.js"></script>
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>

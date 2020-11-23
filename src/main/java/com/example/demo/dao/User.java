@@ -1,6 +1,7 @@
 package com.example.demo.dao;
 
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,15 +16,26 @@ public class User {
 	private int id;
 	private String name;
 	private String username;
-	private String password;
+	
+		private String password;
 	private boolean active;
 	private String roles;
+	
+	@Column(name =  "reset_password_token")
+	private String resetPasswordToken;
 	
 	public User() {
 		
 	}
 	
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", name=" + name + ", username=" + username + ", password=" + password + ", active="
+				+ active + ", roles=" + roles + "]";
+	}
 	
+
+
 	public User(String name,String username, String password,String roles) {
 		this.name = name;
 		this.username = username;
@@ -65,10 +77,30 @@ public class User {
 	public String getName() {
 		return name;
 	}
+	
+	
 
+
+	public String getReset_password_token() {
+		return resetPasswordToken;
+	}
+
+	public void setReset_password_token(String reset_password_token) {
+		this.resetPasswordToken = reset_password_token;
+	}
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	
+
+	public String getResetPasswordToken() {
+		return resetPasswordToken;
+	}
+
+	public void setResetPasswordToken(String resetPasswordToken) {
+		this.resetPasswordToken = resetPasswordToken;
 	}
 	
 	
