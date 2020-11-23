@@ -30,83 +30,109 @@ import com.example.demo.service.UserRepository;
 @Controller
 public class mainController {
 
-	@Autowired
-	private MyUserDetailService service;
+    @Autowired
+    private MyUserDetailService service;
 
-	@Autowired
-	private UserRepository repo;
-	
-	@Autowired
-	private User2Repository repo2;
+    @Autowired
+    private UserRepository repo;
 
-	
-	@Autowired
-	private BCryptPasswordEncoder passwordEncoder;
+    @Autowired
+    private User2Repository repo2;
 
-	@RequestMapping("/")
-	public String homePage() {
-		return "home";
-	}
-	@RequestMapping("/datlich")
-	public String datLich() {
-		return "datlich";
-	}
-	@RequestMapping("/about")
-	public String about() {
-		return "about";
-	}
 
-	@RequestMapping("/login")
-	public String loginPage() {
-		return "login";
-	}
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
 
-	@RequestMapping("/register")
-	public String registerPage() {
-		return "register";
-	}
+    @RequestMapping("/")
+    public String homePage() {
+        return "home";
+    }
 
-	@RequestMapping("/dashboard")
-	public String dashboard() {
-		return "dashboard/admin";
-	}
+    @RequestMapping("/datlich")
+    public String datLich() {
+        return "datlich";
+    }
 
-	@RequestMapping("/changePass")
-	public String changePass() {
-		return "doiMatKhau";
-	}
+    @RequestMapping("/about")
+    public String about() {
+        return "about";
+    }
 
-	@RequestMapping("/logout-success")
-	public String logoutPage() {
-		return "logout";
-	}
+    @RequestMapping("/login")
+    public String loginPage() {
+        return "login";
+    }
 
-	@PostMapping("/register")
-	public User registerUserAccount(User user,Model model) {
-		
-		List<User> user1 = repo2.findByUsername(user.getUsername());
-		if(user1.isEmpty()) {
-			service.save(user);
-		}else {
-			model.addAttribute("error", "Email này đã được đăng ký");
-		}
-	
-		System.out.println("ok email nay` ngon");
-		
-	// service.save(user);
-		return user;
-	}
+    @RequestMapping("/register")
+    public String registerPage() {
+        return "register";
+    }
 
-	/*
-	 * @PostMapping("/changePass") public User changePass(User user) { List<User>
-	 * userName = repo.findAll(); for (User user1 : userName) {
-	 * System.out.println(user1.getPassword());
-	 * 
-	 * if (user1.getUsername().equals(user.getUsername())) {
-	 * 
-	 * } else { System.out.println("ok email ko ngon"); } } return user; }
-	 */
-	
-	
+    @RequestMapping("/dashboard")
+    public String dashboardAdmin() {
+        return "dashboard/admin";
+    }
+
+    @RequestMapping("/dashboard/staff")
+    public String dashboardStaff() {
+        return "dashboard/staff";
+    }
+
+    @RequestMapping("/dashboard/work")
+    public String dashboardWork() {
+        return "dashboard/work";
+    }
+
+    @RequestMapping("/dashboard/services")
+    public String dashboardServices() {
+        return "dashboard/services";
+    }
+
+    @RequestMapping("/dashboard/customer")
+    public String dashboardCustomer() {
+        return "dashboard/customer";
+    }
+
+    @RequestMapping("/dashboard/account")
+    public String dashboardAccount() {
+        return "dashboard/account";
+    }
+
+    @RequestMapping("/changePass")
+    public String changePass() {
+        return "doiMatKhau";
+    }
+
+    @RequestMapping("/logout-success")
+    public String logoutPage() {
+        return "logout";
+    }
+
+    @PostMapping("/register")
+    public User registerUserAccount(User user, Model model) {
+
+        List<User> user1 = repo2.findByUsername(user.getUsername());
+        if (user1.isEmpty()) {
+            service.save(user);
+        } else {
+            model.addAttribute("error", "Email này đã được đăng ký");
+        }
+
+        System.out.println("ok email nay` ngon");
+
+        // service.save(user);
+        return user;
+    }
+
+    /*
+     * @PostMapping("/changePass") public User changePass(User user) { List<User>
+     * userName = repo.findAll(); for (User user1 : userName) {
+     * System.out.println(user1.getPassword());
+     *
+     * if (user1.getUsername().equals(user.getUsername())) {
+     *
+     * } else { System.out.println("ok email ko ngon"); } } return user; }
+     */
+
 
 }
