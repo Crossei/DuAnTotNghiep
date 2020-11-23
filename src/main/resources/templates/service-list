@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Giới thiệu về Nha khoa Phạm Dương</title>
+    <meta content="" name="descriptison">
+    <meta content="" name="keywords">
+
+
+    <link href="http://bizweb.dktcdn.net/100/167/865/themes/222134/assets/favicon.png?1568890987754" rel="icon">
+    <link href="http://bizweb.dktcdn.net/100/167/865/themes/222134/assets/favicon.png?1568890987754" rel="apple-touch-icon">
+
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
+    <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+
+    <link href="assets/css/style.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top header-inner-pages">
+        <div class="container-fluid">
+
+            <div class="row justify-content-center">
+                <div class="col-xl-9 d-flex align-items-center justify-content-between">
+                    <h1 class="logo">
+                        <a href="/"><img src="assets/img/logo.png"></a>
+                    </h1>
+
+                    <nav class="nav-menu d-none d-lg-block">
+                        <ul>
+                            <li><a href="/">Trang chủ</a></li>
+                            <li><a href="/#about">Giới thiệu</a></li>
+                            <li class="drop-down"><a href="/#services">Dịch vụ</a>
+                                <ul>
+                                    <li><a href="#">Nha khoa tổng quát</a></li>
+                                    <li><a href="#">Răng trẻ em</a></li>
+                                    <li><a href="#">Nắn chỉnh răng</a></li>
+                                    <li><a href="#">Chỉnh nha cơ chức năng</a></li>
+                                    <li><a href="#">Nha khoa thẩm mỹ</a></li>
+                                    <li><a href="#">Nha khoa phục hình</a></li>
+                                    <li><a href="#">Điều trị nội nha</a></li>
+                                    <li><a href="#">Cấy ghép Implant</a></li>
+                                    <li><a href="#">Phẩu thuật răng miệng</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="/#portfolio">Các bác sĩ</a></li>
+                            <li><a href="/datlich">Đặt lịch</a></li>
+                            <li><a href="">Tin tức</a>
+
+                            </li>
+                            <li><a href="/#contact">Liên hệ</a></li>
+
+                        </ul>
+                    </nav>
+                    <!-- .nav-menu -->
+
+                    <a href="" class="get-started-btn scrollto">Đăng nhập</a>
+                </div>
+            </div>
+
+        </div>
+    </header>
+    <!-- End Header -->
+
+    <main id="main">
+
+
+        <section id="breadcrumbs" class="breadcrumbs">
+            <div class="container">
+
+                <ol>
+                    <li><a href="home.html">Trang chủ</a></li>
+                    <li>Dịch vụ</li>
+                </ol>
+                <h2>Dịch vụ</h2>
+
+            </div>
+        </section>
+
+
+        <section id="services" class="services">
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+                        <div class="icon-box">
+                            <img src="/assets/img/d1.png" style="width: 100%; margin-bottom: 20px;" alt="">
+                            <h4><a href="">Chỉnh nha cơ chức năng</a></h4>
+                            <p>Mỗi ngày có tới hàng ngàn trẻ em bước ra phòng khám răng nhưng vẫn không được điều trị đúng nhu cầu. 75% trẻ đang tăng trưởng có khớp cắn sai và sự phát triển mặt không đúng</p>
+                            <br>
+                            <a href="/datlich" class="get-started-btn scrollto" style="margin-bottom: 1px;">Đặt lịch khám</a>
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
+                        <div class="icon-box">
+                            <img src="/assets/img/d2.jpg" style="width: 100%; margin-bottom: 20px;" alt="">
+                            <h4><a href="">Răng trẻ em</a></h4>
+                            <p>PhamDuong Dental Studio thiết kế dành riêng cho răng trẻ em, bố mẹ hoàn toàn yên tâm và thoải mái ngay cạnh con suốt quá trình điều trị.</p>
+                            <br>
+                            <a href="/datlich" class="get-started-btn scrollto" style="margin-bottom: 1px;">Đặt lịch khám</a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
+                        <div class="icon-box">
+                            <img src="/assets/img/d3.jpg" style="width: 100%; margin-bottom: 20px;" alt="">
+                            <h4><a href="">Nắn chỉnh răng</a></h4>
+                            <p>Nắn chỉnh răng là một chuyên ngành sâu trong nha khoa có nhiệm vụ chẩn đoán, phòng ngừa, can thiệp và điều trị tất cả các loại lệch lạc về răng – hàm – mặt bằng việc sử dụng các khí cụ trong miệng hoặc ngoài mặt để tạo được
+                                khuôn mặt hài hòa về thẩm mỹ và chức năng.</p>
+                            <br>
+                            <a href="/datlich" class="get-started-btn scrollto" style="margin-bottom: 1px;">Đặt lịch khám</a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+                        <div class="icon-box">
+                            <img src="/assets/img/d4.jpg" style="width: 100%; margin-bottom: 20px;" alt="">
+                            <h4><a href="">Nha khoa thẩm mỹ</a></h4>
+                            <p>Việc răng ố vàng, mất một số răng hay sâu răng ở vị trí răng cửa không chỉ kiến bạn mất tự tin mà còn gây ấn tượng không tốt với người đối diện. Nha khoa thẩm mỹ là sự kết hợp hoàn của nhiều lĩnh vực chuyên sâu để đưa ra giải
+                                pháp hiệu quả nhất giúp bạn có được hàm răng trắng sáng, đều và đẹp.</p>
+                            <br>
+                            <a href="/datlich" class="get-started-btn scrollto" style="margin-bottom: 1px;">Đặt lịch khám</a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+                        <div class="icon-box">
+                            <img src="/assets/img/d5.png" style="width: 100%; margin-bottom: 20px;" alt="">
+                            <h4><a href="">Nha khoa phục hình</a></h4>
+                            <p>Việc mất một hoặc một số răng, răng sâu hư hỏng không thể hàn nắn không chỉ gây mất thẩm mỹ mà còn trở ngai trong việc nhai nuốt hơn nữa có thể khiến hàm bị xô lệch không mong muốn. Nha khoa phục hình chính là phương pháp tối
+                                ưu giúp bạn có thể khôi phục răng bị thiếu và những chiếc răng hư hỏng không thể hàn khắc phục.</p>
+                            <br>
+                            <a href="/datlich" class="get-started-btn scrollto" style="margin-bottom: 1px;">Đặt lịch khám</a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+                        <div class="icon-box">
+                            <img src="/assets/img/d6.png" style="width: 100%; margin-bottom: 20px;" alt="">
+                            <h4><a href="">Điều trị nội nha</a></h4>
+                            <p>Nếu như bạn đã 1 lần đau răng đến tủy bạn sẽ nhớ những cơn vừa đau vừa buốt không ăn không ngủ được. Mỗi cơn đau thường kéo dài 3-30 phút, có thể đau mức độ nhẹ tại chỗ hoặc đau dữ dội lan ra xung quanh và lên đầu..</p>
+                            <br>
+                            <a href="/datlich" class="get-started-btn scrollto" style="margin-bottom: 1px;">Đặt lịch khám</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+                        <div class="icon-box">
+                            <img src="/assets/img/d7.jpg" style="width: 100%; margin-bottom: 20px;" alt="">
+                            <h4><a href="">Cấy ghép Implant</a></h4>
+                            <p>Cấy ghép răng implant là một phương pháp phục hình răng giả mới nhất nên nó còn khá mới mẻ với mọi người tại Việt Nam. Tuy nhiên, tại PhamDuong Dental Studio, chúng tôi đã bắt đầu thực hiện phương pháp cấy ghép răng Implant
+                                từ thập niên 90 sử dụng hệ thống Bicon của ý và ACE của Mỹ...</p>
+                            <br>
+                            <a href="/datlich" class="get-started-btn scrollto" style="margin-bottom: 1px;">Đặt lịch khám</a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+                        <div class="icon-box">
+                            <img src="/assets/img/d8.jpg" style="width: 100%; margin-bottom: 20px;" alt="">
+                            <h4><a href="">Phẫu thuật răng miệng</a></h4>
+                            <p>Tại PhamDuong Dental Studio, chúng tôi thực hiện các phẫu thuật gây tê thuộc nhiều lĩnh vực như sau: Phẫu thuật tiền phục hình như cắt thắng môi, má lưỡi, mài chỉnh gai xương …giúp việc phục hình đạt
+                                kết quả tốt hơn...</p>
+                            <br>
+                            <a href="/datlich" class="get-started-btn scrollto" style="margin-bottom: 1px;">Đặt lịch khám</a>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+    <!-- End #main -->
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="container">
+            <h3>Nha khoa Phạm Dương</h3>
+            <p>Tự hào là một trong số ít phòng khám nha khoa lâu đời hàng đầu tại Hà Nội.</p>
+            <div class="copyright">
+                © Bản quyền thuộc về Nha khoa Phạm Dương | Cung cấp bởi VIC Group
+            </div>
+
+        </div>
+    </footer>
+
+    <div id="preloader"></div>
+    <a href="#" class="back-to-top"><i class="ri-arrow-up-line"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/jquery/jquery.min.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
+    <script src="assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+    <script src="assets/vendor/counterup/counterup.min.js"></script>
+    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="assets/vendor/venobox/venobox.min.js"></script>
+    <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
