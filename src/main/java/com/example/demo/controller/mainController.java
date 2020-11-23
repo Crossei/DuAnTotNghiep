@@ -77,10 +77,35 @@ public class mainController {
 		return "redirect:/";
 	}
 
-	@RequestMapping("/dashboard")
-	public String dashboard() {
-		return "dashboard/admin";
-	}
+    @RequestMapping("/dashboard")
+    public String dashboardAdmin() {
+        return "dashboard/admin";
+    }
+
+	    @RequestMapping("/dashboard/staff")
+    public String dashboardStaff() {
+        return "dashboard/staff";
+    }
+
+    @RequestMapping("/dashboard/work")
+    public String dashboardWork() {
+        return "dashboard/work";
+    }
+
+    @RequestMapping("/dashboard/services")
+    public String dashboardServices() {
+        return "dashboard/services";
+    }
+
+    @RequestMapping("/dashboard/customer")
+    public String dashboardCustomer() {
+        return "dashboard/customer";
+    }
+
+    @RequestMapping("/dashboard/account")
+    public String dashboardAccount() {
+        return "dashboard/account";
+    }
 
 	@RequestMapping("/changePass")
 	public String changePass() {
@@ -103,8 +128,6 @@ public class mainController {
 		}else {
 			model.addAttribute("error", "Email này đã được đăng ký");
 		}
-	
-		System.out.println("ok email nay` ngon");
 		
 	// service.save(user);
 		return user;
