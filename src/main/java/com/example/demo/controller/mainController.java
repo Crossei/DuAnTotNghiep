@@ -7,6 +7,9 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -16,6 +19,7 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -58,12 +62,19 @@ public class mainController {
 
 	@RequestMapping("/login")
 	public String loginPage() {
-		return "login";
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		if(authentication == null || authentication instanceof AnonymousAuthenticationToken) {
+			return "login";}
+		
+		return "redirect:/";
 	}
 
 	@RequestMapping("/register")
 	public String registerPage() {
-		return "register";
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		if(authentication == null || authentication instanceof AnonymousAuthenticationToken)
+			return "register";
+		return "redirect:/";
 	}
 
 	@RequestMapping("/dashboard")
@@ -84,6 +95,8 @@ public class mainController {
 	@PostMapping("/register")
 	public User registerUserAccount(User user,Model model) {
 		
+		
+		
 		List<User> user1 = repo2.findByUsername(user.getUsername());
 		if(user1.isEmpty()) {
 			service.save(user);
@@ -96,6 +109,14 @@ public class mainController {
 	// service.save(user);
 		return user;
 	}
+	
+	public boolean checkLoggedIn() {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		if(authentication == null || authentication instanceof AnonymousAuthenticationToken)
+			return false;
+		return true;
+	}
+
 
 	/*
 	 * @PostMapping("/changePass") public User changePass(User user) { List<User>

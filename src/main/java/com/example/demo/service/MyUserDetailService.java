@@ -25,6 +25,7 @@ public class MyUserDetailService implements UserDetailsService {
 	UserRepository repo;
 	@Autowired
 	User2Repository repo2;
+	private User user;
 
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
@@ -74,4 +75,8 @@ public class MyUserDetailService implements UserDetailsService {
 
 		repo2.save(user);
 	}
+	public String getName() {
+		return user.getName();
+	}
+	
 }

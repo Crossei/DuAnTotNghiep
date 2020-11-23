@@ -1,5 +1,4 @@
-	
-		function checkPasswordMatch(fieldConfirmPassword) {
+function checkPasswordMatch(fieldConfirmPassword) {
 			if (fieldConfirmPassword.value != $("#password").val()) {
 				fieldConfirmPassword
 						.setCustomValidity("mật khẩu không trùng khớp");
@@ -19,4 +18,3 @@
 				document.getElementById("submit").disabled = false;
 			}
 		}
-	

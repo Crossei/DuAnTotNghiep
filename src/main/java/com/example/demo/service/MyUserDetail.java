@@ -19,7 +19,7 @@ public class MyUserDetail implements UserDetails {
 	private String password;
 	private boolean active;
 	private List<GrantedAuthority> authority;
-
+	
 	
 	
 	public MyUserDetail(User user) {
@@ -76,5 +76,7 @@ public class MyUserDetail implements UserDetails {
 		// TODO Auto-generated method stub
 		return true;
 	}
+	
+	
 	
 }

@@ -13,6 +13,9 @@ import org.springframework.mail.MailSender;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMailMessage;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,7 +41,11 @@ public class forgotPasswordController {
 	@GetMapping("/forgot-password")
 	public String showForgotPasswordForm(Model model) {
 		model.addAttribute("pageTitle", "Forgot Password");
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		if(authentication == null || authentication instanceof AnonymousAuthenticationToken)
 		return "forgot_password";
+		
+		return "redirect:/";
 	}
 	
 	@PostMapping("/forgot-password")
@@ -48,7 +55,7 @@ public class forgotPasswordController {
 		
 		try {
 			service.updateResetPassword(token, email);
-			String resetPasswordLink = "http://localhost:8080/reset_password?token="+token;
+			String resetPasswordLink = "http://localhost:8080/reset-password?token="+token;
 			
 			sendEmail(email,resetPasswordLink);
 			
@@ -98,7 +105,7 @@ public class forgotPasswordController {
 	public String showResetPasswordForm(@Param (value = "token")String token, Model model) {
 		User user = service.get(token);
 		if(user == null) {
-			model.addAttribute("msg", "Token Khong hop le");
+			model.addAttribute("msg", "Token không hợp lệ");
 			model.addAttribute("title", "Lấy lại mật khẩu: ");
 			return "msg";
 		}
@@ -115,14 +122,11 @@ public class forgotPasswordController {
 		
 		User user = service.get(token);
 		if(user == null) {
-			model.addAttribute("msg", "Token Khong hop le");
-			model.addAttribute("title", "Lấy lại mật khẩu: ");
-			
+			model.addAttribute("title", "Lấy lại mật khẩu: ");		
 		}else {
-			service.updatePassword(user, pss);
-			model.addAttribute("msg", "Thay đổi mật khẩu thành công");
+			service.updatePassword(user, pss);	
 		}
-		return "msg";
+		return "login";
 	}
 	
 }
