@@ -26,13 +26,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.example.demo.dao.Staff;
 import com.example.demo.dao.User;
+import com.example.demo.dao.service1;
+import com.example.demo.dao.service_price;
 import com.example.demo.service.MyUserDetailService;
+import com.example.demo.service.Service1Repository;
+import com.example.demo.service.ServicePriceRepository;
+import com.example.demo.service.StaffRepository;
 import com.example.demo.service.User2Repository;
 import com.example.demo.service.UserRepository;
 
 @Controller
 public class mainController {
+	
+	private List<Staff> staffList ;
 
 	@Autowired
 	private MyUserDetailService service;
@@ -42,6 +50,13 @@ public class mainController {
 	
 	@Autowired
 	private User2Repository repo2;
+	
+	@Autowired
+	private StaffRepository staffRepo;
+	@Autowired
+	private Service1Repository ser1Repo;
+	@Autowired
+	private ServicePriceRepository serPRepo;
 
 	
 	@Autowired
@@ -79,21 +94,29 @@ public class mainController {
 
     @RequestMapping("/dashboard")
     public String dashboardAdmin() {
+    	
         return "dashboard/admin";
     }
 
 	    @RequestMapping("/dashboard/staff")
-    public String dashboardStaff() {
+    public String dashboardStaff(Model model) {
+	   	staffList = staffRepo.findAll();
+	   	model.addAttribute("staffLists", staffList);
         return "dashboard/staff";
     }
 
     @RequestMapping("/dashboard/work")
-    public String dashboardWork() {
+    public String dashboardWork(Model model) {
+
         return "dashboard/work";
     }
 
     @RequestMapping("/dashboard/services")
-    public String dashboardServices() {
+    public String dashboardServices(Model model) {
+    	List<service1> ser1 = ser1Repo.findAll();
+    	List<service_price> serP = serPRepo.findAll();
+    	model.addAttribute("ser1", ser1);
+    	model.addAttribute("serP", serP);
         return "dashboard/services";
     }
 
@@ -138,6 +161,12 @@ public class mainController {
 		if(authentication == null || authentication instanceof AnonymousAuthenticationToken)
 			return false;
 		return true;
+	}
+	public List<Staff> getStaffList() {
+		return staffList;
+	}
+	public void setStaffList(List<Staff> staffList) {
+		this.staffList = staffList;
 	}
 
 
