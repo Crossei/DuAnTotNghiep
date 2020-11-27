@@ -1,7 +1,5 @@
 package com.example.demo.controller;
 
-import java.io.ByteArrayOutputStream;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -19,32 +17,25 @@ import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.CreationHelper;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.springframework.beans.factory.annotation.Autowired;
 
+import com.example.demo.dao.Customer;
 import com.example.demo.dao.Staff;
-import com.example.demo.service.StaffRepository;
 
 import net.sf.jxls.exception.ParsePropertyException;
-import net.sf.jxls.transformer.XLSTransformer;
 
-public class ExcelExporter {
+public class ExportCus {
 	private XSSFWorkbook workbook ;
 	private Sheet sheet;
-	private List<Staff> listStaff;
+	List<Customer> cusList;
 	private XSSFRow row;
 
 	
 	
-	public  ExcelExporter(List<Staff> staffList) throws FileNotFoundException, IOException, ParsePropertyException, InvalidFormatException {
-		this.listStaff = staffList;
-		Map<String, Object> beans = new HashMap<String, Object>();
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd HH:mm");		
-		beans.put("dateFormat", dateFormat);	
-		beans.put("staffList", staffList);	
-		InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream("templates/export/nhanvien.xlsx");
+	public  ExportCus(List<Customer> cusList) throws FileNotFoundException, IOException, ParsePropertyException, InvalidFormatException {
+		this.cusList = cusList;
+		InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream("templates/export/customer.xlsx");
 		workbook =  new XSSFWorkbook(is);
 		sheet  = workbook.getSheetAt(0);
 		
@@ -57,22 +48,26 @@ public class ExcelExporter {
         cellStyle.setDataFormat(  
             createHelper.createDataFormat().getFormat("dd-MM-yyyy"));  
 		int i =1;
-		for(Staff staff : listStaff){
+		for(Customer cus : cusList){
 			Row row =sheet.createRow(rowCount++);
 			Cell cell = row.createCell(1);
 			cell.setCellValue(i);
+			
 			cell = row.createCell(2);
-			cell.setCellValue(staff.getName_staff());
+			cell.setCellValue(cus.getName_cus());
+			
 			cell = row.createCell(3);
-			cell.setCellValue(staff.getSex() == 1 ? "Name" : "Nữ");
+			cell.setCellValue(cus.getPhone());
+			
 			cell = row.createCell(4);
-			cell.setCellValue(staff.getAddress());
+			cell.setCellValue(cus.getEmail());
+			
 			cell = row.createCell(5);
-			cell.setCellValue(staff.getEmail());
+			cell.setCellValue(cus.getDiachi());
+			
 			cell = row.createCell(6);
-			cell.setCellValue(staff.getPhone());
-			cell = row.createCell(7);
-			cell.setCellValue(staff.getDateWorking_Start());
+			cell.setCellValue(cus.getNgaysinh());
+			
 			cell.setCellStyle(cellStyle); 
 			i++;
 		}
@@ -85,5 +80,4 @@ public class ExcelExporter {
 		workbook.close();
 		ops.close();
 	}
-
 }

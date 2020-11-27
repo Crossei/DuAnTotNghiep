@@ -28,8 +28,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.example.demo.dao.Staff;
 import com.example.demo.dao.User;
-import com.example.demo.dao.service1;
-import com.example.demo.dao.service_price;
+import com.example.demo.dao.Customer;
+import com.example.demo.dao.Service1;
+import com.example.demo.dao.Service_price;
+import com.example.demo.service.CustomerRepository;
 import com.example.demo.service.MyUserDetailService;
 import com.example.demo.service.Service1Repository;
 import com.example.demo.service.ServicePriceRepository;
@@ -57,6 +59,8 @@ public class mainController {
 	private Service1Repository ser1Repo;
 	@Autowired
 	private ServicePriceRepository serPRepo;
+	@Autowired
+	private CustomerRepository cusRepo;
 
 	
 	@Autowired
@@ -113,15 +117,17 @@ public class mainController {
 
     @RequestMapping("/dashboard/services")
     public String dashboardServices(Model model) {
-    	List<service1> ser1 = ser1Repo.findAll();
-    	List<service_price> serP = serPRepo.findAll();
+    	List<Service1> ser1 = ser1Repo.findAll();
+    	List<Service_price> serP = serPRepo.findAll();
     	model.addAttribute("ser1", ser1);
     	model.addAttribute("serP", serP);
         return "dashboard/services";
     }
 
     @RequestMapping("/dashboard/customer")
-    public String dashboardCustomer() {
+    public String dashboardCustomer(Model model) {
+    	List<Customer> cus = cusRepo.findAll();
+    	model.addAttribute("cusLists", cus);
         return "dashboard/customer";
     }
 

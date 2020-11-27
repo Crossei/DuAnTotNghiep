@@ -1,23 +1,31 @@
 package com.example.demo.dao;
 
+import java.io.Serializable;
 import java.sql.Time;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="`service1`")
-public class service1 {
-	@Id 
+public class Service1  implements Serializable{
+	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) 
 	private int id_ser;
 	private String name;
 	private Time time_working;
 	private String dsc ; 	
 	private Boolean status;
+	
+	
 	public int getId_ser() {
 		return id_ser;
 	}

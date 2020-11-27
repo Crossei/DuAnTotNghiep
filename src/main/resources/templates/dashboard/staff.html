@@ -274,31 +274,31 @@
                        
                                 <td></td>
                                 <td>
-                                    <button class="btn btn-info">Sửa</button>
-                                    <a href="#myModal" class="btn btn-danger" data-toggle="modal">Xóa</a>
-                                    <div id="myModal" class="modal fade">
-                                        <div class="modal-dialog modal-confirm">
-                                            <div class="modal-content">
-                                                <div class="modal-header flex-column">
+                                   <button class="btn btn-info">Sửa</button> <button
+												data-target="#myModal" th:attr="data-target='#myModal'+${staffList.id_staff}"
+												class="btn btn-danger" data-toggle="modal">Xóa</button>
+												<div th:id="myModal+${staffList.id_staff}" class="modal fade">
+													<div class="modal-dialog modal-confirm">
+														<div class="modal-content">
+															<div class="modal-header flex-column">
 
-                                                    <h4 class="modal-title w-100">Bạn có chắc chắn muốn xóa lịch làm
-                                                        việc này chứ ?</h4>
-                                                    <button type="button" class="close" data-dismiss="modal"
-                                                            aria-hidden="true">&times;
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <p>Bạn có muốn lịch làm việc này chứ ?</p>
-                                                </div>
-                                                <div class="modal-footer justify-content-center">
-                                                   <a th:href="@{'/dashboard/staff/delete/'+${staffList.id_staff}}"  class="btn btn-danger">Delete</a>
-                                                    <button type="button" class="btn btn-secondary"
-                                                            data-dismiss="modal">Cancel
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+																<h4 class="modal-title w-100">Bạn có chắc chắn muốn
+																	xóa lịch làm việc này chứ ?</h4>
+																<button type="button" class="close" data-dismiss="modal"
+																	aria-hidden="true">&times;</button>
+															</div>
+															<div class="modal-body">
+																<p>Bạn có muốn lịch làm việc này chứ ?</p>
+															</div>
+															<div class="modal-footer justify-content-center">
+																<a th:href="@{/dashboard/staff/delete/{id}(id=${staffList.id_staff})}"
+																 type="button" class="btn btn-danger">Delete</a>
+																<button type="button" class="btn btn-secondary"
+																	data-dismiss="modal">Cancel</button>
+															</div>
+														</div>
+													</div>
+												</div>
                                 </td>
                             </tr>        
                             </th:block>           
