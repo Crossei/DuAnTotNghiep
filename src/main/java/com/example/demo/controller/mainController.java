@@ -65,7 +65,17 @@ public class mainController {
 	
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
-
+	
+	@RequestMapping("/doctor-list")
+	public String docList() {
+		return "doctor-list";
+	}
+	
+	@RequestMapping("/service-list")
+	public String serviceList() {
+		return "service-list";
+	}
+	
 	@RequestMapping("/")
 	public String homePage() {
 		return "home";
