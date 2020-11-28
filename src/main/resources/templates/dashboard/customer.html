@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-    <title>Dashboard - Quản lý nhân viên</title>
+    <title>Dashboard - Quản lý khách hàng</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="/webjars/startbootstrap-sb-admin-2/1.0.2/css/bootstrap.min.css" rel="stylesheet"/>
@@ -234,7 +234,7 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <h6 class="m-0 font-weight-bold text-primary">Hiển thị chi tiết danh sách khách hàng</h6>
-                            <button class="btn btn-primary">Thêm mới khách hàng</button>
+                            <a href="/dashboard/addCustomer" class="btn btn-primary">Thêm mới khách hàng</a>
                         </div>
                         <div class="form-group pull-right">
                             <input type="text" id="myInput" class="search form-control" placeholder="Search...."
@@ -271,7 +271,7 @@
                                 <td>hieutt@gmail.com</td>
                                 <td>0123456789</td>
                                 <td>
-                                    <button class="btn btn-info">Sửa</button>
+                                    <a href="/dashboard/updateCustomer" class="btn btn-info">Sửa</a>
                                     <a href="#myModal" class="btn btn-danger" data-toggle="modal">Xóa</a>
                                     <div id="myModal" class="modal fade">
                                         <div class="modal-dialog modal-confirm">

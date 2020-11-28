@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-    <title>Dashboard - Quản lý tài khoản</title>
+    <title>Dashboard - Thêm mới tài khoản</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="/webjars/startbootstrap-sb-admin-2/1.0.2/css/bootstrap.min.css" rel="stylesheet"/>
@@ -31,13 +31,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/fontawesome.min.css"
           integrity="sha512-kJ30H6g4NGhWopgdseRb8wTsyllFUYIx3hiUwmGAkgA9B/JbzUBDQVr2VVlWGde6sdBVOG7oU8AL35ORDuMm8g=="
           crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.css"
+          integrity="sha512-8D+M+7Y6jVsEa7RD6Kv/Z7EImSpNpQllgaEIQAtqHcI0H6F4iZknRj0Nx1DCdB+TwBaS+702BGWYC0Ze2hpExQ=="
+          crossorigin="anonymous"/>
 </head>
 
 <body>
 
 <div id="wrapper">
 
-    <!-- Navigation -->
     <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -99,10 +101,7 @@
                         </a>
                     </li>
                 </ul>
-                <!-- /.dropdown-messages -->
             </li>
-            <!-- /.dropdown -->
-
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                     <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
@@ -217,156 +216,35 @@
 
                 </ul>
             </div>
-            <!-- /.sidebar-collapse -->
         </div>
-        <!-- /.navbar-static-side -->
     </nav>
 
     <div id="page-wrapper">
-
-        <div class="container-fluid">
-
-            <!-- Page Heading -->
-            <h1 class="h3 mb-2 text-gray-800 mb-5">Quản lý lịch làm việc</h1>
-
-            <!-- DataTales Example -->
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <h6 class="m-0 font-weight-bold text-primary">Hiển thị chi tiết danh sách các tài khoản</h6>
-                            <a href="/dashboard/addAccount" class="btn btn-primary">Thêm mới tài khoản</a>
-                        </div>
-                        <div class="form-group pull-right">
-                            <input type="text" id="myInput" class="search form-control" placeholder="Search....">
-                        </div>
-                    </div>
+        <div class="container">
+            <h1 class="h3 mb-2 text-gray-800 mb-5">Thêm mới tài khoản</h1>
+            <form>
+                <div class="form-group">
+                    <label for="name">Họ và tên</label>
+                    <input type="text" class="form-control" id="name">
                 </div>
-                <br>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-bordered" cellspacing="0">
-                            <thead>
-                            <tr class="text-center">
-                                <th>STT</th>
-                                <th>Họ và tên</th>
-                                <th>Username</th>
-                                <th>Chức vụ</th>
-                                <th>Hành động</th>
-                            </tr>
-                            </thead>
-                            <tbody class="text-justify" id="myTable">
-                            <tr>
-                                <td>1</td>
-                                <td>Nguyễn Văn Quốc</td>
-                                <td>quoc</td>
-                                <td>Admin</td>
-                                <td>
-                                    <a href="/dashboard/updateAccount" class="btn btn-info">Sửa</a>
-                                    <a href="#myModal" class="btn btn-danger" data-toggle="modal">Xóa</a>
-                                    <div id="myModal" class="modal fade">
-                                        <div class="modal-dialog modal-confirm">
-                                            <div class="modal-content">
-                                                <div class="modal-header flex-column">
-
-                                                    <h4 class="modal-title w-100">Bạn có chắc chắn muốn xóa lịch làm
-                                                        việc này chứ ?</h4>
-                                                    <button type="button" class="close" data-dismiss="modal"
-                                                            aria-hidden="true">&times;
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <p>Bạn có muốn lịch làm việc này chứ ?</p>
-                                                </div>
-                                                <div class="modal-footer justify-content-center">
-                                                    <button type="button" class="btn btn-danger">Delete</button>
-                                                    <button type="button" class="btn btn-secondary"
-                                                            data-dismiss="modal">Cancel
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Lại Minh Sáng</td>
-                                <td>sanglm</td>
-                                <td>Nhân viên</td>
-                                <td>
-                                    <button class="btn btn-info">Sửa</button>
-                                    <a href="#myModal" class="btn btn-danger" data-toggle="modal">Xóa</a>
-                                    <div id="myModal" class="modal fade">
-                                        <div class="modal-dialog modal-confirm">
-                                            <div class="modal-content">
-                                                <div class="modal-header flex-column">
-
-                                                    <h4 class="modal-title w-100">Bạn có chắc chắn muốn xóa lịch làm
-                                                        việc này chứ ?</h4>
-                                                    <button type="button" class="close" data-dismiss="modal"
-                                                            aria-hidden="true">&times;
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <p>Bạn có muốn lịch làm việc này chứ ?</p>
-                                                </div>
-                                                <div class="modal-footer justify-content-center">
-                                                    <button type="button" class="btn btn-danger">Delete</button>
-                                                    <button type="button" class="btn btn-secondary"
-                                                            data-dismiss="modal">Cancel
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Trần Trung Hiếu</td>
-                                <td>hieutt</td>
-                                <td>Quản lý</td>
-                                <td>
-                                    <button class="btn btn-info">Sửa</button>
-                                    <a href="#myModal" class="btn btn-danger" data-toggle="modal">Xóa</a>
-                                    <div id="myModal" class="modal fade">
-                                        <div class="modal-dialog modal-confirm">
-                                            <div class="modal-content">
-                                                <div class="modal-header flex-column">
-
-                                                    <h4 class="modal-title w-100">Bạn có chắc chắn muốn xóa lịch làm
-                                                        việc này chứ ?</h4>
-                                                    <button type="button" class="close" data-dismiss="modal"
-                                                            aria-hidden="true">&times;
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <p>Bạn có muốn lịch làm việc này chứ ?</p>
-                                                </div>
-                                                <div class="modal-footer justify-content-center">
-                                                    <button type="button" class="btn btn-danger">Delete</button>
-                                                    <button type="button" class="btn btn-secondary"
-                                                            data-dismiss="modal">Cancel
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="username">
                 </div>
-            </div>
-
+                <div class="form-group">
+                    <label for="role">Chức vụ</label>
+                    <select id="role" class="form-control">
+                        <option selected>Admin</option>
+                        <option>Nhân viên</option>
+                    </select>
+                </div>
+                <a type="submit" class="btn btn-primary">Thêm mới</a>
+            </form>
         </div>
     </div>
-    <!-- /#page-wrapper -->
+
 
 </div>
-
 
 <!-- jQuery -->
 <script src="/webjars/startbootstrap-sb-admin-2/1.0.2/js/jquery.js"></script>
@@ -384,18 +262,7 @@
 
 <!-- Custom Theme JavaScript -->
 <script src="/webjars/startbootstrap-sb-admin-2/1.0.2/js/sb-admin-2.js"></script>
-<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-    $(document).ready(function () {
-        $("#myInput").on("keyup", function () {
-            var value = $(this).val().toLowerCase();
-            $("#myTable tr").filter(function () {
-                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-            });
-        });
-    });
-</script>
 
 </body>
 

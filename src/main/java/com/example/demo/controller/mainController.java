@@ -78,9 +78,29 @@ public class mainController {
         return "dashboard/staff";
     }
 
+    @RequestMapping("/dashboard/addStaff")
+    public String dashboardAddStaff() {
+        return "dashboard/addStaff";
+    }
+
+    @RequestMapping("/dashboard/updateStaff")
+    public String dashboardupdateStafff() {
+        return "dashboard/updateStaff";
+    }
+
     @RequestMapping("/dashboard/work")
     public String dashboardWork() {
         return "dashboard/work";
+    }
+
+    @RequestMapping("/dashboard/addWork")
+    public String dashboardAddWork() {
+        return "dashboard/addWork";
+    }
+
+    @RequestMapping("/dashboard/updateWork")
+    public String dashboardUpdateWork() {
+        return "dashboard/updateWork";
     }
 
     @RequestMapping("/dashboard/services")
@@ -88,15 +108,46 @@ public class mainController {
         return "dashboard/services";
     }
 
+    @RequestMapping("/dashboard/addServices")
+    public String dashboardAddServices() {
+        return "dashboard/addServices";
+    }
+
+    @RequestMapping("/dashboard/updateServices")
+    public String dashboardUpdateServices() {
+        return "dashboard/updateServices";
+    }
+
     @RequestMapping("/dashboard/customer")
     public String dashboardCustomer() {
         return "dashboard/customer";
+    }
+
+    @RequestMapping("/dashboard/addCustomer")
+    public String dashboardAddCustomer() {
+        return "dashboard/addCustomer";
+    }
+
+    @RequestMapping("/dashboard/updateCustomer")
+    public String dashboardUpdateCustomer() {
+        return "dashboard/updateCustomer";
     }
 
     @RequestMapping("/dashboard/account")
     public String dashboardAccount() {
         return "dashboard/account";
     }
+
+    @RequestMapping("/dashboard/addAccount")
+    public String dashboardAddAccount() {
+        return "dashboard/addAccount";
+    }
+
+    @RequestMapping("/dashboard/updateAccount")
+    public String dashboardUpdateAccount() {
+        return "dashboard/updateAccount";
+    }
+
 
     @RequestMapping("/changePass")
     public String changePass() {
