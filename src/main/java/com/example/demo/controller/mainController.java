@@ -55,6 +55,16 @@ public class mainController {
 	public String about() {
 		return "about";
 	}
+	
+	@RequestMapping("/doctor-list")
+	public String doctorList() {
+		return "doctor-list";
+	}
+	
+	@RequestMapping("/thongtinthem")
+	public String moreInfor() {
+		return "thongtinthem";
+	}
 
 	@RequestMapping("/login")
 	public String loginPage() {
