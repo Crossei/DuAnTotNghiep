@@ -23,7 +23,7 @@ public class Staff {
 	private String phone;
 	@Column(name = "dateWorking_Start")
 	private Date dateWorking_Start;
-	private int status;
+	private Integer status;
 
 	public int getStatus() {
 		return status;
