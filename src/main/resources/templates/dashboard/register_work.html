@@ -247,7 +247,7 @@
                         <a href="/dashboard/staff/"><i class="fa fa-user"></i> Quản lý nhân viên</a>
                     </li>
                     <li>
-                        <a href="/dashboard/work/"><i class="fa fa-user"></i> Quản lý lịch làm việc</a>
+                        <a href="/dashboard/quanlylichlamviec/"><i class="fa fa-user"></i> Quản lý lịch làm việc</a>
                     </li>
                     <li>
                         <a href="/dashboard/register_work/"><i class="fa fa-user"></i> Đăng ký lịch làm việc</a>
@@ -268,7 +268,7 @@
         </div>
         <!-- /.navbar-static-side -->
     </nav>
-
+	<form th:action="@{dang}">
     <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
@@ -283,10 +283,10 @@
                 <h1 class="page-header">Ngày: </h1>
             </div>
             <div class="col-md-8">
-                <h1 class="page-header"> 23/11/2020 -> 28/11/2020</h1>
+                <h1 class="page-header" th:text="${dateNow +'->'+ dateFuture}"></h1>
             </div> 
             <div class="col-md-2">
-                <button type="submit" class="btn btn-primary" style="margin-top:40px;" onclick="myFunction()">Đăng ký</button>
+                <button type="submit" class="btn btn-primary" style="margin-top:40px;">Đăng ký</button>
                
             </div> 
            
@@ -299,18 +299,18 @@
             <h3 >Thứ 2: </h3>
             <div class="col-lg-12">
             <div class="col-md-4">
-                 <input type="checkbox" class="form-check-input"
-								id="exampleCheck1"> <label class="form-check-label"
-								for="chkremember">Ca 1: 9h-12h</label>
+                 <input type="checkbox" class="form-check-input" name="id"
+								id="exampleCheck2" th:value="${1}"> <label class="form-check-label"
+								for="chkremember">Ca 1:8h30-12h</label>
             </div>
             <div class="col-md-4">
-                 <input type="checkbox" class="form-check-input"
-								id="exampleCheck1"> <label class="form-check-label"
-								for="chkremember">Ca 2: 13h-16h</label>
+                 <input type="checkbox" class="form-check-input" name="id"
+								id="exampleCheck2" th:value="${1}"> <label class="form-check-label"
+								for="chkremember">Ca 2: 13h30-17h</label>
             </div>
-            <div class="col-md-4">
-                 <input type="checkbox" class="form-check-input"
-								id="exampleCheck1"> <label class="form-check-label"
+            <div class="col-md-4"> 
+                 <input type="checkbox" class="form-check-input" name="id"
+								id="exampleCheck2" th:value="${1}"> <label class="form-check-label"
 								for="chkremember">Ca 3: 17h-19h30</label>
             </div>
                 
@@ -324,18 +324,18 @@
             <h3 >Thứ 3:</h3>
             <div class="col-lg-12">
             <div class="col-md-4">
-                 <input type="checkbox" class="form-check-input"
-								id="exampleCheck1"> <label class="form-check-label"
-								for="chkremember">Ca 1: 9h-12h</label>
+                 <input type="checkbox" class="form-check-input" name="id"
+								id="exampleCheck3" th:value="${1}"> <label class="form-check-label"
+								for="chkremember">Ca 1:8h30-12h</label>
             </div>
             <div class="col-md-4">
-                 <input type="checkbox" class="form-check-input"
-								id="exampleCheck1"> <label class="form-check-label"
-								for="chkremember">Ca 2: 13h-16h</label>
+                 <input type="checkbox" class="form-check-input" name="id"
+								id="exampleCheck3" th:value="${1}"> <label class="form-check-label"
+								for="chkremember">Ca 2: 13h30-17h</label>
             </div>
             <div class="col-md-4">
-                 <input type="checkbox" class="form-check-input"
-								id="exampleCheck1"> <label class="form-check-label"
+                 <input type="checkbox" class="form-check-input" name="id"
+								id="exampleCheck3" th:value="${1}"> <label class="form-check-label"
 								for="chkremember">Ca 3: 17h-19h30</label>
             </div>
                 
@@ -348,18 +348,18 @@
             <h3 >Thứ 4:</h3>
             <div class="col-lg-12">
             <div class="col-md-4">
-                 <input type="checkbox" class="form-check-input"
-								id="exampleCheck1"> <label class="form-check-label"
-								for="chkremember">Ca 1: 9h-12h</label>
+                 <input type="checkbox" class="form-check-input" name="id"
+								id="exampleCheck4" th:value="${1}"> <label class="form-check-label"
+								for="chkremember">Ca 1:8h30-12h</label>
             </div>
             <div class="col-md-4">
-                 <input type="checkbox" class="form-check-input"
-								id="exampleCheck1"> <label class="form-check-label"
-								for="chkremember">Ca 2: 13h-16h</label>
+                 <input type="checkbox" class="form-check-input" name="id"
+								id="exampleCheck4" th:value="${1}"> <label class="form-check-label"
+								for="chkremember">Ca 2: 13h30-17h</label>
             </div>
             <div class="col-md-4">
-                 <input type="checkbox" class="form-check-input"
-								id="exampleCheck1"> <label class="form-check-label"
+                 <input type="checkbox" class="form-check-input" name="id"
+								id="exampleCheck4" th:value="${1}"> <label class="form-check-label"
 								for="chkremember">Ca 3: 17h-19h30</label>
             </div>
                 
@@ -372,18 +372,18 @@
             <h3 >Thứ 5:</h3>
             <div class="col-lg-12">
             <div class="col-md-4">
-                 <input type="checkbox" class="form-check-input"
-								id="exampleCheck1"> <label class="form-check-label"
-								for="chkremember">Ca 1: 9h-12h</label>
+                 <input type="checkbox" class="form-check-input" name="id"
+								id="exampleCheck5" th:value="${1}"> <label class="form-check-label"
+								for="chkremember">Ca 1:8h30-12h</label>
             </div>
             <div class="col-md-4">
-                 <input type="checkbox" class="form-check-input"
-								id="exampleCheck1"> <label class="form-check-label"
-								for="chkremember">Ca 2: 13h-16h</label>
+                 <input type="checkbox" class="form-check-input" name="id"
+								id="exampleCheck5" th:value="${1}"> <label class="form-check-label"
+								for="chkremember">Ca 2: 13h30-17h</label>
             </div>
             <div class="col-md-4">
-                 <input type="checkbox" class="form-check-input"
-								id="exampleCheck1"> <label class="form-check-label"
+                 <input type="checkbox" class="form-check-input" name="id"
+								id="exampleCheck5" th:value="${1}"> <label class="form-check-label"
 								for="chkremember">Ca 3: 17h-19h30</label>
             </div>
                 
@@ -396,18 +396,18 @@
             <h3 >Thứ 6:</h3>
             <div class="col-lg-12">
             <div class="col-md-4">
-                 <input type="checkbox" class="form-check-input"
-								id="exampleCheck1"> <label class="form-check-label"
-								for="chkremember">Ca 1: 9h-12h</label>
+                 <input type="checkbox" class="form-check-input" name="id"
+								id="exampleCheck6" th:value="${1}"> <label class="form-check-label"
+								for="chkremember">Ca 1:8h30-12h</label>
             </div>
             <div class="col-md-4">
-                 <input type="checkbox" class="form-check-input"
-								id="exampleCheck1"> <label class="form-check-label"
-								for="chkremember">Ca 2: 13h-16h</label>
+                 <input type="checkbox" class="form-check-input" name="id"
+								id="exampleCheck6" th:value="${1}"> <label class="form-check-label"
+								for="chkremember">Ca 2: 13h30-17h</label>
             </div>
             <div class="col-md-4">
-                 <input type="checkbox" class="form-check-input"
-								id="exampleCheck1"> <label class="form-check-label"
+                 <input type="checkbox" class="form-check-input" name="id"
+								id="exampleCheck6" th:value="${1}"> <label class="form-check-label"
 								for="chkremember">Ca 3: 17h-19h30</label>
             </div>
                 
@@ -420,18 +420,18 @@
             <h3 >Thứ 7:</h3>
             <div class="col-lg-12">
             <div class="col-md-4">
-                 <input type="checkbox" class="form-check-input"
-								id="exampleCheck1"> <label class="form-check-label"
-								for="chkremember">Ca 1: 9h-12h</label>
+                 <input type="checkbox" class="form-check-input" name="id"
+								id="exampleCheck7" th:value="${1}"> <label class="form-check-label"
+								for="chkremember">Ca 1:8h30-12h</label>
             </div>
             <div class="col-md-4">
-                 <input type="checkbox" class="form-check-input"
-								id="exampleCheck1"> <label class="form-check-label"
-								for="chkremember">Ca 2: 13h-16h</label>
+                 <input type="checkbox" class="form-check-input" name="id"
+								id="exampleCheck7" th:value="${1}"> <label class="form-check-label"
+								for="chkremember">Ca 2: 13h30-17h</label>
             </div>
             <div class="col-md-4">
-                 <input type="checkbox" class="form-check-input"
-								id="exampleCheck1"> <label class="form-check-label"
+                 <input type="checkbox" class="form-check-input" name="id"
+								id="exampleCheck7" th:value="${1}"> <label class="form-check-label"
 								for="chkremember">Ca 3: 17h-19h30</label>
             </div>
                 
@@ -442,6 +442,7 @@
        
         <!-- /.row -->
     </div>
+    </form>
     <!-- /#page-wrapper -->
 
 </div>

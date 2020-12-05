@@ -142,7 +142,7 @@
 								class="fa fa-dashboard fa-fw"></i> Dashboard</a></li>
 						<li><a href="/dashboard/staff/"><i class="fa fa-user"></i>
 								Quản lý nhân viên</a></li>
-						<li><a href="/dashboard/work/"><i class="fa fa-user"></i>
+						<li><a href="/dashboard/quanlylichkham/"><i class="fa fa-user"></i>
 								Quản lý lịch làm việc</a></li>
 						<li><a href="/dashboard/services/"><i class="fa fa-user"></i>
 								Quản lý dịch vụ</a></li>
@@ -202,9 +202,7 @@
 											<td th:text="${ser1.name}"></td>
 											<td th:text="${ser1.dsc}"></td>
 											<td th:text="${#dates.format(ser1.time_working, 'HH:mm')}"></td>
-													<td th:each="serP : ${serP}"
-												th:if="${ser1.id_ser eq serP.id_ser}"
-												th:text="${serP.price}"></td>
+													<td th:text="${ser1.price}" ></td>
 											<td>
 												
 												<button class="btn btn-info">Sửa</button> <button

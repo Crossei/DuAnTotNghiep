@@ -15,6 +15,7 @@ public class Staff {
 	@Id 
 	@GeneratedValue(strategy = GenerationType.IDENTITY) 
 	private int id_staff;
+	private int id_user;
 	private String name_staff;
 	private int sex;
 	private String address;
@@ -22,7 +23,20 @@ public class Staff {
 	private String phone;
 	@Column(name = "dateWorking_Start")
 	private Date dateWorking_Start;
-	private Boolean status;
+	private int status;
+
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
+	}
+	public int getId_user() {
+		return id_user;
+	}
+	public void setId_user(int id_user) {
+		this.id_user = id_user;
+	}
 	public int getId_staff() {
 		return id_staff;
 	}
@@ -65,12 +79,7 @@ public class Staff {
 	public void setDateWorking_Start(Date dateWorking_Start) {
 		this.dateWorking_Start = dateWorking_Start;
 	}
-	public boolean isStatus() {
-		return status;
-	}
-	public void setStatus(boolean status) {
-		this.status = status;
-	}
+	
 	
 	
 }

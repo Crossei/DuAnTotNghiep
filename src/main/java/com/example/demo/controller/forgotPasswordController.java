@@ -21,11 +21,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.example.demo.Exception.UserNotFoundException;
 import com.example.demo.configure.Utility;
 import com.example.demo.dao.User;
 import com.example.demo.service.MyUserDetailService;
 import com.example.demo.service.User2Repository;
-import com.example.demo.service.UserNotFoundException;
 
 import net.bytebuddy.utility.RandomString;
 

@@ -1,4 +1,4 @@
-package com.example.demo.service;
+package com.example.demo.Exception;
 
 public class UserNotFoundException extends Exception {
 

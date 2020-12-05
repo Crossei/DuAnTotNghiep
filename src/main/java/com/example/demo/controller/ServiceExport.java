@@ -3,10 +3,7 @@ package com.example.demo.controller;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.text.SimpleDateFormat;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
@@ -19,29 +16,22 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.springframework.beans.factory.annotation.Autowired;
 
-import com.example.demo.dao.Service1;
-import com.example.demo.dao.Service_price;
-import com.example.demo.dao.Staff;
-import com.example.demo.service.ServicePriceRepository;
+import com.example.demo.dao.Service;
 
 import net.sf.jxls.exception.ParsePropertyException;
 
 public class ServiceExport {
 	private XSSFWorkbook workbook ;
 	private Sheet sheet;
-	private List<Service1> listService;
-	private List<Service_price>  serP;
+	private List<Service> listService;
 	private XSSFRow row;
-	@Autowired
-	private ServicePriceRepository serPRepo;
+
 
 	
 	
-	public  ServiceExport(List<Service1> service1, List<Service_price> serP) throws FileNotFoundException, IOException, ParsePropertyException, InvalidFormatException {
+	public  ServiceExport(List<Service> service1) throws FileNotFoundException, IOException, ParsePropertyException, InvalidFormatException {
 		this.listService = service1;
-		this.serP = serP;
 		
 		InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream("templates/export/service.xlsx");
 		workbook =  new XSSFWorkbook(is);
@@ -57,8 +47,8 @@ public class ServiceExport {
             createHelper.createDataFormat().getFormat("HH:mm"));  
 		int i =1;
 		int a = 0;
-		for(Service1 ser1 : listService){
-			Service_price serp = serP.get(a++);
+		for(Service ser1 : listService){
+		
 			Row row =sheet.createRow(rowCount++);
 			Cell cell = row.createCell(1);
 			cell.setCellValue(i);
@@ -70,7 +60,7 @@ public class ServiceExport {
 			cell.setCellValue(ser1.getTime_working());
 			cell.setCellStyle(cellStyle); 
 			cell = row.createCell(5);
-			cell.setCellValue(serp.getPrice());
+			cell.setCellValue(ser1.getPrice());
 			i++;
 		}
 

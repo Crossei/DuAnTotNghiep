@@ -62,11 +62,6 @@ public class ExportCus {
 			cell = row.createCell(4);
 			cell.setCellValue(cus.getEmail());
 			
-			cell = row.createCell(5);
-			cell.setCellValue(cus.getDiachi());
-			
-			cell = row.createCell(6);
-			cell.setCellValue(cus.getNgaysinh());
 			
 			cell.setCellStyle(cellStyle); 
 			i++;

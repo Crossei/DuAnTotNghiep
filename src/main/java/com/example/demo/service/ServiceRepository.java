@@ -2,8 +2,8 @@ package com.example.demo.service;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.example.demo.dao.Service1;
+import com.example.demo.dao.Service;
 
-public interface Service1Repository extends JpaRepository<Service1, Integer> {
+public interface ServiceRepository extends JpaRepository<Service, Integer> {
 
 }

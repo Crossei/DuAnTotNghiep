@@ -15,11 +15,10 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY) 
 	private int id;
 	private String name;
-	private String username;
-	
-		private String password;
-	private boolean active;
+	private String username;	
+	private String password;
 	private String roles;
+	private int status;
 	
 	@Column(name =  "reset_password_token")
 	private String resetPasswordToken;
@@ -28,12 +27,21 @@ public class User {
 		
 	}
 	
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", username=" + username + ", password=" + password + ", active="
-				+ active + ", roles=" + roles + "]";
-	}
 	
+	
+
+	public int getStatus() {
+		return status;
+	}
+
+
+
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
+
 
 
 	public User(String name,String username, String password,String roles) {
@@ -60,12 +68,7 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public boolean isActive() {
-		return active;
-	}
-	public void setActive(boolean active) {
-		this.active = active;
-	}
+
 	public String getRoles() {
 		return roles;
 	}
