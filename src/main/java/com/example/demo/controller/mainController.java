@@ -18,12 +18,12 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.example.demo.dao.Booking;
 import com.example.demo.dao.BookingDetail;
@@ -108,6 +108,16 @@ public class mainController {
 		return "lichSuDatLich";
 	}
 	
+	@GetMapping("lichsudat/delete/{id_detail}")
+	public String deleteLichDat(@PathVariable(name = "id_detail") int id) {
+		BookingDetail bookItem = new BookingDetail();
+		bookItem = bokDetailRepo.findById(id);
+		bookItem.setActive(0);
+		bokDetailRepo.save(bookItem);
+		
+		return "redirect:/lichsudat";
+	}
+	
 
 	@RequestMapping("/datlich")
 	public String datLich(Model model) {
@@ -125,7 +135,6 @@ public class mainController {
 		if (checkLoggedIn() == false) {
 			return "login";
 		}
-
 		System.out.println(authentication.getName());
 		User user = repo.findByUsernameIs(authentication.getName());
 		System.out.println("id user :" + user.getId());
@@ -170,7 +179,7 @@ public class mainController {
 
 	@RequestMapping("/dashboard")
 	public String dashboardAdmin() {
-
+		
 		return "dashboard/admin";
 	}
 
@@ -194,6 +203,12 @@ public class mainController {
 		model.addAttribute("cusLists", cus);
 		return "dashboard/customer";
 	}
+	@RequestMapping("/dashboard/lichkham")
+	public String nhanLichKham(Model model) {
+		List<BookingDetail> bookingItems = bokDetailRepo.findAll();
+		model.addAttribute("detailList", bookingItems);
+		return "dashboard/tiepNhanLichKham";
+	}
 
 	@RequestMapping("/dashboard/account")
 	public String dashboardAccount() {
@@ -208,29 +223,6 @@ public class mainController {
 	@RequestMapping("/logout-success")
 	public String logoutPage() {
 		return "logout";
-	}
-	
-	@RequestMapping("/dashboard/services/addServices")
-	public String addService(Model model) {
-		Service service = new Service();
-		model.addAttribute("service",service);
-		return "dashboard/addServices";
-	}
-	
-	@RequestMapping(value="/save",method =  RequestMethod.POST)
-	public String addService(@ModelAttribute("service") Service service) {
-		System.out.println(service);
-		ser1Repo.save(service);
-		
-		return "redirect:/dashboard/services";
-	}
-	
-	@RequestMapping(value="/editService/{id_ser}")
-	public ModelAndView  editService(@PathVariable(name="id_ser") Integer id_ser ) {
-		ModelAndView mav= new ModelAndView("dashboard/editServices");
-		Service service =ser1Repo.getOne(id_ser);
-		mav.addObject("service",service);
-		return mav;
 	}
 
 	@PostMapping("/register")
