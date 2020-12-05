@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-    <title>Dashboard - Quản lý nhân viên</title>
+    <title>Dashboard - Quản lý lịch khám</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="/webjars/startbootstrap-sb-admin-2/1.0.2/css/bootstrap.min.css" rel="stylesheet"/>
@@ -31,6 +31,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/fontawesome.min.css"
           integrity="sha512-kJ30H6g4NGhWopgdseRb8wTsyllFUYIx3hiUwmGAkgA9B/JbzUBDQVr2VVlWGde6sdBVOG7oU8AL35ORDuMm8g=="
           crossorigin="anonymous"/>
+          <style>
+          #hide{
+          display:none;
+          }
+          #hide1{
+          display:none;
+          }
+          
+          
+          </style>
 </head>
 
 <body>
@@ -223,19 +233,19 @@
     </nav>
 
     <div id="page-wrapper">
+
         <div class="container-fluid">
 
             <!-- Page Heading -->
-            <h1 class="h3 mb-2 text-gray-800 mb-5">Quản lý nhân viên</h1>
-
+            <h1 class="h3 mb-2 text-gray-800 mb-5">Lịch khám</h1>
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <div class="row">
                         <div class="col-lg-6">
-                            <h6 class="m-0 font-weight-bold text-primary">Hiển thị chi tiết danh sách các nhân viên</h6>
-                            <button class="btn btn-primary">Thêm mới nhân viên</button>
-                            <a th:href="@{/dashboard/staff/export}" class="btn btn-warning">Export Excel</a>
+                            <h6 class="m-0 font-weight-bold text-primary">Hiển thị chi tiết lịch khám bệnh</h6>
+                            <button class="btn btn-default">Export</button>
+
                         </div>
                         <div class="form-group pull-right">
                             <input type="text" id="myInput" class="search form-control" placeholder="Search...."
@@ -243,65 +253,182 @@
                         </div>
                     </div>
                 </div>
-                <br>
+                
                 <div class="card-body">
-                    <div class="table-responsive">
+                <input id="binh" type="button" value="Vũ Đức Binh" onClick="hien()">
+                
+                <input id="chien" type="button" value="Đào Trung Chiến" onClick="an()" >
+                    <div class="table-responsive" id="hide">
+                    <h4>Ngày 30/11/2020 - 05/12/2020</h4>
                         <table class="table table-bordered" cellspacing="0">
                             <thead>
-                            <tr>
-                                <th>STT</th>
-                                <th>Họ và tên</th>                        
-                                <th>Giới tính</th>
-                                <th>Địa chỉ</th>
-                                
-                                <th>Email</th>
-                                <th>Số điện thoại</th>
-                                <th>Ngày tham gia</th>
-                                <th>Vai trò</th>
-                                <th>Hành động</th>
+                            <tr class="text-center">
+              
+                                <th>Giờ</th>
+                                <th>Thứ 2</th>
+                                <th>Thứ 3</th>
+                                <th>Thứ 4</th>
+                                <th>Thứ 5</th>
+                                <th>Thứ 6</th>
+                                <th>Thứ 7</th>
                             </tr>
                             </thead>
-                            <tbody tbody class="text-justify" id="myTable">
-                             <th:block th:each="staffList,stt : ${staffLists}">
+                            <tbody class="text-justify" id="myTable">
                             <tr>
-                                <td th:text="${stt.count}"></td>
-                                <td th:text="${staffList.name_staff}"></td>
-                                <td th:text="${staffList.sex} eq '1' ? 'Nam' : 'Nữ'"></td>
-                                <td th:text="${staffList.address}"></td>
-                                <td th:text="${staffList.email}"></td>
-                                <td th:text="${staffList.phone}"></td>
-                                <td th:text="${#dates.format(staffList.dateWorking_Start, 'dd-MM-yyyy')}"></td>
-                       
-                                <td></td>
-                                <td>
-                                   <button class="btn btn-info">Sửa</button> <button
-												data-target="#myModal" th:attr="data-target='#myModal'+${staffList.id_staff}"
-												class="btn btn-danger" data-toggle="modal">Xóa</button>
-												<div th:id="myModal+${staffList.id_staff}" class="modal fade">
-													<div class="modal-dialog modal-confirm">
-														<div class="modal-content">
-															<div class="modal-header flex-column">
+    
+                                <td>08:00 AM</td>
+                                <td> Niềng răng</td>
+                                <td> </td>
+                                <td> </td>
+                                <td> </td>
+                                <td> </td>
+                                <td> </td>
 
-																<h4 class="modal-title w-100">Bạn có chắc chắn muốn
-																	xóa lịch làm việc này chứ ?</h4>
-																<button type="button" class="close" data-dismiss="modal"
-																	aria-hidden="true">&times;</button>
-															</div>
-															<div class="modal-body">
-																<p>Bạn có muốn lịch làm việc này chứ ?</p>
-															</div>
-															<div class="modal-footer justify-content-center">
-																<a th:href="@{/dashboard/staff/delete/{id}(id=${staffList.id_staff})}"
-																 type="button" class="btn btn-danger">Delete</a>
-																<button type="button" class="btn btn-secondary"
-																	data-dismiss="modal">Cancel</button>
-															</div>
-														</div>
-													</div>
-												</div>
-                                </td>
-                            </tr>        
-                            </th:block>           
+                            </tr>
+                            <tr>
+    
+                                <td>09:00 AM</td>
+                                <td> </td>
+                                <td> Hàn răng </td>
+                                <td> </td>
+                                <td> </td>
+                                <td> </td>
+                                <td> </td>
+
+                            </tr>
+                            <tr>
+    
+                                <td>10:00 AM</td>
+                                <td> </td>
+                                <td> </td>
+                                <td> Nhổ răng </td>
+                                <td> </td>
+                                <td> </td>
+                                <td> </td>
+
+                            </tr>
+                            <tr>
+    
+                                <td>11:00 AM</td>
+                                <td> </td>
+                                <td> </td>
+                                <td> </td>
+                                <td>Răng sứ </td>
+                                <td> </td>
+                                <td> </td>
+
+                            </tr>
+                            <tr>
+    
+                                <td>12:00 AM</td>
+                                <td> </td>
+                                <td> </td>
+                                <td> </td>
+                                <td> </td>
+                                <td> Phẫu thuật răng miệng</td>
+                                <td> </td>
+
+                            </tr>
+                            <tr>
+    
+                                <td>13:00 PM</td>
+                                <td> </td>
+                                <td> </td>
+                                <td> </td>
+                                <td> </td>
+                                <td> </td>
+                                <td> Răng trẻ em</td>
+
+                            </tr>
+                            
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="table-responsive" id="hide1">
+                    <h4>Ngày 30/11/2020 - 05/12/2020</h4>
+                        <table class="table table-bordered" cellspacing="0">
+                            <thead>
+                            <tr class="text-center">
+              
+                                <th>Giờ</th>
+                                <th>Thứ 2</th>
+                                <th>Thứ 3</th>
+                                <th>Thứ 4</th>
+                                <th>Thứ 5</th>
+                                <th>Thứ 6</th>
+                                <th>Thứ 7</th>
+                            </tr>
+                            </thead>
+                            <tbody class="text-justify" id="myTable">
+                            <tr>
+    
+                                <td>08:00 AM</td>
+                                <td> </td>
+                                <td>Niềng răng </td>
+                                <td> </td>
+                                <td> </td>
+                                <td> </td>
+                                <td> </td>
+
+                            </tr>
+                            <tr>
+    
+                                <td>09:00 AM</td>
+                                <td> </td>
+                                <td> </td>
+                                <td> Hàn răng </td>
+                                <td> </td>
+                                <td> </td>
+                                <td> </td>
+
+                            </tr>
+                            <tr>
+    
+                                <td>10:00 AM</td>
+                                <td> </td>
+                                <td> </td>
+                                <td> Nhổ răng </td>
+                                <td> Nhổ răng </td>
+                                <td> </td>
+                                <td> </td>
+
+                            </tr>
+                            <tr>
+    
+                                <td>11:00 AM</td>
+                                <td> </td>
+                                <td> </td>
+                                <td> </td>
+                                <td> </td>
+                                <td>Răng sứ </td>
+                                <td> </td>
+
+                            </tr>
+                            <tr>
+    
+                                <td>12:00 AM</td>
+                                <td> </td>
+                                <td> </td>
+                                <td> </td>
+                                <td> </td>
+                                <td> </td>
+                                <td> Phẫu thuật răng miệng</td>
+
+                            </tr>
+                            <tr>
+    
+                                <td>13:00 PM</td>
+                                <td> </td>
+                                <td> </td>
+                                <td> </td>
+                                <td> </td>
+                                <td> </td>
+                                <td> Răng trẻ em</td>
+
+                            </tr>
+                            
+
                             </tbody>
                         </table>
                     </div>
@@ -309,7 +436,6 @@
             </div>
 
         </div>
-
     </div>
     <!-- /#page-wrapper -->
 
@@ -334,14 +460,24 @@
 <script src="/webjars/startbootstrap-sb-admin-2/1.0.2/js/sb-admin-2.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-    $(document).ready(function(){
-        $("#myInput").on("keyup", function() {
+    $(document).ready(function () {
+        $("#myInput").on("keyup", function () {
             var value = $(this).val().toLowerCase();
-            $("#myTable tr").filter(function() {
+            $("#myTable tr").filter(function () {
                 $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
             });
         });
     });
+    function hien(){
+    	document.getElementById("hide").style.display ="block";
+    	document.getElementById("chien").style.display ="block";
+    	document.getElementById("hide1").style.display ="none";
+    }
+    function an(){
+    	document.getElementById("hide").style.display ="none";
+    	document.getElementById("hide1").style.display ="block";
+    
+    }
 </script>
 </body>
 

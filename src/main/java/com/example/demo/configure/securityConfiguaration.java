@@ -17,6 +17,8 @@ public class securityConfiguaration extends WebSecurityConfigurerAdapter {
 	
 	@Autowired
 	UserDetailsService userDetailsService;
+	@Autowired
+	private SimpleAuthenticationSuccessHandler successHandler;
 	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -40,7 +42,7 @@ public class securityConfiguaration extends WebSecurityConfigurerAdapter {
 			.authorizeRequests().antMatchers("/**").permitAll()
 			.anyRequest().authenticated()
 			.and()
-			.formLogin()
+			.formLogin().successHandler(successHandler)
 			.loginPage("/login").permitAll()
 			.and()
 			.logout().invalidateHttpSession(true)

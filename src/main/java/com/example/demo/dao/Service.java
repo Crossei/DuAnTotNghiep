@@ -15,17 +15,25 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="`service1`")
-public class Service1  implements Serializable{
+@Table(name="`service`")
+public class Service  implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) 
 	private int id_ser;
 	private String name;
 	private Time time_working;
 	private String dsc ; 	
+	private float price;
 	private Boolean status;
 	
 	
+	
+	public float getPrice() {
+		return price;
+	}
+	public void setPrice(float price) {
+		this.price = price;
+	}
 	public int getId_ser() {
 		return id_ser;
 	}

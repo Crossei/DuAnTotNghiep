@@ -17,7 +17,6 @@ public class MyUserDetail implements UserDetails {
 	
 	private String username;
 	private String password;
-	private boolean active;
 	private List<GrantedAuthority> authority;
 	
 	
@@ -26,7 +25,6 @@ public class MyUserDetail implements UserDetails {
 		
 		this.username = user.getUsername();
 		this.password = user.getPassword();
-		this.active = user.isActive();
 		this.authority = Arrays.stream(user.getRoles().split(","))
 				.map(SimpleGrantedAuthority::new)
 				.collect(Collectors.toList());

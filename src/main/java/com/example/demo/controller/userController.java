@@ -1,36 +1,15 @@
 package com.example.demo.controller;
 
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 
-import javax.servlet.ServletOutputStream;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.swing.JFileChooser;
 import javax.transaction.Transactional;
 
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
-import org.apache.poi.poifs.filesystem.POIFSFileSystem;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.xssf.usermodel.XSSFCell;
-import org.apache.poi.xssf.usermodel.XSSFRow;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.hibernate.cfg.Environment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,16 +17,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.dao.Customer;
-import com.example.demo.dao.Service1;
-import com.example.demo.dao.Service_price;
+import com.example.demo.dao.Service;
 import com.example.demo.dao.Staff;
 import com.example.demo.service.CustomerRepository;
-import com.example.demo.service.Service1Repository;
-import com.example.demo.service.ServicePriceRepository;
+import com.example.demo.service.ServiceRepository;
 import com.example.demo.service.StaffRepository;
-
-import net.sf.jxls.exception.ParsePropertyException;
-import net.sf.jxls.transformer.XLSTransformer;
 
 @Controller
 public class userController {
@@ -56,10 +30,9 @@ public class userController {
 	private StaffRepository staffRepo;
 	
 	@Autowired
-	private Service1Repository serRepo;
+	private ServiceRepository serRepo;
 	
-	@Autowired
-	private ServicePriceRepository serPRepo;
+
 	@Autowired
 	private CustomerRepository cusRepo;
 
@@ -79,12 +52,7 @@ public class userController {
 	@RequestMapping("dashboard/services/delete/{id_ser}")
 	@Transactional
 	public String deleteService(@PathVariable(name = "id_ser") int id) {
-		Service_price serp = serPRepo.findByIdser(id);
-		serPRepo.deleteByIdser(id);
 		serRepo.deleteById(id);
-		System.out.println(serp);
-		System.out.println(id);
-		System.out.println(serp.getId_ser_price());
 		//serRepo.deleteById(id);
 		return "redirect:/dashboard/services";
 	}
@@ -113,9 +81,8 @@ public class userController {
 		String headerkey = "Content-Disposition";
 		String headerValue = "attachement; filename=" + fileName;
 		rp.setHeader(headerkey, headerValue);
-	 	List<Service1> service = serRepo.findAll();
-	 	List<Service_price> serP = serPRepo.findAll();
-		ServiceExport ex = new ServiceExport(service,serP);
+	 	List<Service> service = serRepo.findAll();
+		ServiceExport ex = new ServiceExport(service);
 		ex.export(rp);
 
 	}

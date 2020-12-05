@@ -15,8 +15,24 @@ public class Customer {
 	private String name_cus;
 	private String phone;
 	private String email;
-	private String diachi;
-	private Date ngaysinh;
+	private int id_user	;
+	private int status;
+	
+	
+	
+	
+	public int getId_user() {
+		return id_user;
+	}
+	public void setId_user(int id_user) {
+		this.id_user = id_user;
+	}
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
+	}
 	public int getId_cus() {
 		return id_cus;
 	}
@@ -41,18 +57,7 @@ public class Customer {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getDiachi() {
-		return diachi;
-	}
-	public void setDiachi(String diachi) {
-		this.diachi = diachi;
-	}
-	public Date getNgaysinh() {
-		return ngaysinh;
-	}
-	public void setNgaysinh(Date ngaysinh) {
-		this.ngaysinh = ngaysinh;
-	}
+	
 	
 	
 }
