@@ -16,7 +16,7 @@ public class Customer {
 	private String phone;
 	private String email;
 	private int id_user	;
-	private int status;
+	private Integer status;
 	
 	
 	
