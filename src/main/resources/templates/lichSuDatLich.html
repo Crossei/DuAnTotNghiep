@@ -126,8 +126,8 @@
 
 			<div class="booking-form">
 				<form>
-					<table style="font-size: 15px;" class="table table-bordered" id="myTable"
-						cellspacing="0">
+					<table style="font-size: 15px;" class="table table-bordered"
+						id="myTable" cellspacing="0">
 						<thead>
 							<th>STT</th>
 							<th>Tên dịch vụ</th>
@@ -142,7 +142,7 @@
 							<th:block th:each="detailList,stt : ${detailList}">
 								<tr>
 									<th:block th:each="serLList : ${serLList}"
-										th:if="${detailList.id_service == serLList.id_ser}">
+										th:if="${detailList.id_service == serLList.id_ser && detailList.active == 1}">
 										<td th:text="${stt.count}"></td>
 										<td th:text="${serLList.name}"></td>
 										<td th:if="${detailList.id_staff == 1}" th:text="${'N/A'}"></td>
@@ -150,44 +150,48 @@
 											th:text="${#dates.format(detailList.dateWorking_Start, 'dd-MM-yyyy')}"></td>
 										<td></td>
 										<td th:text="${serLList.price}"></td>
-										
-										<td th:if="${detailList.status == 0}">
-											<span > Chờ xác thực</span>										
-										</td>
-										<td  th:if="${detailList.status == 1}">
-											<span>Đã nhận lịch đặt</span>										
-										</td>
-										<td  th:if="${detailList.status == 1}">
-											<button style="font-size:15px" class="btn btn-warning" disabled="true">Thay đổi ngày đặt</button>
-											<button style="font-size:15px"  class="btn btn-danger" disabled="true" >Hủy lịch đặt</button>
-										</td>
-										<td  th:if="${detailList.status == 0}">
-											<button style="font-size:15px" class="btn btn-warning" >Thay đổi ngày đặt</button>
-											<button style="font-size:15px"  
-												data-target="#myModal" th:attr="data-target='#myModal'+${detailList.id_detail}"
-												class="btn btn-danger" data-toggle="modal">Hủy lịch đặt</button>
-											<div th:id="myModal+${detailList.id_detail}" class="modal fade">
-													<div class="modal-dialog modal-confirm">
-														<div class="modal-content">
-															<div class="modal-header flex-column">
 
-																<h4 class="modal-title w-100">Bạn có chắc chắn muốn
-																	hủy lịch đặt này chứ ?</h4>
-																<button type="button" class="close" data-dismiss="modal"
-																	aria-hidden="true">&times;</button>
-															</div>
-															<div class="modal-body">
-																<p>Bạn có muốn hủy lịch này chứ ?</p>
-															</div>
-															<div class="modal-footer justify-content-center">
-																<a th:href="@{/lichsudat/delete/{id}(id=${detailList.id_detail})}"
-																 type="button" class="btn btn-danger">Delete</a>
-																<button type="button" class="btn btn-secondary"
-																	data-dismiss="modal">Cancel</button>
-															</div>
+										<td th:if="${detailList.status == 0}"><span> Chờ
+												xác thực</span></td>
+										<td th:if="${detailList.status == 1}"><span>Đã
+												nhận lịch đặt</span></td>
+										<td th:if="${detailList.status == 1}">
+											<button style="font-size: 15px" class="btn btn-warning"
+												disabled="true">Thay đổi ngày đặt</button>
+											<button style="font-size: 15px" class="btn btn-danger"
+												disabled="true">Hủy lịch đặt</button>
+										</td>
+										<td th:if="${detailList.status == 0}">
+											<button style="font-size: 15px" class="btn btn-warning">Thay
+												đổi ngày đặt</button>
+											<button type="button" class="btn btn-danger"
+												th:attr="data-target='#myModal'+${detailList.id_detail}"
+												data-toggle="modal" data-target="#myModal">Hủy lịch đặt
+												modal</button>
+											<div class="modal fade"
+												th:id="myModal+${detailList.id_detail}">
+												<div class="modal-dialog">
+													<div class="modal-content">
+														<div class="modal-header flex-column">
+
+															<h4 class="modal-title w-100">Bạn có chắc chắn muốn
+																hủy lịch đặt này chứ ?</h4>
+															<button type="button" class="close" data-dismiss="modal"
+																aria-hidden="true">&times;</button>
+														</div>
+														<div class="modal-body">
+															<p>Bạn có muốn hủy lịch này chứ ?</p>
+														</div>
+														<div class="modal-footer justify-content-center">
+															<a
+																th:href="@{/lichsudat/delete/{id}(id=${detailList.id_detail})}"
+																type="button" class="btn btn-danger">Delete</a>
+															<button type="button" class="btn btn-secondary"
+																data-dismiss="modal">Cancel</button>
 														</div>
 													</div>
 												</div>
+											</div>
 										</td>
 									</th:block>
 								</tr>

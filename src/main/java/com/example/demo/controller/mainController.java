@@ -18,8 +18,11 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.dao.Booking;
@@ -105,6 +108,16 @@ public class mainController {
 		return "lichSuDatLich";
 	}
 	
+	@GetMapping("lichsudat/delete/{id_detail}")
+	public String deleteLichDat(@PathVariable(name = "id_detail") int id) {
+		BookingDetail bookItem = new BookingDetail();
+		bookItem = bokDetailRepo.findById(id);
+		bookItem.setActive(0);
+		bokDetailRepo.save(bookItem);
+		
+		return "redirect:/lichsudat";
+	}
+	
 
 	@RequestMapping("/datlich")
 	public String datLich(Model model) {
@@ -122,7 +135,6 @@ public class mainController {
 		if (checkLoggedIn() == false) {
 			return "login";
 		}
-
 		System.out.println(authentication.getName());
 		User user = repo.findByUsernameIs(authentication.getName());
 		System.out.println("id user :" + user.getId());
@@ -167,7 +179,7 @@ public class mainController {
 
 	@RequestMapping("/dashboard")
 	public String dashboardAdmin() {
-
+		
 		return "dashboard/admin";
 	}
 
@@ -190,6 +202,12 @@ public class mainController {
 		List<Customer> cus = cusRepo.findAll();
 		model.addAttribute("cusLists", cus);
 		return "dashboard/customer";
+	}
+	@RequestMapping("/dashboard/lichkham")
+	public String nhanLichKham(Model model) {
+		List<BookingDetail> bookingItems = bokDetailRepo.findAll();
+		model.addAttribute("detailList", bookingItems);
+		return "dashboard/tiepNhanLichKham";
 	}
 
 	@RequestMapping("/dashboard/account")
