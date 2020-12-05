@@ -8,5 +8,4 @@ import com.example.demo.dao.BookingDetail;
 
 public interface BookingDetailRepository extends JpaRepository<BookingDetail, Integer> {
 	List findByIdBooking(int id);
-	BookingDetail findById(int id);
 }
