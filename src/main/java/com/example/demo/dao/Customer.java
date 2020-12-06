@@ -16,7 +16,7 @@ public class Customer {
 	private String phone;
 	private String email;
 	private int id_user	;
-	private int status;
+	private Integer status;
 	
 	
 	
@@ -27,10 +27,10 @@ public class Customer {
 	public void setId_user(int id_user) {
 		this.id_user = id_user;
 	}
-	public int getStatus() {
+	public Integer getStatus() {
 		return status;
 	}
-	public void setStatus(int status) {
+	public void setStatus(Integer status) {
 		this.status = status;
 	}
 	public int getId_cus() {

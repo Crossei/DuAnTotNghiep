@@ -23,12 +23,12 @@ public class Staff {
 	private String phone;
 	@Column(name = "dateWorking_Start")
 	private Date dateWorking_Start;
-	private int status;
+	private Integer status;
 
-	public int getStatus() {
+	public Integer getStatus() {
 		return status;
 	}
-	public void setStatus(int status) {
+	public void setStatus(Integer status) {
 		this.status = status;
 	}
 	public int getId_user() {

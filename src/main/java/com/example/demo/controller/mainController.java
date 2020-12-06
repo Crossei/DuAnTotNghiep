@@ -32,6 +32,7 @@ import com.example.demo.dao.Service;
 import com.example.demo.dao.Staff;
 import com.example.demo.dao.User;
 import com.example.demo.dto.DatLichDTO;
+import com.example.demo.dto.tiepNhanLichKhamDTO;
 import com.example.demo.service.BookingDetailRepository;
 import com.example.demo.service.BookingRepository;
 import com.example.demo.service.CustomerRepository;
@@ -205,8 +206,37 @@ public class mainController {
 	}
 	@RequestMapping("/dashboard/lichkham")
 	public String nhanLichKham(Model model) {
+		List<tiepNhanLichKhamDTO> tiepNhanList = new ArrayList<>();
 		List<BookingDetail> bookingItems = bokDetailRepo.findAll();
-		model.addAttribute("detailList", bookingItems);
+		List<Booking> bookingCus = bokRepo.findAll();
+		List<Customer> cusList = cusRepo.findAll();
+		for(BookingDetail bookList : bookingItems) {
+			for(Booking bookCusList : bookingCus) {
+				if(bookList.getId_booking() == bookCusList.getId_booking()) {
+					tiepNhanLichKhamDTO tiepNhapLich = new tiepNhanLichKhamDTO();
+					Customer cus = cusRepo.findById(bookCusList.getId_cus());
+					tiepNhapLich.setName(cus.getName_cus());
+					tiepNhapLich.setSdt(cus.getPhone());
+					
+					Service ser = ser1Repo.findById(bookList.getId_service());
+					tiepNhapLich.setTendv(ser.getName());
+					tiepNhapLich.setGiaTien(ser.getPrice());
+				
+					tiepNhapLich.setStatus(bookList.getStatus());
+					tiepNhapLich.setGioBatDau(tiepNhapLich.getGioBatDau());
+					tiepNhapLich.setNgayDat(bookList.getDateWorking_Start());
+					//ten bacsi
+					Staff staf = staffRepo.findById(bookList.getId_staff());
+					if(bookList.getId_staff() == 1) {
+						tiepNhapLich.setTenbs("N/A");
+					}else {
+						tiepNhapLich.setTenbs(staf.getName_staff());
+					}
+					tiepNhanList.add(tiepNhapLich);
+				}
+			}
+		}
+		model.addAttribute("tiepNhanList", tiepNhanList);
 		return "dashboard/tiepNhanLichKham";
 	}
 

@@ -171,7 +171,6 @@
 							<div class="col-lg-6">
 								<h6 class="m-0 font-weight-bold text-primary">Hiển thị chi
 									tiết các dịch vụ</h6>
-								<button class="btn btn-primary">Thêm mới dịch vụ</button>
 								<a th:href="@{/dashboard/services/export}"
 									class="btn btn-warning">Export Excel</a>
 							</div>
@@ -189,74 +188,46 @@
 									id="myTable" cellspacing="0">
 									<thead>
 										<th>STT</th>
+										<th>Tên khách hàng</th>
+										<th>Số điện thoại</th>
 										<th>Tên dịch vụ</th>
 										<th>Bác sĩ khám</th>
 										<th>Ngày Đặt</th>
 										<th>Giờ bắt đầu</th>
 										<th>Giá tiền</th>
 										<th>Trạng thái</th>
-										<th>Hành động</th>
+
 									</thead>
 									<tbody tbody class="text-justify" id="myTable">
-										<th:block th:each="detailList,stt : ${detailList}">
+										<th:block th:each="tiepNhanList,stt : ${tiepNhanList}">
 											<tr>
-												<th:block th:each="serLList : ${serLList}"
-													th:if="${detailList.id_service == serLList.id_ser && detailList.active == 1}">
-													<td th:text="${stt.count}"></td>
-													<td th:text="${serLList.name}"></td>
-													<td th:if="${detailList.id_staff == 1}" th:text="${'N/A'}"></td>
-													<td
-														th:text="${#dates.format(detailList.dateWorking_Start, 'dd-MM-yyyy')}"></td>
-													<td></td>
-													<td th:text="${serLList.price}"></td>
-
-													<td th:if="${detailList.status == 0}"><span>
-															Chờ xác thực</span></td>
-													<td th:if="${detailList.status == 1}"><span>Đã
-															nhận lịch đặt</span></td>
-													<td th:if="${detailList.status == 1}">
-														<button style="font-size: 15px" class="btn btn-warning"
-															disabled="true">Thay đổi ngày đặt</button>
-														<button style="font-size: 15px" class="btn btn-danger"
-															disabled="true">Hủy lịch đặt</button>
-													</td>
-													<td th:if="${detailList.status == 0}">
-														<button style="font-size: 15px" class="btn btn-warning">Thay
-															đổi ngày đặt</button>
-														<button type="button" class="btn btn-danger"
-															th:attr="data-target='#myModal'+${detailList.id_detail}"
-															data-toggle="modal" data-target="#myModal">Hủy
-															lịch đặt modal</button>
-														<div class="modal fade"
-															th:id="myModal+${detailList.id_detail}">
-															<div class="modal-dialog">
-																<div class="modal-content">
-																	<div class="modal-header flex-column">
-
-																		<h4 class="modal-title w-100">Bạn có chắc chắn
-																			muốn hủy lịch đặt này chứ ?</h4>
-																		<button type="button" class="close"
-																			data-dismiss="modal" aria-hidden="true">&times;</button>
-																	</div>
-																	<div class="modal-body">
-																		<p>Bạn có muốn hủy lịch này chứ ?</p>
-																	</div>
-																	<div class="modal-footer justify-content-center">
-																		<a
-																			th:href="@{/lichsudat/delete/{id}(id=${detailList.id_detail})}"
-																			type="button" class="btn btn-danger">Delete</a>
-																		<button type="button" class="btn btn-secondary"
-																			data-dismiss="modal">Cancel</button>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</td>
-												</th:block>
+												<td th:text="${stt.count}"></td>
+												<td th:text="${tiepNhanList.name}"></td>
+												<td th:text="${tiepNhanList.sdt}"></td>
+												<td th:text="${tiepNhanList.tendv}"></td>
+												<td th:text="${tiepNhanList.tenbs}"></td>
+												<td
+													th:text="${#dates.format(tiepNhanList.ngayDat, 'dd-MM-yyyy')}"></td>
+												<td th:text="${tiepNhanList.gioBatDau}"></td>
+												<td th:text="${tiepNhanList.giaTien}"></td>
+												<td th:if="${tiepNhanList.status == 0}">Chờ xác nhận</td>
+												<td th:if="${tiepNhanList.status == 1}">Đã xác nhận</td>
 											</tr>
 										</th:block>
 									</tbody>
+									<div id="contextMenu" class="dropdown clearfix">
+									<ul class="dropdown-menu" role="menu"
+										aria-labelledby="dropdownMenu"
+										style="display: block; position: static; margin-bottom: 5px;">
+										<li><a tabindex="-1" href="#">Xác nhận lịch đặt</a></li>
+										<li><a tabindex="-1" href="#">Thay đổi lịch</a></li>
+										<li><a tabindex="-1" href="#">Hủy lịch đặt</a></li>
+									</ul>
+								</div>
 								</table>
+
+								
+
 							</form>
 						</div>
 					</div>
@@ -294,30 +265,60 @@
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script type="text/javascript">
-		$(document)
-				.ready(
-						function() {
-							$("#myInput")
-									.on(
-											"keyup",
-											function() {
-												var value = $(this).val()
-														.toLowerCase();
-												$("#myTable tr")
-														.filter(
-																function() {
-																	$(this)
-																			.toggle(
-																					$(
-																							this)
-																							.text()
-																							.toLowerCase()
-																							.indexOf(
-																									value) > -1)
-																});
-											});
-						});
+		$(function() {
+
+			var $contextMenu = $("#contextMenu");
+
+			$("body").on("contextmenu", "table tr", function(e) {
+				$contextMenu.css({
+					display : "block",
+					left : e.pageX,
+					top : e.pageY
+				});
+				debugger;
+				return false;
+			});
+
+			$('html').click(function() {
+				$contextMenu.hide();
+			});
+
+			$("#contextMenu li a").click(function(e) {
+				var f = $(this);
+				debugger;
+			});
+
+		});
 	</script>
+	<style>
+#contextMenu {
+	position: absolute;
+	display: none;
+}
+
+.wrap {
+	width: 90%;
+	display: block;
+	margin: 0 auto;
+}
+
+table {
+	border: 1px solid rgba(221, 221, 221, 1);
+}
+
+tr:nth-child(even) {
+	background: #F5F5F5
+}
+
+tr {
+	position: relative;
+}
+
+tr:hover {
+	background: #c9e8f7;
+	position: relative;
+}
+</style>
 </body>
 
 </html>
