@@ -21,13 +21,20 @@ public class Service  implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY) 
 	private int id_ser;
 	private String name;
-	private Time time_working;
+	private String image;
+	private String time_working;
 	private String dsc ; 	
 	private float price;
 	private Boolean status;
 	
 	
 	
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
+	}
 	public float getPrice() {
 		return price;
 	}
@@ -46,10 +53,10 @@ public class Service  implements Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Time getTime_working() {
+	public String getTime_working() {
 		return time_working;
 	}
-	public void setTime_working(Time time_working) {
+	public void setTime_working(String time_working) {
 		this.time_working = time_working;
 	}
 	public String getDsc() {

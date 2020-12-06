@@ -14,6 +14,7 @@ public class Customer {
 	private int id_cus;
 	private String name_cus;
 	private String phone;
+	private String image;
 	private String email;
 	private int id_user	;
 	private Integer status;
@@ -21,6 +22,15 @@ public class Customer {
 	
 	
 	
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
+	}
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
 	public int getId_user() {
 		return id_user;
 	}
@@ -30,7 +40,7 @@ public class Customer {
 	public Integer getStatus() {
 		return status;
 	}
-	public void setStatus(Integer status) {
+public void setStatus(Integer status) {
 		this.status = status;
 	}
 	public int getId_cus() {

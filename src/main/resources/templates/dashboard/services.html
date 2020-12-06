@@ -188,6 +188,7 @@
 									<tr class="text-center">
 										<th>STT</th>
 										<th>Tên dịch vụ</th>
+										<th>Ảnh</th>
 										<th>Mô tả</th>
 										<th>Thời gian</th>
 										<th>Giá tiền</th>
@@ -200,6 +201,10 @@
 										<tr>
 											<td th:text="${stt.count}"></td>
 											<td th:text="${ser1.name}"></td>
+											<td >
+														<img  th:src="*{'/assets/img/'+{ser1.image}}"
+			                                 alt="" style="height:50px;width:50px;object-fit: cover;" />
+			                                 </td>
 											<td th:text="${ser1.dsc}"></td>
 											<td th:text="${#dates.format(ser1.time_working, 'HH:mm')}"></td>
 													<td th:text="${ser1.price}" ></td>

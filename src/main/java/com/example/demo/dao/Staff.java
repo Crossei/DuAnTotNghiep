@@ -19,15 +19,45 @@ public class Staff {
 	private String name_staff;
 	private int sex;
 	private String address;
+	private String image;
 	private String email;
 	private String phone;
 	@Column(name = "dateWorking_Start")
 	private Date dateWorking_Start;
 	private Integer status;
 
+
 	public Integer getStatus() {
-		return status;
+	return status;
 	}
+	
+	
+	
+	
+	public Staff() {
+	
+	}
+	public Staff(int id_user, String name_staff, int sex, String address, String image, String email, String phone,
+			Date dateWorking_Start, Integer status) {
+		super();
+		this.id_user = id_user;
+		this.name_staff = name_staff;
+		this.sex = sex;
+		this.address = address;
+		this.image = image;
+		this.email = email;
+		this.phone = phone;
+		this.dateWorking_Start = dateWorking_Start;
+		this.status = status;
+	}
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	
 	public void setStatus(Integer status) {
 		this.status = status;
 	}
@@ -76,8 +106,8 @@ public class Staff {
 	public Date getDateWorking_Start() {
 		return dateWorking_Start;
 	}
-	public void setDateWorking_Start(Date dateWorking_Start) {
-		this.dateWorking_Start = dateWorking_Start;
+	public void setDateWorking_Start(Date date) {
+		this.dateWorking_Start = date;
 	}
 	
 	
