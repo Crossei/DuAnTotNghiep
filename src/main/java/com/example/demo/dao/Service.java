@@ -21,6 +21,7 @@ public class Service  implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY) 
 	private int id_ser;
 	private String name;
+	private String image;
 	private String time_working;
 	private String dsc ; 	
 	private float price;
@@ -28,6 +29,12 @@ public class Service  implements Serializable{
 	
 	
 	
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
+	}
 	public float getPrice() {
 		return price;
 	}
