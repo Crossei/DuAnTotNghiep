@@ -12,8 +12,8 @@
     <meta content="" name="keywords">
 
 
-    <link href="/assets/img/favicon.png" rel="icon">
-    <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="http://bizweb.dktcdn.net/100/167/865/themes/222134/assets/favicon.png?1568890987754" rel="icon">
+    <link href="http://bizweb.dktcdn.net/100/167/865/themes/222134/assets/favicon.png?1568890987754" rel="apple-touch-icon">
 
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -39,7 +39,7 @@
             <div class="row justify-content-center">
                 <div class="col-xl-9 d-flex align-items-center justify-content-between">
                     <h1 class="logo">
-                        <a href="home.html"><img src="assets/img/logo.png"></a>
+                        <a href="/"><img src="assets/img/logo.png"></a>
                     </h1>
 
                     <nav class="nav-menu d-none d-lg-block">
@@ -60,9 +60,8 @@
                                 </ul>
                             </li>
                             <li><a href="#portfolio">Các bác sĩ</a></li>
-                            <li><a href="">Tin tức</a>
-
-                            </li>
+                            <li th:if="${@mainController.checkLoggedIn() == true} "><a href="/datlich">Đặt lịch</a></li>
+                            <li><a href="">Tin tức</a></li>
                             <li><a href="#contact">Liên hệ</a></li>
 
                         </ul>
@@ -137,7 +136,7 @@
                             tu nghiệp tại nước ngoài… Do đó, mỗi vẫn đề răng miệng của bạn sẽ được điều trị tận tình nhất bởi những chuyên gia hàng đầu, chuyên sâu trong mỗi lĩnh vực.
                         </p>
 
-                        <a href="about.html" class="btn-learn-more">Tìm hiểu thêm</a>
+                        <a href="/about" class="btn-learn-more">Tìm hiểu thêm</a>
                     </div>
                 </div>
 
@@ -230,7 +229,7 @@
         <!-- End -->
 
         <!-- ======= Đặt lịch ======= -->
-        <section id="cta" class="cta">
+        <section th:if="${@mainController.checkLoggedIn() == true}" id="cta" class="cta">
             <div class="container">
 
                 <div class="row">
@@ -267,16 +266,12 @@
                         <img src="/assets/img/bs1.jpg" class="img-fluid" alt="">
                         <div class="portfolio-info">
                             <h4>Tiến sĩ. Phạm Dương Hiếu</h4>
-                            <a href="assets/img/bs1.jpg" data-gall="portfolioGallery" class="venobox preview-link" title="App 2"><i class="bx bx-plus"></i></a>
-                            <a href="" class="details-link" title="Chi tiết"><i class="bx bx-link"></i></a>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 portfolio-item ">
                         <img src="/assets/img/bs2.jpg" class="img-fluid" alt="">
                         <div class="portfolio-info">
                             <h4>Thạc sĩ. Tạ Anh Tuấn</h4>
-                            <a href="/assets/img/bs2.jpg" data-gall="portfolioGallery" class="venobox preview-link" title="App 2"><i class="bx bx-plus"></i></a>
-                            <a href="" class="details-link" title="Chi tiết"><i class="bx bx-link"></i></a>
                         </div>
                     </div>
 
@@ -284,8 +279,6 @@
                         <img src="/assets/img/bs3.jpg" class="img-fluid" alt="">
                         <div class="portfolio-info">
                             <h4>Thạc sĩ.BSNT Trương Hiếu Hạnh</h4>
-                            <a href="/assets/img/bs3.jpg" data-gall="portfolioGallery" class="venobox preview-link" title="App 2"><i class="bx bx-plus"></i></a>
-                            <a href="" class="details-link" title="Chi tiết"><i class="bx bx-link"></i></a>
                         </div>
                     </div>
 
@@ -293,16 +286,12 @@
                         <img src="assets/img/bs4.jpg" class="img-fluid" alt="">
                         <div class="portfolio-info">
                             <h4>Thạc sĩ Nguyễn Lan Anh</h4>
-                            <a href="/assets/img/bs4.jpg" data-gall="portfolioGallery" class="venobox preview-link" title="App 2"><i class="bx bx-plus"></i></a>
-                            <a href="" class="details-link" title="Chi tiết"><i class="bx bx-link"></i></a>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 portfolio-item ">
                         <img src="/assets/img/bs5.jpg" class="img-fluid" alt="">
                         <div class="portfolio-info">
                             <h4>PGS. TS Phạm Dương Châu</h4>
-                            <a href="assets/img/bs5.jpg" data-gall="portfolioGallery" class="venobox preview-link" title="App 2"><i class="bx bx-plus"></i></a>
-                            <a href="" class="details-link" title="Chi tiết"><i class="bx bx-link"></i></a>
                         </div>
                     </div>
 
@@ -310,8 +299,6 @@
                         <img src="/assets/img/bs6.jpg" class="img-fluid" alt="">
                         <div class="portfolio-info">
                             <h4>TS.BSNT Nguyễn Bích Ngọc</h4>
-                            <a href="assets/img/bs6.jpg" data-gall="portfolioGallery" class="venobox preview-link" title="App 2"><i class="bx bx-plus"></i></a>
-                            <a href="" class="details-link" title="Chi tiết"><i class="bx bx-link"></i></a>
                         </div>
                     </div>
 
@@ -319,8 +306,6 @@
                         <img src="/assets/img/bs7.jpg" class="img-fluid" alt="">
                         <div class="portfolio-info">
                             <h4>Thạc sĩ. BS Nguyễn Việt Anh</h4>
-                            <a href="assets/img/bs7.jpg" data-gall="portfolioGallery" class="venobox preview-link" title="App 2"><i class="bx bx-plus"></i></a>
-                            <a href="" class="details-link" title="Chi tiết"><i class="bx bx-link"></i></a>
                         </div>
                     </div>
 
@@ -328,8 +313,6 @@
                         <img src="/assets/img/bs9.jpg" class="img-fluid" alt="">
                         <div class="portfolio-info">
                             <h4>Thạc sĩ Đoàn Yến Bình</h4>
-                            <a href="assets/img/bs9.jpg" data-gall="portfolioGallery" class="venobox preview-link" title="App 2"><i class="bx bx-plus"></i></a>
-                            <a href="" class="details-link" title="Chi tiết"><i class="bx bx-link"></i></a>
                         </div>
                     </div>
 
