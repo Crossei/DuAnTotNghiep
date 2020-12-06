@@ -6,5 +6,6 @@ import com.example.demo.dao.Customer;
 
 public interface CustomerRepository extends JpaRepository<Customer, Integer> {
 	Customer findById(int id);
+	Customer findByEmail(String email);
 
 }

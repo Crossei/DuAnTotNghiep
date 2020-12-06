@@ -199,7 +199,8 @@
 
 							</thead>
 							<tbody tbody class="text-justify" id="myTable">
-								<th:block th:each="tiepNhanList,stt : ${tiepNhanList}">
+								<th:block th:each="tiepNhanList,stt : ${tiepNhanList}"
+										  th:if="${tiepNhanList.active == 1}">
 									<tr>
 										<td th:text="${stt.count}"></td>
 										<td th:text="${tiepNhanList.name}"></td>

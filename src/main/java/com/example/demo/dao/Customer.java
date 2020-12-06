@@ -22,6 +22,21 @@ public class Customer {
 	
 	
 	
+	public Customer() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+	public Customer(String name_cus, String email, int id_user, Integer status) {
+		super();
+		this.name_cus = name_cus;
+		this.email = email;
+		this.id_user = id_user;
+		this.status = status;
+	}
+
+
 	public String getImage() {
 		return image;
 	}

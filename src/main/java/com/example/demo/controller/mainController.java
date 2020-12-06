@@ -87,11 +87,11 @@ public class mainController {
 	
 		List<BookingDetail> detailList =  new ArrayList<>();
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		User user = repo.findByUsernameIs(authentication.getName());
+		Customer cus = cusRepo.findByEmail(authentication.getName());
 		
 		List<Booking> bookList;
 		if(checkLoggedIn()) {
-			bookList = bokRepo.findByIdCus(user.getId());
+			bookList = bokRepo.findByIdCus(cus.getId_cus());
 		} else {
 			return "home";
 		}
@@ -136,20 +136,20 @@ public class mainController {
 		if (checkLoggedIn() == false) {
 			return "login";
 		}
-		System.out.println(authentication.getName());
-		User user = repo.findByUsernameIs(authentication.getName());
-		System.out.println("id user :" + user.getId());
+		Customer cus = cusRepo.findByEmail(authentication.getName());
+		cus.setPhone(datLich.getSdt());
+		cusRepo.save(cus);
 		DatLichDTO datLich1 = new DatLichDTO();
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = formatter.parse(datLich.getDate());
 		
-		Booking book = new Booking(user.getId());
+		Booking book = new Booking(cus.getId_cus());
 		bokRepo.save(book);
 		
 		List<Booking> bookList = bokRepo.findAll();
 		Booking bookItem = bookList.get(bookList.size()-1);
 		
-		BookingDetail bookDetail = new BookingDetail(1,datLich.getId_ser(),bookItem.getId_booking(),date,1);
+		BookingDetail bookDetail = new BookingDetail(1,datLich.getId_ser(),bookItem.getId_booking(),date,0,1);
 		bokDetailRepo.save(bookDetail);
 
 		return "home";
@@ -225,6 +225,7 @@ public class mainController {
 					tiepNhapLich.setStatus(bookList.getStatus());
 					tiepNhapLich.setGioBatDau(tiepNhapLich.getGioBatDau());
 					tiepNhapLich.setNgayDat(bookList.getDateWorking_Start());
+					tiepNhapLich.setActive(bookList.getActive());
 					//ten bacsi
 					Staff staf = staffRepo.findById(bookList.getId_staff());
 					if(bookList.getId_staff() == 1) {
@@ -261,6 +262,10 @@ public class mainController {
 		List<User> user1 = repo2.findByUsername(user.getUsername());
 		if (user1.isEmpty()) {
 			service.save(user);
+			List<User> userList = repo.findAll();
+			User getUser = userList.get(userList.size() -1 );
+			Customer cus = new Customer(getUser.getName(),getUser.getUsername(),getUser.getId(),1);
+			cusRepo.save(cus);
 		} else {
 			model.addAttribute("error", "Email này đã được đăng ký");
 			return "register";

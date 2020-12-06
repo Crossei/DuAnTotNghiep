@@ -18,7 +18,7 @@ public class User {
 	private String username;	
 	private String password;
 	private String roles;
-	private int status;
+	private Integer status;
 	
 	@Column(name =  "reset_password_token")
 	private String resetPasswordToken;
@@ -26,23 +26,14 @@ public class User {
 	public User() {
 		
 	}
-	
-	
-	
 
-	public int getStatus() {
+	public Integer getStatus() {
 		return status;
 	}
 
-
-
-
-	public void setStatus(int status) {
+	public void setStatus(Integer status) {
 		this.status = status;
 	}
-
-
-
 
 	public User(String name,String username, String password,String roles) {
 		this.name = name;

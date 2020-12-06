@@ -12,6 +12,7 @@ public class tiepNhanLichKhamDTO {
 	private Time gioBatDau;
 	private float giaTien;
 	private int status;
+	private int active;
 	
 	
 	
@@ -21,6 +22,21 @@ public class tiepNhanLichKhamDTO {
 				+ ", ngayDat=" + ngayDat + ", gioBatDau=" + gioBatDau + ", giaTien=" + giaTien + ", status=" + status
 				+ "]";
 	}
+	
+	
+	
+	public int getActive() {
+		return active;
+	}
+
+
+
+	public void setActive(int active) {
+		this.active = active;
+	}
+
+
+
 	public String getName() {
 		return name;
 	}
