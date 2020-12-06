@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>Dashboard - Quản lý nhân viên</title>
+
+<!-- Bootstrap Core CSS -->
+<link
+	href="/webjars/startbootstrap-sb-admin-2/1.0.2/css/bootstrap.min.css"
+	rel="stylesheet" />
+
+<!-- MetisMenu CSS -->
+<link
+	href="/webjars/startbootstrap-sb-admin-2/1.0.2/css/plugins/metisMenu/metisMenu.min.css"
+	rel="stylesheet" />
+
+<!-- Timeline CSS -->
+<link
+	href="/webjars/startbootstrap-sb-admin-2/1.0.2/css/plugins/timeline.css"
+	rel="stylesheet" />
+
+<!-- Custom CSS -->
+<link href="/webjars/startbootstrap-sb-admin-2/1.0.2/css/sb-admin-2.css"
+	rel="stylesheet" />
+
+<!-- Morris Charts CSS -->
+<link
+	href="/webjars/startbootstrap-sb-admin-2/1.0.2/css/plugins/morris.css"
+	rel="stylesheet" />
+
+<!-- Custom Fonts -->
+<link
+	href="/webjars/startbootstrap-sb-admin-2/1.0.2/font-awesome/css/font-awesome.min.css"
+	rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+
+	<div id="wrapper">
+
+		<!-- Navigation -->
+		<nav class="navbar navbar-default navbar-static-top" role="navigation"
+			style="margin-bottom: 0">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="/dashboard/">SB Admin v2.0</a>
+			</div>
+			<!-- /.navbar-header -->
+
+			<ul class="nav navbar-top-links navbar-right">
+
+				<!-- /.dropdown -->
+
+				<li class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" href="#"> <i class="fa fa-bell fa-fw"></i>
+						<i class="fa fa-caret-down"></i>
+				</a>
+					<ul class="dropdown-menu dropdown-alerts">
+						<li><a href="#">
+								<div>
+									<i class="fa fa-comment fa-fw"></i> New Comment <span
+										class="pull-right text-muted small">4 minutes ago</span>
+								</div>
+						</a></li>
+						<li class="divider"></li>
+						<li><a href="#">
+								<div>
+									<i class="fa fa-twitter fa-fw"></i> 3 New Followers <span
+										class="pull-right text-muted small">12 minutes ago</span>
+								</div>
+						</a></li>
+						<li class="divider"></li>
+						<li><a href="#">
+								<div>
+									<i class="fa fa-envelope fa-fw"></i> Message Sent <span
+										class="pull-right text-muted small">4 minutes ago</span>
+								</div>
+						</a></li>
+						<li class="divider"></li>
+						<li><a href="#">
+								<div>
+									<i class="fa fa-tasks fa-fw"></i> New Task <span
+										class="pull-right text-muted small">4 minutes ago</span>
+								</div>
+						</a></li>
+						<li class="divider"></li>
+						<li><a href="#">
+								<div>
+									<i class="fa fa-upload fa-fw"></i> Server Rebooted <span
+										class="pull-right text-muted small">4 minutes ago</span>
+								</div>
+						</a></li>
+						<li class="divider"></li>
+						<li><a class="text-center" href="#"> <strong>See
+									All Alerts</strong> <i class="fa fa-angle-right"></i>
+						</a></li>
+					</ul> <!-- /.dropdown-alerts --></li>
+				<!-- /.dropdown -->
+				<li class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" href="#"> <i class="fa fa-user fa-fw"></i>
+						<i class="fa fa-caret-down"></i>
+				</a>
+					<ul class="dropdown-menu dropdown-user">
+						<li><a href="#"><i class="fa fa-user fa-fw"></i> User
+								Profile</a></li>
+						<li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+						</li>
+						<li class="divider"></li>
+						<li><a th:href="@{/logout}"><i
+								class="fa fa-sign-out fa-fw"></i> Logout</a></li>
+					</ul> <!-- /.dropdown-user --></li>
+				<!-- /.dropdown -->
+			</ul>
+			<!-- /.navbar-top-links -->
+
+			<div class="navbar-default sidebar" role="navigation">
+				<div class="sidebar-nav navbar-collapse">
+					<ul class="nav" id="side-menu">
+						<li class="sidebar-search">
+							<div class="input-group custom-search-form">
+								<input type="text" class="form-control" placeholder="Search..." />
+								<span class="input-group-btn">
+									<button class="btn btn-default" type="button">
+										<i class="fa fa-search"></i>
+									</button>
+								</span>
+							</div> <!-- /input-group -->
+						</li>
+						<li><a href="/dashboard/"><i
+								class="fa fa-dashboard fa-fw"></i> Dashboard</a></li>
+						<li><a href="/dashboard/staff/"><i class="fa fa-user"></i>
+								Quản lý nhân viên</a></li>
+						<li><a href="/dashboard/quanlylichkham/"><i
+								class="fa fa-user"></i> Quản lý lịch làm việc</a></li>
+						<li><a href="/dashboard/services/"><i class="fa fa-user"></i>
+								Quản lý dịch vụ</a></li>
+						<li><a href="/dashboard/customer/"><i class="fa fa-user"></i>
+								Quản lý khách hàng</a></li>
+						<li><a href="/dashboard/account/"><i class="fa fa-user"></i>
+								Quản lý tài khoản</a></li>
+
+					</ul>
+				</div>
+				<!-- /.sidebar-collapse -->
+			</div>
+			<!-- /.navbar-static-side -->
+		</nav>
+
+		<div id="page-wrapper">
+			<div class="container-fluid">
+
+				<!-- Page Heading -->
+				<h1 class="h3 mb-2 text-gray-800 mb-5">Quản lý dịch vụ</h1>
+
+				<!-- DataTales Example -->
+				<div class="card shadow mb-4">
+					<div class="card-header py-3">
+						<div class="row">
+							<div class="col-lg-6">
+								<h6 class="m-0 font-weight-bold text-primary">Hiển thị chi
+									tiết các dịch vụ</h6>
+								<a th:href="@{/dashboard/services/export}"
+									class="btn btn-warning">Export Excel</a>
+							</div>
+							<div class="form-group pull-right">
+								<input type="text" id="myInput" class="search form-control"
+									placeholder="Search....">
+							</div>
+						</div>
+					</div>
+					<br>
+					<div class="card-body">
+						<div class="table-responsive">
+							<form>
+								<table style="font-size: 15px;" class="table table-bordered"
+									id="myTable" cellspacing="0">
+									<thead>
+										<th>STT</th>
+										<th>Tên khách hàng</th>
+										<th>Số điện thoại</th>
+										<th>Tên dịch vụ</th>
+										<th>Bác sĩ khám</th>
+										<th>Ngày Đặt</th>
+										<th>Giờ bắt đầu</th>
+										<th>Giá tiền</th>
+										<th>Trạng thái</th>
+
+									</thead>
+									<tbody tbody class="text-justify" id="myTable">
+										<th:block th:each="tiepNhanList,stt : ${tiepNhanList}">
+											<tr>
+												<td th:text="${stt.count}"></td>
+												<td th:text="${tiepNhanList.name}"></td>
+												<td th:text="${tiepNhanList.sdt}"></td>
+												<td th:text="${tiepNhanList.tendv}"></td>
+												<td th:text="${tiepNhanList.tenbs}"></td>
+												<td
+													th:text="${#dates.format(tiepNhanList.ngayDat, 'dd-MM-yyyy')}"></td>
+												<td th:text="${tiepNhanList.gioBatDau}"></td>
+												<td th:text="${tiepNhanList.giaTien}"></td>
+												<td th:if="${tiepNhanList.status == 0}">Chờ xác nhận</td>
+												<td th:if="${tiepNhanList.status == 1}">Đã xác nhận</td>
+											</tr>
+										</th:block>
+									</tbody>
+									<div id="contextMenu" class="dropdown clearfix">
+									<ul class="dropdown-menu" role="menu"
+										aria-labelledby="dropdownMenu"
+										style="display: block; position: static; margin-bottom: 5px;">
+										<li><a tabindex="-1" href="#">Xác nhận lịch đặt</a></li>
+										<li><a tabindex="-1" href="#">Thay đổi lịch</a></li>
+										<li><a tabindex="-1" href="#">Hủy lịch đặt</a></li>
+									</ul>
+								</div>
+								</table>
+
+								
+
+							</form>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+		<!-- /#page-wrapper -->
+
+	</div>
+	<!-- /#wrapper -->
+
+	<!-- jQuery -->
+	<script src="/webjars/startbootstrap-sb-admin-2/1.0.2/js/jquery.js"></script>
+
+	<!-- Bootstrap Core JavaScript -->
+	<script
+		src="/webjars/startbootstrap-sb-admin-2/1.0.2/js/bootstrap.min.js"></script>
+
+	<!-- Metis Menu Plugin JavaScript -->
+	<script
+		src="/webjars/startbootstrap-sb-admin-2/1.0.2/js/plugins/metisMenu/metisMenu.min.js"></script>
+
+	<!-- Morris Charts JavaScript -->
+	<script
+		src="/webjars/startbootstrap-sb-admin-2/1.0.2/js/plugins/morris/raphael.min.js"></script>
+	<script
+		src="/webjars/startbootstrap-sb-admin-2/1.0.2/js/plugins/morris/morris.min.js"></script>
+	<script
+		src="/webjars/startbootstrap-sb-admin-2/1.0.2/js/plugins/morris/morris-data.js"></script>
+
+	<!-- Custom Theme JavaScript -->
+	<script src="/webjars/startbootstrap-sb-admin-2/1.0.2/js/sb-admin-2.js"></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(function() {
+
+			var $contextMenu = $("#contextMenu");
+
+			$("body").on("contextmenu", "table tr", function(e) {
+				$contextMenu.css({
+					display : "block",
+					left : e.pageX,
+					top : e.pageY
+				});
+				debugger;
+				return false;
+			});
+
+			$('html').click(function() {
+				$contextMenu.hide();
+			});
+
+			$("#contextMenu li a").click(function(e) {
+				var f = $(this);
+				debugger;
+			});
+
+		});
+	</script>
+	<style>
+#contextMenu {
+	position: absolute;
+	display: none;
+}
+
+.wrap {
+	width: 90%;
+	display: block;
+	margin: 0 auto;
+}
+
+table {
+	border: 1px solid rgba(221, 221, 221, 1);
+}
+
+tr:nth-child(even) {
+	background: #F5F5F5
+}
+
+tr {
+	position: relative;
+}
+
+tr:hover {
+	background: #c9e8f7;
+	position: relative;
+}
+</style>
+</body>
+
+</html>

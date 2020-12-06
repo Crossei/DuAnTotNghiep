@@ -1,0 +1,28 @@
+.navbar-content {
+    background: #009961;
+    height: 6rem;
+}
+
+.navbar-content a {
+    color: white;
+    text-decoration: none;
+}
+
+.navbar-content a:hover {
+    color: black;
+    list-style-type: none;
+}
+
+.menu-link {
+    display: block;
+    padding: .5rem 1rem;
+    list-style-type: none;
+}
+
+.menu-link:hover {
+    list-style-type: none;
+}
+
+.chi-tiet {
+    text-align: justify;
+}
