@@ -28,9 +28,7 @@ public class Customer {
 	public void setImage(String image) {
 		this.image = image;
 	}
-	public void setStatus(Integer status) {
-		this.status = status;
-	}
+
 	public int getId_user() {
 		return id_user;
 	}
