@@ -7,7 +7,7 @@
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-<title>Lịch sử Đặt lịch</title>
+<title>Lịch sử đặt lịch</title>
 <meta content="" name="descriptison">
 <meta content="" name="keywords">
 
@@ -17,11 +17,11 @@
 <!-- Bootstrap -->
 
 <!-- Custom stlylesheet -->
-<link type="text/css" rel="stylesheet" href="assets/css/stylef.css" />
-<link href="assets/img/favicon.png" rel="icon">
-<link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+<!-- <link type="text/css" rel="stylesheet" href="assets/css/stylef.css" /> -->
+<link href="http://bizweb.dktcdn.net/100/167/865/themes/222134/assets/favicon.png?1568890987754" rel="icon">
+    <link href="http://bizweb.dktcdn.net/100/167/865/themes/222134/assets/favicon.png?1568890987754" rel="apple-touch-icon">
 
-<link rel="stylesheet" href="assets/css/stylec.css">
+<!-- <link rel="stylesheet" href="assets/css/stylec.css"> -->
 <link rel="stylesheet" href="assets/css/trangchu.css">
 <link
 	href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
@@ -117,30 +117,28 @@
 				<li><a href="/">Trang chủ</a></li>
 				<li>Đặt lịch</li>
 			</ol>
-			<h2>Đặt lịch</h2>
+			<h2>Lịch sử đặt lịch</h2>
 		</div>
 	</section>
 
 	<div class="section-center">
 		<div class="container">
-
-			<div class="booking-form">
-				<form>
-					<table style="font-size: 15px;" class="table table-bordered"
-						id="myTable" cellspacing="0">
-						<thead>
+				<form class="" >
+					<table class="table table-hover" 
+						id="myTable" >
+						<thead style="text-align: center">
 							<th>STT</th>
 							<th>Tên dịch vụ</th>
 							<th>Bác sĩ khám</th>
-							<th>Ngày Đặt</th>
+							<th>Ngày đặt</th>
 							<th>Giờ bắt đầu</th>
 							<th>Giá tiền</th>
 							<th>Trạng thái</th>
 							<th>Hành động</th>
 						</thead>
-						<tbody tbody class="text-justify" id="myTable">
+						<tbody  class="text-justify" id="myTable">
 							<th:block th:each="detailList,stt : ${detailList}">
-								<tr>
+								<tr style="text-align: center">
 									<th:block th:each="serLList : ${serLList}"
 										th:if="${detailList.id_service == serLList.id_ser && detailList.active == 1}">
 										<td th:text="${stt.count}"></td>
@@ -157,17 +155,15 @@
 												nhận lịch đặt</span></td>
 										<td th:if="${detailList.status == 1}">
 											<button style="font-size: 15px" class="btn btn-warning"
-												disabled="true">Thay đổi ngày đặt</button>
+												disabled="true"><img src="/assets/img/edit-pencil.png"/></button>
 											<button style="font-size: 15px" class="btn btn-danger"
-												disabled="true">Hủy lịch đặt</button>
+												disabled="true"><img src="/assets/img/cancel.png"/></button>
 										</td>
 										<td th:if="${detailList.status == 0}">
-											<button style="font-size: 15px" class="btn btn-warning">Thay
-												đổi ngày đặt</button>
+											<button style="font-size: 15px" class="btn btn-warning"><img src="/assets/img/edit-pencil.png"/></button>
 											<button type="button" class="btn btn-danger"
 												th:attr="data-target='#myModal'+${detailList.id_detail}"
-												data-toggle="modal" data-target="#myModal">Hủy lịch đặt
-												modal</button>
+												data-toggle="modal" data-target="#myModal"><img src="/assets/img/cancel.png"/></button>
 											<div class="modal fade"
 												th:id="myModal+${detailList.id_detail}">
 												<div class="modal-dialog">
@@ -185,9 +181,9 @@
 														<div class="modal-footer justify-content-center">
 															<a
 																th:href="@{/lichsudat/delete/{id}(id=${detailList.id_detail})}"
-																type="button" class="btn btn-danger">Delete</a>
+																type="button" class="btn btn-danger">Xác nhận</a>
 															<button type="button" class="btn btn-secondary"
-																data-dismiss="modal">Cancel</button>
+																data-dismiss="modal">Hủy bỏ</button>
 														</div>
 													</div>
 												</div>
@@ -199,7 +195,7 @@
 						</tbody>
 					</table>
 				</form>
-			</div>
+			
 		</div>
 	</div>
 
