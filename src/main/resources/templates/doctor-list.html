@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Đặt lịch - Danh sách các dịch vụ</title>
+    <title>Đặt lịch - Chọn bác sĩ và ngày khám</title>
     <meta content="" name="descriptison">
     <meta content="" name="keywords">
 
@@ -28,6 +28,7 @@
 
 
     <link href="/assets/css/style.css" rel="stylesheet">
+    <link href="/assets/css/calendar.css" rel="stylesheet">
     <link href="/assets/css/trangchu.css" rel="stylesheet">
 
 </head>
@@ -48,7 +49,7 @@
                         <ul>
                             <li><a href="/">Trang chủ</a></li>
                             <li><a href="/#about">Giới thiệu</a></li>
-                            <li class="drop-down"><a href="/#services">Dịch vụ</a>
+                            <li class="drop-down"><a href="home.html#services">Dịch vụ</a>
                                 <ul>
                                     <li><a href="#">Nha khoa tổng quát</a></li>
                                     <li><a href="#">Răng trẻ em</a></li>
@@ -81,116 +82,109 @@
     <!-- End Header -->
 
     <main id="main">
-
-
         <section id="breadcrumbs" class="breadcrumbs">
             <div class="container">
-
                 <ol>
                     <li><a href="/">Trang chủ</a></li>
                     <li>Đặt lịch</li>
                 </ol>
-                <h2>Chọn dịch vụ</h2>
             </div>
         </section>
-
-
-        <!-- <section class="inner-page">
-
-        </section> -->
 
         <section id="services" class="services">
             <div class="container">
-                <div class="row">
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch" >
-                        <div class="icon-box">
-                            <img src="/assets/img/d1.png" style="width: 100%; height: 170px; margin-bottom: 20px;" alt="">
-                            <h4><a href="">Chỉnh nha cơ chức năng</a></h4>
-                            <p>Giá tiền: 500.000đ</p>
-                            <br>
-                            <a href="/doctor-list" class="get-started-btn scrollto" style="margin-bottom: 1px;">Chọn</a>
+
+                <div class="form-group row">
+                    <div class="col-10">
+                        <h2>Chọn ngày khám</h2>
+                        <div class="button-group">
+                            <button class="button">Hôm nay</button>
+                            <button class="button">Ngày mai</button>
+                            <button class="button">Ngày kia</button>
                         </div>
 
-                    </div>
 
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" >
-                        <div class="icon-box">
-                            <img src="/assets/img/d2.jpg" style="width: 100%; height: 170px; margin-bottom: 20px;" alt="">
-                            <h4><a href="">Răng trẻ em</a></h4>
-                            <p>Giá tiền: 520.000đ</p>
-                            <br>
-                            <a href="/doctor-list" class="get-started-btn scrollto" style="margin-bottom: 1px;">Chọn</a>
-                        </div>
                     </div>
-
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" >
-                        <div class="icon-box">
-                            <img src="/assets/img/d3.jpg" style="width: 100%; height: 170px; margin-bottom: 20px;" alt="">
-                            <h4><a href="">Nắn chỉnh răng</a></h4>
-                            <p>Giá tiền: 550.000đ</p>
-                            <br>
-                            <a href="/doctor-list" class="get-started-btn scrollto" style="margin-bottom: 1px;">Chọn</a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-                        <div class="icon-box">
-                            <img src="/assets/img/d4.jpg" style="width: 100%; height: 170px; margin-bottom: 20px;" alt="">
-                            <h4><a href="">Nha khoa thẩm mỹ</a></h4>
-                            <p>Giá tiền: 520.000đ</p>
-                            <br>
-                            <a href="/doctor-list" class="get-started-btn scrollto" style="margin-bottom: 1px;">Chọn</a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-                        <div class="icon-box">
-                            <img src="/assets/img/d5.png" style="width: 100%; height: 170px; margin-bottom: 20px;" alt="">
-                            <h4><a href="">Nha khoa phục hình</a></h4>
-                            <p>Giá tiền: 470.000đ</p>
-                            <br>
-                            <a href="/doctor-list" class="get-started-btn scrollto" style="margin-bottom: 1px;">Chọn</a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-                        <div class="icon-box">
-                            <img src="/assets/img/d6.png" style="width: 100%; height: 170px; margin-bottom: 20px;" alt="">
-                            <h4><a href="">Điều trị nội nha</a></h4>
-                            <p>Giá tiền: 530.000đ</p>
-                            <br>
-                            <a href="doctor-list" class="get-started-btn scrollto" style="margin-bottom: 1px;">Chọn</a>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-                        <div class="icon-box">
-                            <img src="/assets/img/d7.jpg" style="width: 100%; height: 170px; margin-bottom: 20px;" alt="">
-                            <h4><a href="">Cấy ghép Implant</a></h4>
-                            <p>Giá tiền: 500.000đ</p>
-                            <br>
-                            <a href="/doctor-list" class="get-started-btn scrollto" style="margin-bottom: 1px;">Chọn</a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-                        <div class="icon-box">
-                            <img src="/assets/img/d8.jpg" style="width: 100%;  height: 170px; margin-bottom: 20px;" alt="">
-                            <h4><a href="">Phẫu thuật răng miệng</a></h4>
-                            <p>Giá tiền: 450.000đ</p>
-                            <br>
-                            <a href="/doctor-list" class="get-started-btn scrollto" style="margin-bottom: 1px;">Chọn</a>
-                        </div>
-                    </div>
-
-
                 </div>
-
             </div>
         </section>
+        <hr>
+        <section id="services" class="services">
+            <div class="container">
+                <h2>Chọn bác sĩ</h2>
+                <div style="display: table;clear: both;">
+                    <div style="float: left;
+                    width: 20%;
+                    padding: 15px;">
+                        <button class="btn btn-outline-primary"><img src="/assets/img/bs1.jpg" class="img-fluid"></button>
+                        <h6>Tiến sĩ. Phạm Dương Hiếu</h6>
+                    </div>
+                    <div style="float: left;
+                    width: 20%;
+                    padding: 15px;">
+                        <button class="btn btn-outline-primary"><img src="/assets/img/bs2.jpg" class="img-fluid" alt=""></button>
+                        <h6>Thạc sĩ. Tạ Anh Tuấn</h6>
+                    </div>
+                    <div style="float: left;
+                    width: 20%;
+                    padding: 15px;">
+                        <button class="btn btn-outline-primary"><img src="/assets/img/bs3.jpg" class="img-fluid" alt=""></button>
+                        <h6>Thạc sĩ.BSNT Trương Hiếu Hạnh</h6>
+                    </div>
 
+                    <div style="float: left;
+                    width: 20%;
+                    padding: 15px;">
+                        <button class="btn btn-outline-primary"><img src="/assets/img/bs4.jpg" class="img-fluid" alt=""></button>
+                        <h6>Thạc sĩ Nguyễn Lan Anh</h6>
+                    </div>
+                    <div style="float: left;
+                    width: 20%;
+                    padding: 15px;">
+                        <button class="btn btn-outline-primary"><img src="/assets/img/bs5.jpg" class="img-fluid" alt=""></button>
+                        <h6>PGS. TS Phạm Dương Châu</h6>
+                    </div>
+                    <div style="float: left;
+                    width: 20%;
+                    padding: 15px;">
+                        <button class="btn btn-outline-primary"><img src="/assets/img/bs6.jpg" class="img-fluid" alt=""></button>
+                        <h6>TS.BSNT Nguyễn Bích Ngọc</h6>
+                    </div>
+                    <div style="float: left;
+                    width: 20%;
+                    padding: 15px;">
+                        <button class="btn btn-outline-primary"><img src="/assets/img/bs7.jpg" class="img-fluid" alt=""></button>
+                        <h6>Thạc sĩ. BS Nguyễn Việt Anh</h6>
+                    </div>
+                    <div style="float: left;
+                    width: 20%;
+                    padding: 15px;">
+                        <button class="btn btn-outline-primary"><img src="/assets/img/bs9.jpg" class="img-fluid" alt=""></button>
+                        <h6>Thạc sĩ Đoàn Yến Bình</h6>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <hr>
+        <section id="services" class="services">
+            <div class="container">
+
+                <div class="form-group row">
+                    <div class="col-10">
+                        <h2>Chọn ngày khám</h2>
+                        <input class="form-control" style="width: 100%;" type="datetime-local" value="2011-08-19T13:45:00" id="example-datetime-local-input">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="services" class="services">
+            <div class="form-btn" style="text-align: center;">
+                <a role="button" class="submit-btn" href="/service-list" style="width: 150px; font-size: 25px; font-weight: bold; height: 55px;">Trở về</a>
+                <a role="button" class="submit-btn" href="/thongtinthem" style="width: 150px; font-size: 25px; font-weight: bold; height: 55px; margin-left: 800px;">Tiếp tục</a>
+            </div>
+        </section>
     </main>
     <!-- End #main -->
-
     <!-- footer -->
     <div id="footer11">
         <div id="footer-1">
@@ -243,7 +237,6 @@
     <script src="assets/vendor/venobox/venobox.min.js"></script>
     <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
 
-    <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
 
 </body>

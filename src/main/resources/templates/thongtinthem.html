@@ -1,21 +1,22 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:th="http://www.thymeleaf.org">
+<html lang="vi_VN">
 
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Đặt lịch - Danh sách các dịch vụ</title>
+    <title>Đặt lịch - Thông tin thêm</title>
     <meta content="" name="descriptison">
     <meta content="" name="keywords">
+
+    <link type="text/css" rel="stylesheet" href="assets/css/stylef.css" />
 
 
     <link href="http://bizweb.dktcdn.net/100/167/865/themes/222134/assets/favicon.png?1568890987754" rel="icon">
     <link href="http://bizweb.dktcdn.net/100/167/865/themes/222134/assets/favicon.png?1568890987754" rel="apple-touch-icon">
 
-
+    <link rel="stylesheet" href="assets/css/stylec.css">
+    <link rel="stylesheet" href="assets/css/trangchu.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
 
@@ -27,8 +28,8 @@
     <link href="/assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
 
 
-    <link href="/assets/css/style.css" rel="stylesheet">
-    <link href="/assets/css/trangchu.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+
 
 </head>
 
@@ -41,14 +42,14 @@
             <div class="row justify-content-center">
                 <div class="col-xl-9 d-flex align-items-center justify-content-between">
                     <h1 class="logo">
-                        <a href="/"><img src="/assets/img/logo.png"></a>
+                        <a href="/"><img src="assets/img/logo.png"></a>
                     </h1>
 
                     <nav class="nav-menu d-none d-lg-block">
                         <ul>
                             <li><a href="/">Trang chủ</a></li>
                             <li><a href="/#about">Giới thiệu</a></li>
-                            <li class="drop-down"><a href="/#services">Dịch vụ</a>
+                            <li class="drop-down"><a href="home.html#services">Dịch vụ</a>
                                 <ul>
                                     <li><a href="#">Nha khoa tổng quát</a></li>
                                     <li><a href="#">Răng trẻ em</a></li>
@@ -90,101 +91,45 @@
                     <li><a href="/">Trang chủ</a></li>
                     <li>Đặt lịch</li>
                 </ol>
-                <h2>Chọn dịch vụ</h2>
+                <h2>Thông tin thêm</h2>
+
             </div>
         </section>
 
 
-        <!-- <section class="inner-page">
+        <section class="inner-page">
+            <div id="booking" class="section">
+                <div class="section-center">
+                    <div class="container">
+                        <div class="row">
+                            <div class="booking-form">
+                                <form>
+                                    <h5 style="text-align: center;">Vui lòng để lại thông tin, nhu cầu của quý khách.</h5>
+                                    <br>
+                                    <div class="form-group">
+                                        <span class="form-label">Họ và tên</span>
+                                        <input class="form-control" type="name" placeholder="Mời nhập tên...">
+                                    </div>
+                                    <div class="form-group">
+                                        <span class="form-label">Số điện thoại</span>
+                                        <input class="form-control" type="tel" placeholder="Mời nhập số điện thoại...">
+                                    </div>
+                                    <div class="form-group">
+                                        <span class="form-label">Ghi chú (nếu có)</span>
+                                        <input class="form-control" type="note">
+                                    </div>
+                                    <div class="form-btn">
+                                        <button class="submit-btn">Đặt ngay!</button>
+                                    </div>
 
-        </section> -->
-
-        <section id="services" class="services">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch" >
-                        <div class="icon-box">
-                            <img src="/assets/img/d1.png" style="width: 100%; height: 170px; margin-bottom: 20px;" alt="">
-                            <h4><a href="">Chỉnh nha cơ chức năng</a></h4>
-                            <p>Giá tiền: 500.000đ</p>
-                            <br>
-                            <a href="/doctor-list" class="get-started-btn scrollto" style="margin-bottom: 1px;">Chọn</a>
-                        </div>
-
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" >
-                        <div class="icon-box">
-                            <img src="/assets/img/d2.jpg" style="width: 100%; height: 170px; margin-bottom: 20px;" alt="">
-                            <h4><a href="">Răng trẻ em</a></h4>
-                            <p>Giá tiền: 520.000đ</p>
-                            <br>
-                            <a href="/doctor-list" class="get-started-btn scrollto" style="margin-bottom: 1px;">Chọn</a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" >
-                        <div class="icon-box">
-                            <img src="/assets/img/d3.jpg" style="width: 100%; height: 170px; margin-bottom: 20px;" alt="">
-                            <h4><a href="">Nắn chỉnh răng</a></h4>
-                            <p>Giá tiền: 550.000đ</p>
-                            <br>
-                            <a href="/doctor-list" class="get-started-btn scrollto" style="margin-bottom: 1px;">Chọn</a>
+                                </form>
+                                <div class="form-btn" style="text-align: center; margin-top: 50px;">
+                                    <a role="button" href="/doctor-list" style="width: 150px; font-size: 25px; font-weight: bold; height: 55px; ">Trở về</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
-
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-                        <div class="icon-box">
-                            <img src="/assets/img/d4.jpg" style="width: 100%; height: 170px; margin-bottom: 20px;" alt="">
-                            <h4><a href="">Nha khoa thẩm mỹ</a></h4>
-                            <p>Giá tiền: 520.000đ</p>
-                            <br>
-                            <a href="/doctor-list" class="get-started-btn scrollto" style="margin-bottom: 1px;">Chọn</a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-                        <div class="icon-box">
-                            <img src="/assets/img/d5.png" style="width: 100%; height: 170px; margin-bottom: 20px;" alt="">
-                            <h4><a href="">Nha khoa phục hình</a></h4>
-                            <p>Giá tiền: 470.000đ</p>
-                            <br>
-                            <a href="/doctor-list" class="get-started-btn scrollto" style="margin-bottom: 1px;">Chọn</a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-                        <div class="icon-box">
-                            <img src="/assets/img/d6.png" style="width: 100%; height: 170px; margin-bottom: 20px;" alt="">
-                            <h4><a href="">Điều trị nội nha</a></h4>
-                            <p>Giá tiền: 530.000đ</p>
-                            <br>
-                            <a href="doctor-list" class="get-started-btn scrollto" style="margin-bottom: 1px;">Chọn</a>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-                        <div class="icon-box">
-                            <img src="/assets/img/d7.jpg" style="width: 100%; height: 170px; margin-bottom: 20px;" alt="">
-                            <h4><a href="">Cấy ghép Implant</a></h4>
-                            <p>Giá tiền: 500.000đ</p>
-                            <br>
-                            <a href="/doctor-list" class="get-started-btn scrollto" style="margin-bottom: 1px;">Chọn</a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-                        <div class="icon-box">
-                            <img src="/assets/img/d8.jpg" style="width: 100%;  height: 170px; margin-bottom: 20px;" alt="">
-                            <h4><a href="">Phẫu thuật răng miệng</a></h4>
-                            <p>Giá tiền: 450.000đ</p>
-                            <br>
-                            <a href="/doctor-list" class="get-started-btn scrollto" style="margin-bottom: 1px;">Chọn</a>
-                        </div>
-                    </div>
-
-
                 </div>
-
             </div>
         </section>
 
@@ -217,6 +162,8 @@
             <p>Thứ 7: 14h00pm - 18h00pm</p>
         </div>
     </div>
+
+
     <!-- ======= Footer ======= -->
     <footer id="footer">
         <div class="container">
