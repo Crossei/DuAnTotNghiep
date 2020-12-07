@@ -44,9 +44,9 @@
 	rel="stylesheet" type="text/css" />
 
 <style>
-	#id_user{
-	display: none;
-	}
+input:{
+width:30%;
+}
 </style>
 
 </head>
@@ -171,60 +171,28 @@
 		<div id="page-wrapper">
 			<div class="container" style="margin-left:30%;">
 						
-						            <h1 class="h3 mb-2 text-gray-800 mb-5">Cập nhật thông tin nhân viên</h1>
+						            <h1 class="h3 mb-2 text-gray-800 mb-5">Thêm mới dịch vụ</h1>
+						            <form action="#" th:action="@{/save}" th:object="${service}" method="post">
 						            
-						            	<form action="#" th:action="@{/saveStaff1}" th:object="${staff}"
-											method="post" enctype="multipart/form-data">
-											<div>
-												<p class="text-danger">[[${error}]]</p>
-											</div>
-											<div class="form-group" id="id_user">
-												<label for="name">Id nhân viên</label> <input type="text"
-													style="display:"none";" class="form-control" th:field="*{id_staff}" readonly="readonly">
-											</div>
-											<div class="form-group" id="id_user" >
-												<label for="name">Id người dùng</label> <input type="text"
-													style="width: 30%;display:"none";" class="form-control" th:field="*{id_user}" readonly="readonly">
-											</div>
-											<div class="form-group">
-												<label for="name">Tên nhân viên</label> <input type="text"
-													style="width: 30%" class="form-control" th:field="*{name_staff}">
-											</div>
-											
-											<div class="form-group">
-												<label for="username">Địa chỉ</label> <input type="text"
-													style="width: 30%" class="form-control" th:field="*{address}">
-						
-											</div>
-											<div class="form-group">
-												<label for="username">Ảnh</label> 
-													<img  th:src="*{'/assets/img/'+{image}}"  id="thumbnail"
-                                 					alt="Ảnh nhân viên" style="height:50px;width:50px;object-fit: cover;" />
-													<input
-													type="file" name="fileImage" id="fileImage"
-													accept="image/png,image/ipeg"  />
-						
-											</div>
-											
-											<div class="form-group">
-												<label for="username">Giới tính</label> <input type="radio"
-													th:field="*{sex}" value="1"> Nam <input type="radio"
-													th:field="*{sex}" value="2"> Nữ
-											</div>
-											<div class="form-group">
-												<label for="role">Email</label> <input type="text"
-													th:field="*{email}" style="width: 30%" class="form-control" />
-											</div>
-						
-											<div class="form-group">
-												<label for="username">Số điện thoại</label> <input type="number"
-													style="width: 30%" class="form-control" th:field="*{phone}">
-											</div>
-						
-						
-											<button class="btn btn-primary" type="submit">Save</button>
-										</form>
-						      </div>
+						                <div class="form-group">
+						                    <label for="name">Tên dịch vụ</label>
+						                    <input type="text"  style="width:30%" class="form-control" th:field="*{name}" >
+						                </div> 
+						                <div class="form-group">
+						                    <label for="username">Mô tả</label>
+						                    <input type="text"  style="width:30%" class="form-control" th:field="*{dsc}">
+						                </div>
+						                <div class="form-group">
+						                    <label for="role">Thời gian</label>
+						                   
+						                    <input type="text" id="time" th:field="*{time_working}" value="00:45:00" style="width:30%" class="form-control"/>
+						                </div>
+						                <div class="form-group">
+						                    <label for="username">Giá tiền</label>
+						                    <input type="number" style="width:30%" class="form-control" th:field="*{price}">
+						                </div>
+						                <button class="btn btn-primary" type="submit">Save</button>
+						            </form>
 						     
 				
 			</div>
@@ -260,10 +228,6 @@
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<script type="text/javascript">
     $(document).ready(function () {
-    	$('#fileImage').change(function(){
-    		showImageThumbnail(this);
-    	});
-    	
         $("#myInput").on("keyup", function () {
             var value = $(this).val().toLowerCase();
             $("#myTable tr").filter(function () {
@@ -272,24 +236,14 @@
         });
     });
     
-    function showImageThumbnail(fileInput){
-    	file = fileInput.files[0];
-    	reader = new FileReader();
-    	
-    	reader.onload= function(e){
-    		$('#thumbnail').attr('src', e.target.result);
-    	};
-    	reader.readAsDataURL(file); 
-    };
-    
     var timepicker = new TimePicker('time', {
   	  lang: 'en',
   	  theme: 'dark'
   	});
   	timepicker.on('change', function(evt) {
   	  
-  	  var value = (evt.hour || '00') + ':' + (evt.minute || '00');
-  	  evt.element.value = value;
+  	  var value = (evt.hour || '00') + ':' + (evt.minute || '00') ;
+  	  evt.element.value = value + ':00';
 
   	});
    

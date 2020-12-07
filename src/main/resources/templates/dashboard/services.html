@@ -171,7 +171,7 @@
 							<div class="col-lg-6">
 								<h6 class="m-0 font-weight-bold text-primary">Hiển thị chi
 									tiết các dịch vụ</h6>
-								<button class="btn btn-primary">Thêm mới dịch vụ</button>
+								<a href="/dashboard/services/addServices" class="btn btn-primary">Thêm mới dịch vụ</a>
 								 <a th:href="@{/dashboard/services/export}" class="btn btn-warning">Export Excel</a>
 							</div>
 							<div class="form-group pull-right">
@@ -206,7 +206,7 @@
 													<td th:text="${ser1.price}" ></td>
 											<td>
 												
-												<button class="btn btn-info">Sửa</button> <button
+												<a  th:href="@{'/editService/'+ ${ser1.id_ser}}" class="btn btn-info">Sửa</a> <button
 												data-target="#myModal" th:attr="data-target='#myModal'+${ser1.id_ser}"
 												class="btn btn-danger" data-toggle="modal">Xóa</button>
 												<div th:id="myModal+${ser1.id_ser}" class="modal fade">
