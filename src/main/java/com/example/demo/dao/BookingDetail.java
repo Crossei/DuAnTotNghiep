@@ -45,13 +45,14 @@ public class BookingDetail {
 		
 		// TODO Auto-generated constructor stub
 	}
-	public BookingDetail(int id_staff, int id_service, int id_booking, Date dateWorking_Start, Integer status) {
+	public BookingDetail(int id_staff, int id_service, int id_booking, Date dateWorking_Start, Integer status,Integer active) {
 		super();
 		this.id_staff = id_staff;
 		this.id_service = id_service;
 		this.idBooking = id_booking;
 		this.dateWorking_Start = dateWorking_Start;
 		this.status = status;
+		this.active = active;
 	}
 	public int getId_detail() {
 		return id_detail;

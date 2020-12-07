@@ -20,8 +20,8 @@
 
 <!-- Custom stlylesheet -->
 <link type="text/css" rel="stylesheet" href="assets/css/stylef.css" />
-<link href="assets/img/favicon.png" rel="icon">
-<link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+<link href="http://bizweb.dktcdn.net/100/167/865/themes/222134/assets/favicon.png?1568890987754" rel="icon">
+    <link href="http://bizweb.dktcdn.net/100/167/865/themes/222134/assets/favicon.png?1568890987754" rel="apple-touch-icon">
 
 <link rel="stylesheet" href="assets/css/stylec.css">
 <link rel="stylesheet" href="assets/css/trangchu.css">
@@ -62,8 +62,8 @@
 					<nav class="nav-menu d-none d-lg-block">
 						<ul>
 							<li><a href="/">Trang chủ</a></li>
-							<li><a href="home.html#about">Giới thiệu</a></li>
-							<li class="drop-down"><a href="home.html#services">Dịch
+							<li><a href="/#about">Giới thiệu</a></li>
+							<li class="drop-down"><a href="/#services">Dịch
 									vụ</a>
 								<ul>
 									<li><a href="#">Nha khoa tổng quát</a></li>
@@ -76,10 +76,10 @@
 									<li><a href="#">Cấy ghép Implant</a></li>
 									<li><a href="#">Phẩu thuật răng miệng</a></li>
 								</ul></li>
-							<li><a href="home.html#portfolio">Các bác sĩ</a></li>
-							<li><a href="">Đặt lịch</a></li>
+							<li><a href="/#portfolio">Các bác sĩ</a></li>
+							<li th:if="${@mainController.checkLoggedIn() == true} "><a href="/datlich">Đặt lịch</a></li>
 							<li><a href="">Tin tức</a></li>
-							<li><a href="home.html#contact">Liên hệ</a></li>
+							<li><a href="/#contact">Liên hệ</a></li>
 
 						</ul>
 					</nav>

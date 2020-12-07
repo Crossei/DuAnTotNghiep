@@ -25,10 +25,13 @@ public class Staff {
 	@Column(name = "dateWorking_Start")
 	private Date dateWorking_Start;
 	private Integer status;
+
 	
 	
-	
-	
+
+	public Integer getStatus() {
+	return status;
+	}
 	public Staff() {
 	
 	}
@@ -51,10 +54,9 @@ public class Staff {
 	public void setImage(String image) {
 		this.image = image;
 	}
-	public int getStatus() {
-		return status;
-	}
-	public void setStatus(int status) {
+
+	
+	public void setStatus(Integer status) {
 		this.status = status;
 	}
 	public int getId_user() {

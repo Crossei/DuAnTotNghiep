@@ -22,25 +22,40 @@ public class Customer {
 	
 	
 	
+	public Customer() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+	public Customer(String name_cus, String email, int id_user, Integer status) {
+		super();
+		this.name_cus = name_cus;
+		this.email = email;
+		this.id_user = id_user;
+		this.status = status;
+	}
+
+
 	public String getImage() {
 		return image;
 	}
 	public void setImage(String image) {
 		this.image = image;
 	}
-	public void setStatus(Integer status) {
-		this.status = status;
-	}
+
 	public int getId_user() {
 		return id_user;
 	}
 	public void setId_user(int id_user) {
 		this.id_user = id_user;
 	}
-	public int getStatus() {
+	public Integer getStatus() {
 		return status;
 	}
-	
+public void setStatus(Integer status) {
+		this.status = status;
+	}
 	public int getId_cus() {
 		return id_cus;
 	}

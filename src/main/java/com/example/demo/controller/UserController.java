@@ -24,7 +24,7 @@ import com.example.demo.service.ServiceRepository;
 import com.example.demo.service.StaffRepository;
 
 @Controller
-public class userController {
+public class UserController {
 
 	@Autowired
 	private StaffRepository staffRepo;

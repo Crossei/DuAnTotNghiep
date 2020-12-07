@@ -30,7 +30,7 @@ import com.example.demo.service.User2Repository;
 import net.bytebuddy.utility.RandomString;
 
 @Controller
-public class forgotPasswordController {
+public class ForgotPasswordController {
 	
 	@Autowired
 	private MyUserDetailService service;

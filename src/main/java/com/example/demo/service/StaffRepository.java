@@ -6,6 +6,5 @@ import org.springframework.web.multipart.MultipartFile;
 import com.example.demo.dao.Staff;
 
 public interface StaffRepository extends JpaRepository<Staff, Integer> {
-
-
+		Staff findById(int id);
 }

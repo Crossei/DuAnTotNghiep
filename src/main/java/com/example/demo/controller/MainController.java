@@ -18,12 +18,12 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.example.demo.dao.Booking;
 import com.example.demo.dao.BookingDetail;
@@ -32,6 +32,7 @@ import com.example.demo.dao.Service;
 import com.example.demo.dao.Staff;
 import com.example.demo.dao.User;
 import com.example.demo.dto.DatLichDTO;
+import com.example.demo.dto.tiepNhanLichKhamDTO;
 import com.example.demo.service.BookingDetailRepository;
 import com.example.demo.service.BookingRepository;
 import com.example.demo.service.CustomerRepository;
@@ -42,7 +43,7 @@ import com.example.demo.service.User2Repository;
 import com.example.demo.service.UserRepository;
 
 @Controller
-public class mainController {
+public class MainController {
 
 	private List<Staff> staffList;
 	 
@@ -86,11 +87,11 @@ public class mainController {
 	
 		List<BookingDetail> detailList =  new ArrayList<>();
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		User user = repo.findByUsernameIs(authentication.getName());
+		Customer cus = cusRepo.findByEmail(authentication.getName());
 		
 		List<Booking> bookList;
 		if(checkLoggedIn()) {
-			bookList = bokRepo.findByIdCus(user.getId());
+			bookList = bokRepo.findByIdCus(cus.getId_cus());
 		} else {
 			return "home";
 		}
@@ -106,6 +107,16 @@ public class mainController {
 		model.addAttribute("serLList", service);
 		model.addAttribute("detailList", detailList);
 		return "lichSuDatLich";
+	}
+	
+	@GetMapping("lichsudat/delete/{id_detail}")
+	public String deleteLichDat(@PathVariable(name = "id_detail") int id) {
+		BookingDetail bookItem = new BookingDetail();
+		bookItem = bokDetailRepo.findById(id);
+		bookItem.setActive(0);
+		bokDetailRepo.save(bookItem);
+		
+		return "redirect:/lichsudat";
 	}
 	
 
@@ -125,21 +136,20 @@ public class mainController {
 		if (checkLoggedIn() == false) {
 			return "login";
 		}
-
-		System.out.println(authentication.getName());
-		User user = repo.findByUsernameIs(authentication.getName());
-		System.out.println("id user :" + user.getId());
+		Customer cus = cusRepo.findByEmail(authentication.getName());
+		cus.setPhone(datLich.getSdt());
+		cusRepo.save(cus);
 		DatLichDTO datLich1 = new DatLichDTO();
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = formatter.parse(datLich.getDate());
 		
-		Booking book = new Booking(user.getId());
+		Booking book = new Booking(cus.getId_cus());
 		bokRepo.save(book);
 		
 		List<Booking> bookList = bokRepo.findAll();
 		Booking bookItem = bookList.get(bookList.size()-1);
 		
-		BookingDetail bookDetail = new BookingDetail(1,datLich.getId_ser(),bookItem.getId_booking(),date,1);
+		BookingDetail bookDetail = new BookingDetail(1,datLich.getId_ser(),bookItem.getId_booking(),date,0,1);
 		bokDetailRepo.save(bookDetail);
 
 		return "home";
@@ -170,7 +180,7 @@ public class mainController {
 
 	@RequestMapping("/dashboard")
 	public String dashboardAdmin() {
-
+		
 		return "dashboard/admin";
 	}
 
@@ -194,6 +204,7 @@ public class mainController {
 		model.addAttribute("cusLists", cus);
 		return "dashboard/customer";
 	}
+	
 
 	@RequestMapping("/dashboard/account")
 	public String dashboardAccount() {
@@ -209,29 +220,6 @@ public class mainController {
 	public String logoutPage() {
 		return "logout";
 	}
-	
-	@RequestMapping("/dashboard/services/addServices")
-	public String addService(Model model) {
-		Service service = new Service();
-		model.addAttribute("service",service);
-		return "dashboard/addServices";
-	}
-	
-	@RequestMapping(value="/save",method =  RequestMethod.POST)
-	public String addService(@ModelAttribute("service") Service service) {
-		System.out.println(service);
-		ser1Repo.save(service);
-		
-		return "redirect:/dashboard/services";
-	}
-	
-	@RequestMapping(value="/editService/{id_ser}")
-	public ModelAndView  editService(@PathVariable(name="id_ser") Integer id_ser ) {
-		ModelAndView mav= new ModelAndView("dashboard/editServices");
-		Service service =ser1Repo.getOne(id_ser);
-		mav.addObject("service",service);
-		return mav;
-	}
 
 	@PostMapping("/register")
 	public String registerUserAccount(User user, Model model) {
@@ -239,6 +227,10 @@ public class mainController {
 		List<User> user1 = repo2.findByUsername(user.getUsername());
 		if (user1.isEmpty()) {
 			service.save(user);
+			List<User> userList = repo.findAll();
+			User getUser = userList.get(userList.size() -1 );
+			Customer cus = new Customer(getUser.getName(),getUser.getUsername(),getUser.getId(),1);
+			cusRepo.save(cus);
 		} else {
 			model.addAttribute("error", "Email này đã được đăng ký");
 			return "register";

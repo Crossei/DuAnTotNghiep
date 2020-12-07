@@ -33,7 +33,7 @@ public class securityConfiguaration extends WebSecurityConfigurerAdapter {
 			.and()
 			.authorizeRequests()
 			.antMatchers("/static/css/**","/static/img/**","/static/js/**","/static/bootstrap/css/**","/static/bootstrap/js/**").permitAll()
-			.antMatchers("/dashboard").hasRole("ADMIN")
+			.antMatchers("/dashboard","/dashboard/**").hasAnyRole("ADMIN","BACSI","LETAN")
 			.antMatchers("/user").hasAnyRole("ADMIN","USER")
 			.antMatchers("/").permitAll()
 			.and()

@@ -22,7 +22,7 @@ public class Service  implements Serializable{
 	private int id_ser;
 	private String name;
 	private String image;
-	private String time_working;
+	private Time time_working;
 	private String dsc ; 	
 	private float price;
 	private Boolean status;
@@ -53,10 +53,10 @@ public class Service  implements Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getTime_working() {
+	public Time getTime_working() {
 		return time_working;
 	}
-	public void setTime_working(String time_working) {
+	public void setTime_working(Time time_working) {
 		this.time_working = time_working;
 	}
 	public String getDsc() {
