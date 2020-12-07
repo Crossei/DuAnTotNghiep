@@ -43,7 +43,7 @@ import com.example.demo.service.User2Repository;
 import com.example.demo.service.UserRepository;
 
 @Controller
-public class mainController {
+public class MainController {
 
 	private List<Staff> staffList;
 	 
@@ -204,42 +204,7 @@ public class mainController {
 		model.addAttribute("cusLists", cus);
 		return "dashboard/customer";
 	}
-	@RequestMapping("/dashboard/lichkham")
-	public String nhanLichKham(Model model) {
-		List<tiepNhanLichKhamDTO> tiepNhanList = new ArrayList<>();
-		List<BookingDetail> bookingItems = bokDetailRepo.findAll();
-		List<Booking> bookingCus = bokRepo.findAll();
-		List<Customer> cusList = cusRepo.findAll();
-		for(BookingDetail bookList : bookingItems) {
-			for(Booking bookCusList : bookingCus) {
-				if(bookList.getId_booking() == bookCusList.getId_booking()) {
-					tiepNhanLichKhamDTO tiepNhapLich = new tiepNhanLichKhamDTO();
-					Customer cus = cusRepo.findById(bookCusList.getId_cus());
-					tiepNhapLich.setName(cus.getName_cus());
-					tiepNhapLich.setSdt(cus.getPhone());
-					
-					Service ser = ser1Repo.findById(bookList.getId_service());
-					tiepNhapLich.setTendv(ser.getName());
-					tiepNhapLich.setGiaTien(ser.getPrice());
-				
-					tiepNhapLich.setStatus(bookList.getStatus());
-					tiepNhapLich.setGioBatDau(tiepNhapLich.getGioBatDau());
-					tiepNhapLich.setNgayDat(bookList.getDateWorking_Start());
-					tiepNhapLich.setActive(bookList.getActive());
-					//ten bacsi
-					Staff staf = staffRepo.findById(bookList.getId_staff());
-					if(bookList.getId_staff() == 1) {
-						tiepNhapLich.setTenbs("N/A");
-					}else {
-						tiepNhapLich.setTenbs(staf.getName_staff());
-					}
-					tiepNhanList.add(tiepNhapLich);
-				}
-			}
-		}
-		model.addAttribute("tiepNhanList", tiepNhanList);
-		return "dashboard/tiepNhanLichKham";
-	}
+	
 
 	@RequestMapping("/dashboard/account")
 	public String dashboardAccount() {

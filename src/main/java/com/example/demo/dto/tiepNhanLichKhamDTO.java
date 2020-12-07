@@ -4,6 +4,7 @@ import java.sql.Time;
 import java.util.Date;
 
 public class tiepNhanLichKhamDTO {
+	private  int id_detail;
 	private String name;
 	private String sdt;
 	private String tendv;
@@ -25,11 +26,18 @@ public class tiepNhanLichKhamDTO {
 	
 	
 	
+	
+	public int getId_detail() {
+		return id_detail;
+	}
+
+	public void setId_detail(int id_detail) {
+		this.id_detail = id_detail;
+	}
+
 	public int getActive() {
 		return active;
 	}
-
-
 
 	public void setActive(int active) {
 		this.active = active;

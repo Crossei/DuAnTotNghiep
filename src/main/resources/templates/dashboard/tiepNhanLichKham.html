@@ -202,7 +202,7 @@
 								<th:block th:each="tiepNhanList,stt : ${tiepNhanList}"
 										  th:if="${tiepNhanList.active == 1}">
 									<tr>
-										<td th:text="${stt.count}"></td>
+										<td  th:text="${stt.count}"></td>
 										<td th:text="${tiepNhanList.name}"></td>
 										<td th:text="${tiepNhanList.sdt}"></td>
 										<td th:text="${tiepNhanList.tendv}"></td>
@@ -222,11 +222,11 @@
 												<ul class="dropdown-menu" role="menu"
 													aria-labelledby="menu1">
 													<li role="presentation"><a th:if="${tiepNhanList.status == 0}" role="menuitem"
-														tabindex="-1" href="#">Xác nhận lịch đặt</a></li>
+														tabindex="-1" th:href="@{'/dashboard/lichkham/xacnhan/'+${tiepNhanList.id_detail}}">Xác nhận lịch đặt</a></li>
 													<li role="presentation"><a role="menuitem"
 														tabindex="-1" href="#">Thay đổi lịch</a></li>
 													<li role="presentation"><a role="menuitem"
-														tabindex="-1" href="#">Hủy lịch</a></li>
+														tabindex="-1" th:href="@{'/dashboard/lichkham/huylich/'+${tiepNhanList.id_detail}}">Hủy lịch</a></li>
 																							
 												</ul>
 											</div>

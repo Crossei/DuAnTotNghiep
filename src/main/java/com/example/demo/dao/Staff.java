@@ -26,14 +26,12 @@ public class Staff {
 	private Date dateWorking_Start;
 	private Integer status;
 
+	
+	
 
 	public Integer getStatus() {
 	return status;
 	}
-	
-	
-	
-	
 	public Staff() {
 	
 	}

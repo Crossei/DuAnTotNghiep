@@ -14,6 +14,16 @@ public class AddStaffDTO {
 	private String phone;
 	private String dateWorking_Start;
 	private Integer status;
+	private int role;
+	
+	
+	
+	public int getRole() {
+		return role;
+	}
+	public void setRole(int role) {
+		this.role = role;
+	}
 	public int getId_staff() {
 		return id_staff;
 	}

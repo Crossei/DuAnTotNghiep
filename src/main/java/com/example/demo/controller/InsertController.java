@@ -9,8 +9,10 @@ import java.nio.file.StandardCopyOption;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import org.springframework.beans.factory.annotation.Autowired;
+import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -26,27 +28,30 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 import com.example.demo.dao.Staff;
-
+import com.example.demo.dao.User;
 import com.example.demo.dto.AddStaffDTO;
 import com.example.demo.service.StaffRepository;
+import com.example.demo.service.User2Repository;
 @Controller
-public class insertController2 {
+public class InsertController {
 
 	@Autowired
 	private StaffRepository staffRepo;
+	@Autowired
+	private User2Repository user2Repo;
+	@Autowired
+	private BCryptPasswordEncoder passEnCoder;
 
 	@RequestMapping("/dashboard/staff/addStaff")
 	public String addStaff(Model model) {
-		Staff staff = new Staff();
+		AddStaffDTO staff = new AddStaffDTO();
 		model.addAttribute("staff",staff);
 		return "dashboard/addStaff";
 	}
 	
 	@RequestMapping(value="/saveStaff",method =  RequestMethod.POST)
-	public String saveStaff(@ModelAttribute(name="staff") AddStaffDTO staffDto, 
-			RedirectAttributes ra,
-		
-			@RequestParam("fileImage") MultipartFile multipartFile) throws IOException, ParseException{
+	public String saveStaff(@ModelAttribute(name="staff") AddStaffDTO staffDto, Model model,
+			RedirectAttributes ra,@RequestParam("fileImage") MultipartFile multipartFile) throws IOException, ParseException{
 					
 			String fileName= StringUtils.cleanPath(multipartFile.getOriginalFilename());
 			staffDto.setImage(fileName);
@@ -54,7 +59,25 @@ public class insertController2 {
 			SimpleDateFormat fomater = new SimpleDateFormat("YYYY-MM-dd");
 			Date date = fomater.parse(staffDto.getDateWorking_Start());
 			
-			Staff staffSae = new Staff(staffDto.getId_user(), staffDto.getName_staff(), staffDto.getSex(), staffDto.getAddress(), staffDto.getImage(),
+			// save tai khoan 
+			List<User> user1 = user2Repo.findByUsername(staffDto.getEmail());
+			String role;
+			if(user1.isEmpty()) {
+				if(staffDto.getRole() == 1) {
+					role = "ROLE_BACSI";
+				}else {
+					role = "ROLE_LETAN";
+				}
+				User user = new User(staffDto.getName_staff(),staffDto.getEmail(),passEnCoder.encode("123"),role);
+				user2Repo.save(user);
+				
+			}else {
+				model.addAttribute("error", "Email này đã được đăng ký");
+				return "dashboard/addStaff";
+			}
+			List<User> userAll = user2Repo.findAll();
+			User newUser = userAll.get(userAll.size() - 1);
+			Staff staffSae = new Staff(newUser.getId(), staffDto.getName_staff(), staffDto.getSex(), staffDto.getAddress(), staffDto.getImage(),
 					staffDto.getEmail(), staffDto.getPhone(), date, 0);
 			
 			Staff saveStaff =staffRepo.save(staffSae);
