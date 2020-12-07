@@ -172,12 +172,14 @@ width:30%;
 			<div class="container" style="margin-left:30%;">
 						
 						            <h1 class="h3 mb-2 text-gray-800 mb-5">Cập nhật thông tin nhân viên</h1>
-						            <form action="#" th:action="@{/saveStaff}" th:object="${staff}" method="post" >
+						            <form action="#" th:action="@{/saveStaff}" th:object="${staff}" method="post" 
+						            		enctype="multipart/form-data" 
+						            >
 						            	
 						            	<div class="form-group">
-						                    <label for="name">Id</label>
-						                    <input type="text"  style="width:30%" class="form-control" th:field="*{id_staff}" readonly="readonly" >
-						                </div> 
+						                    <label for="name">Id </label>
+						                    <input type="number"  style="width:30%" class="form-control" th:field="*{id_staff}" readonly="readonly" >
+						                </div>
 						                <div class="form-group">
 						                    <label for="name">Tên nhân viên</label>
 						                    <input type="text"  style="width:30%" class="form-control" th:field="*{name_staff}" >
@@ -192,10 +194,15 @@ width:30%;
 						                </div>
 						                  <div class="form-group">
 						                    <label for="username">Ảnh</label>
+						                    <img id="thumbnail" alt="Ảnh nhân viên"  th:src="*{'/assets/img/'+{image}}"
+                                 				 style="height:50px;width:50px;object-fit: cover;" />
+											  <input  th:field="*{image}" type="file" name="fileImage" id="fileImage" accept="image/png,image/ipeg" />
 						                    
-						                  	<img id="thumbnail" alt="Ảnh nhân viên" style="width:50px;height:50px;object-fit: cover;"/>
-						                    <input  th:field="*{image}" type="file" name="fileImage" id="fileImage" accept="image/png,image/ipeg" />
-						                    
+						                </div>
+						                <div class="form-group">
+						                    <label for="username">Ngày </label>
+						                    <input type="date"  style="width:30%" class="form-control" th:field="*{dateWorking_Start}">
+						                   
 						                </div>
 						                <div class="form-group">
 						                    <label for="username">Giới tính</label>
@@ -211,11 +218,10 @@ width:30%;
 						                    <label for="username">Số điện thoại</label>
 						                    <input type="number" style="width:30%" class="form-control" th:field="*{phone}">
 						                </div>
-						                </div>
-						                
 						                <button class="btn btn-primary" type="submit">Save</button>
 						            </form>
-						     
+						            
+						      </div>
 						     
 				
 			</div>

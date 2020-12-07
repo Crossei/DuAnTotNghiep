@@ -42,12 +42,15 @@ public class insertController2 {
 		return "dashboard/addStaff";
 	}
 	
+	
+	
 	@RequestMapping(value="/saveStaff",method =  RequestMethod.POST)
 	public String saveStaff(@ModelAttribute(name="staff") AddStaffDTO staffDto, 
+			
 			RedirectAttributes ra,
 		
 			@RequestParam("fileImage") MultipartFile multipartFile) throws IOException, ParseException{
-					
+					System.out.println("anh");
 			String fileName= StringUtils.cleanPath(multipartFile.getOriginalFilename());
 			staffDto.setImage(fileName);
 			
