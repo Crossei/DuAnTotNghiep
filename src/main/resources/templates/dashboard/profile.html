@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>Dashboard - Hồ sơ</title>
+
+<!-- Bootstrap Core CSS -->
+<link
+	href="/webjars/startbootstrap-sb-admin-2/1.0.2/css/bootstrap.min.css"
+	rel="stylesheet" />
+
+<!-- MetisMenu CSS -->
+<link
+	href="/webjars/startbootstrap-sb-admin-2/1.0.2/css/plugins/metisMenu/metisMenu.min.css"
+	rel="stylesheet" />
+
+<!-- Timeline CSS -->
+<script
+	src="https://cdn.jsdelivr.net/timepicker.js/latest/timepicker.min.js"></script>
+<link
+	href="https://cdn.jsdelivr.net/timepicker.js/latest/timepicker.min.css"
+	rel="stylesheet" />
+
+
+<link
+	href="/webjars/startbootstrap-sb-admin-2/1.0.2/css/plugins/timeline.css"
+	rel="stylesheet" />
+
+<!-- Custom CSS -->
+<link href="/webjars/startbootstrap-sb-admin-2/1.0.2/css/sb-admin-2.css"
+	rel="stylesheet" />
+
+<!-- Morris Charts CSS -->
+<link
+	href="/webjars/startbootstrap-sb-admin-2/1.0.2/css/plugins/morris.css"
+	rel="stylesheet" />
+
+<!-- Custom Fonts -->
+<link
+	href="/webjars/startbootstrap-sb-admin-2/1.0.2/font-awesome/css/font-awesome.min.css"
+	rel="stylesheet" type="text/css" />
+
+<style>
+#form1: {
+	background-color: red;
+}
+;
+</style>
+
+</head>
+
+<body>
+
+	<div id="wrapper">
+
+		<!-- Navigation -->
+		<nav class="navbar navbar-default navbar-static-top" role="navigation"
+			style="margin-bottom: 0">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="/dashboard/">SB Admin v2.0</a>
+			</div>
+			<!-- /.navbar-header -->
+
+			<ul class="nav navbar-top-links navbar-right">
+
+				<!-- /.dropdown -->
+
+				<li class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" href="#"> <i class="fa fa-bell fa-fw"></i>
+						<i class="fa fa-caret-down"></i>
+				</a>
+					<ul class="dropdown-menu dropdown-alerts">
+						<li><a href="#">
+								<div>
+									<i class="fa fa-comment fa-fw"></i> New Comment <span
+										class="pull-right text-muted small">4 minutes ago</span>
+								</div>
+						</a></li>
+						<li class="divider"></li>
+						<li><a href="#">
+								<div>
+									<i class="fa fa-twitter fa-fw"></i> 3 New Followers <span
+										class="pull-right text-muted small">12 minutes ago</span>
+								</div>
+						</a></li>
+						<li class="divider"></li>
+						<li><a href="#">
+								<div>
+									<i class="fa fa-envelope fa-fw"></i> Message Sent <span
+										class="pull-right text-muted small">4 minutes ago</span>
+								</div>
+						</a></li>
+						<li class="divider"></li>
+						<li><a href="#">
+								<div>
+									<i class="fa fa-tasks fa-fw"></i> New Task <span
+										class="pull-right text-muted small">4 minutes ago</span>
+								</div>
+						</a></li>
+						<li class="divider"></li>
+						<li><a href="#">
+								<div>
+									<i class="fa fa-upload fa-fw"></i> Server Rebooted <span
+										class="pull-right text-muted small">4 minutes ago</span>
+								</div>
+						</a></li>
+						<li class="divider"></li>
+						<li><a class="text-center" href="#"> <strong>See
+									All Alerts</strong> <i class="fa fa-angle-right"></i>
+						</a></li>
+					</ul> <!-- /.dropdown-alerts --></li>
+				<!-- /.dropdown -->
+				<li class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" href="#"> <i class="fa fa-user fa-fw"></i>
+						<i class="fa fa-caret-down"></i>
+				</a>
+					<ul class="dropdown-menu dropdown-user">
+						<li><a href="#"><i class="fa fa-user fa-fw"></i> User
+								Profile</a></li>
+						<li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+						</li>
+						<li class="divider"></li>
+						<li><a th:href="@{/logout}"><i
+								class="fa fa-sign-out fa-fw"></i> Logout</a></li>
+					</ul> <!-- /.dropdown-user --></li>
+				<!-- /.dropdown -->
+			</ul>
+			<!-- /.navbar-top-links -->
+
+			<div class="navbar-default sidebar" role="navigation">
+				<div class="sidebar-nav navbar-collapse">
+					<ul class="nav" id="side-menu">
+						<li class="sidebar-search">
+							<div class="input-group custom-search-form">
+								<input type="text" class="form-control" placeholder="Search..." />
+								<span class="input-group-btn">
+									<button class="btn btn-default" type="button">
+										<i class="fa fa-search"></i>
+									</button>
+								</span>
+							</div> <!-- /input-group -->
+						</li>
+						<li><a href="/dashboard/"><i
+								class="fa fa-dashboard fa-fw"></i> Dashboard</a></li>
+						<li><a href="/dashboard/staff/"><i class="fa fa-user"></i>
+								Quản lý nhân viên</a></li>
+						<li><a href="/dashboard/quanlylichkham/"><i
+								class="fa fa-user"></i> Quản lý lịch làm việc</a></li>
+						<li><a href="/dashboard/services/"><i class="fa fa-user"></i>
+								Quản lý dịch vụ</a></li>
+						<li><a href="/dashboard/customer/"><i class="fa fa-user"></i>
+								Quản lý khách hàng</a></li>
+						<li><a href="/dashboard/account/"><i class="fa fa-user"></i>
+								Quản lý tài khoản</a></li>
+
+					</ul>
+				</div>
+				<!-- /.sidebar-collapse -->
+			</div>
+			<!-- /.navbar-static-side -->
+		</nav>
+
+		<div id="page-wrapper">
+			<div
+				class="kt-grid kt-grid--desktop kt-grid--ver kt-grid--ver-desktop kt-app"
+				style="width: 100%; display: flex; padding: 25px;">
+
+
+
+				<div id="form1"
+					style="width: 58%; background-color: #f8f8f8; border-radius: 10px 10px 10px 10px; padding-left: 30px; margin-left:20%;
+					box-shadow: 8px 8px 10px #c2bbbb;border: 1px solid #dddada;">
+					<div class="row">
+						<div class="col-xl-12">
+							<div>
+
+								<form style="padding: 10px;" action="#"
+									th:action="@{/saveStaff2}" th:object="${staff}" method="post"
+									enctype="multipart/form-data">
+									<div class="kt-portlet__body">
+										<div>
+											<div>
+												<div class="row">
+													
+													<div  style="margin-left:190px;">
+														<h3 class="kt-section__title kt-section__title-sm">Thông
+															tin cá nhân</h3>
+														<br>
+													</div>
+												</div>
+												<div class="form-group" style="display: none;">
+													<label for="name">Id nhân viên</label> <input type="text"
+														style="display:" none";" class="form-control"
+														th:field="*{id_staff}" readonly="readonly">
+												</div>
+												<div class="form-group" style="display: none;">
+													<label for="name">Id người dùng</label> <input type="text"
+														style="width: 30%; display:" none";" class="form-control"
+														th:field="*{id_user}" readonly="readonly">
+												</div>
+												
+												<div class="form-group row">
+													
+													<div class="col-lg-9 col-xl-6">
+
+														<img th:src="*{'/assets/img/'+{image}}" id="thumbnail"
+															alt="Ảnh nhân viên"
+															style="height: 150px; width: 250px; object-fit: cover;margin-left:40%;" />
+														<input type="hidden" name="fileImage" id="fileImage"
+															accept="image/png,image/ipeg" style="margin-left:165px;"  />
+															
+													</div>
+
+												</div>
+												<div class="form-group row">
+													<label class="col-xl-3 col-lg-3 col-form-label">Họ
+														và tên</label>
+													<div class="col-lg-9 col-xl-6">
+
+														<input type="text" id="ten" th:field="*{name_staff}"
+															style="width: 330px;" readonly="readonly"
+															class="form-control">
+													</div>
+
+												</div>
+												<div class="form-group row">
+													<label class="col-xl-3 col-lg-3 col-form-label">Địa
+														chỉ</label>
+													<div class="col-lg-9 col-xl-6">
+
+														<input type="text" id="diachi" th:field="*{address}"
+															style="width: 330px;" readonly="readonly"
+															class="form-control">
+													</div>
+												</div>
+
+												<div class="form-group row">
+													<label class="col-xl-3 col-lg-3 col-form-label">Giới
+														tính</label>
+													<div class="col-lg-9 col-xl-6">
+
+														<input type="radio" th:field="*{sex}" value="1" readonly="readonly">
+														Nam <input type="radio" th:field="*{sex}" value="2" readonly="readonly">
+														Nữ
+													</div>
+												</div>
+
+												<div class="form-group row" style="display: none;">
+													<label class="col-xl-3 col-lg-3 col-form-label">Email</label>
+													<div class="col-lg-9 col-xl-6">
+
+														<input type="text" th:field="*{email}" readonly="readonly"
+															class="form-control">
+													</div>
+
+												</div>
+												<div class="form-group row">
+													<label class="col-xl-3 col-lg-3 col-form-label">Số
+														điện thoại</label>
+													<div class="col-lg-9 col-xl-6">
+
+														<input type="text" id="sdt" th:field="*{phone}"
+															style="width: 330px;" readonly="readonly"
+															class="form-control">
+													</div>
+												</div>
+
+
+											</div>
+										</div>
+									</div>
+									<input id="binh" type="button" class="btn btn-primary"
+										style="margin-left: 335px;" value="Cập nhật thông tin"
+										onClick="hien()">
+									<button id="chien" style="display: none; margin-left: 418px;"
+										class="btn btn-primary" type="submit">Save</button>
+								</form>
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+			<!-- /#page-wrapper -->
+
+		</div>
+		<!-- /#wrapper -->
+
+		<!-- jQuery -->
+		<script src="/webjars/startbootstrap-sb-admin-2/1.0.2/js/jquery.js"></script>
+
+		<!-- Bootstrap Core JavaScript -->
+		<script
+			src="/webjars/startbootstrap-sb-admin-2/1.0.2/js/bootstrap.min.js"></script>
+
+		<!-- Metis Menu Plugin JavaScript -->
+		<script
+			src="/webjars/startbootstrap-sb-admin-2/1.0.2/js/plugins/metisMenu/metisMenu.min.js"></script>
+
+		<!-- Morris Charts JavaScript -->
+		<script
+			src="/webjars/startbootstrap-sb-admin-2/1.0.2/js/plugins/morris/raphael.min.js"></script>
+		<script
+			src="/webjars/startbootstrap-sb-admin-2/1.0.2/js/plugins/morris/morris.min.js"></script>
+		<script
+			src="/webjars/startbootstrap-sb-admin-2/1.0.2/js/plugins/morris/morris-data.js"></script>
+
+		<!-- Custom Theme JavaScript -->
+		<script
+			src="/webjars/startbootstrap-sb-admin-2/1.0.2/js/sb-admin-2.js"></script>
+		<script
+			src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script type="text/javascript">
+			$(document)
+					.ready(
+							function() {
+								$('#fileImage').change(function(){
+						    		showImageThumbnail(this);
+						    	});
+								$("#myInput")
+										.on(
+												"keyup",
+												function() {
+													var value = $(this).val()
+															.toLowerCase();
+													$("#myTable tr")
+															.filter(
+																	function() {
+																		$(this)
+																				.toggle(
+																						$(
+																								this)
+																								.text()
+																								.toLowerCase()
+																								.indexOf(
+																										value) > -1)
+																	});
+												});
+							});
+			
+			function showImageThumbnail(fileInput){
+		    	file = fileInput.files[0];
+		    	reader = new FileReader();
+		    	
+		    	reader.onload= function(e){
+		    		$('#thumbnail').attr('src', e.target.result);
+		    	};
+		    	reader.readAsDataURL(file); 
+		    };
+			
+			var timepicker = new TimePicker('time', {
+				lang : 'en',
+				theme : 'dark'
+			});
+			
+			timepicker.on('change', function(evt) {
+
+				var value = (evt.hour || '00') + ':' + (evt.minute || '00');
+				evt.element.value = value + ':00';
+
+			});
+			function code() {
+				// check trong
+				var name = document.getElementById("name_staff").value.trim();
+				var dsc = document.getElementById("dsc").value.trim();
+				var price = document.getElementById("price").value.trim();
+				if (name.trim().length == 0) {
+					alert("Mời bạn nhập họ và tên");
+					return false;
+				}
+				if (dsc.trim().length == 0) {
+					alert("Mời bạn nhập mô tả");
+					return false;
+				}
+
+				if (price.trim().length == 0) {
+					alert("Mời bạn nhập giá");
+					return false;
+				}
+
+				return true;
+			};
+			function hien() {
+				document.getElementById("chien").style.display = "block";
+				document.getElementById("binh").style.display = "none";
+				
+				$('#fileImage').prop('type', "file");
+				$('#ten').prop('readonly', false);
+				$('#diachi').prop('readonly', false);
+				$('#sdt').prop('readonly', false);
+
+			}
+		</script>
+</body>
+
+</html>

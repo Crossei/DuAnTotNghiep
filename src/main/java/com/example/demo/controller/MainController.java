@@ -65,8 +65,14 @@ public class MainController {
 	private BookingRepository bokRepo;
 
 	@Autowired
+	private UserRepository userRepo;
+	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 
+	
+	
+	
+	
 	@RequestMapping("/doctor-list")
 	public String docList() {
 		return "doctor-list";
@@ -206,10 +212,6 @@ public class MainController {
 	}
 	
 
-	@RequestMapping("/dashboard/account")
-	public String dashboardAccount() {
-		return "dashboard/account";
-	}
 
 	@RequestMapping("/changePass")
 	public String changePass() {

@@ -235,7 +235,7 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <h6 class="m-0 font-weight-bold text-primary">Hiển thị chi tiết danh sách các tài khoản</h6>
-                            <button class="btn btn-primary">Thêm mới tài khoản</button>
+                       
                         </div>
                         <div class="form-group pull-right">
                             <input type="text" id="myInput" class="search form-control" placeholder="Search....">
@@ -251,110 +251,30 @@
                                 <th>STT</th>
                                 <th>Họ và tên</th>
                                 <th>Username</th>
+                                <th>Trạng thái</th>
                                 <th>Chức vụ</th>
                                 <th>Hành động</th>
                             </tr>
                             </thead>
-                            <tbody class="text-justify" id="myTable">
+                            <tbody tbody class="text-justify" id="myTable">
+                             <th:block th:each="userList,stt : ${userLists}">
                             <tr>
-                                <td>1</td>
-                                <td>Nguyễn Văn Quốc</td>
-                                <td>quoc</td>
-                                <td>Admin</td>
+                                <td th:text="${stt.count}"></td>
+                                <td th:text="${userList.name}"></td>
+                             
+                                <td th:text="${userList.username}"></td>
+                                <td th:text="${userList.status}"></td>
+                                <td th:text="${userList.roles}"></td>
+                               
                                 <td>
-                                    <button class="btn btn-info">Sửa</button>
-                                    <a href="#myModal" class="btn btn-danger" data-toggle="modal">Xóa</a>
-                                    <div id="myModal" class="modal fade">
-                                        <div class="modal-dialog modal-confirm">
-                                            <div class="modal-content">
-                                                <div class="modal-header flex-column">
 
-                                                    <h4 class="modal-title w-100">Bạn có chắc chắn muốn xóa lịch làm
-                                                        việc này chứ ?</h4>
-                                                    <button type="button" class="close" data-dismiss="modal"
-                                                            aria-hidden="true">&times;
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <p>Bạn có muốn lịch làm việc này chứ ?</p>
-                                                </div>
-                                                <div class="modal-footer justify-content-center">
-                                                    <button type="button" class="btn btn-danger">Delete</button>
-                                                    <button type="button" class="btn btn-secondary"
-                                                            data-dismiss="modal">Cancel
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                  
+                                    <button	data-target="#myModal" th:attr="data-target='#myModal'+${userList.id}"
+												class="btn btn-danger" data-toggle="modal">Khóa</button>
+												
                                 </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Lại Minh Sáng</td>
-                                <td>sanglm</td>
-                                <td>Nhân viên</td>
-                                <td>
-                                    <button class="btn btn-info">Sửa</button>
-                                    <a href="#myModal" class="btn btn-danger" data-toggle="modal">Xóa</a>
-                                    <div id="myModal" class="modal fade">
-                                        <div class="modal-dialog modal-confirm">
-                                            <div class="modal-content">
-                                                <div class="modal-header flex-column">
-
-                                                    <h4 class="modal-title w-100">Bạn có chắc chắn muốn xóa lịch làm
-                                                        việc này chứ ?</h4>
-                                                    <button type="button" class="close" data-dismiss="modal"
-                                                            aria-hidden="true">&times;
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <p>Bạn có muốn lịch làm việc này chứ ?</p>
-                                                </div>
-                                                <div class="modal-footer justify-content-center">
-                                                    <button type="button" class="btn btn-danger">Delete</button>
-                                                    <button type="button" class="btn btn-secondary"
-                                                            data-dismiss="modal">Cancel
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Trần Trung Hiếu</td>
-                                <td>hieutt</td>
-                                <td>Quản lý</td>
-                                <td>
-                                    <button class="btn btn-info">Sửa</button>
-                                    <a href="#myModal" class="btn btn-danger" data-toggle="modal">Xóa</a>
-                                    <div id="myModal" class="modal fade">
-                                        <div class="modal-dialog modal-confirm">
-                                            <div class="modal-content">
-                                                <div class="modal-header flex-column">
-
-                                                    <h4 class="modal-title w-100">Bạn có chắc chắn muốn xóa lịch làm
-                                                        việc này chứ ?</h4>
-                                                    <button type="button" class="close" data-dismiss="modal"
-                                                            aria-hidden="true">&times;
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <p>Bạn có muốn lịch làm việc này chứ ?</p>
-                                                </div>
-                                                <div class="modal-footer justify-content-center">
-                                                    <button type="button" class="btn btn-danger">Delete</button>
-                                                    <button type="button" class="btn btn-secondary"
-                                                            data-dismiss="modal">Cancel
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
+                            </tr>        
+                            </th:block>           
                             </tbody>
                         </table>
                     </div>
