@@ -18,8 +18,12 @@
 
 <!-- Custom stlylesheet -->
 <!-- <link type="text/css" rel="stylesheet" href="assets/css/stylef.css" /> -->
-<link href="http://bizweb.dktcdn.net/100/167/865/themes/222134/assets/favicon.png?1568890987754" rel="icon">
-    <link href="http://bizweb.dktcdn.net/100/167/865/themes/222134/assets/favicon.png?1568890987754" rel="apple-touch-icon">
+<link
+	href="http://bizweb.dktcdn.net/100/167/865/themes/222134/assets/favicon.png?1568890987754"
+	rel="icon">
+<link
+	href="http://bizweb.dktcdn.net/100/167/865/themes/222134/assets/favicon.png?1568890987754"
+	rel="apple-touch-icon">
 
 <!-- <link rel="stylesheet" href="assets/css/stylec.css"> -->
 <link rel="stylesheet" href="assets/css/trangchu.css">
@@ -75,8 +79,8 @@
 									<li><a href="#">Phẩu thuật răng miệng</a></li>
 								</ul></li>
 							<li><a href="home.html#portfolio">Các bác sĩ</a></li>
-							<li><a href="">Đặt lịch</a></li>
-							<li><a href="">Tin tức</a></li>
+							<li th:if="${@mainController.checkLoggedIn() == true} "><a href="/datlich">Đặt lịch</a></li>
+							<li><a href="/tintuc">Tin tức</a></li>
 							<li><a href="home.html#contact">Liên hệ</a></li>
 
 						</ul>
@@ -121,11 +125,11 @@
 		</div>
 	</section>
 
-	<div class="section-center">
-		<div class="container">
-				<form class="" >
-					<table class="table table-hover" 
-						id="myTable" >
+	<section class="inner-page">
+		<div class="section-center">
+			<div class="container">
+				<form class="">
+					<table class="table table-hover" id="myTable">
 						<thead style="text-align: center">
 							<th>STT</th>
 							<th>Tên dịch vụ</th>
@@ -136,7 +140,7 @@
 							<th>Trạng thái</th>
 							<th>Hành động</th>
 						</thead>
-						<tbody  class="text-justify" id="myTable">
+						<tbody class="text-justify" id="myTable">
 							<th:block th:each="detailList,stt : ${detailList}">
 								<tr style="text-align: center">
 									<th:block th:each="serLList : ${serLList}"
@@ -149,21 +153,31 @@
 										<td></td>
 										<td th:text="${serLList.price}"></td>
 
-										<td th:if="${detailList.status == 0}"><span> Chờ
-												xác thực</span></td>
-										<td th:if="${detailList.status == 1}"><span>Đã
-												nhận lịch đặt</span></td>
+										<td th:if="${detailList.status == 0}">
+											<span style="background-color: #e0c228; border-radius: 5px; padding: 6px; color: white; font-weight: 500;"> Chờ xác nhận</span>
+										</td>
+										<td th:if="${detailList.status == 1}">
+											<span style="background-color: #69d11f; border-radius: 5px; padding: 6px; color: white; font-weight: 500;">Đã nhận lịch đặt</span>
+										</td>
 										<td th:if="${detailList.status == 1}">
 											<button style="font-size: 15px" class="btn btn-warning"
-												disabled="true"><img src="/assets/img/edit-pencil.png"/></button>
+												disabled="true">
+												<img src="/assets/img/edit-pencil.png" />
+											</button>
 											<button style="font-size: 15px" class="btn btn-danger"
-												disabled="true"><img src="/assets/img/cancel.png"/></button>
+												disabled="true">
+												<img src="/assets/img/cancel.png" />
+											</button>
 										</td>
 										<td th:if="${detailList.status == 0}">
-											<button style="font-size: 15px" class="btn btn-warning"><img src="/assets/img/edit-pencil.png"/></button>
+											<button style="font-size: 15px" class="btn btn-warning">
+												<img src="/assets/img/edit-pencil.png" />
+											</button>
 											<button type="button" class="btn btn-danger"
 												th:attr="data-target='#myModal'+${detailList.id_detail}"
-												data-toggle="modal" data-target="#myModal"><img src="/assets/img/cancel.png"/></button>
+												data-toggle="modal" data-target="#myModal">
+												<img src="/assets/img/cancel.png" />
+											</button>
 											<div class="modal fade"
 												th:id="myModal+${detailList.id_detail}">
 												<div class="modal-dialog">
@@ -195,9 +209,11 @@
 						</tbody>
 					</table>
 				</form>
-			
+
+			</div>
 		</div>
-	</div>
+	</section>
+
 
 
 

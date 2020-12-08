@@ -8,7 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<title>Dashboard - Quản lý nhân viên</title>
+<title>Dashboard - Quản lý khách hàng</title>
 
 <!-- Bootstrap Core CSS -->
 <link
@@ -42,6 +42,14 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/fontawesome.min.css"
 	integrity="sha512-kJ30H6g4NGhWopgdseRb8wTsyllFUYIx3hiUwmGAkgA9B/JbzUBDQVr2VVlWGde6sdBVOG7oU8AL35ORDuMm8g=="
 	crossorigin="anonymous" />
+
+<link
+	href="http://bizweb.dktcdn.net/100/167/865/themes/222134/assets/favicon.png?1568890987754"
+	rel="icon">
+<link
+	href="http://bizweb.dktcdn.net/100/167/865/themes/222134/assets/favicon.png?1568890987754"
+	rel="apple-touch-icon">
+
 </head>
 
 <body>
@@ -51,16 +59,8 @@
 		<!-- Navigation -->
 		<nav class="navbar navbar-default navbar-static-top" role="navigation"
 			style="margin-bottom: 0">
-			<div class="navbar-header">
-			<button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target=".navbar-collapse">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="/dashboard/">SB Admin v2.0</a>
-			</div>
-			<!-- /.navbar-header -->
+			<a href="/dashboard/"><img src="/assets/img/favicon.png"
+				style="width: 13%;"></a>
 
 			<ul class="nav navbar-top-links navbar-right">
 				<li class="dropdown"><a class="dropdown-toggle"
@@ -169,29 +169,20 @@
 			<div class="navbar-default sidebar" role="navigation">
 				<div class="sidebar-nav navbar-collapse">
 					<ul class="nav" id="side-menu">
-						<li class="sidebar-search">
-							<div class="input-group custom-search-form">
-								<input type="text" class="form-control" placeholder="Search..." />
-								<span class="input-group-btn">
-									<button class="btn btn-default" type="button">
-										<i class="fa fa-search"></i>
-									</button>
-								</span>
-							</div> <!-- /input-group -->
-						</li>
 						<li><a href="/dashboard/"><i
 								class="fa fa-dashboard fa-fw"></i> Dashboard</a></li>
 						<li><a href="/dashboard/staff/"><i class="fa fa-user"></i>
 								Quản lý nhân viên</a></li>
-						<li><a href="/dashboard/quanlylichkham/"><i class="fa fa-user"></i>
-								Quản lý lịch làm việc</a></li>
+						<li><a href="/dashboard/quanlylichkham/"><i
+								class="fa fa-user"></i> Quản lý lịch làm việc</a></li>
 						<li><a href="/dashboard/services/"><i class="fa fa-user"></i>
 								Quản lý dịch vụ</a></li>
 						<li><a href="/dashboard/customer/"><i class="fa fa-user"></i>
 								Quản lý khách hàng</a></li>
 						<li><a href="/dashboard/account/"><i class="fa fa-user"></i>
 								Quản lý tài khoản</a></li>
-
+						<li><a href="/dashboard/lichkham/"><i class="fa fa-user"></i>Tiếp
+								nhận lịch khám</a></li>
 					</ul>
 				</div>
 				<!-- /.sidebar-collapse -->
@@ -213,7 +204,8 @@
 								<h6 class="m-0 font-weight-bold text-primary">Hiển thị chi
 									tiết danh sách khách hàng</h6>
 								<button class="btn btn-primary">Thêm mới khách hàng</button>
-								 <a th:href="@{/dashboard/customer/export}" class="btn btn-warning">Export Excel</a>
+								<a th:href="@{/dashboard/customer/export}"
+									class="btn btn-warning">Export Excel</a>
 							</div>
 							<div class="form-group pull-right">
 								<input type="text" id="myInput" class="search form-control"

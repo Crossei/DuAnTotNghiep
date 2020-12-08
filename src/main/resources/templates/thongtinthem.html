@@ -11,13 +11,10 @@
 
     <link href="https://fonts.googleapis.com/css?family=Lato:400,400i,700" rel="stylesheet">
 
-    <!-- Bootstrap -->
-    <link type="text/css" rel="stylesheet" href="assets/css/bootstrap.min.css" />
-
     <!-- Custom stlylesheet -->
     <link type="text/css" rel="stylesheet" href="assets/css/stylef.css" />
-    <link href="assets/img/favicon.png" rel="icon">
-    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="http://bizweb.dktcdn.net/100/167/865/themes/222134/assets/favicon.png?1568890987754" rel="icon">
+    <link href="http://bizweb.dktcdn.net/100/167/865/themes/222134/assets/favicon.png?1568890987754" rel="apple-touch-icon">
 
     <link rel="stylesheet" href="assets/css/stylec.css">
     <link rel="stylesheet" href="assets/css/trangchu.css">
@@ -67,7 +64,8 @@
                                 </ul>
                             </li>
                             <li><a href="home.html#portfolio">Các bác sĩ</a></li>
-                            <li><a href="">Tin tức</a>
+                            <li th:if="${@mainController.checkLoggedIn() == true} "><a href="/datlich">Đặt lịch</a></li>
+                            <li><a href="/tintuc">Tin tức</a>
 
                             </li>
                             <li><a href="home.html#contact">Liên hệ</a></li>
@@ -118,13 +116,13 @@
 
 
         <section class="inner-page">
-            <div id="booking" class="section">
+            <div id="booking">
                 <div class="section-center">
                     <div class="container">
                         <div class="row">
                             <div class="booking-form">
                                 <form>
-                                    <h3 style="text-align: center;">Vui lòng để lại thông tin, nhu cầu của quý khách.</h1>
+                                    <h4 style="text-align: center;">Vui lòng để lại thông tin, nhu cầu của quý khách.</h4>
                                         <br>
                                         <div class="form-group">
                                             <span class="form-label">Họ và tên</span>
@@ -141,7 +139,9 @@
                                         <div class="form-btn">
                                             <button class="submit-btn">Đặt ngay!</button>
                                         </div>
-
+										<div class="form-btn" style="text-align: center; margin-top: 50px;">
+                                    		<a role="button" href="/doctor-list" style="width: 150px; font-size: 25px; font-weight: bold; height: 55px; ">Trở về</a>
+                                		</div>
                                 </form>
                             </div>
                         </div>
@@ -180,9 +180,7 @@
         </div>
     </div>
 
-    </main>
-    <!-- End #main -->
-
+    
     <!-- ======= Footer ======= -->
     <footer id="footer">
         <div class="container">

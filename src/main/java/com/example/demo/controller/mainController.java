@@ -275,6 +275,16 @@ public class mainController {
 		return "dashboard/ql_lichkham";
 	}
 
+	@RequestMapping("/tintuc")
+	public String tinTuc(Model model) {
+		return "tintuc";
+	}
+	
+	@RequestMapping("/thongtinthem")
+	public String thongTinThem(Model model) {
+		return "thongtinthem";
+	}
+	
 	@RequestMapping("/dashboard/quanlylichkham/register-work")
 	public String lichKhamRegister(Model model) {
 
