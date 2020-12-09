@@ -44,9 +44,9 @@
 	rel="stylesheet" type="text/css" />
 
 <style>
-	#id_user{
-	display: none;
-	}
+input:{
+width:30%;
+}
 </style>
 
 </head>
@@ -118,26 +118,19 @@
 						</a></li>
 					</ul> <!-- /.dropdown-alerts --></li>
 				<!-- /.dropdown -->
-				<li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                    <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>[[${#request.userPrincipal.principal.username}]]
-                </a>
-                <ul class="dropdown-menu dropdown-user">
-                    <li><a href="/dashboard/profile/"><i class="fa fa-user fa-fw"></i> Thông tin tài khoản</a>
-                    </li>
-                    <li><a href="#"><i class="fa fa-gear fa-fw"></i> Đổi mật khẩu</a>
-                    </li>
-                    <li class="divider"></li>
-                    <li><a th:href="@{/logout}"><i class="fa fa-sign-out fa-fw"></i> Đăng xuất</a>
-                    </li>
-                </ul>
-                <!-- /.dropdown-user -->
-            </li>
-          
-
-                    <nav th:if="${@mainController.checkLoggedIn() == true} " class="nav-menu d-none d-lg-block" style="display:none;">
-                       
-                    </nav>
+				<li class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" href="#"> <i class="fa fa-user fa-fw"></i>
+						<i class="fa fa-caret-down"></i>
+				</a>
+					<ul class="dropdown-menu dropdown-user">
+						<li><a href="#"><i class="fa fa-user fa-fw"></i> User
+								Profile</a></li>
+						<li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+						</li>
+						<li class="divider"></li>
+						<li><a th:href="@{/logout}"><i
+								class="fa fa-sign-out fa-fw"></i> Logout</a></li>
+					</ul> <!-- /.dropdown-user --></li>
 				<!-- /.dropdown -->
 			</ul>
 			<!-- /.navbar-top-links -->
@@ -174,153 +167,59 @@
 			</div>
 			<!-- /.navbar-static-side -->
 		</nav>
-
+		<div style="height:30px;background-color: white;"></div>
 		<div id="page-wrapper">
-			<div
-				class="kt-grid kt-grid--desktop kt-grid--ver kt-grid--ver-desktop kt-app"
-				style="width: 100%; display: flex; padding: 40px;">
-
-
-
-				<div id="form1"
-					style="width: 75%; background-color: #f8f8f8; border-radius: 10px 10px 10px 10px; padding-left: 30px; margin-left:13%;
+			<div class="container" style="width: 40%; background-color: #f8f8f8; border-radius: 10px 10px 10px 10px; padding-left: 30px; margin-left:28%;
 					box-shadow: 8px 8px 10px #c2bbbb;border: 1px solid #dddada;">
-					<div class="row">
-						<div class="col-xl-12">
-							<div>
-
-								<form style="padding: 10px;" action="#"
-									th:action="@{/saveStaff1}" th:object="${staff}" method="post"
-									enctype="multipart/form-data">
-									<div class="kt-portlet__body">
-										<div>
-											<div>
-												<div class="row">
-													
-													<div  style="margin-left:170px;">
-														<h3 class="kt-section__title kt-section__title-sm">Cập nhật thông tin nhân viên</h3>
-														<br>
-													</div>
-												</div>
-												<table>
-												<tbody>
-												<td style="width:300px;"><div class="form-group" style="display: none;">
-													<label for="name">Id nhân viên</label> <input type="text"
-														style="display:" none";" class="form-control"
-														th:field="*{id_staff}" readonly="readonly">
-												</div>
-												<div class="form-group" style="display: none;">
-													<label for="name">Id người dùng</label> <input type="text"
-														style="width: 30%; display:" none";" class="form-control"
-														th:field="*{id_user}" readonly="readonly">
-												</div>
-												<div class="form-group" style="display: none;">
+						
+						            <h1 class="h3 mb-2 text-gray-800 mb-5" style="margin-left:80px;">Cập nhật dịch vụ</h1>
+						            <form style="padding: 10px;" action="#" th:action="@{/save}" th:object="${service}" method="post"
+						            enctype="multipart/form-data">
+						            	<div class="form-group" style="display:none;">
+						                    <label for="name">id</label>
+						                    <input type="text"  style="width: 330px;" class="form-control" th:field="*{id_ser}"  name="name" id="name" required autofocus>
+						                </div>
+						                <div class="form-group" style="display: none;">
 													<label for="name">anh:</label> <input type="text"
 														style="width: 30%; display:" none";" class="form-control"
 														th:field="*{image}" readonly="readonly">
 												</div>
-												
-												<div class="form-group row">
+						                <div class="form-group row">
 													
 													<div class="col-lg-9 col-xl-6">
-
 														<img th:src="*{'/assets/img/'+{image}}" id="thumbnail"
 															alt="Ảnh nhân viên"
-															style="height: 200px; width: 250px; object-fit: cover;margin:10px;" />
+															style="height: 100px; width: 150px; object-fit: cover;margin-left:33%;" />
 														<input type="file" name="fileImage" id="fileImage"
-															accept="image/png,image/ipeg" style="margin-left:10px;"   />
+															accept="image/png,image/ipeg"   />
 															
 													</div>
 
-												</div></td>
-												<td>
-												<div class="form-group row">
-													<label class="col-xl-4 col-lg-4 col-form-label">Họ
-														và tên:</label>
-													<div class="col-lg-8 col-xl-6">
-
-														<input type="text" id="ten" th:field="*{name_staff}"
-															style="width: 230px;" placeholder="Tên nhân viên" required autofocus 
-															class="form-control">
-													</div>
-
-												</div>
-												<div class="form-group row" >
-													<label class="col-xl-4 col-lg-4 col-form-label">Email:</label>
-													<div class="col-lg-8 col-xl-6">
-
-														<input type="email" th:field="*{email}" style="width: 230px;" readonly="readonly"
-															class="form-control" placeholder="Email" required autofocus id="email"
-															>
-													</div>
-
-												</div>
-												
-												<div class="form-group row" >
-													<label class="col-xl-4 col-lg-4 col-form-label">Ngày:</label>
-													<div class="col-lg-8 col-xl-6">
-
-														<input type="date" th:field="*{dateWorking_Start}" style="width: 230px;" 
-															class="form-control">
-													</div>
-
-												</div>
-												<div class="form-group row">
-													<label class="col-xl-4 col-lg-4 col-form-label">Địa
-														chỉ:</label>
-													<div class="col-lg-8 col-xl-6">
-
-														<input type="text" id="diachi" th:field="*{address}" placeholder="Địa chỉ"
-															style="width: 230px;" 
-															class="form-control">
-													</div>
-												</div>
-
-												<div class="form-group row">
-													<label class="col-xl-4 col-lg-4 col-form-label">Giới
-														tính:</label>
-													<div class="col-lg-8 col-xl-6">
-
-														<input type="radio" th:field="*{sex}" value="1" >
-														Nam <input type="radio" th:field="*{sex}" value="2" >
-														Nữ
-													</div>
-												</div>
-
-												<div class="form-group row">
-													<label class="col-xl-4 col-lg-4 col-form-label">Số
-														điện thoại:</label>
-													<div class="col-lg-8 col-xl-6">
-
-														<input type="text" id="sdt" th:field="*{phone}" placeholder="Số điện thoại"
-															style="width: 230px;" 
-															class="form-control">
-													</div>
-												</div>
-												</td>
-												</tbody>
-												</table>
-												
-												
-
-
-											</div>
 										</div>
-									</div>
-									
-									<button  style=" margin-left: 597px;margin-bottom: 10px"
-										class="btn btn-primary" type="submit">Save</button>
-								</form>
-							</div>
-						</div>
-
-					</div>
-				</div>
-
+						                <div class="form-group">
+						                    <label for="name">Tên dịch vụ:</label>
+						                    <input type="text"  style="width: 330px;" class="form-control" th:field="*{name}" 
+						                    placeholder="Tên dịch vụ" name="name" id="name" required autofocus>
+						                </div> 
+						                <div class="form-group">
+						                    <label for="username">Mô tả:</label>
+						                    <input type="text"  style="width: 330px;" 
+						                    placeholder="Mô tả" class="form-control" th:field="*{dsc}" name="dsc" id="dsc" required autofocus>
+						                </div>
+						                <div class="form-group">
+						                    <label for="role">Thời gian trung bình:</label>
+						                   
+						                    <input placeholder="Thời gian trung bình" required autofocus name="time_working"  type="text" id="time" th:field="*{time_working}"  style="width: 330px;" class="form-control"/>
+						                </div>
+						                <div class="form-group">
+						                    <label for="username">Giá tiền trung bình:</label>
+						                    <input type="number" placeholder="Gía trung bình" style="width: 330px;" class="form-control" th:field="*{price}" name="price" id="price" required autofocus>
+						                </div>
+						                <button class="btn btn-primary" type="submit" style="margin-left:270px;">Save</button>
+						            </form>
+						     
+				
 			</div>
-			<!-- /#page-wrapper -->
-
-		</div>
 
 		</div>
 		<!-- /#page-wrapper -->
@@ -356,7 +255,6 @@
     	$('#fileImage').change(function(){
     		showImageThumbnail(this);
     	});
-    	
         $("#myInput").on("keyup", function () {
             var value = $(this).val().toLowerCase();
             $("#myTable tr").filter(function () {
@@ -374,7 +272,6 @@
     	};
     	reader.readAsDataURL(file); 
     };
-    
     var timepicker = new TimePicker('time', {
   	  lang: 'en',
   	  theme: 'dark'
@@ -382,31 +279,35 @@
   	timepicker.on('change', function(evt) {
   	  
   	  var value = (evt.hour || '00') + ':' + (evt.minute || '00');
-  	  evt.element.value = value;
+  	  evt.element.value = value + ':00';
 
   	});
+
   	function code() {
 		// check trong
+		var name = document.getElementById("name").value.trim();
+		var dsc = document.getElementById("dsc").value.trim();
+	
+		var price = document.getElementById("price").value
+				.trim();
+		if (name.trim().length == 0) {
+			alert("Mời bạn nhập họ và tên");
+			return false;
+		}
+		if (dsc.trim().length == 0) {
+			alert("Mời bạn nhập mô tả");
+			return false;
+		}
 		
-		var email = document.getElementById("email").value.trim();
-		var ten = document.getElementById("ten").value.trim();
-		var filter = /^[a-zA-Z-' ]*$/;
+		if (price.trim().length == 0) {
+			alert("Mời bạn nhập giá");
+			return false;
+		}
+		
 
-		if (email.trim().length == 0) {
-			alert("Mời bạn nhập email");
-			return false;
-		}
-		if (ten.trim().length == 0) {
-			alert("Mời bạn nhập email");
-			return false;
-		}
-		if (!filter.test(email.value)) {
-			alert('Please provide a valid email address');
-			email.focus;
-			return false;
-		}
 		return true;
-	}
+	};
+   
 </script>
 </body>
 

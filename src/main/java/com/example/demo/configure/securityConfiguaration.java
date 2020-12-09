@@ -32,7 +32,8 @@ public class securityConfiguaration extends WebSecurityConfigurerAdapter {
 			.authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))
 			.and()
 			.authorizeRequests()
-			.antMatchers("/static/css/**","/static/img/**","/static/js/**","/static/bootstrap/css/**","/static/bootstrap/js/**").permitAll()
+			.antMatchers("/static/css/**","/static/img/**","/static/js/**"
+					,"/static/bootstrap/css/**","/static/bootstrap/js/**","/templates/assets/img/**").permitAll()
 			.antMatchers("/dashboard","/dashboard/**").hasAnyRole("ADMIN","BACSI","LETAN")
 			.antMatchers("/user").hasAnyRole("ADMIN","USER")
 			.antMatchers("/").permitAll()

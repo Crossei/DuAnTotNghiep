@@ -2,6 +2,7 @@ package com.example.demo.dao;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,7 +17,8 @@ public class Customer {
 	private String phone;
 	private String image;
 	private String email;
-	private int id_user	;
+	@Column(name= "id_user")
+	private int iduser	;
 	private Integer status;
 	
 	
@@ -28,11 +30,21 @@ public class Customer {
 	}
 	
 	
+	public Customer(String name_cus, String image, String email, int iduser, Integer status) {
+		super();
+		this.name_cus = name_cus;
+		this.image = image;
+		this.email = email;
+		this.iduser = iduser;
+		this.status = status;
+	}
+
+
 	public Customer(String name_cus, String email, int id_user, Integer status) {
 		super();
 		this.name_cus = name_cus;
 		this.email = email;
-		this.id_user = id_user;
+		this.iduser = id_user;
 		this.status = status;
 	}
 
@@ -45,10 +57,10 @@ public class Customer {
 	}
 
 	public int getId_user() {
-		return id_user;
+		return iduser;
 	}
 	public void setId_user(int id_user) {
-		this.id_user = id_user;
+		this.iduser = id_user;
 	}
 	public Integer getStatus() {
 		return status;

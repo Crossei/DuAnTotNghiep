@@ -110,19 +110,21 @@
             <!-- /.dropdown -->
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                    <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>[[${#request.userPrincipal.principal.username}]]
                 </a>
                 <ul class="dropdown-menu dropdown-user">
-                    <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                    <li><a href="/profile/"><i class="fa fa-user fa-fw"></i> Thông tin tài khoản</a>
                     </li>
-                    <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                    <li><a href="#"><i class="fa fa-gear fa-fw"></i> Đổi mật khẩu</a>
                     </li>
                     <li class="divider"></li>
-                    <li><a th:href="@{/logout}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                    <li><a th:href="@{/logout}"><i class="fa fa-sign-out fa-fw"></i> Đăng xuất</a>
                     </li>
                 </ul>
                 <!-- /.dropdown-user -->
             </li>
+          
+
             <!-- /.dropdown -->
         </ul>
         <!-- /.navbar-top-links -->

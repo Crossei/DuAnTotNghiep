@@ -11,14 +11,19 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -65,8 +70,17 @@ public class MainController {
 	private BookingRepository bokRepo;
 
 	@Autowired
+	private UserRepository userRepo;
+	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 
+	@InitBinder
+	protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
+	    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");   
+	    dateFormat.setLenient(false);
+	    binder.registerCustomEditor(Date.class, null,  new CustomDateEditor(dateFormat, true));
+	}
+	
 	@RequestMapping("/doctor-list")
 	public String docList() {
 		return "doctor-list";
@@ -109,6 +123,7 @@ public class MainController {
 		return "lichSuDatLich";
 	}
 	
+	
 	@GetMapping("lichsudat/delete/{id_detail}")
 	public String deleteLichDat(@PathVariable(name = "id_detail") int id) {
 		BookingDetail bookItem = new BookingDetail();
@@ -129,6 +144,8 @@ public class MainController {
 		model.addAttribute("datLichDTO", datLichDTO);
 		return "datlich";
 	}
+	
+	
 
 	@PostMapping(value = "/datlich")
 	public String datLichSave(@ModelAttribute("datLichDTO") DatLichDTO datLich, Model model) throws ParseException {
@@ -184,6 +201,7 @@ public class MainController {
 		return "dashboard/admin";
 	}
 
+	
 	@RequestMapping("/dashboard/staff")
 	public String dashboardStaff(Model model) {
 		staffList = staffRepo.findAll();
@@ -206,10 +224,6 @@ public class MainController {
 	}
 	
 
-	@RequestMapping("/dashboard/account")
-	public String dashboardAccount() {
-		return "dashboard/account";
-	}
 
 	@RequestMapping("/changePass")
 	public String changePass() {
@@ -230,6 +244,7 @@ public class MainController {
 			List<User> userList = repo.findAll();
 			User getUser = userList.get(userList.size() -1 );
 			Customer cus = new Customer(getUser.getName(),getUser.getUsername(),getUser.getId(),1);
+			cus.setImage("fb.png");
 			cusRepo.save(cus);
 		} else {
 			model.addAttribute("error", "Email này đã được đăng ký");
@@ -257,6 +272,8 @@ public class MainController {
 	public void setStaffList(List<Staff> staffList) {
 		this.staffList = staffList;
 	}
+	
+	
 
 	/*
 	 * @PostMapping("/changePass") public User changePass(User user) { List<User>

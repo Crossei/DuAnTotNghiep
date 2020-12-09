@@ -8,7 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<title>Dashboard - Quản lý nhân viên</title>
+<title>Dashboard - Hồ sơ</title>
 
 <!-- Bootstrap Core CSS -->
 <link
@@ -21,8 +21,11 @@
 	rel="stylesheet" />
 
 <!-- Timeline CSS -->
-<script src="https://cdn.jsdelivr.net/timepicker.js/latest/timepicker.min.js"></script>
-<link href="https://cdn.jsdelivr.net/timepicker.js/latest/timepicker.min.css" rel="stylesheet"/>
+<script
+	src="https://cdn.jsdelivr.net/timepicker.js/latest/timepicker.min.js"></script>
+<link
+	href="https://cdn.jsdelivr.net/timepicker.js/latest/timepicker.min.css"
+	rel="stylesheet" />
 
 
 <link
@@ -44,9 +47,8 @@
 	rel="stylesheet" type="text/css" />
 
 <style>
-	#id_user{
-	display: none;
-	}
+
+
 </style>
 
 </head>
@@ -123,7 +125,7 @@
                     <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>[[${#request.userPrincipal.principal.username}]]
                 </a>
                 <ul class="dropdown-menu dropdown-user">
-                    <li><a href="/dashboard/profile/"><i class="fa fa-user fa-fw"></i> Thông tin tài khoản</a>
+                    <li><a href="/profile/"><i class="fa fa-user fa-fw"></i> Thông tin tài khoản</a>
                     </li>
                     <li><a href="#"><i class="fa fa-gear fa-fw"></i> Đổi mật khẩu</a>
                     </li>
@@ -159,8 +161,8 @@
 								class="fa fa-dashboard fa-fw"></i> Dashboard</a></li>
 						<li><a href="/dashboard/staff/"><i class="fa fa-user"></i>
 								Quản lý nhân viên</a></li>
-						<li><a href="/dashboard/quanlylichkham/"><i class="fa fa-user"></i>
-								Quản lý lịch làm việc</a></li>
+						<li><a href="/dashboard/quanlylichkham/"><i
+								class="fa fa-user"></i> Quản lý lịch làm việc</a></li>
 						<li><a href="/dashboard/services/"><i class="fa fa-user"></i>
 								Quản lý dịch vụ</a></li>
 						<li><a href="/dashboard/customer/"><i class="fa fa-user"></i>
@@ -178,33 +180,32 @@
 		<div id="page-wrapper">
 			<div
 				class="kt-grid kt-grid--desktop kt-grid--ver kt-grid--ver-desktop kt-app"
-				style="width: 100%; display: flex; padding: 40px;">
+				style="width: 100%; display: flex; padding: 25px;">
 
 
 
 				<div id="form1"
-					style="width: 75%; background-color: #f8f8f8; border-radius: 10px 10px 10px 10px; padding-left: 30px; margin-left:13%;
+					style="width: 58%; background-color: #f8f8f8; border-radius: 10px 10px 10px 10px; padding-left: 30px; margin-left:20%;
 					box-shadow: 8px 8px 10px #c2bbbb;border: 1px solid #dddada;">
 					<div class="row">
 						<div class="col-xl-12">
 							<div>
 
 								<form style="padding: 10px;" action="#"
-									th:action="@{/saveStaff1}" th:object="${staff}" method="post"
+									th:action="@{/saveStaff2}" th:object="${staff}" method="post"
 									enctype="multipart/form-data">
 									<div class="kt-portlet__body">
 										<div>
 											<div>
 												<div class="row">
 													
-													<div  style="margin-left:170px;">
-														<h3 class="kt-section__title kt-section__title-sm">Cập nhật thông tin nhân viên</h3>
+													<div  style="margin-left:190px;">
+														<h3 class="kt-section__title kt-section__title-sm">Thông
+															tin cá nhân</h3>
 														<br>
 													</div>
 												</div>
-												<table>
-												<tbody>
-												<td style="width:300px;"><div class="form-group" style="display: none;">
+												<div class="form-group" style="display: none;">
 													<label for="name">Id nhân viên</label> <input type="text"
 														style="display:" none";" class="form-control"
 														th:field="*{id_staff}" readonly="readonly">
@@ -215,100 +216,92 @@
 														th:field="*{id_user}" readonly="readonly">
 												</div>
 												<div class="form-group" style="display: none;">
-													<label for="name">anh:</label> <input type="text"
+													<label for="name">Id người dùng</label> <input type="text"
 														style="width: 30%; display:" none";" class="form-control"
 														th:field="*{image}" readonly="readonly">
 												</div>
-												
+												<div class="form-group" style="display: none;">
+													<label for="name">Ngày</label> <input type="text"
+														style="width: 30%; display:" none";" class="form-control"
+														th:field="*{dateWorking_Start}" readonly="readonly">
+												</div>
 												<div class="form-group row">
 													
 													<div class="col-lg-9 col-xl-6">
 
 														<img th:src="*{'/assets/img/'+{image}}" id="thumbnail"
 															alt="Ảnh nhân viên"
-															style="height: 200px; width: 250px; object-fit: cover;margin:10px;" />
-														<input type="file" name="fileImage" id="fileImage"
-															accept="image/png,image/ipeg" style="margin-left:10px;"   />
-															
+															style="height: 150px; width: 250px; object-fit: cover;margin-left:40%;" />
+														<input type="file" name="fileImage" id="fileImage" 
+															accept="image/png,image/ipeg" style="margin-left:165px;display:none;"  />
+														
 													</div>
 
-												</div></td>
-												<td>
+												</div>
 												<div class="form-group row">
-													<label class="col-xl-4 col-lg-4 col-form-label">Họ
-														và tên:</label>
-													<div class="col-lg-8 col-xl-6">
+													<label class="col-xl-3 col-lg-3 col-form-label">Họ
+														và tên</label>
+													<div class="col-lg-9 col-xl-6">
 
 														<input type="text" id="ten" th:field="*{name_staff}"
-															style="width: 230px;" placeholder="Tên nhân viên" required autofocus 
+															style="width: 330px;" readonly="readonly" required autofocus 
+															 placeholder="Họ và tên"
 															class="form-control">
 													</div>
 
 												</div>
-												<div class="form-group row" >
-													<label class="col-xl-4 col-lg-4 col-form-label">Email:</label>
-													<div class="col-lg-8 col-xl-6">
+												<div class="form-group row">
+													<label class="col-xl-3 col-lg-3 col-form-label">Địa
+														chỉ</label>
+													<div class="col-lg-9 col-xl-6">
 
-														<input type="email" th:field="*{email}" style="width: 230px;" readonly="readonly"
-															class="form-control" placeholder="Email" required autofocus id="email"
-															>
+														<input type="text" id="diachi" th:field="*{address}"
+															style="width: 330px;" readonly="readonly" placeholder="Địa chỉ"
+															class="form-control">
 													</div>
-
 												</div>
 												
-												<div class="form-group row" >
-													<label class="col-xl-4 col-lg-4 col-form-label">Ngày:</label>
-													<div class="col-lg-8 col-xl-6">
-
-														<input type="date" th:field="*{dateWorking_Start}" style="width: 230px;" 
-															class="form-control">
-													</div>
-
-												</div>
+											
+												
 												<div class="form-group row">
-													<label class="col-xl-4 col-lg-4 col-form-label">Địa
-														chỉ:</label>
-													<div class="col-lg-8 col-xl-6">
+													<label class="col-xl-3 col-lg-3 col-form-label">Giới
+														tính</label>
+													<div class="col-lg-9 col-xl-6">
 
-														<input type="text" id="diachi" th:field="*{address}" placeholder="Địa chỉ"
-															style="width: 230px;" 
-															class="form-control">
-													</div>
-												</div>
-
-												<div class="form-group row">
-													<label class="col-xl-4 col-lg-4 col-form-label">Giới
-														tính:</label>
-													<div class="col-lg-8 col-xl-6">
-
-														<input type="radio" th:field="*{sex}" value="1" >
-														Nam <input type="radio" th:field="*{sex}" value="2" >
+														<input type="radio" th:field="*{sex}" value="1" readonly="readonly">
+														Nam <input type="radio" th:field="*{sex}" value="2" readonly="readonly">
 														Nữ
 													</div>
 												</div>
 
-												<div class="form-group row">
-													<label class="col-xl-4 col-lg-4 col-form-label">Số
-														điện thoại:</label>
-													<div class="col-lg-8 col-xl-6">
+												<div class="form-group row" style="display: none;">
+													<label class="col-xl-3 col-lg-3 col-form-label">Email</label>
+													<div class="col-lg-9 col-xl-6">
 
-														<input type="text" id="sdt" th:field="*{phone}" placeholder="Số điện thoại"
-															style="width: 230px;" 
+														<input type="text" th:field="*{email}" readonly="readonly"
+															class="form-control">
+													</div>
+
+												</div>
+												<div class="form-group row">
+													<label class="col-xl-3 col-lg-3 col-form-label">Số
+														điện thoại</label>
+													<div class="col-lg-9 col-xl-6">
+
+														<input type="text" id="sdt" th:field="*{phone}"
+															style="width: 330px;" readonly="readonly" placeholder="Số điện thoại"
 															class="form-control">
 													</div>
 												</div>
-												</td>
-												</tbody>
-												</table>
-												
-												
 
 
 											</div>
 										</div>
 									</div>
-									
-									<button  style=" margin-left: 597px;margin-bottom: 10px"
+									<input id="binh" type="button" class="btn btn-primary"
+										style="margin-left: 335px;" value="Cập nhật thông tin"
+										onClick="hien()">
+									<button id="chien" style="display: none; margin-left: 418px;"
 										class="btn btn-primary" type="submit">Save</button>
 								</form>
 							</div>
@@ -321,93 +314,104 @@
 			<!-- /#page-wrapper -->
 
 		</div>
+		<!-- /#wrapper -->
 
-		</div>
-		<!-- /#page-wrapper -->
+		<!-- jQuery -->
+		<script src="/webjars/startbootstrap-sb-admin-2/1.0.2/js/jquery.js"></script>
 
-	</div>
-	<!-- /#wrapper -->
+		<!-- Bootstrap Core JavaScript -->
+		<script
+			src="/webjars/startbootstrap-sb-admin-2/1.0.2/js/bootstrap.min.js"></script>
 
-	<!-- jQuery -->
-	<script src="/webjars/startbootstrap-sb-admin-2/1.0.2/js/jquery.js"></script>
+		<!-- Metis Menu Plugin JavaScript -->
+		<script
+			src="/webjars/startbootstrap-sb-admin-2/1.0.2/js/plugins/metisMenu/metisMenu.min.js"></script>
 
-	<!-- Bootstrap Core JavaScript -->
-	<script
-		src="/webjars/startbootstrap-sb-admin-2/1.0.2/js/bootstrap.min.js"></script>
+		<!-- Morris Charts JavaScript -->
+		<script
+			src="/webjars/startbootstrap-sb-admin-2/1.0.2/js/plugins/morris/raphael.min.js"></script>
+		<script
+			src="/webjars/startbootstrap-sb-admin-2/1.0.2/js/plugins/morris/morris.min.js"></script>
+		<script
+			src="/webjars/startbootstrap-sb-admin-2/1.0.2/js/plugins/morris/morris-data.js"></script>
 
-	<!-- Metis Menu Plugin JavaScript -->
-	<script
-		src="/webjars/startbootstrap-sb-admin-2/1.0.2/js/plugins/metisMenu/metisMenu.min.js"></script>
-
-	<!-- Morris Charts JavaScript -->
-	<script
-		src="/webjars/startbootstrap-sb-admin-2/1.0.2/js/plugins/morris/raphael.min.js"></script>
-	<script
-		src="/webjars/startbootstrap-sb-admin-2/1.0.2/js/plugins/morris/morris.min.js"></script>
-	<script
-		src="/webjars/startbootstrap-sb-admin-2/1.0.2/js/plugins/morris/morris-data.js"></script>
-
-	<!-- Custom Theme JavaScript -->
-	<script src="/webjars/startbootstrap-sb-admin-2/1.0.2/js/sb-admin-2.js"></script>
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<!-- Custom Theme JavaScript -->
+		<script
+			src="/webjars/startbootstrap-sb-admin-2/1.0.2/js/sb-admin-2.js"></script>
+		<script
+			src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<script type="text/javascript">
-    $(document).ready(function () {
-    	$('#fileImage').change(function(){
-    		showImageThumbnail(this);
-    	});
-    	
-        $("#myInput").on("keyup", function () {
-            var value = $(this).val().toLowerCase();
-            $("#myTable tr").filter(function () {
-                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-            });
-        });
-    });
-    
-    function showImageThumbnail(fileInput){
-    	file = fileInput.files[0];
-    	reader = new FileReader();
-    	
-    	reader.onload= function(e){
-    		$('#thumbnail').attr('src', e.target.result);
-    	};
-    	reader.readAsDataURL(file); 
-    };
-    
-    var timepicker = new TimePicker('time', {
-  	  lang: 'en',
-  	  theme: 'dark'
-  	});
-  	timepicker.on('change', function(evt) {
-  	  
-  	  var value = (evt.hour || '00') + ':' + (evt.minute || '00');
-  	  evt.element.value = value;
+			$(document)
+					.ready(
+							function() {
+								$('#fileImage').change(function(){
+						    		showImageThumbnail(this);
+						    	});
+								$("#myInput")
+										.on(
+												"keyup",
+												function() {
+													var value = $(this).val()
+															.toLowerCase();
+													$("#myTable tr")
+															.filter(
+																	function() {
+																		$(this)
+																				.toggle(
+																						$(
+																								this)
+																								.text()
+																								.toLowerCase()
+																								.indexOf(
+																										value) > -1)
+																	});
+												});
+							});
+			
+			function showImageThumbnail(fileInput){
+		    	file = fileInput.files[0];
+		    	reader = new FileReader();
+		    	
+		    	reader.onload= function(e){
+		    		$('#thumbnail').attr('src', e.target.result);
+		    	};
+		    	reader.readAsDataURL(file); 
+		    };
+			
+			var timepicker = new TimePicker('time', {
+				lang : 'en',
+				theme : 'dark'
+			});
+			
+			timepicker.on('change', function(evt) {
 
-  	});
-  	function code() {
-		// check trong
-		
-		var email = document.getElementById("email").value.trim();
-		var ten = document.getElementById("ten").value.trim();
-		var filter = /^[a-zA-Z-' ]*$/;
+				var value = (evt.hour || '00') + ':' + (evt.minute || '00');
+				evt.element.value = value + ':00';
 
-		if (email.trim().length == 0) {
-			alert("Mời bạn nhập email");
-			return false;
-		}
-		if (ten.trim().length == 0) {
-			alert("Mời bạn nhập email");
-			return false;
-		}
-		if (!filter.test(email.value)) {
-			alert('Please provide a valid email address');
-			email.focus;
-			return false;
-		}
-		return true;
-	}
-</script>
+			});
+			function code() {
+				// check trong
+				var name = document.getElementById("ten").value.trim();
+				
+				if (name.trim().length == 0) {
+					alert("Mời bạn nhập họ và tên");
+					return false;
+				}
+				
+
+				return true;
+			};
+			function hien() {
+				document.getElementById("chien").style.display = "block";
+				document.getElementById("binh").style.display = "none";
+				document.getElementById("fileImage").style.display = "block";
+				$('#fileImage').prop('type', "file");
+				$('#ten').prop('readonly', false);
+				$('#diachi').prop('readonly', false);
+				$('#sdt').prop('readonly', false);
+
+			}
+		</script>
 </body>
 
 </html>

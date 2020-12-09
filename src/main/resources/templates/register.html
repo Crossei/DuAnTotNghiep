@@ -20,11 +20,11 @@
 
 		<body>
 			<section class="form-register">
-			<div class="background-register">
-				<div class="row">
+			<div class="background-register" style="padding: 100px 53px 62px 89px;">
+				<div class="row" >
 					
 					<div class="col-lg-6">
-						<img src="img/register.jpg" class="img-bg-register">
+						<img src="img/register.jpg" class="img-bg-register" style="object-fit: cover;">
 					</div>
 					<div class="col-lg-6">
 						<div>
@@ -34,21 +34,21 @@
 							<div class="form-group">
 								<label>Họ và tên</label>
 								<div class="login-content">
-									<input type="text" name="name" id="name" class="form-control" />
+									<input type="text" name="name" id="name" class="form-control" placeholder="Họ tên" />
 								</div>
 							</div>
 							<div class="form-group">
 								<label>Email</label>
 								<div class="login-content">
-									<input type="text" name="username" id="username" required
-										autofocus class="form-control" />
+									<input type="email" name="username" id="username" required
+										autofocus class="form-control" placeholder="Email" />
 								</div>
 							</div>
 							<div class="form-group">
 								<label>Mật khẩu</label>
 								<div class="login-content">
 									<input type="password" name="password" id="password" required
-										autofocus class="form-control" />
+										autofocus class="form-control"  placeholder="Mật khẩu"/>
 								</div>
 							</div>
 							<div class="form-group">
@@ -56,7 +56,7 @@
 								<div class="login-content">
 									<input type="password" name="cfpassword" id="cfpassword"
 										required autofocus oninput="checkPasswordMatch(this);"
-										class="form-control" />
+										class="form-control"  placeholder="Xác nhận mật khẩu"/>
 								</div>
 							</div>
 							<button type="submit" class="btn btn-primary">Đăng ký</button>
@@ -76,7 +76,7 @@
 				function code() {
 					// check trong
 					var name = document.getElementById("name").value.trim();
-					var email = document.getElementById("email").value.trim();
+					var email = document.getElementById("username").value.trim();
 					var pass = document.getElementById("password").value.trim();
 					var cfpass = document.getElementById("cfpassword").value
 							.trim();
