@@ -32,7 +32,7 @@ import com.example.demo.dao.Service;
 import com.example.demo.dao.Staff;
 import com.example.demo.dao.User;
 import com.example.demo.dto.DatLichDTO;
-import com.example.demo.dto.tiepNhanLichKhamDTO;
+import com.example.demo.dto.TiepNhanLichKhamDTO;
 import com.example.demo.service.BookingDetailRepository;
 import com.example.demo.service.BookingRepository;
 import com.example.demo.service.CustomerRepository;
@@ -240,32 +240,8 @@ public class MainController {
 		return "login";
 	}
 
-	@RequestMapping("/dashboard/quanlylichkham")
-	public String quanLyLichKham(Model model) {
-		return "dashboard/ql_lichkham";
-	}
+	
 
-	@RequestMapping("/dashboard/quanlylichkham/register-work")
-	public String lichKhamRegister(Model model) {
-
-		final DateFormat dateFormat1 = new SimpleDateFormat("dd/MM/YYYY");
-		Calendar dateNow = Calendar.getInstance();
-		dateNow.setTime(new Date()); // Now use today date.
-		Calendar dateFuture = Calendar.getInstance();
-		dateFuture.setTime(new Date()); // Now use today date.
-		dateFuture.add(Calendar.DATE, 7); // Adding 5 days
-		System.out.println(dateFormat1.format(dateNow.getTime()));
-		System.out.println(dateFormat1.format(dateFuture.getTime()));
-		model.addAttribute("dateNow", dateFormat1.format(dateNow.getTime()));
-		model.addAttribute("dateFuture", dateFormat1.format(dateFuture.getTime()));
-
-		return "dashboard/register_work";
-	}
-
-	@RequestMapping("/dashboard/quanlylichkham/calendar")
-	public String quanLyLichKhamCalendar(Model model) {
-		return "dashboard/calender_kham";
-	}
 
 	public boolean checkLoggedIn() {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();

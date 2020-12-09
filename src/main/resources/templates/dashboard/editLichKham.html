@@ -46,6 +46,7 @@
 	href="/webjars/startbootstrap-sb-admin-2/1.0.2/font-awesome/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css" />
 
+
 </head>
 
 <body>
@@ -70,51 +71,8 @@
 
 				<!-- /.dropdown -->
 
-				<li class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="#"> <i class="fa fa-bell fa-fw"></i>
-						<i class="fa fa-caret-down"></i>
-				</a>
-					<ul class="dropdown-menu dropdown-alerts">
-						<li><a href="#">
-								<div>
-									<i class="fa fa-comment fa-fw"></i> New Comment <span
-										class="pull-right text-muted small">4 minutes ago</span>
-								</div>
-						</a></li>
-						<li class="divider"></li>
-						<li><a href="#">
-								<div>
-									<i class="fa fa-twitter fa-fw"></i> 3 New Followers <span
-										class="pull-right text-muted small">12 minutes ago</span>
-								</div>
-						</a></li>
-						<li class="divider"></li>
-						<li><a href="#">
-								<div>
-									<i class="fa fa-envelope fa-fw"></i> Message Sent <span
-										class="pull-right text-muted small">4 minutes ago</span>
-								</div>
-						</a></li>
-						<li class="divider"></li>
-						<li><a href="#">
-								<div>
-									<i class="fa fa-tasks fa-fw"></i> New Task <span
-										class="pull-right text-muted small">4 minutes ago</span>
-								</div>
-						</a></li>
-						<li class="divider"></li>
-						<li><a href="#">
-								<div>
-									<i class="fa fa-upload fa-fw"></i> Server Rebooted <span
-										class="pull-right text-muted small">4 minutes ago</span>
-								</div>
-						</a></li>
-						<li class="divider"></li>
-						<li><a class="text-center" href="#"> <strong>See
-									All Alerts</strong> <i class="fa fa-angle-right"></i>
-						</a></li>
-					</ul> <!-- /.dropdown-alerts --></li>
-				<!-- /.dropdown -->
+				<li class="dropdown">
+					<!-- /.dropdown -->
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown" href="#"> <i class="fa fa-user fa-fw"></i>
 						<i class="fa fa-caret-down"></i>
@@ -172,58 +130,61 @@
 
 				<h1 class="h3 mb-2 text-gray-800 mb-5">Cập nhật thông tin nhân
 					viên</h1>
-				<form action="#" th:action="@{/saveStaff}" th:object="${staff}"
-					method="post">
-
+				<form action="#" th:action="@{/dashboard/lichkham/luu}"
+					th:object="${bookItem}" method="post">
+					<input type="hidden" th:field="*{id_detail}" />
 					<div class="form-group">
-						<label for="name">Id</label> <input type="text" style="width: 30%"
-							class="form-control" th:field="*{id_staff}" readonly="readonly">
-					</div>
-					<div class="form-group">
-						<label for="name">Tên nhân viên</label> <input type="text"
-							style="width: 30%" class="form-control" th:field="*{name_staff}">
-					</div>
-					<div class="form-group">
-						<label for="name">Id người dùng</label> <input type="number"
-							style="width: 30%" class="form-control" th:field="*{id_user}"
+						<label>Tên khách hàng</label> <input type="text"
+							style="width: 30%" class="form-control" th:field="*{name}"
 							readonly="readonly">
 					</div>
 					<div class="form-group">
-						<label for="username">Địa chỉ</label> <input type="text"
-							style="width: 30%" class="form-control" th:field="*{address}">
+						<label>Số điện thoại</label> <input type="text"
+							style="width: 30%" class="form-control" th:field="*{sdt}"
+							readonly="readonly">
 					</div>
 					<div class="form-group">
-						<label for="username">Ảnh</label> <img id="thumbnail"
-							alt="Ảnh nhân viên"
-							style="width: 50px; height: 50px; object-fit: cover;" /> <input
-							th:field="*{image}" type="file" name="fileImage" id="fileImage"
-							accept="image/png,image/ipeg" />
+						<label>Tên dịch vụ</label> <input type="text" style="width: 30%"
+							class="form-control" th:field="*{tendv}" readonly="readonly" />
+					</div>
+					<div class="form-group">
+						<label>Bác sĩ khám</label> <select th:field="*{tenbs}">
+							<option th:each="bsList :${staffList}"
+								th:value=${bsList.id_staff} th:text=${bsList.name_staff} />
+						</select>
+					</div>
+					<div class="form-group">
+						<label>Ngày Đặt</label> <input class="form-control"
+							style="width: 30%" type="date" th:field="*{ngayDat}" id="txtDate">
+					</div>
+					<div class="form-group">
+						<label>Giờ bắt đầu</label> <select th:field="*{gioBatDau}">
+							<option th:value="${'8:00'}">8:00</option>
+							<option th:value="${'8:30'}">8:30</option>
+							<option th:value="${'9:00'}">9:00</option>
+							<option th:value="${'9:30'}">9:30</option>
+							<option th:value="${'10:00'}">10:00</option>
+							<option th:value="${'10:30'}">10:30</option>
+						</select>
+					</div>
 
-					</div>
 					<div class="form-group">
-						<label for="username">Giới tính</label> <input type="radio"
-							th:field="*{sex}" value="1"> Nam <input type="radio"
-							th:field="*{sex}" value="2"> Nữ
+						<label>Giá tiền</label> <input type="text" style="width: 30%"
+							class="form-control" th:field="*{giaTien}" readonly="readonly">
 					</div>
-					<div class="form-group">
-						<label for="role">Email</label> <input type="text"
-							th:field="*{email}" style="width: 30%" class="form-control" />
-					</div>
-					<div class="form-group">
-						<label for="username">Số điện thoại</label> <input type="number"
-							style="width: 30%" class="form-control" th:field="*{phone}">
-					</div>
+
+
+					<button class="btn btn-primary" type="submit">Lưu</button>
+					<button th:href="@{/dashboard/lichkham}" class="btn btn-warning"
+						type="submit">Quay lại</button>
+				</form>
+
+
+
 			</div>
 
-			<button class="btn btn-primary" type="submit">Save</button>
-			</form>
-
-
-
 		</div>
-
-	</div>
-	<!-- /#page-wrapper -->
+		<!-- /#page-wrapper -->
 
 	</div>
 	<!-- /#wrapper -->
@@ -252,52 +213,27 @@
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script type="text/javascript">
-		$(document)
-				.ready(
-						function() {
-							$('#fileImage').change(function() {
-								showImageThumbnail(this);
-							});
+		$(function() {
+			var dtToday = new Date();
 
-							$("#myInput")
-									.on(
-											"keyup",
-											function() {
-												var value = $(this).val()
-														.toLowerCase();
-												$("#myTable tr")
-														.filter(
-																function() {
-																	$(this)
-																			.toggle(
-																					$(
-																							this)
-																							.text()
-																							.toLowerCase()
-																							.indexOf(
-																									value) > -1)
-																});
-											});
-						});
+			var month = dtToday.getMonth() + 1;
+			var day = dtToday.getDate();
+			var year = dtToday.getFullYear();
+			if (month < 10)
+				month = '0' + month.toString();
+			if (day < 10)
+				day = '0' + day.toString();
 
-		function showImageThumbnail(fileInput) {
-			file = fileInput.files[0];
-			reader = new FileReader();
+			var today = new Date();
+			var day1 = (today.getDate() + 7) > 9 ? (today.getDate() + 14) : "0"
+					+ (today.getDate() + 14); // format should be "DD" not "D" e.g 09
+			var month1 = (today.getMonth() + 1) > 9 ? (today.getMonth() + 1)
+					: "0" + (today.getMonth() + 1);
+			var year1 = today.getFullYear();
 
-			reader.onload = function(e) {
-				$('#thumbnail').attr('src', e.target.result);
-			};
-			reader.readAsDataURL(file);
-		};
-
-		var timepicker = new TimePicker('time', {
-			lang : 'en',
-			theme : 'dark'
-		});
-		timepicker.on('change', function(evt) {
-
-			var value = (evt.hour || '00') + ':' + (evt.minute || '00');
-			evt.element.value = value;
+			var maxDate = year + '-' + month + '-' + day;
+			var minDate = year1 + '-' + month1 + '-' + day1;
+			$('#txtDate').attr('min', maxDate);
 
 		});
 	</script>

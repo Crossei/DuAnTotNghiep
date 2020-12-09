@@ -95,118 +95,7 @@
 
         <ul class="nav navbar-top-links navbar-right">
          <div id="snackbar">Some text some message..</div>
-            <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                    <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
-                </a>
-                <ul class="dropdown-menu dropdown-messages">
-                    <li>
-                        <a href="#">
-                            <div>
-                                <strong>John Smith</strong>
-                                <span class="pull-right text-muted">
-                                        <em>Yesterday</em>
-                                    </span>
-                            </div>
-                            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="#">
-                            <div>
-                                <strong>John Smith</strong>
-                                <span class="pull-right text-muted">
-                                        <em>Yesterday</em>
-                                    </span>
-                            </div>
-                            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="#">
-                            <div>
-                                <strong>John Smith</strong>
-                                <span class="pull-right text-muted">
-                                        <em>Yesterday</em>
-                                    </span>
-                            </div>
-                            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a class="text-center" href="#">
-                            <strong>Read All Messages</strong>
-                            <i class="fa fa-angle-right"></i>
-                        </a>
-                    </li>
-                </ul>
-                <!-- /.dropdown-messages -->
-            </li>
-            <!-- /.dropdown -->
-
-            <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                    <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
-                </a>
-                <ul class="dropdown-menu dropdown-alerts">
-                    <li>
-                        <a href="#">
-                            <div>
-                                <i class="fa fa-comment fa-fw"></i> New Comment
-                                <span class="pull-right text-muted small">4 minutes ago</span>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="#">
-                            <div>
-                                <i class="fa fa-twitter fa-fw"></i> 3 New Followers
-                                <span class="pull-right text-muted small">12 minutes ago</span>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="#">
-                            <div>
-                                <i class="fa fa-envelope fa-fw"></i> Message Sent
-                                <span class="pull-right text-muted small">4 minutes ago</span>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="#">
-                            <div>
-                                <i class="fa fa-tasks fa-fw"></i> New Task
-                                <span class="pull-right text-muted small">4 minutes ago</span>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="#">
-                            <div>
-                                <i class="fa fa-upload fa-fw"></i> Server Rebooted
-                                <span class="pull-right text-muted small">4 minutes ago</span>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a class="text-center" href="#">
-                            <strong>See All Alerts</strong>
-                            <i class="fa fa-angle-right"></i>
-                        </a>
-                    </li>
-                </ul>
-                <!-- /.dropdown-alerts -->
-            </li>
-            <!-- /.dropdown -->
+          
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                     <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
@@ -261,6 +150,9 @@
                     <li>
                         <a href="/dashboard/account/"><i class="fa fa-user"></i> Quản lý tài khoản</a>
                     </li>
+                    <li>
+                        <a href="/dashboard/lichkham/"><i class="fa fa-user"></i>Tiếp nhận lịch khám</a>
+                    </li>
 
                 </ul>
             </div>
@@ -268,7 +160,7 @@
         </div>
         <!-- /.navbar-static-side -->
     </nav>
-	<form th:action="@{dang}">
+	<form th:action="@{/dashboard/quanlylichkham/dangky/xacnhan}" th:object="${dangKy}" method="POST">
     <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
@@ -299,18 +191,19 @@
             <h3 >Thứ 2: </h3>
             <div class="col-lg-12">
             <div class="col-md-4">
-                 <input type="checkbox" class="form-check-input" name="id"
+            <input type="hidden"  th:field=*{dangKyNgay}/>
+                 <input type="checkbox" class="form-check-input" name="id" th:field="*{thu2}"
 								id="exampleCheck2" th:value="${1}"> <label class="form-check-label"
 								for="chkremember">Ca 1:8h30-12h</label>
             </div>
             <div class="col-md-4">
-                 <input type="checkbox" class="form-check-input" name="id"
-								id="exampleCheck2" th:value="${1}"> <label class="form-check-label"
+                 <input type="checkbox" class="form-check-input" name="id" th:field="*{thu2}"
+								id="exampleCheck2" th:value="${2}"> <label class="form-check-label"
 								for="chkremember">Ca 2: 13h30-17h</label>
             </div>
             <div class="col-md-4"> 
-                 <input type="checkbox" class="form-check-input" name="id"
-								id="exampleCheck2" th:value="${1}"> <label class="form-check-label"
+                 <input type="checkbox" class="form-check-input" name="id" th:field="*{thu2}"
+								id="exampleCheck2" th:value="${3}"> <label class="form-check-label"
 								for="chkremember">Ca 3: 17h-19h30</label>
             </div>
                 
@@ -324,18 +217,18 @@
             <h3 >Thứ 3:</h3>
             <div class="col-lg-12">
             <div class="col-md-4">
-                 <input type="checkbox" class="form-check-input" name="id"
+                 <input type="checkbox" class="form-check-input" name="id" th:field="*{thu3}"
 								id="exampleCheck3" th:value="${1}"> <label class="form-check-label"
 								for="chkremember">Ca 1:8h30-12h</label>
             </div>
             <div class="col-md-4">
-                 <input type="checkbox" class="form-check-input" name="id"
-								id="exampleCheck3" th:value="${1}"> <label class="form-check-label"
+                 <input type="checkbox" class="form-check-input" name="id" th:field="*{thu3}"
+								id="exampleCheck3" th:value="${2}"> <label class="form-check-label"
 								for="chkremember">Ca 2: 13h30-17h</label>
             </div>
             <div class="col-md-4">
-                 <input type="checkbox" class="form-check-input" name="id"
-								id="exampleCheck3" th:value="${1}"> <label class="form-check-label"
+                 <input type="checkbox" class="form-check-input" name="id" th:field="*{thu3}"
+								id="exampleCheck3" th:value="${3}"> <label class="form-check-label"
 								for="chkremember">Ca 3: 17h-19h30</label>
             </div>
                 
@@ -348,18 +241,18 @@
             <h3 >Thứ 4:</h3>
             <div class="col-lg-12">
             <div class="col-md-4">
-                 <input type="checkbox" class="form-check-input" name="id"
+                 <input type="checkbox" class="form-check-input" name="id" th:field="*{thu4}"
 								id="exampleCheck4" th:value="${1}"> <label class="form-check-label"
 								for="chkremember">Ca 1:8h30-12h</label>
             </div>
             <div class="col-md-4">
-                 <input type="checkbox" class="form-check-input" name="id"
-								id="exampleCheck4" th:value="${1}"> <label class="form-check-label"
+                 <input type="checkbox" class="form-check-input" name="id" th:field="*{thu4}"
+								id="exampleCheck4" th:value="${2}"> <label class="form-check-label"
 								for="chkremember">Ca 2: 13h30-17h</label>
             </div>
             <div class="col-md-4">
-                 <input type="checkbox" class="form-check-input" name="id"
-								id="exampleCheck4" th:value="${1}"> <label class="form-check-label"
+                 <input type="checkbox" class="form-check-input" name="id" th:field="*{thu4}"
+								id="exampleCheck4" th:value="${3}"> <label class="form-check-label"
 								for="chkremember">Ca 3: 17h-19h30</label>
             </div>
                 
@@ -372,18 +265,18 @@
             <h3 >Thứ 5:</h3>
             <div class="col-lg-12">
             <div class="col-md-4">
-                 <input type="checkbox" class="form-check-input" name="id"
+                 <input type="checkbox" class="form-check-input" name="id" th:field="*{thu5}"
 								id="exampleCheck5" th:value="${1}"> <label class="form-check-label"
 								for="chkremember">Ca 1:8h30-12h</label>
             </div>
             <div class="col-md-4">
-                 <input type="checkbox" class="form-check-input" name="id"
-								id="exampleCheck5" th:value="${1}"> <label class="form-check-label"
+                 <input type="checkbox" class="form-check-input" name="id" th:field="*{thu5}"
+								id="exampleCheck5" th:value="${2}"> <label class="form-check-label"
 								for="chkremember">Ca 2: 13h30-17h</label>
             </div>
             <div class="col-md-4">
-                 <input type="checkbox" class="form-check-input" name="id"
-								id="exampleCheck5" th:value="${1}"> <label class="form-check-label"
+                 <input type="checkbox" class="form-check-input" name="id" th:field="*{thu5}"
+								id="exampleCheck5" th:value="${3}"> <label class="form-check-label"
 								for="chkremember">Ca 3: 17h-19h30</label>
             </div>
                 
@@ -396,18 +289,18 @@
             <h3 >Thứ 6:</h3>
             <div class="col-lg-12">
             <div class="col-md-4">
-                 <input type="checkbox" class="form-check-input" name="id"
+                 <input type="checkbox" class="form-check-input" name="id" th:field="*{thu6}"
 								id="exampleCheck6" th:value="${1}"> <label class="form-check-label"
 								for="chkremember">Ca 1:8h30-12h</label>
             </div>
             <div class="col-md-4">
-                 <input type="checkbox" class="form-check-input" name="id"
-								id="exampleCheck6" th:value="${1}"> <label class="form-check-label"
+                 <input type="checkbox" class="form-check-input" name="id" th:field="*{thu6}"
+								id="exampleCheck6" th:value="${2}"> <label class="form-check-label"
 								for="chkremember">Ca 2: 13h30-17h</label>
             </div>
             <div class="col-md-4">
-                 <input type="checkbox" class="form-check-input" name="id"
-								id="exampleCheck6" th:value="${1}"> <label class="form-check-label"
+                 <input type="checkbox" class="form-check-input" name="id" th:field="*{thu6}"
+								id="exampleCheck6" th:value="${3}"> <label class="form-check-label"
 								for="chkremember">Ca 3: 17h-19h30</label>
             </div>
                 
@@ -420,18 +313,18 @@
             <h3 >Thứ 7:</h3>
             <div class="col-lg-12">
             <div class="col-md-4">
-                 <input type="checkbox" class="form-check-input" name="id"
+                 <input type="checkbox" class="form-check-input" name="id" th:field="*{thu7}"
 								id="exampleCheck7" th:value="${1}"> <label class="form-check-label"
 								for="chkremember">Ca 1:8h30-12h</label>
             </div>
             <div class="col-md-4">
-                 <input type="checkbox" class="form-check-input" name="id"
-								id="exampleCheck7" th:value="${1}"> <label class="form-check-label"
+                 <input type="checkbox" class="form-check-input" name="id" th:field="*{thu7}"
+								id="exampleCheck7" th:value="${2}"> <label class="form-check-label"
 								for="chkremember">Ca 2: 13h30-17h</label>
             </div>
             <div class="col-md-4">
-                 <input type="checkbox" class="form-check-input" name="id"
-								id="exampleCheck7" th:value="${1}"> <label class="form-check-label"
+                 <input type="checkbox" class="form-check-input" name="id" th:field="*{thu7}"
+								id="exampleCheck7" th:value="${3}"> <label class="form-check-label"
 								for="chkremember">Ca 3: 17h-19h30</label>
             </div>
                 

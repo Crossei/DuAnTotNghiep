@@ -16,7 +16,8 @@ public class BookingDetail {
 	@Id 
 	@GeneratedValue(strategy = GenerationType.IDENTITY) 
 	private int id_detail;
-	private int id_staff;
+	@Column(name = "id_staff")
+	private int idstaff;
 	private int id_service;
 	@Column(name = "id_booking")
 	private int idBooking;
@@ -37,7 +38,7 @@ public class BookingDetail {
 	}
 	@Override
 	public String toString() {
-		return "BookingDetail [id_detail=" + id_detail + ", id_staff=" + id_staff + ", id_service=" + id_service
+		return "BookingDetail [id_detail=" + id_detail + ", id_staff=" + idstaff + ", id_service=" + id_service
 				+ ", idBooking=" + idBooking + ", dateWorking_Start=" + dateWorking_Start + ", time_start=" + time_start
 				+ ", time_end=" + time_end + ", status=" + status + "]";
 	}
@@ -45,9 +46,18 @@ public class BookingDetail {
 		
 		// TODO Auto-generated constructor stub
 	}
+	
+	
+	
+	public BookingDetail(int id_staff, Date dateWorking_Start, Time time_start) {
+		super();
+		this.idstaff = id_staff;
+		this.dateWorking_Start = dateWorking_Start;
+		this.time_start = time_start;
+	}
 	public BookingDetail(int id_staff, int id_service, int id_booking, Date dateWorking_Start, Integer status,Integer active) {
 		super();
-		this.id_staff = id_staff;
+		this.idstaff = id_staff;
 		this.id_service = id_service;
 		this.idBooking = id_booking;
 		this.dateWorking_Start = dateWorking_Start;
@@ -61,10 +71,10 @@ public class BookingDetail {
 		this.id_detail = id_detail;
 	}
 	public int getId_staff() {
-		return id_staff;
+		return idstaff;
 	}
 	public void setId_staff(int id_staff) {
-		this.id_staff = id_staff;
+		this.idstaff = id_staff;
 	}
 	public int getId_service() {
 		return id_service;

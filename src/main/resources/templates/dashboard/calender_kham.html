@@ -51,118 +51,9 @@
         <!-- /.navbar-header -->
 
         <ul class="nav navbar-top-links navbar-right">
-            <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                    <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
-                </a>
-                <ul class="dropdown-menu dropdown-messages">
-                    <li>
-                        <a href="#">
-                            <div>
-                                <strong>John Smith</strong>
-                                <span class="pull-right text-muted">
-                                        <em>Yesterday</em>
-                                    </span>
-                            </div>
-                            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="#">
-                            <div>
-                                <strong>John Smith</strong>
-                                <span class="pull-right text-muted">
-                                        <em>Yesterday</em>
-                                    </span>
-                            </div>
-                            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="#">
-                            <div>
-                                <strong>John Smith</strong>
-                                <span class="pull-right text-muted">
-                                        <em>Yesterday</em>
-                                    </span>
-                            </div>
-                            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a class="text-center" href="#">
-                            <strong>Read All Messages</strong>
-                            <i class="fa fa-angle-right"></i>
-                        </a>
-                    </li>
-                </ul>
-                <!-- /.dropdown-messages -->
-            </li>
-            <!-- /.dropdown -->
+          
 
-            <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                    <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
-                </a>
-                <ul class="dropdown-menu dropdown-alerts">
-                    <li>
-                        <a href="#">
-                            <div>
-                                <i class="fa fa-comment fa-fw"></i> New Comment
-                                <span class="pull-right text-muted small">4 minutes ago</span>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="#">
-                            <div>
-                                <i class="fa fa-twitter fa-fw"></i> 3 New Followers
-                                <span class="pull-right text-muted small">12 minutes ago</span>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="#">
-                            <div>
-                                <i class="fa fa-envelope fa-fw"></i> Message Sent
-                                <span class="pull-right text-muted small">4 minutes ago</span>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="#">
-                            <div>
-                                <i class="fa fa-tasks fa-fw"></i> New Task
-                                <span class="pull-right text-muted small">4 minutes ago</span>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="#">
-                            <div>
-                                <i class="fa fa-upload fa-fw"></i> Server Rebooted
-                                <span class="pull-right text-muted small">4 minutes ago</span>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a class="text-center" href="#">
-                            <strong>See All Alerts</strong>
-                            <i class="fa fa-angle-right"></i>
-                        </a>
-                    </li>
-                </ul>
-                <!-- /.dropdown-alerts -->
-            </li>
-            <!-- /.dropdown -->
+          
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                     <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
@@ -214,6 +105,9 @@
                     <li>
                         <a href="/dashboard/account/"><i class="fa fa-user"></i> Quản lý tài khoản</a>
                     </li>
+                    <li>
+                        <a href="/dashboard/lichkham/"><i class="fa fa-user"></i>Tiếp nhận lịch khám</a>
+                    </li>
 
                 </ul>
             </div>
@@ -233,8 +127,10 @@
                 <div class="card-header py-3">
                     <div class="row">
                         <div class="col-lg-6">
-                            <h6 class="m-0 font-weight-bold text-primary">Hiển thị chi tiết lịch khám bệnh</h6>
-                            <button class="btn btn-default">Export</button>
+                            <h6 class="m-0 font-weight-bold text-primary">Hiển thị chi tiết lịch khám bệnh</h6>                          
+                             <a th:if=${dangKyLich} th:href="@{/dashboard/quanlylichkham/dangky}" class="btn btn-default">Đăng ký lịch</a>
+                             <a th:if="${dangKyLich == false}" th:href="@{/dashboard/quanlylichkham/dangky}" class="btn btn-default" disabled>Đăng ký lịch</a>
+                            
 
                         </div>
                         <div class="form-group pull-right">
@@ -247,11 +143,11 @@
                 <div class="card-body">
                     <div class="table-responsive">
                     <h4>Ngày 30/11/2020 - 05/12/2020</h4>
-                        <table class="table table-bordered" cellspacing="0">
+                        <table class="table table-bordered" cellspacing="0" >
                             <thead>
-                            <tr class="text-center">
-              
-                                <th>Giờ</th>
+                            <tr  class="text-center">
+              					<th style="width: 50px;">Ca</th>
+                                <th style="width: 150px;">Giờ</th>
                                 <th>Thứ 2</th>
                                 <th>Thứ 3</th>
                                 <th>Thứ 4</th>
@@ -260,76 +156,47 @@
                                 <th>Thứ 7</th>
                             </tr>
                             </thead>
-                            <tbody class="text-justify" id="myTable">
-                            <tr>
-    
-                                <td>08:00 AM</td>
-                                <td> Niềng răng</td>
-                                <td> </td>
-                                <td> </td>
-                                <td> </td>
-                                <td> </td>
-                                <td> </td>
-
-                            </tr>
-                            <tr>
-    
-                                <td>09:00 AM</td>
-                                <td> </td>
-                                <td> Hàn răng </td>
-                                <td> </td>
-                                <td> </td>
-                                <td> </td>
-                                <td> </td>
-
-                            </tr>
-                            <tr>
-    
-                                <td>10:00 AM</td>
-                                <td> </td>
-                                <td> </td>
-                                <td> Nhổ răng </td>
-                                <td> </td>
-                                <td> </td>
-                                <td> </td>
-
-                            </tr>
-                            <tr>
-    
-                                <td>11:00 AM</td>
-                                <td> </td>
-                                <td> </td>
-                                <td> </td>
-                                <td>Răng sứ </td>
-                                <td> </td>
-                                <td> </td>
-
-                            </tr>
-                            <tr>
-    
-                                <td>12:00 AM</td>
-                                <td> </td>
-                                <td> </td>
-                                <td> </td>
-                                <td> </td>
-                                <td> Phẫu thuật răng miệng</td>
-                                <td> </td>
-
-                            </tr>
-                            <tr>
-    
-                                <td>13:00 PM</td>
-                                <td> </td>
-                                <td> </td>
-                                <td> </td>
-                                <td> </td>
-                                <td> </td>
-                                <td> Răng trẻ em</td>
-
-                            </tr>
                             
+                            <tbody class="text-justify" id="myTable">
+                           
+       
+                            <tr  style="height:80px">
+                            
+    							<td>1</td>
+                                <td>08:30 AM - 12:00AM</td>
+                                <td  th:attr="style=${workWeek[0].shift1 == 1} ? 'background-color: #66ff66': ' background-color:#d0e1e1'"></td>
+                                <td  th:attr="style=${workWeek[1].shift1 == 1} ? 'background-color: #66ff66': ' background-color:#d0e1e1'"></td>
+                                <td  th:attr="style=${workWeek[2].shift1 == 1} ? 'background-color: #66ff66': ' background-color:#d0e1e1'"></td>
+                                <td  th:attr="style=${workWeek[3].shift1 == 1} ? 'background-color: #66ff66': ' background-color:#d0e1e1'"></td>
+                                <td  th:attr="style=${workWeek[4].shift1 == 1} ? 'background-color: #66ff66': ' background-color:#d0e1e1'"></td>
+                                <td  th:attr="style=${workWeek[5].shift1 == 1} ? 'background-color: #66ff66': ' background-color:#d0e1e1'"></td>
+						
+                            </tr>
+                            <tr style="height:80px">
+    							<td>2</td>
+                                <td>13:00 PM - 17:30PM</td>
+                                <td th:attr="style=${workWeek[0].shift2 == 1} ? 'background-color: #66ff66': ' background-color:#d0e1e1'"></td>
+                                <td th:attr="style=${workWeek[1].shift2 == 1} ? 'background-color: #66ff66': ' background-color:#d0e1e1'"></td>
+                                <td th:attr="style=${workWeek[2].shift2 == 1} ? 'background-color: #66ff66': ' background-color:#d0e1e1'"></td>
+                                <td th:attr="style=${workWeek[3].shift2 == 1} ? 'background-color: #66ff66': ' background-color:#d0e1e1'"></td>
+                                <td th:attr="style=${workWeek[4].shift2 == 1} ? 'background-color: #66ff66': ' background-color:#d0e1e1'"></td>
+                                <td th:attr="style=${workWeek[5].shift2 == 1} ? 'background-color: #66ff66': ' background-color:#d0e1e1'"></td>
 
+                            </tr>
+                            <tr style="height:80px">
+    							<td>3</td>
+                                <td>18:00 PM - 19:30PM</td>
+                                <td th:attr="style=${workWeek[0].shift3 == 1} ? 'background-color: #66ff66': ' background-color:#d0e1e1'"></td>
+                                <td th:attr="style=${workWeek[1].shift3 == 1} ? 'background-color: #66ff66': ' background-color:#d0e1e1'"></td>
+                                <td th:attr="style=${workWeek[2].shift3 == 1} ? 'background-color: #66ff66': ' background-color:#d0e1e1'"></td>
+                                <td th:attr="style=${workWeek[3].shift3 == 1} ? 'background-color: #66ff66': ' background-color:#d0e1e1'"></td>
+                                <td th:attr="style=${workWeek[4].shift3 == 1} ? 'background-color: #66ff66': ' background-color:#d0e1e1'"></td>
+                                <td th:attr="style=${workWeek[5].shift3 == 1} ? 'background-color: #66ff66': ' background-color:#d0e1e1'"></td>
+
+                            </tr>
+                         
                             </tbody>
+                            
                         </table>
                     </div>
                 </div>
@@ -359,16 +226,17 @@
 <!-- Custom Theme JavaScript -->
 <script src="/webjars/startbootstrap-sb-admin-2/1.0.2/js/sb-admin-2.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-    $(document).ready(function () {
-        $("#myInput").on("keyup", function () {
-            var value = $(this).val().toLowerCase();
-            $("#myTable tr").filter(function () {
-                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-            });
-        });
-    });
-</script>
+<style>
+* { 
+  word-wrap:break-word;
+}
+
+table { 
+  table-layout:fixed;
+  width:100%;
+}
+</style>
+
 </body>
 
 </html>

@@ -52,7 +52,7 @@
 		<nav class="navbar navbar-default navbar-static-top" role="navigation"
 			style="margin-bottom: 0">
 			<div class="navbar-header">
-			<button type="button" class="navbar-toggle" data-toggle="collapse"
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
 					data-target=".navbar-collapse">
 					<span class="sr-only">Toggle navigation</span> <span
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
@@ -183,14 +183,16 @@
 								class="fa fa-dashboard fa-fw"></i> Dashboard</a></li>
 						<li><a href="/dashboard/staff/"><i class="fa fa-user"></i>
 								Quản lý nhân viên</a></li>
-						<li><a href="/dashboard/quanlylichkham/"><i class="fa fa-user"></i>
-								Quản lý lịch làm việc</a></li>
+						<li><a href="/dashboard/quanlylichkham/"><i
+								class="fa fa-user"></i> Quản lý lịch làm việc</a></li>
 						<li><a href="/dashboard/services/"><i class="fa fa-user"></i>
 								Quản lý dịch vụ</a></li>
 						<li><a href="/dashboard/customer/"><i class="fa fa-user"></i>
 								Quản lý khách hàng</a></li>
 						<li><a href="/dashboard/account/"><i class="fa fa-user"></i>
 								Quản lý tài khoản</a></li>
+						<li><a href="/dashboard/lichkham/"><i class="fa fa-user"></i>Tiếp
+								nhận lịch khám</a></li>
 
 					</ul>
 				</div>
@@ -213,7 +215,8 @@
 								<h6 class="m-0 font-weight-bold text-primary">Hiển thị chi
 									tiết danh sách khách hàng</h6>
 								<button class="btn btn-primary">Thêm mới khách hàng</button>
-								 <a th:href="@{/dashboard/customer/export}" class="btn btn-warning">Export Excel</a>
+								<a th:href="@{/dashboard/customer/export}"
+									class="btn btn-warning">Export Excel</a>
 							</div>
 							<div class="form-group pull-right">
 								<input type="text" id="myInput" class="search form-control"
@@ -232,8 +235,8 @@
 										<th>Ảnh</th>
 										<th>Số điện thoại</th>
 										<th>Email</th>
-									
-										
+
+
 										<th>Hành động</th>
 
 									</tr>
@@ -243,15 +246,14 @@
 										<tr>
 											<td th:text="${stt.count}"></td>
 											<td th:text="${cusLists.name_cus}"></td>
-											<td>
-											<img  th:src="*{'/assets/img/'+{cusLists.image}}"
-                                 alt="" style="height:50px;width:50px;object-fit: cover;" />
-                                 </td>
+											<td><img th:src="*{'/assets/img/'+{cusLists.image}}"
+												alt="" style="height: 50px; width: 50px; object-fit: cover;" />
+											</td>
 											<td th:text="${cusLists.phone}"></td>
 											<td th:text="${cusLists.email}"></td>
-											
+
 											<td>
-												
+
 												<button data-target="#myModal"
 													th:attr="data-target='#myModal'+${cusLists.id_cus}"
 													class="btn btn-danger" data-toggle="modal">Xóa</button>
