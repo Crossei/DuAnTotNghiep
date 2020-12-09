@@ -47,10 +47,8 @@
 	rel="stylesheet" type="text/css" />
 
 <style>
-#form1: {
-	background-color: red;
-}
-;
+
+
 </style>
 
 </head>
@@ -122,19 +120,26 @@
 						</a></li>
 					</ul> <!-- /.dropdown-alerts --></li>
 				<!-- /.dropdown -->
-				<li class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="#"> <i class="fa fa-user fa-fw"></i>
-						<i class="fa fa-caret-down"></i>
-				</a>
-					<ul class="dropdown-menu dropdown-user">
-						<li><a href="#"><i class="fa fa-user fa-fw"></i> User
-								Profile</a></li>
-						<li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-						</li>
-						<li class="divider"></li>
-						<li><a th:href="@{/logout}"><i
-								class="fa fa-sign-out fa-fw"></i> Logout</a></li>
-					</ul> <!-- /.dropdown-user --></li>
+				<li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>[[${#request.userPrincipal.principal.username}]]
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                    <li><a href="/dashboard/profile/"><i class="fa fa-user fa-fw"></i> Thông tin tài khoản</a>
+                    </li>
+                    <li><a href="#"><i class="fa fa-gear fa-fw"></i> Đổi mật khẩu</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li><a th:href="@{/logout}"><i class="fa fa-sign-out fa-fw"></i> Đăng xuất</a>
+                    </li>
+                </ul>
+                <!-- /.dropdown-user -->
+            </li>
+          
+
+                    <nav th:if="${@mainController.checkLoggedIn() == true} " class="nav-menu d-none d-lg-block" style="display:none;">
+                       
+                    </nav>
 				<!-- /.dropdown -->
 			</ul>
 			<!-- /.navbar-top-links -->
@@ -187,7 +192,7 @@
 							<div>
 
 								<form style="padding: 10px;" action="#"
-									th:action="@{/saveStaff2}" th:object="${staff}" method="post"
+									th:action="@{/saveStaff1}" th:object="${staff}" method="post"
 									enctype="multipart/form-data">
 									<div class="kt-portlet__body">
 										<div>
@@ -218,9 +223,9 @@
 														<img th:src="*{'/assets/img/'+{image}}" id="thumbnail"
 															alt="Ảnh nhân viên"
 															style="height: 150px; width: 250px; object-fit: cover;margin-left:40%;" />
-														<input type="hidden" name="fileImage" id="fileImage"
+														<input type="file" name="fileImage" id="fileImage"
 															accept="image/png,image/ipeg" style="margin-left:165px;"  />
-															
+														
 													</div>
 
 												</div>

@@ -15,17 +15,18 @@
 </head>
 <body>
 	<section class="form-login">
-		<div class="background-login">
+		<div class="background-login" >
 			<div class="row">
 				<div class="col-lg-6">
-					<img src="img/register.jpg" class="img-fluid" id="img-bg">
+					<img src="img/register.jpg" class="img-fluid" id="img-bg" style="object-fit: cover;">
 				</div>
 				<div class="col-lg-6">
 					<form action="login" method="post" class="login-group">
 						<div class="form-group">
 							<label for="email">Email address</label>
 							<div class="login-content">
-								<input type="email" class="form-control" name="username"
+								<input type="email" class="form-control" name="username"  required 
+										autofocus placeholder="Email"
 									id="email">
 
 							</div>
@@ -35,7 +36,8 @@
 							<label for="pwd">Password</label>
 							
 							<div class="login-content">
-								<input type="password" name="password" class="form-control"
+								<input type="password" name="password" class="form-control" required 
+										autofocus placeholder="Mật khẩu"
 									id="pwd">
 
 							</div>
@@ -43,8 +45,8 @@
 						<div class="form-group form-check">
 							<input type="checkbox" class="form-check-input"
 								id="exampleCheck1"> <label class="form-check-label"
-								for="chkremember">Remember password</label> <a href="/forgot-password"
-								class="forgot">Quên mật khẩu</a>
+								for="chkremember">Remember password</label> <a style="color: red;" href="/forgot-password"
+								class="forgot">Quên mật khẩu?</a>
 						</div>
 
 						<button type="submit" class="btn btn-primary">Login</button>
@@ -59,6 +61,35 @@
 	</section>
 	<script src="bootstrap/js/jquery-1.11.1.min.js"></script>
 	<script src="bootstrap/js/bootstrap.min.js"></script>
+	<script > 
+		function code() {
+					// check trong
+					
+					var email = document.getElementById("email").value.trim();
+					var pass = document.getElementById("pwd").value.trim();
+					
+					var filter = /^[a-zA-Z-' ]*$/;
+
+					
+					if (email.trim().length == 0) {
+						alert("Mời bạn nhập email");
+						return false;
+					}
+					if (!filter.test(email.value)) {
+						alert('Please provide a valid email address');
+						email.focus;
+						return false;
+					}
+
+					if (pass.trim().length == 0) {
+						alert("Mời bạn nhập mật khẩu");
+						return false;
+					}
+					
+
+					return true;
+				}
+	</script>
 </body>
 
 </html>

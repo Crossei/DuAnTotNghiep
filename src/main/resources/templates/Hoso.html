@@ -7,7 +7,7 @@
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-<title>Đặt lịch</title>
+<title>Thông tin khách hàng</title>
 <meta content="" name="descriptison">
 <meta content="" name="keywords">
 
@@ -115,85 +115,101 @@
 			<div class="container">
 				<ol>
 					<li><a href="/">Trang chủ</a></li>
-					<li>Đặt lịch</li>
+					<li>Hồ sơ</li>
 				</ol>
-				<h2>Đặt lịch</h2>
+				<h2>Thông tin cá nhân</h2>
 			</div>
 		</section>
-		<div >
-		
-				<div class="section-center" style="margin-top:10px;" >
-					<div class="container">
-						<section id="dai" class="inner-page" style="padding:0px;height:550px;"  >
-			<div id="booking" class="section" style="height:550px" >
-							<div class="booking-form">
-								<form th:action="@{/datlich}" method="POST" th:object="${datLichDTO}">
-									<h3>
-										Vui lòng để lại thông tin, nhu cầu của quý khách.
-										</h1>
-										<br>
-										<div class="form-group">
-											<span class="form-label">Họ và tên</span> <input
-												class="form-control" type="name" th:field="*{name}"
-												placeholder="Mời nhập tên..." required>
-										</div>
-										<div class="form-group">
-											<span class="form-label">Email</span> <input
-												class="form-control" type="email" th:field="*{email}" 
-												placeholder="Mời nhập email...">
-										</div>
-										<div class="form-group">
-											<span class="form-label">Số điện thoại</span> <input
-												class="form-control" type="tel" th:field="*{sdt}" 
-												placeholder="Mời nhập số điện thoại..." required>
-										</div>
-										<div class="form-group">
-											<span class="form-label">Thời gian khám</span> <input
-												class="form-control" type="date" id="txtDate" th:field="*{date}"  required>
-										</div>
-										<input id="chien" type="button" value="Chọn dịch vụ"
-											onClick="hien()" style="background-color: #007bff;margin-bottom: 10px;" class="submit-btn">
-										<div style="font-size: 15px;" class="table-responsive"
-											id="hide">
-											<table class="table table-bordered" cellspacing="0">
-												<thead>
-													<tr>
-														<th></th>
-														<th>Tên dịch vụ</th>
-														<th>Giá dịch vụ</th>
-														<th>Thời gian hoàn thành</th>
-													
-													</tr>
-												</thead>
-												<tbody>
-													<th:block th:each="ser1 : ${serList}">
-														<tr>
-															<td><input type="radio" id="item" th:value="${ser1.id_ser}" th:field="*{id_ser}" /></td>
-															<td th:text="${ser1.name}"></td>
-															<td th:text="${ser1.price}"></td>
-															<td
-																th:text="${#dates.format(ser1.time_working, 'HH:mm')}"></td>
-															
+		<div
+				class="kt-grid kt-grid--desktop kt-grid--ver kt-grid--ver-desktop kt-app"
+				style="width: 100%; display: flex; padding: 25px;">
 
-														</tr>
-													</th:block>
-												</tbody>
-											</table>
-											<div id="chon" style=""></div>
+
+
+				<div id="form1"
+					style="width: 40%; background-color: #f8f8f8; border-radius: 10px 10px 10px 10px; padding-left: 30px; margin-left:29%;
+					box-shadow: 8px 8px 10px #c2bbbb;border: 1px solid #dddada;">
+					<div class="row">
+						<div class="col-xl-12">
+							<div>
+
+								<form style="padding: 30px 30px 30px 10px;"
+									enctype="multipart/form-data">
+									<div class="kt-portlet__body">
+										<div>
+											<div>
+												<div class="row">
+													
+													<div  style="margin-left:120px;">
+														<h1 class="kt-section__title kt-section__title-sm" style="font-weight: bold;">Thông
+															tin cá nhân</h1>
+														<br>
+													</div>
+												</div>
+												
+												
+												<div class="form-group row">
+													
+													<div class="col-lg-9 col-xl-6">
+
+														<img  id="thumbnail"
+															alt="Ảnh nhân viên"
+															style="height: 150px; width: 250px; object-fit: cover;margin-left:42%;" />
+														<input type="hidden" name="fileImage" id="fileImage"
+															accept="image/png,image/ipeg" style="margin-left:42%;"  />
+															
+													</div>
+
+												</div>
+												<div class="form-group row">
+													<label class="col-xl-3 col-lg-3 col-form-label" style="font-size:13px;">Họ
+														và tên:</label>
+													<div class="col-lg-9 col-xl-6">
+
+														<input type="text" id="ten" 
+															style="width: 330px;" readonly="readonly"
+															class="form-control">
+													</div>
+
+												</div>
+												<div class="form-group row">
+													<label class="col-xl-3 col-lg-3 col-form-label" style="font-size:13px;">Email:</label>
+													<div class="col-lg-9 col-xl-6">
+
+														<input type="text" id="email" 
+															style="width: 330px;" readonly="readonly"
+															class="form-control">
+													</div>
+												</div>
+
+												<div class="form-group row">
+													<label class="col-xl-3 col-lg-3 col-form-label" style="font-size:13px;">Số
+														điện thoại:</label>
+													<div class="col-lg-9 col-xl-6">
+
+														<input type="text" id="sdt" 
+															style="width: 330px;" readonly="readonly"
+															class="form-control">
+													</div>
+												</div>
+
+
+											</div>
 										</div>
-										<div class="form-btn">
-											<button  class="submit-btn" style="background-color: #007bff;">Đặt ngay!</button>
-										</div>
+									</div>
+									<input id="binh" type="button" class="btn btn-primary"
+										style="margin-left: 322px;height:35px;font-size:13px;" value="Cập nhật thông tin"
+										onClick="hien()">
+									<button id="chien" style="display: none; margin-left: 403px; height:35px;font-size:13px;"
+										class="btn btn-primary" type="submit">Save</button>
 								</form>
 							</div>
-							</div>
-			
-						</section>
 						</div>
-					</div>
-				
 
-</div>
+					</div>
+				</div>
+
+			</div>
 	<!-- End #main -->
 
 	<!-- footer -->
@@ -267,47 +283,86 @@
 	<!-- Template Main JS File -->
 	<script src="assets/js/main.js"></script>
 	<script type="text/javascript">
-	document.getElementById("hide").style.display = "none";
-	
-		function hien() {
-			var height1 = document.getElementById("dai");
-			var height2 = document.getElementById("booking");
+			$(document)
+					.ready(
+							function() {
+								$('#fileImage').change(function(){
+						    		showImageThumbnail(this);
+						    	});
+								$("#myInput")
+										.on(
+												"keyup",
+												function() {
+													var value = $(this).val()
+															.toLowerCase();
+													$("#myTable tr")
+															.filter(
+																	function() {
+																		$(this)
+																				.toggle(
+																						$(
+																								this)
+																								.text()
+																								.toLowerCase()
+																								.indexOf(
+																										value) > -1)
+																	});
+												});
+							});
 			
-			var x = document.getElementById("hide");
-			if (x.style.display === "none") {
-				x.style.display = "block";
-				height1.style.height = "980px";
-				height2.style.height = "980px";
-			} else {
-				x.style.display = "none";
-				height1.style.height = "550px";
-				height2.style.height = "550px";
+			function showImageThumbnail(fileInput){
+		    	file = fileInput.files[0];
+		    	reader = new FileReader();
+		    	
+		    	reader.onload= function(e){
+		    		$('#thumbnail').attr('src', e.target.result);
+		    	};
+		    	reader.readAsDataURL(file); 
+		    };
+			
+			var timepicker = new TimePicker('time', {
+				lang : 'en',
+				theme : 'dark'
+			});
+			
+			timepicker.on('change', function(evt) {
+
+				var value = (evt.hour || '00') + ':' + (evt.minute || '00');
+				evt.element.value = value + ':00';
+
+			});
+			function code() {
+				// check trong
+				var name = document.getElementById("name_staff").value.trim();
+				var dsc = document.getElementById("dsc").value.trim();
+				var price = document.getElementById("price").value.trim();
+				if (name.trim().length == 0) {
+					alert("Mời bạn nhập họ và tên");
+					return false;
+				}
+				if (dsc.trim().length == 0) {
+					alert("Mời bạn nhập mô tả");
+					return false;
+				}
+
+				if (price.trim().length == 0) {
+					alert("Mời bạn nhập giá");
+					return false;
+				}
+
+				return true;
+			};
+			function hien() {
+				document.getElementById("chien").style.display = "block";
+				document.getElementById("binh").style.display = "none";
+				
+				$('#fileImage').prop('type', "file");
+				$('#ten').prop('readonly', false);
+				$('#email').prop('readonly', false);
+				$('#sdt').prop('readonly', false);
+
 			}
-		}
-		$(function(){
-		    var dtToday = new Date();
-		    
-		    var month = dtToday.getMonth() + 1;
-		    var day = dtToday.getDate();
-		    var year = dtToday.getFullYear();
-		    if(month < 10)
-		        month = '0' + month.toString();
-		    if(day < 10)
-		        day = '0' + day.toString();
-		    
-		    var today = new Date();
-	        var day1=(today.getDate())>9?(today.getDate()):"0"+(today.getDate()); // format should be "DD" not "D" e.g 09
-	        var month1=(today.getMonth()+1)>9?(today.getMonth()+1):"0"+(today.getMonth()+1);
-	        var year1=today.getFullYear();
-		    
-		    var maxDate = year + '-' + month + '-' + day;
-		    var minDate = year1 + '-' + month1 + '-' + day1;
-		    $('#txtDate').attr('min', maxDate);
-		    
-		});
-		
-		
-	</script>
+		</script>
 
 </body>
 

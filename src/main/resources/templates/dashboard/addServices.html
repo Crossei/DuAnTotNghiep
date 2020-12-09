@@ -167,31 +167,44 @@ width:30%;
 			</div>
 			<!-- /.navbar-static-side -->
 		</nav>
-
+		<div style="height:20px;background-color: white;"></div>
 		<div id="page-wrapper">
-			<div class="container" style="margin-left:30%;">
+			<div class="container" style="width: 40%; background-color: #f8f8f8; border-radius: 10px 10px 10px 10px; padding-left: 30px; margin-left:28%;
+					box-shadow: 8px 8px 10px #c2bbbb;border: 1px solid #dddada;">
 						
-						            <h1 class="h3 mb-2 text-gray-800 mb-5">Thêm mới dịch vụ</h1>
-						            <form action="#" th:action="@{/save}" th:object="${service}" method="post">
-						            
+						            <h1 class="h3 mb-2 text-gray-800 mb-5" style="margin-left:100px;">Thêm dịch vụ</h1>
+						            <form style="padding: 10px;" action="#" th:action="@{/save}" th:object="${service}" method="post"
+						             enctype="multipart/form-data">
+						            	<div class="form-group row">
+													
+													<div class="col-lg-9 col-xl-6">
+														<img th:src="*{'/assets/img/'+{image}}" id="thumbnail"
+															alt="Ảnh nhân viên"
+															style="height: 100px; width: 150px; object-fit: cover;margin-left:33%;" />
+														<input type="file" name="fileImage" id="fileImage"
+															accept="image/png,image/ipeg"   />
+															
+													</div>
+
+										</div>
 						                <div class="form-group">
-						                    <label for="name">Tên dịch vụ</label>
-						                    <input type="text"  style="width:30%" class="form-control" th:field="*{name}"  name="name" id="name" required autofocus>
+						                    <label for="name">Tên dịch vụ:</label>
+						                    <input type="text"  style="width: 330px;" class="form-control" th:field="*{name}"  name="name" id="name" required autofocus>
 						                </div> 
 						                <div class="form-group">
-						                    <label for="username">Mô tả</label>
-						                    <input type="text"  style="width:30%" class="form-control" th:field="*{dsc}" name="dsc" id="dsc" required autofocus>
+						                    <label for="username">Mô tả:</label>
+						                    <input type="text"  style="width: 330px;" class="form-control" th:field="*{dsc}" name="dsc" id="dsc" required autofocus>
 						                </div>
 						                <div class="form-group">
-						                    <label for="role">Thời gian</label>
+						                    <label for="role">Thời gian trung bình:</label>
 						                   
-						                    <input min="09:00:00" max="18:00:00" required autofocus name="time_working"  type="text" id="time" th:field="*{time_working}" value="00:45:00" style="width:30%" class="form-control"/>
+						                    <input min="09:00:00" max="18:00:00" required autofocus name="time_working"  type="text" id="time" th:field="*{time_working}"  style="width: 330px;" class="form-control"/>
 						                </div>
 						                <div class="form-group">
-						                    <label for="username">Giá tiền</label>
-						                    <input type="number" style="width:30%" class="form-control" th:field="*{price}" name="price" id="price" required autofocus>
+						                    <label for="username">Giá tiền trung bình:</label>
+						                    <input type="number" style="width: 330px;" class="form-control" th:field="*{price}" name="price" id="price" required autofocus>
 						                </div>
-						                <button class="btn btn-primary" type="submit">Save</button>
+						                <button class="btn btn-primary" type="submit" style="margin-left:270px;">Save</button>
 						            </form>
 						     
 				
@@ -228,6 +241,9 @@ width:30%;
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<script type="text/javascript">
     $(document).ready(function () {
+    	$('#fileImage').change(function(){
+    		showImageThumbnail(this);
+    	});
         $("#myInput").on("keyup", function () {
             var value = $(this).val().toLowerCase();
             $("#myTable tr").filter(function () {
@@ -235,7 +251,15 @@ width:30%;
             });
         });
     });
-    
+    function showImageThumbnail(fileInput){
+    	file = fileInput.files[0];
+    	reader = new FileReader();
+    	
+    	reader.onload= function(e){
+    		$('#thumbnail').attr('src', e.target.result);
+    	};
+    	reader.readAsDataURL(file); 
+    };
     var timepicker = new TimePicker('time', {
   	  lang: 'en',
   	  theme: 'dark'

@@ -168,63 +168,152 @@
 		</nav>
 
 		<div id="page-wrapper">
-			<div class="container" style="margin-left: 30%;">
-
-				<h1 class="h3 mb-2 text-gray-800 mb-5">Thêm mới nhân viên</h1>
-				<form action="#" th:action="@{/saveStaff}" th:object="${staff}"
-					method="post" enctype="multipart/form-data">
-					<div>
-						<p class="text-danger">[[${error}]]</p>
-					</div>
-					<div class="form-group">
-						<label for="name">Tên nhân viên</label> <input type="text"
-							style="width: 30%" class="form-control" th:field="*{name_staff}">
-					</div>
-					<div class="form-group">
-						<label for="username">Vai trò</label> <input type="radio"
-							th:field="*{role}" value="1"> Bác sĩ <input type="radio"
-							th:field="*{role}" value="2"> Lễ tân
-					</div>
-					<div class="form-group">
-						<label for="username">Địa chỉ</label> <input type="text"
-							style="width: 30%" class="form-control" th:field="*{address}">
-
-					</div>
-					<div class="form-group">
-						<label for="username">Ảnh</label> <img id="thumbnail"
-							alt="Ảnh nhân viên"
-							style="width: 50px; height: 50px; object-fit: cover;" /> <input
-							type="file" name="fileImage" id="fileImage"
-							accept="image/png,image/ipeg" />
-
-					</div>
-					<div class="form-group">
-						<label for="username">Ngày </label> <input type="date"
-							style="width: 30%" class="form-control"
-							th:field="*{dateWorking_Start}">
-
-					</div>
-					<div class="form-group">
-						<label for="username">Giới tính</label> <input type="radio"
-							th:field="*{sex}" value="1"> Nam <input type="radio"
-							th:field="*{sex}" value="2"> Nữ
-					</div>
-					<div class="form-group">
-						<label for="role">Email</label> <input type="text"
-							th:field="*{email}" style="width: 30%" class="form-control" />
-					</div>
-
-					<div class="form-group">
-						<label for="username">Số điện thoại</label> <input type="number"
-							style="width: 30%" class="form-control" th:field="*{phone}">
-					</div>
+			<div
+				class="kt-grid kt-grid--desktop kt-grid--ver kt-grid--ver-desktop kt-app"
+				style="width: 100%; display: flex; padding: 40px;">
 
 
-					<button class="btn btn-primary" type="submit">Save</button>
-				</form>
 
+				<div id="form1"
+					style="width: 75%; background-color: #f8f8f8; border-radius: 10px 10px 10px 10px; padding-left: 30px; margin-left:13%;
+					box-shadow: 8px 8px 10px #c2bbbb;border: 1px solid #dddada;">
+					<div class="row">
+						<div class="col-xl-12">
+							<div>
+
+								<form style="padding: 10px;" action="#"
+									th:action="@{/saveStaff}" th:object="${staff}" method="post"
+									enctype="multipart/form-data">
+									<div class="kt-portlet__body">
+										<div>
+											<div>
+												<div class="row">
+													
+													<div  style="margin-left:260px;">
+														<h3 class="kt-section__title kt-section__title-sm">Thêm nhân viên</h3>
+														<br>
+													</div>
+												</div>
+												<table>
+												<tbody>
+												<td style="width:300px;"><div class="form-group" style="display: none;">
+													<label for="name">Id nhân viên</label> <input type="text"
+														style="display:" none";" class="form-control"
+														th:field="*{id_staff}" readonly="readonly">
+												</div>
+												<div class="form-group" style="display: none;">
+													<label for="name">Id người dùng</label> <input type="text"
+														style="width: 30%; display:" none";" class="form-control"
+														th:field="*{id_user}" readonly="readonly">
+												</div>
+												
+												<div class="form-group row">
+													
+													<div class="col-lg-9 col-xl-6">
+
+														<img th:src="*{'/assets/img/'+{image}}" id="thumbnail"
+															alt="Ảnh nhân viên"
+															style="height: 200px; width: 250px; object-fit: cover;margin:10px;" />
+														<input type="file" name="fileImage" id="fileImage"
+															accept="image/png,image/ipeg" style="margin-left:10px;"  />
+															
+													</div>
+
+												</div></td>
+												<td>
+												<div class="form-group row">
+													<label class="col-xl-4 col-lg-4 col-form-label">Họ
+														và tên:</label>
+													<div class="col-lg-8 col-xl-6">
+
+														<input type="text" id="ten" th:field="*{name_staff}"
+															style="width: 230px;" 
+															class="form-control">
+													</div>
+
+												</div>
+												<div class="form-group row" >
+													<label class="col-xl-4 col-lg-4 col-form-label">Email:</label>
+													<div class="col-lg-8 col-xl-6">
+
+														<input type="text" th:field="*{email}" style="width: 230px;"
+															class="form-control">
+													</div>
+
+												</div>
+												<div class="form-group row">
+													<label class="col-xl-4 col-lg-4 col-form-label">Địa
+														chỉ:</label>
+													<div class="col-lg-8 col-xl-6">
+
+														<input type="text" id="diachi" th:field="*{address}"
+															style="width: 230px;" 
+															class="form-control">
+													</div>
+												</div>
+												<div class="form-group row">
+													<label class="col-xl-4 col-lg-4 col-form-label">Ngày bắt đầu:</label>
+													<div class="col-lg-8 col-xl-6">
+
+														<input type="date" id="diachi" th:field="*{dateWorking_Start}"
+															style="width: 230px;" 
+															class="form-control">
+													</div>
+												</div>
+
+												<div class="form-group row">
+													<label class="col-xl-4 col-lg-4 col-form-label">Giới
+														tính:</label>
+													<div class="col-lg-8 col-xl-6">
+
+														<input type="radio" th:field="*{sex}" value="1" >
+														Nam <input type="radio" th:field="*{sex}" value="2" >
+														Nữ
+													</div>
+												</div>
+												<div class="form-group row">
+													<label class="col-xl-4 col-lg-4 col-form-label">Vai trò:</label>
+													<div class="col-lg-8 col-xl-6">
+
+														<input type="radio"
+														th:field="*{role}" value="1"> Bác sĩ <input type="radio"
+														th:field="*{role}" value="2"> Lễ tân
+													</div>
+												</div>
+
+												
+												<div class="form-group row">
+													<label class="col-xl-4 col-lg-4 col-form-label">Số
+														điện thoại:</label>
+													<div class="col-lg-8 col-xl-6">
+
+														<input type="text" id="sdt" th:field="*{phone}"
+															style="width: 230px;" 
+															class="form-control">
+													</div>
+												</div>
+												</td>
+												</tbody>
+												</table>
+												
+												
+
+
+											</div>
+										</div>
+									</div>
+									
+									<button  style=" margin-left: 597px;margin-bottom: 10px;"
+										class="btn btn-primary" type="submit">Save</button>
+								</form>
+							</div>
+						</div>
+
+					</div>
+				</div>
 
 			</div>
+			<!-- /#page-wrapper -->
 
 		</div>
 		<!-- /#page-wrapper -->

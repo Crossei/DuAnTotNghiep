@@ -69,10 +69,6 @@ public class MainController {
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 
-	
-	
-	
-	
 	@RequestMapping("/doctor-list")
 	public String docList() {
 		return "doctor-list";
@@ -135,6 +131,16 @@ public class MainController {
 		model.addAttribute("datLichDTO", datLichDTO);
 		return "datlich";
 	}
+	@RequestMapping("/hoso")
+	public String hoso(Model model) {
+		DatLichDTO datLichDTO = new DatLichDTO();
+
+		List<Service> serList = ser1Repo.findAll();
+		model.addAttribute("serList", serList);
+		model.addAttribute("datLichDTO", datLichDTO);
+		return "hoso";
+	}
+	
 
 	@PostMapping(value = "/datlich")
 	public String datLichSave(@ModelAttribute("datLichDTO") DatLichDTO datLich, Model model) throws ParseException {

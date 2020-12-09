@@ -64,8 +64,11 @@ public String saveStaff(@ModelAttribute(name="staff") AddStaffDTO staffDto, Mode
 			RedirectAttributes ra,@RequestParam("fileImage") MultipartFile multipartFile) throws IOException, ParseException{
 			
 			String fileName= StringUtils.cleanPath(multipartFile.getOriginalFilename());
+			if(fileName.length()!=0) {
 			staffDto.setImage(fileName);
-			
+			}else {
+				staffDto.setImage("noinha.png");
+			}
 			SimpleDateFormat fomater = new SimpleDateFormat("YYYY-MM-dd");
 			Date date = fomater.parse(staffDto.getDateWorking_Start());
 			
@@ -112,6 +115,8 @@ public String saveStaff(@ModelAttribute(name="staff") AddStaffDTO staffDto, Mode
 	
 	@RequestMapping(value="/saveStaff1",method =  RequestMethod.POST)
 	public String saveStaff1(@ModelAttribute(name="staff") Staff staff, Model model,
+			@RequestParam("image") String image,
+			
 				AddStaffDTO staffDto,
 				RedirectAttributes ra,@RequestParam("fileImage") MultipartFile multipartFile) throws IOException, ParseException{
 				
@@ -147,7 +152,7 @@ public String saveStaff(@ModelAttribute(name="staff") AddStaffDTO staffDto, Mode
 					throw new IOException("lỗi"+ fileName);
 				}
 				}else {
-					staff.setImage("default.png");
+					staff.setImage(image);
 					staffRepo.save(staff);
 				}
 				
@@ -157,6 +162,7 @@ public String saveStaff(@ModelAttribute(name="staff") AddStaffDTO staffDto, Mode
 	
 	@RequestMapping(value="/saveStaff2",method =  RequestMethod.POST)
 	public String saveStaff2(@ModelAttribute(name="staff") Staff staff, Model model,
+			@RequestParam("image") String image,
 				AddStaffDTO staffDto,
 				RedirectAttributes ra,@RequestParam("fileImage") MultipartFile multipartFile) throws IOException, ParseException{
 			
@@ -192,7 +198,7 @@ public String saveStaff(@ModelAttribute(name="staff") AddStaffDTO staffDto, Mode
 					throw new IOException("lỗi"+ fileName);
 				}
 				}else {
-					staff.setImage("default.png");
+					staff.setImage(image);
 					staffRepo.save(staff);
 				}
 				
@@ -216,29 +222,9 @@ public String saveStaff(@ModelAttribute(name="staff") AddStaffDTO staffDto, Mode
 		return mav;
 	}
 	
-
-	@RequestMapping("/dashboard/services/addServices")
-	public String addService(Model model) {
-		Service service = new Service();
-		model.addAttribute("service",service);
-		return "dashboard/addServices";
-	}
 	
-	@RequestMapping(value="/save",method =  RequestMethod.POST)
-	public String addService(@ModelAttribute("service") Service service) {
-
-		ser1Repo.save(service);
-		
-		return "redirect:/dashboard/services";
-	}
 	
-	@RequestMapping(value="/editService/{id_ser}")
-	public ModelAndView  editService(@PathVariable(name="id_ser") Integer id_ser ) {
-		ModelAndView mav= new ModelAndView("dashboard/editServices");
-		Service service =ser1Repo.getOne(id_ser);
-		mav.addObject("service",service);
-		return mav;
-	}
+
 
 
 }
