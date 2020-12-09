@@ -260,6 +260,8 @@ public class mainController {
 		return "logout";
 	}
 
+	
+	//dang ky
 	@PostMapping("/register")
 	public String registerUserAccount(User user, Model model) {
 
@@ -280,6 +282,8 @@ public class mainController {
 		return "dashboard/ql_lichkham";
 	}
 
+	
+	//tin tuc
 	@RequestMapping("/tintuc")
 	public String tinTuc(Model model) {
 		return "tintuc";
@@ -289,7 +293,11 @@ public class mainController {
 	public String tinTuc2(Model model) {
 		return "tintuc2";
 	}
+	//end tin tuc
 	
+	
+	
+	//dat lich - thong tin them
 	@RequestMapping("/thongtinthem")
 	public String thongTinThem(Model model) {
 		return "thongtinthem";
@@ -317,6 +325,57 @@ public class mainController {
 		return "dashboard/calender_kham";
 	}
 
+	//chi tiet cac dich vu
+	@RequestMapping("/nhakhoatongquat")
+	public String dv1() {
+		return "chitietdichvu/NhaKhoaTongQuat";
+	}
+	
+	@RequestMapping("/rangtreem")
+	public String dv2() {
+		return "chitietdichvu/RangTreEm";
+	}
+	
+	@RequestMapping("/nanchinhrang")
+	public String dv3() {
+		return "chitietdichvu/NanChinhRang";
+	}
+	
+	@RequestMapping("/chinhnhacochucnang")
+	public String dv4() {
+		return "chitietdichvu/ChinhNhaCoChucNang";
+	}
+	
+	@RequestMapping("/nhakhoathammy")
+	public String dv5() {
+		return "chitietdichvu/NhaKhoaThamMy";
+	}
+	
+	@RequestMapping("/nhakhoaphuchinh")
+	public String dv6() {
+		return "chitietdichvu/NhaKhoaPhucHinh";
+	}
+	
+	@RequestMapping("/dieutrinoinha")
+	public String dv7() {
+		return "chitietdichvu/DieuTriNoiNha";
+	}
+	
+	@RequestMapping("/cayghep")
+	public String dv8() {
+		return "chitietdichvu/CayGhepImplant";
+	}
+	
+	@RequestMapping("/phauthuatrm")
+	public String dv9() {
+		return "chitietdichvu/PhauThuatRangMieng";
+	}
+	//end
+	
+	
+	
+	
+	
 	public boolean checkLoggedIn() {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		if (authentication == null || authentication instanceof AnonymousAuthenticationToken)
