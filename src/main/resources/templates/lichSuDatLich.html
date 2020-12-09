@@ -64,7 +64,7 @@
 					<nav class="nav-menu d-none d-lg-block">
 						<ul>
 							<li><a href="/">Trang chủ</a></li>
-							<li><a href="home.html#about">Giới thiệu</a></li>
+							<li><a href="/#about">Giới thiệu</a></li>
 							<li class="drop-down"><a href="home.html#services">Dịch
 									vụ</a>
 								<ul>
@@ -78,10 +78,11 @@
 									<li><a href="#">Cấy ghép Implant</a></li>
 									<li><a href="#">Phẩu thuật răng miệng</a></li>
 								</ul></li>
-							<li><a href="home.html#portfolio">Các bác sĩ</a></li>
-							<li th:if="${@mainController.checkLoggedIn() == true} "><a href="/datlich">Đặt lịch</a></li>
+							<li><a href="/#portfolio">Các bác sĩ</a></li>
+							<li th:if="${@mainController.checkLoggedIn() == true} "><a
+								href="/datlich">Đặt lịch</a></li>
 							<li><a href="/tintuc">Tin tức</a></li>
-							<li><a href="home.html#contact">Liên hệ</a></li>
+							<li><a href="/#contact">Liên hệ</a></li>
 
 						</ul>
 					</nav>
@@ -98,9 +99,9 @@
 							<li id="drop-down" class="drop-down"><span
 								style="font-size: 15px; color: white;">[[${#request.userPrincipal.principal.username}]]</span>
 								<ul>
-									<li><a href="#">Thông tin tài khoản</a></li>
-									<li><a href="#">Lịch sử đặt lịch</a></li>
-									<li><a href="#">Đổi mật khẩu</a></li>
+									<li><a href="/acc-info">Thông tin tài khoản</a></li>
+									<li><a href="/lichsudat">Lịch sử đặt lịch</a></li>
+									<li><a href="/changePass">Đổi mật khẩu</a></li>
 									<li><a href="/logout">Đăng xuất</a></li>
 
 								</ul></li>
@@ -153,12 +154,12 @@
 										<td></td>
 										<td th:text="${serLList.price}"></td>
 
-										<td th:if="${detailList.status == 0}">
-											<span style="background-color: #e0c228; border-radius: 5px; padding: 6px; color: white; font-weight: 500;"> Chờ xác nhận</span>
-										</td>
-										<td th:if="${detailList.status == 1}">
-											<span style="background-color: #69d11f; border-radius: 5px; padding: 6px; color: white; font-weight: 500;">Đã nhận lịch đặt</span>
-										</td>
+										<td th:if="${detailList.status == 0}"><span
+											style="background-color: #e0c228; border-radius: 5px; padding: 6px; color: white; font-weight: 500;">
+												Chờ xác nhận</span></td>
+										<td th:if="${detailList.status == 1}"><span
+											style="background-color: #69d11f; border-radius: 5px; padding: 6px; color: white; font-weight: 500;">Đã
+												nhận lịch đặt</span></td>
 										<td th:if="${detailList.status == 1}">
 											<button style="font-size: 15px" class="btn btn-warning"
 												disabled="true">

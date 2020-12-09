@@ -7,24 +7,22 @@
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-<title>Đặt lịch</title>
+<title>Thông tin tài khoản</title>
 <meta content="" name="descriptison">
 <meta content="" name="keywords">
 
 <link href="https://fonts.googleapis.com/css?family=Lato:400,400i,700"
 	rel="stylesheet">
 
-<!-- Bootstrap -->
-<!-- <link type="text/css" rel="stylesheet"
-	href="assets/css/bootstrap.min.css" /> -->
 
-<!-- Custom stlylesheet -->
-<link type="text/css" rel="stylesheet" href="assets/css/stylef.css" />
-<link href="http://bizweb.dktcdn.net/100/167/865/themes/222134/assets/favicon.png?1568890987754" rel="icon">
-    <link href="http://bizweb.dktcdn.net/100/167/865/themes/222134/assets/favicon.png?1568890987754" rel="apple-touch-icon">
+<link
+	href="http://bizweb.dktcdn.net/100/167/865/themes/222134/assets/favicon.png?1568890987754"
+	rel="icon">
+<link
+	href="http://bizweb.dktcdn.net/100/167/865/themes/222134/assets/favicon.png?1568890987754"
+	rel="apple-touch-icon">
 
-<link rel="stylesheet" href="assets/css/stylec.css">
-<link rel="stylesheet" href="/assets/css/trangchu.css">
+<link rel="stylesheet" href="assets/css/trangchu.css">
 <link
 	href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
 	rel="stylesheet">
@@ -63,7 +61,7 @@
 						<ul>
 							<li><a href="/">Trang chủ</a></li>
 							<li><a href="/#about">Giới thiệu</a></li>
-							<li class="drop-down"><a href="/#services">Dịch
+							<li class="drop-down"><a href="home.html#services">Dịch
 									vụ</a>
 								<ul>
 									<li><a href="#">Nha khoa tổng quát</a></li>
@@ -85,23 +83,25 @@
 					</nav>
 					<!-- .nav-menu -->
 
-					 <a th:if="${@mainController.checkLoggedIn() == false }" href="/login" class="get-started-btn scrollto">Đăng nhập</a>
-                    <!-- .nav-menu -->
+					<a th:if="${@mainController.checkLoggedIn() == false }"
+						href="/login" class="get-started-btn scrollto">Đăng nhập</a>
+					<!-- .nav-menu -->
 
-                    <nav th:if="${@mainController.checkLoggedIn() == true} " class="nav-menu d-none d-lg-block">
-                        <ul>
+					<nav th:if="${@mainController.checkLoggedIn() == true} "
+						class="nav-menu d-none d-lg-block">
+						<ul>
 
-                            <li id="drop-down" class="drop-down"><span style="font-size:15px; color:white;">[[${#request.userPrincipal.principal.username}]]</span>
-                                <ul>
-                                    <li><a href="/acc-info">Thông tin tài khoản</a></li>
+							<li id="drop-down" class="drop-down"><span
+								style="font-size: 15px; color: white;">[[${#request.userPrincipal.principal.username}]]</span>
+								<ul>
+									<li><a href="/acc-info">Thông tin tài khoản</a></li>
                                     <li><a href="/lichsudat">Lịch sử đặt lịch</a></li>
                                     <li><a href="/changePass">Đổi mật khẩu</a></li>
-									<li><a href="/logout">Đăng xuất</a></li>
-                                </ul>
-                            </li>
+                                    <li><a href="/logout">Đăng xuất</a></li>
+								</ul></li>
 
-                        </ul>
-                    </nav>
+						</ul>
+					</nav>
 				</div>
 			</div>
 
@@ -109,83 +109,23 @@
 	</header>
 	<!-- End Header -->
 
-	
-		<section id="breadcrumbs" class="breadcrumbs">
-			<div class="container">
-				<ol>
-					<li><a href="/">Trang chủ</a></li>
-					<li>Đặt lịch</li>
-				</ol>
-				<h2>Đặt lịch</h2>
-			</div>
-		</section>
-		<section class="inner-page">
-			<div id="booking">
-				<div class="section-center">
-					<div class="container">
-						
-							<div class="booking-form">
-								<form th:action="@{/datlich}" method="POST" th:object="${datLichDTO}">
-									<h4 style="text-align: center">
-										Vui lòng để lại thông tin, nhu cầu của quý khách.
-										</h4>
-										<br>
-										<div class="form-group">
-											<span class="form-label">Họ và tên</span> <input
-												class="form-control" type="name" th:field="*{name}"
-												placeholder="Mời nhập tên..." required>
-										</div>
-										<div class="form-group">
-											<span class="form-label">Email</span> <input
-												class="form-control" type="email" th:field="*{email}" 
-												placeholder="Mời nhập email...">
-										</div>
-										<div class="form-group">
-											<span class="form-label">Số điện thoại</span> <input
-												class="form-control" type="tel" th:field="*{sdt}" 
-												placeholder="Mời nhập số điện thoại..." required>
-										</div>
-										<div class="form-group">
-											<span class="form-label">Thời gian khám</span> <input
-												class="form-control" type="date" id="txtDate" th:field="*{date}"  required>
-										</div>
-										<input class="btnSelect" id="chien" type="button" value="Chọn dịch vụ"
-											onClick="hien()">
-										<div style="font-size: 15px;" class="table-responsive"
-											id="hide">
-											<table style="text-align: center;" class="table table-bordered" cellspacing="0">
-												<thead>
-													<tr style="left: 20px; top: 10px; color: #009961; font-weight: 600; 
-													line-height: 24px; height: 24px; font-size: 15px;">
-														<th></th>
-														<th>Tên dịch vụ</th>
-														<th>Giá dịch vụ</th>
-														<th>Thời gian hoàn thành</th>
-													</tr>
-												</thead>
-												<tbody>
-													<th:block th:each="ser1 : ${serList}">
-														<tr>
-															<td><input type="radio" id="item" th:value="${ser1.id_ser}" th:field="*{id_ser}" /></td>
-															<td style="text-align: justify" th:text="${ser1.name}"></td>
-															<td th:text="${ser1.price}"></td>
-															<td
-																th:text="${#dates.format(ser1.time_working, 'HH:mm')}"></td>
-														</tr>
-													</th:block>
-												</tbody>
-											</table>
-										</div>
-										<div class="form-btn">
-											<button class="submit-btn">Đặt ngay!</button>
-										</div>
-								</form>
-							</div>
-						</div>
-					</div>
-				</div>
-			
-		</section>
+
+	<section id="breadcrumbs" class="breadcrumbs">
+		<div class="container">
+			<ol>
+				<li><a href="/">Trang chủ</a></li>
+				<li>Tài khoản</li>
+			</ol>
+			<h2>Thông tin tài khoản</h2>
+		</div>
+	</section>
+
+	<section class="inner-page">
+		
+	</section>
+
+
+
 
 
 	<!-- End #main -->
@@ -261,38 +201,6 @@
 	<!-- Template Main JS File -->
 	<script src="assets/js/main.js"></script>
 	<script type="text/javascript">
-	document.getElementById("hide").style.display = "none";
-	
-		function hien() {
-			var x = document.getElementById("hide");
-			if (x.style.display === "none") {
-				x.style.display = "block";
-			} else {
-				x.style.display = "none";
-			}
-		}
-		$(function(){
-		    var dtToday = new Date();
-		    
-		    var month = dtToday.getMonth() + 1;
-		    var day = dtToday.getDate();
-		    var year = dtToday.getFullYear();
-		    if(month < 10)
-		        month = '0' + month.toString();
-		    if(day < 10)
-		        day = '0' + day.toString();
-		    
-		    var today = new Date();
-	        var day1=(today.getDate()+7)>9?(today.getDate()+14):"0"+(today.getDate()+14); // format should be "DD" not "D" e.g 09
-	        var month1=(today.getMonth()+1)>9?(today.getMonth()+1):"0"+(today.getMonth()+1);
-	        var year1=today.getFullYear();
-		    
-		    var maxDate = year + '-' + month + '-' + day;
-		    var minDate = year1 + '-' + month1 + '-' + day1;
-		    $('#txtDate').attr('min', maxDate);
-		    $("#txtDate").attr('max', minDate);
-		});
-		
 		
 	</script>
 

@@ -249,6 +249,11 @@ public class mainController {
 	public String changePass() {
 		return "doiMatKhau";
 	}
+	
+	@RequestMapping("/acc-info")
+	public String thongTinTaiKhoan() {
+		return "acc-info";
+	}
 
 	@RequestMapping("/logout-success")
 	public String logoutPage() {

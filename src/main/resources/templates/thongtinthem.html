@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Đặt lịch</title>
+    <title>Đặt lịch - Thông tin thêm</title>
     <meta content="" name="descriptison">
     <meta content="" name="keywords">
 
@@ -43,14 +43,14 @@
             <div class="row justify-content-center">
                 <div class="col-xl-9 d-flex align-items-center justify-content-between">
                     <h1 class="logo">
-                        <a href="home.html"><img src="assets/img/logo.png"></a>
+                        <a href="/"><img src="assets/img/logo.png"></a>
                     </h1>
 
                     <nav class="nav-menu d-none d-lg-block">
                         <ul>
-                            <li><a href="home.html">Trang chủ</a></li>
-                            <li><a href="home.html#about">Giới thiệu</a></li>
-                            <li class="drop-down"><a href="home.html#services">Dịch vụ</a>
+                            <li><a href="/">Trang chủ</a></li>
+                            <li><a href="/#about">Giới thiệu</a></li>
+                            <li class="drop-down"><a href="/#services">Dịch vụ</a>
                                 <ul>
                                     <li><a href="#">Nha khoa tổng quát</a></li>
                                     <li><a href="#">Răng trẻ em</a></li>
@@ -63,12 +63,12 @@
                                     <li><a href="#">Phẩu thuật răng miệng</a></li>
                                 </ul>
                             </li>
-                            <li><a href="home.html#portfolio">Các bác sĩ</a></li>
+                            <li><a href="/#portfolio">Các bác sĩ</a></li>
                             <li th:if="${@mainController.checkLoggedIn() == true} "><a href="/datlich">Đặt lịch</a></li>
                             <li><a href="/tintuc">Tin tức</a>
 
                             </li>
-                            <li><a href="home.html#contact">Liên hệ</a></li>
+                            <li><a href="/#contact">Liên hệ</a></li>
 
                         </ul>
                     </nav>
@@ -82,11 +82,10 @@
 
                             <li id="drop-down" class="drop-down"><span style="font-size:15px;color:white;">[[${#request.userPrincipal.principal.username}]]</span>
                                 <ul>
-                                    <li><a href="#">Thông tin tài khoản</a></li>
-                                    <li><a href="#">Lịch sử đặt lịch</a></li>
-                                    <li><a href="#">Đổi mật khẩu</a></li>
-                                    <li><a href="/logout">Đăng xuất</a></li>
-
+                                    <li><a href="/acc-info">Thông tin tài khoản</a></li>
+                                    <li><a href="/lichsudat">Lịch sử đặt lịch</a></li>
+                                    <li><a href="/changePass">Đổi mật khẩu</a></li>
+									<li><a href="/logout">Đăng xuất</a></li>
                                 </ul>
                             </li>
 
@@ -106,7 +105,7 @@
             <div class="container">
 
                 <ol>
-                    <li><a href="home.html">Trang chủ</a></li>
+                    <li><a href="/">Trang chủ</a></li>
                     <li>Đặt lịch</li>
                 </ol>
                 <h2>Thông tin thêm</h2>
