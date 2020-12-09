@@ -285,6 +285,11 @@ public class mainController {
 		return "tintuc";
 	}
 	
+	@RequestMapping("/tintuc2")
+	public String tinTuc2(Model model) {
+		return "tintuc2";
+	}
+	
 	@RequestMapping("/thongtinthem")
 	public String thongTinThem(Model model) {
 		return "thongtinthem";
