@@ -53,58 +53,58 @@
 		<div class="container-fluid">
 
 			<div class="row justify-content-center">
-				<div
-					class="col-xl-9 d-flex align-items-center justify-content-between">
-					<h1 class="logo">
-						<a href="/"><img src="assets/img/logo.png"></a>
-					</h1>
+                <div class="col-xl-9 d-flex align-items-center justify-content-between">
+                    <h1 class="logo">
+                        <a href="/"><img src="assets/img/logo.png"></a>
+                    </h1>
 
-					<nav class="nav-menu d-none d-lg-block">
-						<ul>
-							<li><a href="/">Trang chủ</a></li>
-							<li><a href="/#about">Giới thiệu</a></li>
-							<li class="drop-down"><a href="/#services">Dịch
-									vụ</a>
-								<ul>
-									<li><a href="#">Nha khoa tổng quát</a></li>
-									<li><a href="#">Răng trẻ em</a></li>
-									<li><a href="#">Nắn chỉnh răng</a></li>
-									<li><a href="#">Chỉnh nha cơ chức năng</a></li>
-									<li><a href="#">Nha khoa thẩm mỹ</a></li>
-									<li><a href="#">Nha khoa phục hình</a></li>
-									<li><a href="#">Điều trị nội nha</a></li>
-									<li><a href="#">Cấy ghép Implant</a></li>
-									<li><a href="#">Phẩu thuật răng miệng</a></li>
-								</ul></li>
-							<li><a href="/#portfolio">Các bác sĩ</a></li>
-							<li th:if="${@mainController.checkLoggedIn() == true} "><a href="/datlich">Đặt lịch</a></li>
-							<li><a href="">Tin tức</a></li>
-							<li><a href="/#contact">Liên hệ</a></li>
+                    <nav class="nav-menu d-none d-lg-block">
+                        <ul>
+                            <li><a href="/">Trang chủ</a></li>
+                            <li><a href="/#about">Giới thiệu</a></li>
+                            <li class="drop-down"><a href="/#services">Dịch vụ</a>
+                                <ul>
+                                    <li><a href="/nhakhoatongquat">Nha khoa tổng quát</a></li>
+									<li><a href="/rangtreem">Răng trẻ em</a></li>
+									<li><a href="/nanchinhrang">Nắn chỉnh răng</a></li>
+									<li><a href="/chinhnhacochucnang">Chỉnh nha cơ chức năng</a></li>
+									<li><a href="/nhakhoathammy">Nha khoa thẩm mỹ</a></li>
+									<li><a href="/nhakhoaphuchinh">Nha khoa phục hình</a></li>
+									<li><a href="/dieutrinoinha">Điều trị nội nha</a></li>
+									<li><a href="/cayghep">Cấy ghép Implant</a></li>
+									<li><a href="/phauthuatrm">Phẩu thuật răng miệng</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="/#portfolio">Các bác sĩ</a></li>
+                            <li th:if="${@mainController.checkLoggedIn() == true} "><a href="/datlich">Đặt lịch</a></li>
+                            <li><a href="/tintuc">Tin tức</a>
 
-						</ul>
-					</nav>
-					<!-- .nav-menu -->
+                            </li>
+                            <li><a href="/#contact">Liên hệ</a></li>
 
-					 <a th:if="${@mainController.checkLoggedIn() == false }" href="/login" class="get-started-btn scrollto">Đăng nhập</a>
+                        </ul>
+                    </nav>
+                    <!-- .nav-menu -->
+
+                     <a th:if="${@mainController.checkLoggedIn() == false }" href="/login" class="get-started-btn scrollto">Đăng nhập</a>
                     <!-- .nav-menu -->
 
                     <nav th:if="${@mainController.checkLoggedIn() == true} " class="nav-menu d-none d-lg-block">
                         <ul>
 
-                            <li id="drop-down" class="drop-down"><span style="font-size:15px; color:white;">[[${#request.userPrincipal.principal.username}]]</span>
+                            <li id="drop-down" class="drop-down"><span style="font-size:15px;color:white;">[[${#request.userPrincipal.principal.username}]]</span>
                                 <ul>
-                                    <li><a href="#">Thông tin tài khoản</a></li>
-                                    <li><a href="#">Lịch sử đặt lịch</a></li>
-                                    <li><a href="#">Đổi mật khẩu</a></li>
-                                    <li><a href="/logout">Đăng xuất</a></li>
-
+                                    <li><a href="/acc-info">Thông tin tài khoản</a></li>
+                                    <li><a href="/lichsudat">Lịch sử đặt lịch</a></li>
+                                    <li><a href="/changePass">Đổi mật khẩu</a></li>
+									<li><a href="/logout">Đăng xuất</a></li>
                                 </ul>
                             </li>
 
                         </ul>
                     </nav>
-				</div>
-			</div>
+                </div>
+            </div>
 
 		</div>
 	</header>

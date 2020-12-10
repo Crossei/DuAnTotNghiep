@@ -1,379 +1,432 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:th="http://www.thymeleaf.org">
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Dashboard - Quản lý nhân viên</title>
+<title>Dashboard - Đăng ký lịch làm việc</title>
 
-    <!-- Bootstrap Core CSS -->
-    <link href="/webjars/startbootstrap-sb-admin-2/1.0.2/css/bootstrap.min.css" rel="stylesheet"/>
+<!-- Bootstrap Core CSS -->
+<link
+	href="/webjars/startbootstrap-sb-admin-2/1.0.2/css/bootstrap.min.css"
+	rel="stylesheet" />
 
-    <!-- MetisMenu CSS -->
-    <link href="/webjars/startbootstrap-sb-admin-2/1.0.2/css/plugins/metisMenu/metisMenu.min.css" rel="stylesheet"/>
+<!-- MetisMenu CSS -->
+<link
+	href="/webjars/startbootstrap-sb-admin-2/1.0.2/css/plugins/metisMenu/metisMenu.min.css"
+	rel="stylesheet" />
 
-    <!-- Timeline CSS -->
-    <link href="/webjars/startbootstrap-sb-admin-2/1.0.2/css/plugins/timeline.css" rel="stylesheet"/>
+<!-- Timeline CSS -->
+<link
+	href="/webjars/startbootstrap-sb-admin-2/1.0.2/css/plugins/timeline.css"
+	rel="stylesheet" />
 
-    <!-- Custom CSS -->
-    <link href="/webjars/startbootstrap-sb-admin-2/1.0.2/css/sb-admin-2.css" rel="stylesheet"/>
+<!-- Custom CSS -->
+<link href="/webjars/startbootstrap-sb-admin-2/1.0.2/css/sb-admin-2.css"
+	rel="stylesheet" />
 
-    <!-- Morris Charts CSS -->
-    <link href="/webjars/startbootstrap-sb-admin-2/1.0.2/css/plugins/morris.css" rel="stylesheet"/>
+<!-- Morris Charts CSS -->
+<link
+	href="/webjars/startbootstrap-sb-admin-2/1.0.2/css/plugins/morris.css"
+	rel="stylesheet" />
 
-    <!-- Custom Fonts -->
-    <link href="/webjars/startbootstrap-sb-admin-2/1.0.2/font-awesome/css/font-awesome.min.css" rel="stylesheet"
-          type="text/css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/fontawesome.min.css"
-          integrity="sha512-kJ30H6g4NGhWopgdseRb8wTsyllFUYIx3hiUwmGAkgA9B/JbzUBDQVr2VVlWGde6sdBVOG7oU8AL35ORDuMm8g=="
-          crossorigin="anonymous"/>
-          <style>
+<!-- Custom Fonts -->
+<link
+	href="/webjars/startbootstrap-sb-admin-2/1.0.2/font-awesome/css/font-awesome.min.css"
+	rel="stylesheet" type="text/css" />
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/fontawesome.min.css"
+	integrity="sha512-kJ30H6g4NGhWopgdseRb8wTsyllFUYIx3hiUwmGAkgA9B/JbzUBDQVr2VVlWGde6sdBVOG7oU8AL35ORDuMm8g=="
+	crossorigin="anonymous" />
+<style>
 #snackbar {
-  visibility: hidden;
-  min-width: 250px;
-  margin-left: -125px;
-  background-color: #333;
-  color: #fff;
-  text-align: center;
-  border-radius: 2px;
-  padding: 16px;
-  position: fixed;
-  z-index: 1;
-  left: 50%;
-  top: 30px;
-  font-size: 17px;
+	visibility: hidden;
+	min-width: 250px;
+	margin-left: -125px;
+	background-color: #333;
+	color: #fff;
+	text-align: center;
+	border-radius: 2px;
+	padding: 16px;
+	position: fixed;
+	z-index: 1;
+	left: 50%;
+	top: 30px;
+	font-size: 17px;
 }
 
 #snackbar.show {
-  visibility: visible;
-  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
-  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+	visibility: visible;
+	-webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+	animation: fadein 0.5s, fadeout 0.5s 2.5s;
 }
 
-@-webkit-keyframes fadein {
-  from {top: 0; opacity: 0;} 
-  to {top: 30px; opacity: 1;}
+@
+-webkit-keyframes fadein {
+	from {top: 0;
+	opacity: 0;
 }
 
-@keyframes fadein {
-  from {top: 0; opacity: 0;}
-  to {top: 30px; opacity: 1;}
+to {
+	top: 30px;
+	opacity: 1;
 }
 
-@-webkit-keyframes fadeout {
-  from {top: 30px; opacity: 1;} 
-  to {top: 0; opacity: 0;}
+}
+@
+keyframes fadein {
+	from {top: 0;
+	opacity: 0;
 }
 
-@keyframes fadeout {
-  from {top: 30px; opacity: 1;}
-  to {top: 0; opacity: 0;}
+to {
+	top: 30px;
+	opacity: 1;
+}
+
+}
+@
+-webkit-keyframes fadeout {
+	from {top: 30px;
+	opacity: 1;
+}
+
+to {
+	top: 0;
+	opacity: 0;
+}
+
+}
+@
+keyframes fadeout {
+	from {top: 30px;
+	opacity: 1;
+}
+
+to {
+	top: 0;
+	opacity: 0;
+}
 }
 </style>
 </head>
 
 <body>
 
-<div id="wrapper">
+	<div id="wrapper">
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/dashboard/">SB Admin v2.0</a>
-        </div>
-        <!-- /.navbar-header -->
+		<nav class="navbar navbar-default navbar-static-top" role="navigation"
+			style="margin-bottom: 0">
+			<a href="/dashboard/"><img src="/assets/img/favicon.png"
+				style="width: 13%;"></a>
 
-        <ul class="nav navbar-top-links navbar-right">
-         <div id="snackbar">Some text some message..</div>
-          
-            <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                    <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
-                </a>
-                <ul class="dropdown-menu dropdown-user">
-                    <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
-                    </li>
-                    <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-                    </li>
-                    <li class="divider"></li>
-                    <li><a th:href="@{/logout}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
-                    </li>
-                </ul>
-                <!-- /.dropdown-user -->
-            </li>
-            <!-- /.dropdown -->
-        </ul>
-        <!-- /.navbar-top-links -->
+			<ul class="nav navbar-top-links navbar-right">
 
-        <div class="navbar-default sidebar" role="navigation">
-            <div class="sidebar-nav navbar-collapse">
-                <ul class="nav" id="side-menu">
-                    <li class="sidebar-search">
-                        <div class="input-group custom-search-form">
-                            <input type="text" class="form-control" placeholder="Search..."/>
-                            <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </span>
-                        </div>
-                        <!-- /input-group -->
-                    </li>
-                    <li>
-                        <a href="/dashboard/"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
-                    </li>
-                    <li>
-                        <a href="/dashboard/staff/"><i class="fa fa-user"></i> Quản lý nhân viên</a>
-                    </li>
-                    <li>
-                        <a href="/dashboard/quanlylichlamviec/"><i class="fa fa-user"></i> Quản lý lịch làm việc</a>
-                    </li>
-                    <li>
-                        <a href="/dashboard/register_work/"><i class="fa fa-user"></i> Đăng ký lịch làm việc</a>
-                    </li>
-                    <li>
-                        <a href="/dashboard/services/"><i class="fa fa-user"></i> Quản lý dịch vụ</a>
-                    </li>
-                    <li>
-                        <a href="/dashboard/customer/"><i class="fa fa-user"></i> Quản lý khách hàng</a>
-                    </li>
-                    <li>
-                        <a href="/dashboard/account/"><i class="fa fa-user"></i> Quản lý tài khoản</a>
-                    </li>
-                    <li>
-                        <a href="/dashboard/lichkham/"><i class="fa fa-user"></i>Tiếp nhận lịch khám</a>
-                    </li>
+				<li class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" href="#"> <i class="fa fa-user fa-fw"></i>
+						<i class="fa fa-caret-down"></i>[[${#request.userPrincipal.principal.username}]]
+				</a>
+					<ul class="dropdown-menu dropdown-user">
+						<li><a href="/profile/"><i class="fa fa-user fa-fw"></i>
+								Thông tin tài khoản</a></li>
+						<li><a href="#"><i class="fa fa-gear fa-fw"></i> Đổi mật
+								khẩu</a></li>
+						<li class="divider"></li>
+						<li><a th:href="@{/logout}"><i
+								class="fa fa-sign-out fa-fw"></i> Đăng xuất</a></li>
+					</ul> <!-- /.dropdown-user --></li>
 
-                </ul>
-            </div>
-            <!-- /.sidebar-collapse -->
-        </div>
-        <!-- /.navbar-static-side -->
-    </nav>
-	<form th:action="@{/dashboard/quanlylichkham/dangky/xacnhan}" th:object="${dangKy}" method="POST">
-    <div id="page-wrapper">
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">Đăng ký lịch làm việc</h1>
-            </div>
-            <!-- /.col-lg-12 -->
-        </div>
-        <!-- /.row -->
-        <div class="row" style="display:fles;">
-            <div class="col-lg-12">
-            <div class="col-md-2">
-                <h1 class="page-header">Ngày: </h1>
-            </div>
-            <div class="col-md-8">
-                <h1 class="page-header" th:text="${dateNow +'->'+ dateFuture}"></h1>
-            </div> 
-            <div class="col-md-2">
-                <button type="submit" class="btn btn-primary" style="margin-top:40px;">Đăng ký</button>
-               
-            </div> 
-           
-            </div>
-            <!-- /.col-lg-12 -->
-        </div>
-        <!-- /.row -->
-        <div class="row">
-            <div class="col-lg-12">
-            <h3 >Thứ 2: </h3>
-            <div class="col-lg-12">
-            <div class="col-md-4">
-            <input type="hidden"  th:field=*{dangKyNgay}/>
-                 <input type="checkbox" class="form-check-input" name="id" th:field="*{thu2}"
-								id="exampleCheck2" th:value="${1}"> <label class="form-check-label"
-								for="chkremember">Ca 1:8h30-12h</label>
-            </div>
-            <div class="col-md-4">
-                 <input type="checkbox" class="form-check-input" name="id" th:field="*{thu2}"
-								id="exampleCheck2" th:value="${2}"> <label class="form-check-label"
-								for="chkremember">Ca 2: 13h30-17h</label>
-            </div>
-            <div class="col-md-4"> 
-                 <input type="checkbox" class="form-check-input" name="id" th:field="*{thu2}"
-								id="exampleCheck2" th:value="${3}"> <label class="form-check-label"
-								for="chkremember">Ca 3: 17h-19h30</label>
-            </div>
-                
+
+				<!-- /.dropdown -->
+			</ul>
+			<!-- /.navbar-top-links -->
+
+			<div class="navbar-default sidebar" role="navigation">
+				<div class="sidebar-nav navbar-collapse">
+					<ul class="nav" id="side-menu">
+
+						<li><a href="/dashboard/"><i
+								class="fa fa-dashboard fa-fw"></i> Dashboard</a></li>
+						<li><a href="/dashboard/staff/"><i class="fa fa-user"></i>
+								Quản lý nhân viên</a></li>
+						<li><a href="/dashboard/quanlylichkham/"><i
+								class="fa fa-user"></i> Quản lý lịch làm việc</a></li>
+						<li><a href="/dashboard/services/"><i class="fa fa-user"></i>
+								Quản lý dịch vụ</a></li>
+						<li><a href="/dashboard/customer/"><i class="fa fa-user"></i>
+								Quản lý khách hàng</a></li>
+						<li><a href="/dashboard/account/"><i class="fa fa-user"></i>
+								Quản lý tài khoản</a></li>
+						<li><a href="/dashboard/lichkham/"><i class="fa fa-user"></i>Tiếp
+								nhận lịch khám</a></li>
+
+					</ul>
+				</div>
+				<!-- /.sidebar-collapse -->
 			</div>
-            </div>
-            <!-- /.col-lg-12 -->
-        </div>
-    
-        <div class="row">
-            <div class="col-lg-12">
-            <h3 >Thứ 3:</h3>
-            <div class="col-lg-12">
-            <div class="col-md-4">
-                 <input type="checkbox" class="form-check-input" name="id" th:field="*{thu3}"
-								id="exampleCheck3" th:value="${1}"> <label class="form-check-label"
-								for="chkremember">Ca 1:8h30-12h</label>
-            </div>
-            <div class="col-md-4">
-                 <input type="checkbox" class="form-check-input" name="id" th:field="*{thu3}"
-								id="exampleCheck3" th:value="${2}"> <label class="form-check-label"
-								for="chkremember">Ca 2: 13h30-17h</label>
-            </div>
-            <div class="col-md-4">
-                 <input type="checkbox" class="form-check-input" name="id" th:field="*{thu3}"
-								id="exampleCheck3" th:value="${3}"> <label class="form-check-label"
-								for="chkremember">Ca 3: 17h-19h30</label>
-            </div>
-                
+			<!-- /.navbar-static-side -->
+		</nav>
+		<form th:action="@{/dashboard/quanlylichkham/dangky/xacnhan}"
+			th:object="${dangKy}" method="POST">
+			<div id="page-wrapper">
+				<div class="row">
+					<div class="col-lg-12">
+						<h1 class="page-header">Đăng ký lịch làm việc</h1>
+					</div>
+					<!-- /.col-lg-12 -->
+				</div>
+				<!-- /.row -->
+				<div class="row" style="display: fles;">
+					<div class="col-lg-12">
+						<div class="col-md-2">
+							<h1 class="page-header">Ngày:</h1>
+						</div>
+						<div class="col-md-8">
+							<h1 class="page-header" th:text="${dateNow +'->'+ dateFuture}"></h1>
+						</div>
+						<div class="col-md-2">
+							<button type="submit" class="btn btn-primary"
+								style="margin-top: 40px;">Đăng ký</button>
+
+						</div>
+
+					</div>
+					<!-- /.col-lg-12 -->
+				</div>
+				<!-- /.row -->
+				<div class="row">
+					<div class="col-lg-12">
+						<h3>Thứ 2:</h3>
+						<div class="col-lg-12">
+							<div class="col-md-4">
+								<input type="hidden" th:field=*{dangKyNgay} /> <input
+									type="checkbox" class="form-check-input" name="id"
+									th:field="*{thu2}" id="exampleCheck2" th:value="${1}">
+								<label class="form-check-label" for="chkremember">Ca
+									1:8h30-12h</label>
+							</div>
+							<div class="col-md-4">
+								<input type="checkbox" class="form-check-input" name="id"
+									th:field="*{thu2}" id="exampleCheck2" th:value="${2}">
+								<label class="form-check-label" for="chkremember">Ca 2:
+									13h30-17h</label>
+							</div>
+							<div class="col-md-4">
+								<input type="checkbox" class="form-check-input" name="id"
+									th:field="*{thu2}" id="exampleCheck2" th:value="${3}">
+								<label class="form-check-label" for="chkremember">Ca 3:
+									17h-19h30</label>
+							</div>
+
+						</div>
+					</div>
+					<!-- /.col-lg-12 -->
+				</div>
+
+				<div class="row">
+					<div class="col-lg-12">
+						<h3>Thứ 3:</h3>
+						<div class="col-lg-12">
+							<div class="col-md-4">
+								<input type="checkbox" class="form-check-input" name="id"
+									th:field="*{thu3}" id="exampleCheck3" th:value="${1}">
+								<label class="form-check-label" for="chkremember">Ca
+									1:8h30-12h</label>
+							</div>
+							<div class="col-md-4">
+								<input type="checkbox" class="form-check-input" name="id"
+									th:field="*{thu3}" id="exampleCheck3" th:value="${2}">
+								<label class="form-check-label" for="chkremember">Ca 2:
+									13h30-17h</label>
+							</div>
+							<div class="col-md-4">
+								<input type="checkbox" class="form-check-input" name="id"
+									th:field="*{thu3}" id="exampleCheck3" th:value="${3}">
+								<label class="form-check-label" for="chkremember">Ca 3:
+									17h-19h30</label>
+							</div>
+
+						</div>
+					</div>
+					<!-- /.col-lg-12 -->
+				</div>
+				<div class="row">
+					<div class="col-lg-12">
+						<h3>Thứ 4:</h3>
+						<div class="col-lg-12">
+							<div class="col-md-4">
+								<input type="checkbox" class="form-check-input" name="id"
+									th:field="*{thu4}" id="exampleCheck4" th:value="${1}">
+								<label class="form-check-label" for="chkremember">Ca
+									1:8h30-12h</label>
+							</div>
+							<div class="col-md-4">
+								<input type="checkbox" class="form-check-input" name="id"
+									th:field="*{thu4}" id="exampleCheck4" th:value="${2}">
+								<label class="form-check-label" for="chkremember">Ca 2:
+									13h30-17h</label>
+							</div>
+							<div class="col-md-4">
+								<input type="checkbox" class="form-check-input" name="id"
+									th:field="*{thu4}" id="exampleCheck4" th:value="${3}">
+								<label class="form-check-label" for="chkremember">Ca 3:
+									17h-19h30</label>
+							</div>
+
+						</div>
+					</div>
+					<!-- /.col-lg-12 -->
+				</div>
+				<div class="row">
+					<div class="col-lg-12">
+						<h3>Thứ 5:</h3>
+						<div class="col-lg-12">
+							<div class="col-md-4">
+								<input type="checkbox" class="form-check-input" name="id"
+									th:field="*{thu5}" id="exampleCheck5" th:value="${1}">
+								<label class="form-check-label" for="chkremember">Ca
+									1:8h30-12h</label>
+							</div>
+							<div class="col-md-4">
+								<input type="checkbox" class="form-check-input" name="id"
+									th:field="*{thu5}" id="exampleCheck5" th:value="${2}">
+								<label class="form-check-label" for="chkremember">Ca 2:
+									13h30-17h</label>
+							</div>
+							<div class="col-md-4">
+								<input type="checkbox" class="form-check-input" name="id"
+									th:field="*{thu5}" id="exampleCheck5" th:value="${3}">
+								<label class="form-check-label" for="chkremember">Ca 3:
+									17h-19h30</label>
+							</div>
+
+						</div>
+					</div>
+					<!-- /.col-lg-12 -->
+				</div>
+				<div class="row">
+					<div class="col-lg-12">
+						<h3>Thứ 6:</h3>
+						<div class="col-lg-12">
+							<div class="col-md-4">
+								<input type="checkbox" class="form-check-input" name="id"
+									th:field="*{thu6}" id="exampleCheck6" th:value="${1}">
+								<label class="form-check-label" for="chkremember">Ca
+									1:8h30-12h</label>
+							</div>
+							<div class="col-md-4">
+								<input type="checkbox" class="form-check-input" name="id"
+									th:field="*{thu6}" id="exampleCheck6" th:value="${2}">
+								<label class="form-check-label" for="chkremember">Ca 2:
+									13h30-17h</label>
+							</div>
+							<div class="col-md-4">
+								<input type="checkbox" class="form-check-input" name="id"
+									th:field="*{thu6}" id="exampleCheck6" th:value="${3}">
+								<label class="form-check-label" for="chkremember">Ca 3:
+									17h-19h30</label>
+							</div>
+
+						</div>
+					</div>
+					<!-- /.col-lg-12 -->
+				</div>
+				<div class="row">
+					<div class="col-lg-12">
+						<h3>Thứ 7:</h3>
+						<div class="col-lg-12">
+							<div class="col-md-4">
+								<input type="checkbox" class="form-check-input" name="id"
+									th:field="*{thu7}" id="exampleCheck7" th:value="${1}">
+								<label class="form-check-label" for="chkremember">Ca
+									1:8h30-12h</label>
+							</div>
+							<div class="col-md-4">
+								<input type="checkbox" class="form-check-input" name="id"
+									th:field="*{thu7}" id="exampleCheck7" th:value="${2}">
+								<label class="form-check-label" for="chkremember">Ca 2:
+									13h30-17h</label>
+							</div>
+							<div class="col-md-4">
+								<input type="checkbox" class="form-check-input" name="id"
+									th:field="*{thu7}" id="exampleCheck7" th:value="${3}">
+								<label class="form-check-label" for="chkremember">Ca 3:
+									17h-19h30</label>
+							</div>
+
+						</div>
+					</div>
+					<!-- /.col-lg-12 -->
+				</div>
+
+				<!-- /.row -->
 			</div>
-            </div>
-            <!-- /.col-lg-12 -->
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
-            <h3 >Thứ 4:</h3>
-            <div class="col-lg-12">
-            <div class="col-md-4">
-                 <input type="checkbox" class="form-check-input" name="id" th:field="*{thu4}"
-								id="exampleCheck4" th:value="${1}"> <label class="form-check-label"
-								for="chkremember">Ca 1:8h30-12h</label>
-            </div>
-            <div class="col-md-4">
-                 <input type="checkbox" class="form-check-input" name="id" th:field="*{thu4}"
-								id="exampleCheck4" th:value="${2}"> <label class="form-check-label"
-								for="chkremember">Ca 2: 13h30-17h</label>
-            </div>
-            <div class="col-md-4">
-                 <input type="checkbox" class="form-check-input" name="id" th:field="*{thu4}"
-								id="exampleCheck4" th:value="${3}"> <label class="form-check-label"
-								for="chkremember">Ca 3: 17h-19h30</label>
-            </div>
-                
-			</div>
-            </div>
-            <!-- /.col-lg-12 -->
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
-            <h3 >Thứ 5:</h3>
-            <div class="col-lg-12">
-            <div class="col-md-4">
-                 <input type="checkbox" class="form-check-input" name="id" th:field="*{thu5}"
-								id="exampleCheck5" th:value="${1}"> <label class="form-check-label"
-								for="chkremember">Ca 1:8h30-12h</label>
-            </div>
-            <div class="col-md-4">
-                 <input type="checkbox" class="form-check-input" name="id" th:field="*{thu5}"
-								id="exampleCheck5" th:value="${2}"> <label class="form-check-label"
-								for="chkremember">Ca 2: 13h30-17h</label>
-            </div>
-            <div class="col-md-4">
-                 <input type="checkbox" class="form-check-input" name="id" th:field="*{thu5}"
-								id="exampleCheck5" th:value="${3}"> <label class="form-check-label"
-								for="chkremember">Ca 3: 17h-19h30</label>
-            </div>
-                
-			</div>
-            </div>
-            <!-- /.col-lg-12 -->
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
-            <h3 >Thứ 6:</h3>
-            <div class="col-lg-12">
-            <div class="col-md-4">
-                 <input type="checkbox" class="form-check-input" name="id" th:field="*{thu6}"
-								id="exampleCheck6" th:value="${1}"> <label class="form-check-label"
-								for="chkremember">Ca 1:8h30-12h</label>
-            </div>
-            <div class="col-md-4">
-                 <input type="checkbox" class="form-check-input" name="id" th:field="*{thu6}"
-								id="exampleCheck6" th:value="${2}"> <label class="form-check-label"
-								for="chkremember">Ca 2: 13h30-17h</label>
-            </div>
-            <div class="col-md-4">
-                 <input type="checkbox" class="form-check-input" name="id" th:field="*{thu6}"
-								id="exampleCheck6" th:value="${3}"> <label class="form-check-label"
-								for="chkremember">Ca 3: 17h-19h30</label>
-            </div>
-                
-			</div>
-            </div>
-            <!-- /.col-lg-12 -->
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
-            <h3 >Thứ 7:</h3>
-            <div class="col-lg-12">
-            <div class="col-md-4">
-                 <input type="checkbox" class="form-check-input" name="id" th:field="*{thu7}"
-								id="exampleCheck7" th:value="${1}"> <label class="form-check-label"
-								for="chkremember">Ca 1:8h30-12h</label>
-            </div>
-            <div class="col-md-4">
-                 <input type="checkbox" class="form-check-input" name="id" th:field="*{thu7}"
-								id="exampleCheck7" th:value="${2}"> <label class="form-check-label"
-								for="chkremember">Ca 2: 13h30-17h</label>
-            </div>
-            <div class="col-md-4">
-                 <input type="checkbox" class="form-check-input" name="id" th:field="*{thu7}"
-								id="exampleCheck7" th:value="${3}"> <label class="form-check-label"
-								for="chkremember">Ca 3: 17h-19h30</label>
-            </div>
-                
-			</div>
-            </div>
-            <!-- /.col-lg-12 -->
-        </div>
-       
-        <!-- /.row -->
-    </div>
-    </form>
-    <!-- /#page-wrapper -->
+		</form>
+		<!-- /#page-wrapper -->
 
-</div>
-<!-- /#wrapper -->
+	</div>
+	<!-- /#wrapper -->
 
-<!-- jQuery -->
-<script src="/webjars/startbootstrap-sb-admin-2/1.0.2/js/jquery.js"></script>
+	<!-- jQuery -->
+	<script src="/webjars/startbootstrap-sb-admin-2/1.0.2/js/jquery.js"></script>
 
-<!-- Bootstrap Core JavaScript -->
-<script src="/webjars/startbootstrap-sb-admin-2/1.0.2/js/bootstrap.min.js"></script>
+	<!-- Bootstrap Core JavaScript -->
+	<script
+		src="/webjars/startbootstrap-sb-admin-2/1.0.2/js/bootstrap.min.js"></script>
 
-<!-- Metis Menu Plugin JavaScript -->
-<script src="/webjars/startbootstrap-sb-admin-2/1.0.2/js/plugins/metisMenu/metisMenu.min.js"></script>
+	<!-- Metis Menu Plugin JavaScript -->
+	<script
+		src="/webjars/startbootstrap-sb-admin-2/1.0.2/js/plugins/metisMenu/metisMenu.min.js"></script>
 
-<!-- Morris Charts JavaScript -->
-<script src="/webjars/startbootstrap-sb-admin-2/1.0.2/js/plugins/morris/raphael.min.js"></script>
-<script src="/webjars/startbootstrap-sb-admin-2/1.0.2/js/plugins/morris/morris.min.js"></script>
-<script src="/webjars/startbootstrap-sb-admin-2/1.0.2/js/plugins/morris/morris-data.js"></script>
+	<!-- Morris Charts JavaScript -->
+	<script
+		src="/webjars/startbootstrap-sb-admin-2/1.0.2/js/plugins/morris/raphael.min.js"></script>
+	<script
+		src="/webjars/startbootstrap-sb-admin-2/1.0.2/js/plugins/morris/morris.min.js"></script>
+	<script
+		src="/webjars/startbootstrap-sb-admin-2/1.0.2/js/plugins/morris/morris-data.js"></script>
 
-<!-- Custom Theme JavaScript -->
-<script src="/webjars/startbootstrap-sb-admin-2/1.0.2/js/sb-admin-2.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-    $(document).ready(function () {
-        $("#myInput").on("keyup", function () {
-            var value = $(this).val().toLowerCase();
-            $("#myTable tr").filter(function () {
-                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-            });
-        });
-    });
+	<!-- Custom Theme JavaScript -->
+	<script src="/webjars/startbootstrap-sb-admin-2/1.0.2/js/sb-admin-2.js"></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script>
+		$(document)
+				.ready(
+						function() {
+							$("#myInput")
+									.on(
+											"keyup",
+											function() {
+												var value = $(this).val()
+														.toLowerCase();
+												$("#myTable tr")
+														.filter(
+																function() {
+																	$(this)
+																			.toggle(
+																					$(
+																							this)
+																							.text()
+																							.toLowerCase()
+																							.indexOf(
+																									value) > -1)
+																});
+											});
+						});
 
-    function myFunction() {
-      var x = document.getElementById("snackbar");
-      x.className = "show";
-      setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
-    }
-</script>
+		function myFunction() {
+			var x = document.getElementById("snackbar");
+			x.className = "show";
+			setTimeout(function() {
+				x.className = x.className.replace("show", "");
+			}, 3000);
+		}
+	</script>
 </body>
 
 </html>

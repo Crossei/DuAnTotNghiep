@@ -1,7 +1,4 @@
-.section {
-    position: relative;
-    height: 100vh;
-}
+
 
 .section .section-center {
     position: absolute;
@@ -24,7 +21,7 @@
 
 .booking-form .form-group {
     position: relative;
-    margin-bottom: 0px;
+
 }
 
 .booking-form>form .row.no-margin {
@@ -47,8 +44,8 @@
     color: #0e2753;
     border: 1px solid #dddee9;
     border-bottom: 0px;
-    font-size: 20px;
-    font-weight: 700;
+    font-size: 15px;
+    font-weight: 300;
     -webkit-transition: 0.2s all;
     transition: 0.2s all;
 }
@@ -117,27 +114,84 @@
     position: absolute;
     left: 20px;
     top: 10px;
-    color: #f14634;
-    font-weight: 400;
+    color: #009961;
+    font-weight: 600;
     line-height: 24px;
-    font-style: italic;
     height: 24px;
-    font-size: 14px;
+    font-size: 15px;
+}
+
+.booking-form .btnSelect {
+	color: #fff;
+    background-color: #009961;
+    font-size: 16px;
+    border: none;
+    border-radius: 3px;
+    margin-bottom: 15px;
+    margin-left: 20px;
+    transition-duration: 0.5s;
+}
+
+.booking-form .btnSelect:hover {
+	color: #fff;
+    background-color: #00b673;
+    font-size: 16px;
+    border: none;
+    border-radius: 3px;
+    margin-bottom: 15px;
+    margin-left: 20px;
+    transform: translateY(2px);
+}
+
+.booking-form .btnSelect:active {
+	color: #fff;
+    background-color: #00b61e;
+    font-size: 16px;
+    border: none;
+    border-radius: 3px;
+    margin-bottom: 15px;
+    margin-left: 20px;
+    transform: translateY(2px);
 }
 
 .booking-form .submit-btn {
     color: #fff;
-    background-color: #f14634;
+    background-color: #009961;
     font-weight: 700;
     height: 80px;
     font-size: 18px;
     text-transform: capitalize;
     border: none;
     width: 100%;
+    transition-duration: 0.5s;
+}
+
+.booking-form .submit-btn:hover {
+    color: #fff;
+    background-color: #00b673;
+    font-weight: 700;
+    height: 80px;
+    font-size: 18px;
+    text-transform: capitalize;
+    border: none;
+    width: 100%;
+    transform: translateY(2px);
+}
+
+.booking-form .submit-btn:active {
+    color: #fff;
+    background-color: #00b61e;
+    font-weight: 700;
+    height: 80px;
+    font-size: 18px;
+    text-transform: capitalize;
+    border: none;
+    width: 100%;
+    transform: translateY(2px);
 }
 
 @media only screen and (max-width: 767px) {
     .booking-form [class*="col-"]+[class*="col-"] .form-group .form-control {
-        border-left: 1px solid #dddee9;
+        border-left: 1px solid #dcebde;
     }
 }
