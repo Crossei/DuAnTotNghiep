@@ -4,10 +4,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -27,7 +24,6 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.dao.Booking;
@@ -37,7 +33,6 @@ import com.example.demo.dao.Service;
 import com.example.demo.dao.Staff;
 import com.example.demo.dao.User;
 import com.example.demo.dto.DatLichDTO;
-import com.example.demo.dto.tiepNhanLichKhamDTO;
 import com.example.demo.service.BookingDetailRepository;
 import com.example.demo.service.BookingRepository;
 import com.example.demo.service.CustomerRepository;

@@ -14,7 +14,7 @@ import com.example.demo.dao.BookingDetail;
 import com.example.demo.dao.Customer;
 import com.example.demo.dao.Service;
 import com.example.demo.dao.Staff;
-import com.example.demo.dto.tiepNhanLichKhamDTO;
+import com.example.demo.dto.TiepNhanLichKhamDTO;
 import com.example.demo.service.BookingDetailRepository;
 import com.example.demo.service.BookingRepository;
 import com.example.demo.service.CustomerRepository;
@@ -46,14 +46,14 @@ public class TiepNhanLichKhamController {
 
 	@RequestMapping("/dashboard/lichkham")
 	public String nhanLichKham(Model model) {
-		List<tiepNhanLichKhamDTO> tiepNhanList = new ArrayList<>();
+		List<TiepNhanLichKhamDTO> tiepNhanList = new ArrayList<>();
 		List<BookingDetail> bookingItems = bokDetailRepo.findAll();
 		List<Booking> bookingCus = bokRepo.findAll();
 		List<Customer> cusList = cusRepo.findAll();
 		for(BookingDetail bookList : bookingItems) {
 			for(Booking bookCusList : bookingCus) {
 				if(bookList.getId_booking() == bookCusList.getId_booking() && bookList.getActive() == 1) {
-					tiepNhanLichKhamDTO tiepNhapLich = new tiepNhanLichKhamDTO();
+					TiepNhanLichKhamDTO tiepNhapLich = new TiepNhanLichKhamDTO();
 					Customer cus = cusRepo.findById(bookCusList.getId_cus());
 					tiepNhapLich.setId_detail(bookList.getId_detail());
 					tiepNhapLich.setName(cus.getName_cus());

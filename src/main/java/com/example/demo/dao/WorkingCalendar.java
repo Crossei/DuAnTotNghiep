@@ -8,7 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class workingCalendar {
+public class WorkingCalendar {
 	@Id 
 	@GeneratedValue(strategy = GenerationType.IDENTITY) 
 	private int id_working;

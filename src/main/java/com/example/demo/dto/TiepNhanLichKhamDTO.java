@@ -3,7 +3,7 @@ package com.example.demo.dto;
 import java.sql.Time;
 import java.util.Date;
 
-public class tiepNhanLichKhamDTO {
+public class TiepNhanLichKhamDTO {
 	private  int id_detail;
 	private String name;
 	private String sdt;
