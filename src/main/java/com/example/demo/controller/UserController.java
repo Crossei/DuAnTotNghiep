@@ -40,7 +40,9 @@ public class UserController {
 
 	@RequestMapping("dashboard/staff/delete/{id_staff}")
 	public String delete(@PathVariable(name = "id_staff") int id) {
-		staffRepo.deleteById(id);
+		Staff staff = staffRepo.findById(id);
+		staff.setStatus(0);
+		staffRepo.save(staff);
 		return "redirect:/dashboard/staff";
 	}
 	@RequestMapping("dashboard/customer/delete/{id_cus}")

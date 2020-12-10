@@ -9,13 +9,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @Table(name="`staff`")
 public class Staff {
 	@Id 
 	@GeneratedValue(strategy = GenerationType.IDENTITY) 
 	private int id_staff;
-	private int id_user;
+	@Column(name= "id_user")
+	private int iduser;
 	private String name_staff;
 	private int sex;
 	private String address;
@@ -23,6 +26,7 @@ public class Staff {
 	private String email;
 	private String phone;
 	@Column(name = "dateWorking_Start")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date dateWorking_Start;
 	private Integer status;
 
@@ -38,7 +42,7 @@ public class Staff {
 	public Staff(int id_user, String name_staff, int sex, String address, String image, String email, String phone,
 			Date dateWorking_Start, Integer status) {
 		super();
-		this.id_user = id_user;
+		this.iduser = id_user;
 		this.name_staff = name_staff;
 		this.sex = sex;
 		this.address = address;
@@ -60,10 +64,10 @@ public class Staff {
 		this.status = status;
 	}
 	public int getId_user() {
-		return id_user;
+		return iduser;
 	}
 	public void setId_user(int id_user) {
-		this.id_user = id_user;
+		this.iduser = id_user;
 	}
 	public int getId_staff() {
 		return id_staff;

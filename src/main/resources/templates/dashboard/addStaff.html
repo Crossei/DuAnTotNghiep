@@ -226,8 +226,8 @@
 														và tên:</label>
 													<div class="col-lg-8 col-xl-6">
 
-														<input type="text" id="ten" th:field="*{name_staff}"
-															style="width: 230px;" 
+														<input type="text"  th:field="*{name_staff}" required autofocus
+															style="width: 230px;"  placeholder="Họ tên" id="name"
 															class="form-control">
 													</div>
 
@@ -236,17 +236,18 @@
 													<label class="col-xl-4 col-lg-4 col-form-label">Email:</label>
 													<div class="col-lg-8 col-xl-6">
 
-														<input type="text" th:field="*{email}" style="width: 230px;"
-															class="form-control">
+														<input type="email" th:field="*{email}" style="width: 230px;" placeholder="Email"
+															class="form-control" id="email"  required autofocus>
 													</div>
 
 												</div>
+												
 												<div class="form-group row">
 													<label class="col-xl-4 col-lg-4 col-form-label">Địa
 														chỉ:</label>
 													<div class="col-lg-8 col-xl-6">
 
-														<input type="text" id="diachi" th:field="*{address}"
+														<input type="text" id="diachi" th:field="*{address}" placeholder="Địa chỉ"
 															style="width: 230px;" 
 															class="form-control">
 													</div>
@@ -255,7 +256,7 @@
 													<label class="col-xl-4 col-lg-4 col-form-label">Ngày bắt đầu:</label>
 													<div class="col-lg-8 col-xl-6">
 
-														<input type="date" id="diachi" th:field="*{dateWorking_Start}"
+														<input type="date" id="diachi" th:field="*{dateWorking_Start}" placeholder="Ngày tham gia"
 															style="width: 230px;" 
 															class="form-control">
 													</div>
@@ -287,7 +288,7 @@
 														điện thoại:</label>
 													<div class="col-lg-8 col-xl-6">
 
-														<input type="text" id="sdt" th:field="*{phone}"
+														<input type="text" id="sdt" th:field="*{phone}" placeholder="Số điện thoại"
 															style="width: 230px;" 
 															class="form-control">
 													</div>
@@ -393,6 +394,29 @@
 			evt.element.value = value;
 
 		});
+		function code() {
+			// check trong
+			var name = document.getElementById("name").value.trim();
+
+			var email = document.getElementById("email").value.trim();
+
+			var filter = /^[a-zA-Z-' ]*$/;
+
+			if (email.trim().length == 0) {
+				alert("Mời bạn nhập email");
+				return false;
+			}
+			if (name.trim().length == 0) {
+				alert("Mời bạn nhập tên");
+				return false;
+			}
+			if (!filter.test(email.value)) {
+				alert('Vui lòng nhập lại địa chỉ email');
+				email.focus;
+				return false;
+			}
+			return true;
+		}
 	</script>
 </body>
 

@@ -240,7 +240,7 @@
 													<div class="col-lg-8 col-xl-6">
 
 														<input type="text" id="ten" th:field="*{name_staff}"
-															style="width: 230px;" 
+															style="width: 230px;" placeholder="Tên nhân viên" required autofocus 
 															class="form-control">
 													</div>
 
@@ -249,7 +249,18 @@
 													<label class="col-xl-4 col-lg-4 col-form-label">Email:</label>
 													<div class="col-lg-8 col-xl-6">
 
-														<input type="text" th:field="*{email}" style="width: 230px;" readonly="readonly"
+														<input type="email" th:field="*{email}" style="width: 230px;" readonly="readonly"
+															class="form-control" placeholder="Email" required autofocus id="email"
+															>
+													</div>
+
+												</div>
+												
+												<div class="form-group row" >
+													<label class="col-xl-4 col-lg-4 col-form-label">Ngày:</label>
+													<div class="col-lg-8 col-xl-6">
+
+														<input type="date" th:field="*{dateWorking_Start}" style="width: 230px;" 
 															class="form-control">
 													</div>
 
@@ -259,7 +270,7 @@
 														chỉ:</label>
 													<div class="col-lg-8 col-xl-6">
 
-														<input type="text" id="diachi" th:field="*{address}"
+														<input type="text" id="diachi" th:field="*{address}" placeholder="Địa chỉ"
 															style="width: 230px;" 
 															class="form-control">
 													</div>
@@ -281,7 +292,7 @@
 														điện thoại:</label>
 													<div class="col-lg-8 col-xl-6">
 
-														<input type="text" id="sdt" th:field="*{phone}"
+														<input type="text" id="sdt" th:field="*{phone}" placeholder="Số điện thoại"
 															style="width: 230px;" 
 															class="form-control">
 													</div>
@@ -297,7 +308,7 @@
 										</div>
 									</div>
 									
-									<button  style=" margin-left: 597px;margin-bottom: 10px;"
+									<button  style=" margin-left: 597px;margin-bottom: 10px"
 										class="btn btn-primary" type="submit">Save</button>
 								</form>
 							</div>
@@ -374,7 +385,28 @@
   	  evt.element.value = value;
 
   	});
-   
+  	function code() {
+		// check trong
+		
+		var email = document.getElementById("email").value.trim();
+		var ten = document.getElementById("ten").value.trim();
+		var filter = /^[a-zA-Z-' ]*$/;
+
+		if (email.trim().length == 0) {
+			alert("Mời bạn nhập email");
+			return false;
+		}
+		if (ten.trim().length == 0) {
+			alert("Mời bạn nhập email");
+			return false;
+		}
+		if (!filter.test(email.value)) {
+			alert('Please provide a valid email address');
+			email.focus;
+			return false;
+		}
+		return true;
+	}
 </script>
 </body>
 

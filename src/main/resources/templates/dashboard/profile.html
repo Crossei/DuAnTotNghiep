@@ -125,7 +125,7 @@
                     <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>[[${#request.userPrincipal.principal.username}]]
                 </a>
                 <ul class="dropdown-menu dropdown-user">
-                    <li><a href="/dashboard/profile/"><i class="fa fa-user fa-fw"></i> Thông tin tài khoản</a>
+                    <li><a href="/profile/"><i class="fa fa-user fa-fw"></i> Thông tin tài khoản</a>
                     </li>
                     <li><a href="#"><i class="fa fa-gear fa-fw"></i> Đổi mật khẩu</a>
                     </li>
@@ -192,7 +192,7 @@
 							<div>
 
 								<form style="padding: 10px;" action="#"
-									th:action="@{/saveStaff1}" th:object="${staff}" method="post"
+									th:action="@{/saveStaff2}" th:object="${staff}" method="post"
 									enctype="multipart/form-data">
 									<div class="kt-portlet__body">
 										<div>
@@ -215,7 +215,16 @@
 														style="width: 30%; display:" none";" class="form-control"
 														th:field="*{id_user}" readonly="readonly">
 												</div>
-												
+												<div class="form-group" style="display: none;">
+													<label for="name">Id người dùng</label> <input type="text"
+														style="width: 30%; display:" none";" class="form-control"
+														th:field="*{image}" readonly="readonly">
+												</div>
+												<div class="form-group" style="display: none;">
+													<label for="name">Ngày</label> <input type="text"
+														style="width: 30%; display:" none";" class="form-control"
+														th:field="*{dateWorking_Start}" readonly="readonly">
+												</div>
 												<div class="form-group row">
 													
 													<div class="col-lg-9 col-xl-6">
@@ -223,8 +232,8 @@
 														<img th:src="*{'/assets/img/'+{image}}" id="thumbnail"
 															alt="Ảnh nhân viên"
 															style="height: 150px; width: 250px; object-fit: cover;margin-left:40%;" />
-														<input type="file" name="fileImage" id="fileImage"
-															accept="image/png,image/ipeg" style="margin-left:165px;"  />
+														<input type="file" name="fileImage" id="fileImage" 
+															accept="image/png,image/ipeg" style="margin-left:165px;display:none;"  />
 														
 													</div>
 
@@ -235,7 +244,8 @@
 													<div class="col-lg-9 col-xl-6">
 
 														<input type="text" id="ten" th:field="*{name_staff}"
-															style="width: 330px;" readonly="readonly"
+															style="width: 330px;" readonly="readonly" required autofocus 
+															 placeholder="Họ và tên"
 															class="form-control">
 													</div>
 
@@ -246,11 +256,13 @@
 													<div class="col-lg-9 col-xl-6">
 
 														<input type="text" id="diachi" th:field="*{address}"
-															style="width: 330px;" readonly="readonly"
+															style="width: 330px;" readonly="readonly" placeholder="Địa chỉ"
 															class="form-control">
 													</div>
 												</div>
-
+												
+											
+												
 												<div class="form-group row">
 													<label class="col-xl-3 col-lg-3 col-form-label">Giới
 														tính</label>
@@ -277,7 +289,7 @@
 													<div class="col-lg-9 col-xl-6">
 
 														<input type="text" id="sdt" th:field="*{phone}"
-															style="width: 330px;" readonly="readonly"
+															style="width: 330px;" readonly="readonly" placeholder="Số điện thoại"
 															class="form-control">
 													</div>
 												</div>
@@ -379,29 +391,20 @@
 			});
 			function code() {
 				// check trong
-				var name = document.getElementById("name_staff").value.trim();
-				var dsc = document.getElementById("dsc").value.trim();
-				var price = document.getElementById("price").value.trim();
+				var name = document.getElementById("ten").value.trim();
+				
 				if (name.trim().length == 0) {
 					alert("Mời bạn nhập họ và tên");
 					return false;
 				}
-				if (dsc.trim().length == 0) {
-					alert("Mời bạn nhập mô tả");
-					return false;
-				}
-
-				if (price.trim().length == 0) {
-					alert("Mời bạn nhập giá");
-					return false;
-				}
+				
 
 				return true;
 			};
 			function hien() {
 				document.getElementById("chien").style.display = "block";
 				document.getElementById("binh").style.display = "none";
-				
+				document.getElementById("fileImage").style.display = "block";
 				$('#fileImage').prop('type', "file");
 				$('#ten').prop('readonly', false);
 				$('#diachi').prop('readonly', false);

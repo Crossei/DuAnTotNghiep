@@ -179,6 +179,11 @@ width:30%;
 						                    <label for="name">id</label>
 						                    <input type="text"  style="width: 330px;" class="form-control" th:field="*{id_ser}"  name="name" id="name" required autofocus>
 						                </div>
+						                <div class="form-group" style="display: none;">
+													<label for="name">anh:</label> <input type="text"
+														style="width: 30%; display:" none";" class="form-control"
+														th:field="*{image}" readonly="readonly">
+												</div>
 						                <div class="form-group row">
 													
 													<div class="col-lg-9 col-xl-6">
@@ -193,20 +198,22 @@ width:30%;
 										</div>
 						                <div class="form-group">
 						                    <label for="name">Tên dịch vụ:</label>
-						                    <input type="text"  style="width: 330px;" class="form-control" th:field="*{name}"  name="name" id="name" required autofocus>
+						                    <input type="text"  style="width: 330px;" class="form-control" th:field="*{name}" 
+						                    placeholder="Tên dịch vụ" name="name" id="name" required autofocus>
 						                </div> 
 						                <div class="form-group">
 						                    <label for="username">Mô tả:</label>
-						                    <input type="text"  style="width: 330px;" class="form-control" th:field="*{dsc}" name="dsc" id="dsc" required autofocus>
+						                    <input type="text"  style="width: 330px;" 
+						                    placeholder="Mô tả" class="form-control" th:field="*{dsc}" name="dsc" id="dsc" required autofocus>
 						                </div>
 						                <div class="form-group">
 						                    <label for="role">Thời gian trung bình:</label>
 						                   
-						                    <input min="09:00:00" max="18:00:00" required autofocus name="time_working"  type="text" id="time" th:field="*{time_working}"  style="width: 330px;" class="form-control"/>
+						                    <input placeholder="Thời gian trung bình" required autofocus name="time_working"  type="text" id="time" th:field="*{time_working}"  style="width: 330px;" class="form-control"/>
 						                </div>
 						                <div class="form-group">
 						                    <label for="username">Giá tiền trung bình:</label>
-						                    <input type="number" style="width: 330px;" class="form-control" th:field="*{price}" name="price" id="price" required autofocus>
+						                    <input type="number" placeholder="Gía trung bình" style="width: 330px;" class="form-control" th:field="*{price}" name="price" id="price" required autofocus>
 						                </div>
 						                <button class="btn btn-primary" type="submit" style="margin-left:270px;">Save</button>
 						            </form>
@@ -283,8 +290,6 @@ width:30%;
 	
 		var price = document.getElementById("price").value
 				.trim();
-	
-
 		if (name.trim().length == 0) {
 			alert("Mời bạn nhập họ và tên");
 			return false;

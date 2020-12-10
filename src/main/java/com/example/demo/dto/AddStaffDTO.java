@@ -1,6 +1,10 @@
 package com.example.demo.dto;
 
+import java.util.Date;
+
 import javax.persistence.Column;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 public class AddStaffDTO {
 	
@@ -12,7 +16,8 @@ public class AddStaffDTO {
 	private String image;
 	private String email;
 	private String phone;
-	private String dateWorking_Start;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date dateWorking_Start;
 	private Integer status;
 	private int role;
 	
@@ -72,10 +77,10 @@ public class AddStaffDTO {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public String getDateWorking_Start() {
+	public Date getDateWorking_Start() {
 		return dateWorking_Start;
 	}
-	public void setDateWorking_Start(String dateWorking_Start) {
+	public void setDateWorking_Start(Date dateWorking_Start) {
 		this.dateWorking_Start = dateWorking_Start;
 	}
 	public Integer getStatus() {

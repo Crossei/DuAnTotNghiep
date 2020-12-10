@@ -95,14 +95,13 @@ public class AddServiceController {
 //		return "redirect:/dashboard/staff";
 //	}
 //	
-	
-	@RequestMapping(value="/save",method =  RequestMethod.POST)
-	public String saveService(@ModelAttribute(name="service") Service service, Model model,
+	@RequestMapping(value="/save1",method =  RequestMethod.POST)
+	public String saveService1(@ModelAttribute(name="service") Service service, Model model,
 		
 			RedirectAttributes ra,@RequestParam("fileImage") MultipartFile multipartFile) throws IOException, ParseException{
 		
 			String fileName= StringUtils.cleanPath(multipartFile.getOriginalFilename());
-			
+			if(fileName.length()!=0) {
 				service.setImage(fileName);
 
 			Service saveService =ser1Repo.save(service);
@@ -119,6 +118,40 @@ public class AddServiceController {
 			Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
 			}catch(IOException e) {
 				throw new IOException("lỗi"+ fileName);
+			}}else {
+				service.setImage("1.png");
+				ser1Repo.save(service);
+			}
+			
+			
+		return "redirect:/dashboard/services";
+	}
+	@RequestMapping(value="/save",method =  RequestMethod.POST)
+	public String saveService(@ModelAttribute(name="service") Service service, Model model,
+		@RequestParam("image") String image,
+			RedirectAttributes ra,@RequestParam("fileImage") MultipartFile multipartFile) throws IOException, ParseException{
+		
+			String fileName= StringUtils.cleanPath(multipartFile.getOriginalFilename());
+			if(fileName.length()!=0) {
+				service.setImage(fileName);
+
+			Service saveService =ser1Repo.save(service);
+			
+			String uploadDir = "/assets/img/" +saveService.getId_ser();
+			Path uploadPath =Paths.get(uploadDir);
+			if(!Files.exists(uploadPath)) {
+				Files.createDirectories(uploadPath);
+			}
+			ra.addFlashAttribute("message","oki");
+			
+			try(InputStream inputStream =multipartFile.getInputStream()){
+			Path filePath = uploadPath.resolve(fileName);
+			Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
+			}catch(IOException e) {
+				throw new IOException("lỗi"+ fileName);
+			}}else {
+				service.setImage(image);
+				ser1Repo.save(service);
 			}
 			
 			

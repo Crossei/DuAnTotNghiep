@@ -170,7 +170,7 @@
                     <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>[[${#request.userPrincipal.principal.username}]]
                 </a>
                 <ul class="dropdown-menu dropdown-user">
-                    <li><a href="/dashboard/profile/"><i class="fa fa-user fa-fw"></i> Thông tin tài khoản</a>
+                    <li><a href="/profile/"><i class="fa fa-user fa-fw"></i> Thông tin tài khoản</a>
                     </li>
                     <li><a href="#"><i class="fa fa-gear fa-fw"></i> Đổi mật khẩu</a>
                     </li>
@@ -182,9 +182,6 @@
             </li>
           
 
-                    <nav th:if="${@mainController.checkLoggedIn() == true} " class="nav-menu d-none d-lg-block" style="display:none;">
-                       
-                    </nav>
             <!-- /.dropdown -->
         </ul>
         <!-- /.navbar-top-links -->

@@ -196,9 +196,7 @@
 										<th>Ảnh</th>
 										<th>Số điện thoại</th>
 										<th>Email</th>
-									
-										
-										<th>Hành động</th>
+								
 
 									</tr>
 								</thead>
@@ -214,37 +212,7 @@
 											<td th:text="${cusLists.phone}"></td>
 											<td th:text="${cusLists.email}"></td>
 											
-											<td>
-												
-												<button data-target="#myModal"
-													th:attr="data-target='#myModal'+${cusLists.id_cus}"
-													class="btn btn-danger" data-toggle="modal">Khóa</button>
-												<div th:id="myModal+${cusLists.id_cus}" class="modal fade">
-													<div class="modal-dialog modal-confirm">
-														<div class="modal-content">
-															<div class="modal-header flex-column">
-
-																<h4 class="modal-title w-100">Bạn có chắc chắn muốn
-																	xóa lịch làm việc này chứ ?</h4>
-																<button type="button" class="close" data-dismiss="modal"
-																	aria-hidden="true">&times;</button>
-															</div>
-															<div class="modal-body">
-																<p>Bạn có muốn lịch làm việc này chứ ?</p>
-															</div>
-															<div class="modal-footer justify-content-center">
-																<a
-																	th:href="@{/dashboard/customer/delete/{id}(id=${cusLists.id_cus})}"
-																	type="button" class="btn btn-danger">Delete</a>
-																<button type="button" class="btn btn-secondary"
-																	data-dismiss="modal">Cancel</button>
-															</div>
-														</div>
-													</div>
-												</div>
-
-
-											</td>
+											
 										</tr>
 									</th:block>
 								</tbody>
