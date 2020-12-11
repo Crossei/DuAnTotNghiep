@@ -6,14 +6,18 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.example.demo.dao.Booking;
 import com.example.demo.dao.BookingDetail;
 import com.example.demo.dao.Customer;
 import com.example.demo.dao.Service;
 import com.example.demo.dao.Staff;
+import com.example.demo.dao.User;
 import com.example.demo.dto.TiepNhanLichKhamDTO;
 import com.example.demo.service.BookingDetailRepository;
 import com.example.demo.service.BookingRepository;
@@ -64,7 +68,7 @@ public class TiepNhanLichKhamController {
 					tiepNhapLich.setGiaTien(ser.getPrice());
 				
 					tiepNhapLich.setStatus(bookList.getStatus());
-					tiepNhapLich.setGioBatDau(tiepNhapLich.getGioBatDau());
+					tiepNhapLich.setGioBatDau(bookList.getTime_start());
 					tiepNhapLich.setNgayDat(bookList.getDateWorking_Start());
 					tiepNhapLich.setActive(bookList.getActive());
 					//ten bacsi
@@ -99,6 +103,58 @@ public class TiepNhanLichKhamController {
 		bookItem.setActive(0);
 		bokDetailRepo.save(bookItem);
 		
+		return "redirect:/dashboard/lichkham";
+	}
+	
+	@RequestMapping("/dashboard/lichkham/thaydoi/{id_bookingDetail}")
+	public ModelAndView thayDoiLich(@PathVariable(name="id_bookingDetail") Integer id_bookingDetail,Model model) {
+		ModelAndView mav= new ModelAndView("dashboard/editLichKham");
+		TiepNhanLichKhamDTO tiepNhanItem = new TiepNhanLichKhamDTO();
+		BookingDetail bookItem =bokDetailRepo.getOne(id_bookingDetail);
+		List<Booking> bookingCus = bokRepo.findAll();
+		
+		for(Booking bookCusList : bookingCus) {
+			if(bookItem.getId_booking() == bookCusList.getId_booking() && bookItem.getActive() == 1) {
+				tiepNhanItem.setId_detail(id_bookingDetail);
+				Customer cus = cusRepo.findById(bookCusList.getId_cus());
+				tiepNhanItem.setName(cus.getName_cus());
+				tiepNhanItem.setSdt(cus.getPhone());		
+				Service ser = ser1Repo.findById(bookItem.getId_service());
+				tiepNhanItem.setTendv(ser.getName());
+				tiepNhanItem.setGiaTien(ser.getPrice());		
+
+				tiepNhanItem.setGioBatDau(tiepNhanItem.getGioBatDau());
+				tiepNhanItem.setNgayDat(bookItem.getDateWorking_Start());
+
+				//Lấy list bác sĩ
+				List<Staff> staf = staffRepo.findAll();
+				List<Staff> bsList = new ArrayList<>() ;
+				for(Staff stafList : staf) {
+					User user = repo.findById(stafList.getId_user());
+					if(user.getRoles().equalsIgnoreCase("ROLE_BACSI")) {
+						bsList.add(stafList);
+					}
+				}
+				model.addAttribute("staffList", bsList);
+				break;
+			}
+		}
+		
+		
+		mav.addObject("bookItem",tiepNhanItem);
+		return mav;
+	}
+	
+	@PostMapping("/dashboard/lichkham/luu")
+	public String thayDoiLichKham(@ModelAttribute("bookItem") TiepNhanLichKhamDTO bookItem){
+		BookingDetail getBookDetail = bokDetailRepo.findById(bookItem.getId_detail());
+		
+		getBookDetail.setId_staff(Integer.parseInt(bookItem.getTenbs()));
+		getBookDetail.setDateWorking_Start(bookItem.getNgayDat());
+		 java.sql.Time sqlTime = new java.sql.Time(bookItem.getGioBatDau().getTime());
+		getBookDetail.setTime_start(sqlTime);
+		
+		bokDetailRepo.save(getBookDetail);
 		return "redirect:/dashboard/lichkham";
 	}
 }

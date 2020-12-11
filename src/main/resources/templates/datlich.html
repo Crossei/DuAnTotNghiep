@@ -14,17 +14,12 @@
 <link href="https://fonts.googleapis.com/css?family=Lato:400,400i,700"
 	rel="stylesheet">
 
-<!-- Bootstrap -->
-<link type="text/css" rel="stylesheet"
-	href="assets/css/bootstrap.min.css" />
-
-<!-- Custom stlylesheet -->
 <link type="text/css" rel="stylesheet" href="assets/css/stylef.css" />
 <link href="http://bizweb.dktcdn.net/100/167/865/themes/222134/assets/favicon.png?1568890987754" rel="icon">
     <link href="http://bizweb.dktcdn.net/100/167/865/themes/222134/assets/favicon.png?1568890987754" rel="apple-touch-icon">
 
 <link rel="stylesheet" href="assets/css/stylec.css">
-<link rel="stylesheet" href="assets/css/trangchu.css">
+<link rel="stylesheet" href="/assets/css/trangchu.css">
 <link
 	href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
 	rel="stylesheet">
@@ -66,19 +61,19 @@
 							<li class="drop-down"><a href="/#services">Dịch
 									vụ</a>
 								<ul>
-									<li><a href="#">Nha khoa tổng quát</a></li>
-									<li><a href="#">Răng trẻ em</a></li>
-									<li><a href="#">Nắn chỉnh răng</a></li>
-									<li><a href="#">Chỉnh nha cơ chức năng</a></li>
-									<li><a href="#">Nha khoa thẩm mỹ</a></li>
-									<li><a href="#">Nha khoa phục hình</a></li>
-									<li><a href="#">Điều trị nội nha</a></li>
-									<li><a href="#">Cấy ghép Implant</a></li>
-									<li><a href="#">Phẩu thuật răng miệng</a></li>
+									<li><a href="/nhakhoatongquat">Nha khoa tổng quát</a></li>
+									<li><a href="/rangtreem">Răng trẻ em</a></li>
+									<li><a href="/nanchinhrang">Nắn chỉnh răng</a></li>
+									<li><a href="/chinhnhacochucnang">Chỉnh nha cơ chức năng</a></li>
+									<li><a href="/nhakhoathammy">Nha khoa thẩm mỹ</a></li>
+									<li><a href="/nhakhoaphuchinh">Nha khoa phục hình</a></li>
+									<li><a href="/dieutrinoinha">Điều trị nội nha</a></li>
+									<li><a href="/cayghep">Cấy ghép Implant</a></li>
+									<li><a href="/phauthuatrm">Phẩu thuật răng miệng</a></li>
 								</ul></li>
 							<li><a href="/#portfolio">Các bác sĩ</a></li>
 							<li th:if="${@mainController.checkLoggedIn() == true} "><a href="/datlich">Đặt lịch</a></li>
-							<li><a href="">Tin tức</a></li>
+							<li><a href="/tintuc">Tin tức</a></li>
 							<li><a href="/#contact">Liên hệ</a></li>
 
 						</ul>
@@ -93,11 +88,10 @@
 
                             <li id="drop-down" class="drop-down"><span style="font-size:15px; color:white;">[[${#request.userPrincipal.principal.username}]]</span>
                                 <ul>
-                                    <li><a href="#">Thông tin tài khoản</a></li>
-                                    <li><a href="#">Lịch sử đặt lịch</a></li>
-                                    <li><a href="#">Đổi mật khẩu</a></li>
-                                    <li><a href="/logout">Đăng xuất</a></li>
-
+                                    <li><a href="/acc-info">Thông tin tài khoản</a></li>
+                                    <li><a href="/lichsudat">Lịch sử đặt lịch</a></li>
+                                    <li><a href="/changePass">Đổi mật khẩu</a></li>
+									<li><a href="/logout">Đăng xuất</a></li>
                                 </ul>
                             </li>
 
@@ -120,17 +114,16 @@
 				<h2>Đặt lịch</h2>
 			</div>
 		</section>
-		<div >
-		
-				<div class="section-center" style="margin-top:10px;" >
+		<section class="inner-page">
+			<div id="booking">
+				<div class="section-center">
 					<div class="container">
-						<section id="dai" class="inner-page" style="padding:0px;height:550px;"  >
-			<div id="booking" class="section" style="height:550px" >
+						
 							<div class="booking-form">
 								<form th:action="@{/datlich}" method="POST" th:object="${datLichDTO}">
-									<h3>
+									<h4 style="text-align: center">
 										Vui lòng để lại thông tin, nhu cầu của quý khách.
-										</h1>
+										</h4>
 										<br>
 										<div class="form-group">
 											<span class="form-label">Họ và tên</span> <input
@@ -151,49 +144,45 @@
 											<span class="form-label">Thời gian khám</span> <input
 												class="form-control" type="date" id="txtDate" th:field="*{date}"  required>
 										</div>
-										<input id="chien" type="button" value="Chọn dịch vụ"
-											onClick="hien()" style="background-color: #007bff;margin-bottom: 10px;" class="submit-btn">
+										<input class="btnSelect" id="chien" type="button" value="Chọn dịch vụ"
+											onClick="hien()">
 										<div style="font-size: 15px;" class="table-responsive"
 											id="hide">
-											<table class="table table-bordered" cellspacing="0">
+											<table style="text-align: center;" class="table table-bordered" cellspacing="0">
 												<thead>
-													<tr>
+													<tr style="left: 20px; top: 10px; color: #009961; font-weight: 600; 
+													line-height: 24px; height: 24px; font-size: 15px;">
 														<th></th>
 														<th>Tên dịch vụ</th>
 														<th>Giá dịch vụ</th>
 														<th>Thời gian hoàn thành</th>
-													
 													</tr>
 												</thead>
 												<tbody>
 													<th:block th:each="ser1 : ${serList}">
 														<tr>
 															<td><input type="radio" id="item" th:value="${ser1.id_ser}" th:field="*{id_ser}" /></td>
-															<td th:text="${ser1.name}"></td>
+															<td style="text-align: justify" th:text="${ser1.name}"></td>
 															<td th:text="${ser1.price}"></td>
 															<td
 																th:text="${#dates.format(ser1.time_working, 'HH:mm')}"></td>
-															
-
 														</tr>
 													</th:block>
 												</tbody>
 											</table>
-											<div id="chon" style=""></div>
 										</div>
 										<div class="form-btn">
-											<button  class="submit-btn" style="background-color: #007bff;">Đặt ngay!</button>
+											<button class="submit-btn">Đặt ngay!</button>
 										</div>
 								</form>
 							</div>
-							</div>
-			
-						</section>
 						</div>
 					</div>
-				
+				</div>
+			
+		</section>
 
-</div>
+
 	<!-- End #main -->
 
 	<!-- footer -->
@@ -270,18 +259,11 @@
 	document.getElementById("hide").style.display = "none";
 	
 		function hien() {
-			var height1 = document.getElementById("dai");
-			var height2 = document.getElementById("booking");
-			
 			var x = document.getElementById("hide");
 			if (x.style.display === "none") {
 				x.style.display = "block";
-				height1.style.height = "1150px";
-				height2.style.height = "1150px";
 			} else {
 				x.style.display = "none";
-				height1.style.height = "550px";
-				height2.style.height = "550px";
 			}
 		}
 		$(function(){
@@ -296,14 +278,14 @@
 		        day = '0' + day.toString();
 		    
 		    var today = new Date();
-	        var day1=(today.getDate())>9?(today.getDate()):"0"+(today.getDate()); // format should be "DD" not "D" e.g 09
+	        var day1=(today.getDate()+7)>9?(today.getDate()+14):"0"+(today.getDate()+14); // format should be "DD" not "D" e.g 09
 	        var month1=(today.getMonth()+1)>9?(today.getMonth()+1):"0"+(today.getMonth()+1);
 	        var year1=today.getFullYear();
 		    
 		    var maxDate = year + '-' + month + '-' + day;
 		    var minDate = year1 + '-' + month1 + '-' + day1;
 		    $('#txtDate').attr('min', maxDate);
-		    
+		    $("#txtDate").attr('max', minDate);
 		});
 		
 		

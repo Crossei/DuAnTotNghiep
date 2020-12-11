@@ -6,116 +6,123 @@
 <head>
 <title>Đăng ký</title>
 
-<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-	<link href="css/register.css" rel="stylesheet">
-		<script src="bootstrap/js/jquery-1.11.1.min.js"></script>
-		<script src="bootstrap/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="static/js/index.js"></script>
-		<script type="text/javascript" src="static/js/test.js"></script>
-		<script
-			src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-			<link href="http://bizweb.dktcdn.net/100/167/865/themes/222134/assets/favicon.png?1568890987754" rel="icon">
-    <link href="http://bizweb.dktcdn.net/100/167/865/themes/222134/assets/favicon.png?1568890987754" rel="apple-touch-icon">
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<link href="css/register.css" rel="stylesheet" />
+<script src="bootstrap/js/jquery-1.11.1.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="static/js/index.js"></script>
+<script type="text/javascript" src="static/js/test.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<link
+	href="http://bizweb.dktcdn.net/100/167/865/themes/222134/assets/favicon.png?1568890987754"
+	rel="icon" />
+<link
+	href="http://bizweb.dktcdn.net/100/167/865/themes/222134/assets/favicon.png?1568890987754"
+	rel="apple-touch-icon" />
 </head>
 
-		<body>
-			<section class="form-register">
-			<div class="background-register" style="padding: 100px 53px 62px 89px;">
-				<div class="row" >
-					
-					<div class="col-lg-6">
-						<img src="img/register.jpg" class="img-bg-register" style="object-fit: cover;">
-					</div>
-					<div class="col-lg-6">
-						<div>
-							<p class="text-danger">[[${error}]]</p>
-						</div>
-						<form action="register" method="post">
-							<div class="form-group">
-								<label>Họ và tên</label>
-								<div class="login-content">
-									<input type="text" name="name" id="name" class="form-control" placeholder="Họ tên" />
-								</div>
-							</div>
-							<div class="form-group">
-								<label>Email</label>
-								<div class="login-content">
-									<input type="email" name="username" id="username" required
-										autofocus class="form-control" placeholder="Email" />
-								</div>
-							</div>
-							<div class="form-group">
-								<label>Mật khẩu</label>
-								<div class="login-content">
-									<input type="password" name="password" id="password" required
-										autofocus class="form-control"  placeholder="Mật khẩu"/>
-								</div>
-							</div>
-							<div class="form-group">
-								<label>Xác nhận mật khẩu</label>
-								<div class="login-content">
-									<input type="password" name="cfpassword" id="cfpassword"
-										required autofocus oninput="checkPasswordMatch(this);"
-										class="form-control"  placeholder="Xác nhận mật khẩu"/>
-								</div>
-							</div>
-							<button type="submit" class="btn btn-primary">Đăng ký</button>
-							
-							<hr/>
-								<div class="text-center">
-									<a class="content-text" href="/login">Đã có tài khoản? Đăng
-										nhập tại đây</a>
-								</div>
-						</form>
-					</div>
-				</div>
+<body>
+	<section class="form-register">
+	<div class="background-register" style="padding: 100px 53px 62px 89px;">
+		<div class="row">
+
+			<div class="col-lg-6">
+				<img src="img/register.jpg" class="img-bg-register"
+					style="object-fit: cover; margin-top: 70px;" />
 			</div>
-			</section>
-			
-			<script>
-				function code() {
-					// check trong
-					var name = document.getElementById("name").value.trim();
-					var email = document.getElementById("username").value.trim();
-					var pass = document.getElementById("password").value.trim();
-					var cfpass = document.getElementById("cfpassword").value
-							.trim();
-					var filter = /^[a-zA-Z-' ]*$/;
 
-					if (name.trim().length == 0) {
-						alert("Mời bạn nhập họ và tên");
-						return false;
-					}
-					if (email.trim().length == 0) {
-						alert("Mời bạn nhập email");
-						return false;
-					}
-					if (!filter.test(email.value)) {
-						alert('Please provide a valid email address');
-						email.focus;
-						return false;
-					}
+			<div class="col-lg-6">
+				<div>
+					<p class="text-danger">[[${error}]]</p>
+				</div>
+				<form action="register" method="post">
+					<div class="form-group">
+						<h2>ĐĂNG KÝ TÀI KHOẢN</h2>
+						<br /> <label>Họ và tên</label>
+						<div class="login-content">
+							<input type="text" name="name" id="name" class="form-control"
+								placeholder="Họ tên" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label>Email</label>
+						<div class="login-content">
+							<input type="email" name="username" id="username" required
+								autofocus class="form-control" placeholder="Email" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label>Mật khẩu</label>
+						<div class="login-content">
+							<input type="password" name="password" id="password" required
+								autofocus class="form-control" placeholder="Mật khẩu" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label>Xác nhận mật khẩu</label>
+						<div class="login-content">
+							<input type="password" name="cfpassword" id="cfpassword" required
+								autofocus oninput="checkPasswordMatch(this);"
+								class="form-control" placeholder="Xác nhận mật khẩu" />
+						</div>
+					</div>
+					<button type="submit" class="btn btn-primary">Đăng ký</button>
+					<a class="btn btn-primary" href="/">Về trang chủ</a>
+					<hr />
+					<div class="text-center">
+						<a class="content-text" href="/login">Đã có tài khoản? Đăng
+							nhập tại đây</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	</section>
 
-					if (pass.trim().length == 0) {
-						alert("Mời bạn nhập mật khẩu");
-						return false;
-					}
-					if (cfpass.trim().length == 0) {
-						alert("Mời bạn nhập lại mật khẩu");
-						return false;
-					}
+	<script>
+		function code() {
+			// check trong
+			var name = document.getElementById("name").value.trim();
+			var email = document.getElementById("username").value.trim();
+			var pass = document.getElementById("password").value.trim();
+			var cfpass = document.getElementById("cfpassword").value.trim();
+			var filter = /^[a-zA-Z-' ]*$/;
 
-					return true;
-				}
-				function checkPasswordMatch(fieldConfirmPassword) {
-					if (fieldConfirmPassword.value != $("#password").val()) {
-						fieldConfirmPassword
-								.setCustomValidity("mật khẩu không trùng khớp");
-					} else {
-						fieldConfirmPassword.setCustomValidity("");
-					}
-				}
-			</script>
+			if (name.trim().length == 0) {
+				alert("Mời bạn nhập họ và tên");
+				return false;
+			}
+			if (email.trim().length == 0) {
+				alert("Mời bạn nhập email");
+				return false;
+			}
+			if (!filter.test(email.value)) {
+				alert('Please provide a valid email address');
+				email.focus;
+				return false;
+			}
 
-		</body>
+			if (pass.trim().length == 0) {
+				alert("Mời bạn nhập mật khẩu");
+				return false;
+			}
+			if (cfpass.trim().length == 0) {
+				alert("Mời bạn nhập lại mật khẩu");
+				return false;
+			}
+
+			return true;
+		}
+		function checkPasswordMatch(fieldConfirmPassword) {
+			if (fieldConfirmPassword.value != $("#password").val()) {
+				fieldConfirmPassword
+						.setCustomValidity("mật khẩu không trùng khớp");
+			} else {
+				fieldConfirmPassword.setCustomValidity("");
+			}
+		}
+	</script>
+
+</body>
 </html>

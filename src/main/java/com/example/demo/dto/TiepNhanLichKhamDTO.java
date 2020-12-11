@@ -2,6 +2,11 @@ package com.example.demo.dto;
 
 import java.sql.Time;
 import java.util.Date;
+import java.util.List;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.example.demo.dao.Staff;
 
 public class TiepNhanLichKhamDTO {
 	private  int id_detail;
@@ -9,11 +14,16 @@ public class TiepNhanLichKhamDTO {
 	private String sdt;
 	private String tendv;
 	private String tenbs;
+	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date ngayDat;
-	private Time gioBatDau;
+	@DateTimeFormat(pattern = "HH:mm")
+	private Date gioBatDau;
 	private float giaTien;
 	private int status;
 	private int active;
+	
+	private List<Staff> bacsiList;
 	
 	
 	
@@ -24,9 +34,15 @@ public class TiepNhanLichKhamDTO {
 				+ "]";
 	}
 	
-	
-	
-	
+
+	public List<Staff> getBacsiList() {
+		return bacsiList;
+	}
+
+	public void setBacsiList(List<Staff> bacsiList) {
+		this.bacsiList = bacsiList;
+	}
+
 	public int getId_detail() {
 		return id_detail;
 	}
@@ -75,10 +91,10 @@ public class TiepNhanLichKhamDTO {
 	public void setNgayDat(Date ngayDat) {
 		this.ngayDat = ngayDat;
 	}
-	public Time getGioBatDau() {
+	public Date getGioBatDau() {
 		return gioBatDau;
 	}
-	public void setGioBatDau(Time gioBatDau) {
+	public void setGioBatDau(Date gioBatDau) {
 		this.gioBatDau = gioBatDau;
 	}
 	public float getGiaTien() {

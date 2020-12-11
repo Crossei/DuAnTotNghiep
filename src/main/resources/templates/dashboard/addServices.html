@@ -21,8 +21,11 @@
 	rel="stylesheet" />
 
 <!-- Timeline CSS -->
-<script src="https://cdn.jsdelivr.net/timepicker.js/latest/timepicker.min.js"></script>
-<link href="https://cdn.jsdelivr.net/timepicker.js/latest/timepicker.min.css" rel="stylesheet"/>
+<script
+	src="https://cdn.jsdelivr.net/timepicker.js/latest/timepicker.min.js"></script>
+<link
+	href="https://cdn.jsdelivr.net/timepicker.js/latest/timepicker.min.css"
+	rel="stylesheet" />
 
 
 <link
@@ -44,8 +47,8 @@
 	rel="stylesheet" type="text/css" />
 
 <style>
-input:{
-width:30%;
+input: {
+	width: 30%;
 }
 </style>
 
@@ -58,79 +61,26 @@ width:30%;
 		<!-- Navigation -->
 		<nav class="navbar navbar-default navbar-static-top" role="navigation"
 			style="margin-bottom: 0">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target=".navbar-collapse">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="/dashboard/">SB Admin v2.0</a>
-			</div>
-			<!-- /.navbar-header -->
+			<a href="/dashboard/"><img src="/assets/img/favicon.png"
+				style="width: 13%;"></a>
 
 			<ul class="nav navbar-top-links navbar-right">
 
-				<!-- /.dropdown -->
-
-				<li class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="#"> <i class="fa fa-bell fa-fw"></i>
-						<i class="fa fa-caret-down"></i>
-				</a>
-					<ul class="dropdown-menu dropdown-alerts">
-						<li><a href="#">
-								<div>
-									<i class="fa fa-comment fa-fw"></i> New Comment <span
-										class="pull-right text-muted small">4 minutes ago</span>
-								</div>
-						</a></li>
-						<li class="divider"></li>
-						<li><a href="#">
-								<div>
-									<i class="fa fa-twitter fa-fw"></i> 3 New Followers <span
-										class="pull-right text-muted small">12 minutes ago</span>
-								</div>
-						</a></li>
-						<li class="divider"></li>
-						<li><a href="#">
-								<div>
-									<i class="fa fa-envelope fa-fw"></i> Message Sent <span
-										class="pull-right text-muted small">4 minutes ago</span>
-								</div>
-						</a></li>
-						<li class="divider"></li>
-						<li><a href="#">
-								<div>
-									<i class="fa fa-tasks fa-fw"></i> New Task <span
-										class="pull-right text-muted small">4 minutes ago</span>
-								</div>
-						</a></li>
-						<li class="divider"></li>
-						<li><a href="#">
-								<div>
-									<i class="fa fa-upload fa-fw"></i> Server Rebooted <span
-										class="pull-right text-muted small">4 minutes ago</span>
-								</div>
-						</a></li>
-						<li class="divider"></li>
-						<li><a class="text-center" href="#"> <strong>See
-									All Alerts</strong> <i class="fa fa-angle-right"></i>
-						</a></li>
-					</ul> <!-- /.dropdown-alerts --></li>
-				<!-- /.dropdown -->
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown" href="#"> <i class="fa fa-user fa-fw"></i>
-						<i class="fa fa-caret-down"></i>
+						<i class="fa fa-caret-down"></i>[[${#request.userPrincipal.principal.username}]]
 				</a>
 					<ul class="dropdown-menu dropdown-user">
-						<li><a href="#"><i class="fa fa-user fa-fw"></i> User
-								Profile</a></li>
-						<li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-						</li>
+						<li><a href="/profile/"><i class="fa fa-user fa-fw"></i>
+								Thông tin tài khoản</a></li>
+						<li><a href="/changePass"><i class="fa fa-gear fa-fw"></i> Đổi mật
+								khẩu</a></li>
 						<li class="divider"></li>
 						<li><a th:href="@{/logout}"><i
-								class="fa fa-sign-out fa-fw"></i> Logout</a></li>
+								class="fa fa-sign-out fa-fw"></i> Đăng xuất</a></li>
 					</ul> <!-- /.dropdown-user --></li>
+
+
 				<!-- /.dropdown -->
 			</ul>
 			<!-- /.navbar-top-links -->
@@ -138,28 +88,21 @@ width:30%;
 			<div class="navbar-default sidebar" role="navigation">
 				<div class="sidebar-nav navbar-collapse">
 					<ul class="nav" id="side-menu">
-						<li class="sidebar-search">
-							<div class="input-group custom-search-form">
-								<input type="text" class="form-control" placeholder="Search..." />
-								<span class="input-group-btn">
-									<button class="btn btn-default" type="button">
-										<i class="fa fa-search"></i>
-									</button>
-								</span>
-							</div> <!-- /input-group -->
-						</li>
+
 						<li><a href="/dashboard/"><i
 								class="fa fa-dashboard fa-fw"></i> Dashboard</a></li>
 						<li><a href="/dashboard/staff/"><i class="fa fa-user"></i>
 								Quản lý nhân viên</a></li>
-						<li><a href="/dashboard/quanlylichkham/"><i class="fa fa-user"></i>
-								Quản lý lịch làm việc</a></li>
+						<li><a href="/dashboard/quanlylichkham/"><i
+								class="fa fa-user"></i> Quản lý lịch làm việc</a></li>
 						<li><a href="/dashboard/services/"><i class="fa fa-user"></i>
 								Quản lý dịch vụ</a></li>
 						<li><a href="/dashboard/customer/"><i class="fa fa-user"></i>
 								Quản lý khách hàng</a></li>
 						<li><a href="/dashboard/account/"><i class="fa fa-user"></i>
 								Quản lý tài khoản</a></li>
+						<li><a href="/dashboard/lichkham/"><i class="fa fa-user"></i>Tiếp
+								nhận lịch khám</a></li>
 
 					</ul>
 				</div>
@@ -167,49 +110,60 @@ width:30%;
 			</div>
 			<!-- /.navbar-static-side -->
 		</nav>
-		<div style="height:20px;background-color: white;"></div>
+		<div style="height: 20px; background-color: white;"></div>
 		<div id="page-wrapper">
-			<div class="container" style="width: 40%; background-color: #f8f8f8; border-radius: 10px 10px 10px 10px; padding-left: 30px; margin-left:28%;
-					box-shadow: 8px 8px 10px #c2bbbb;border: 1px solid #dddada;">
-						
-						            <h1 class="h3 mb-2 text-gray-800 mb-5" style="margin-left:100px;">Thêm dịch vụ</h1>
-						            <form style="padding: 10px;" action="#" th:action="@{/save1}" th:object="${service}" method="post"
-						             enctype="multipart/form-data">
-						            	<div class="form-group row">
-													
-													<div class="col-lg-9 col-xl-6">
-														<img th:src="*{'/assets/img/'+{image}}" id="thumbnail"
-															alt="Ảnh nhân viên"
-															style="height: 100px; width: 150px; object-fit: cover;margin-left:33%;" />
-														<input type="file" name="fileImage" id="fileImage"
-															accept="image/png,image/ipeg"   />
-															
-													</div>
+			<div class="container"
+				style="width: 40%; background-color: #f8f8f8; border-radius: 10px 10px 10px 10px; padding-left: 30px; margin-left: 28%; box-shadow: 8px 8px 10px #c2bbbb; border: 1px solid #dddada;">
 
-										</div>
-						                <div class="form-group">
-						                    <label for="name">Tên dịch vụ:</label>
-						                    <input type="text"  style="width: 330px;" class="form-control" placeholder="Tên dịch vụ"
-						                     th:field="*{name}"  name="name" id="name" required autofocus>
-						                </div> 
-						                <div class="form-group">
-						                    <label for="username">Mô tả:</label>
-						                    <input type="text"  style="width: 330px;" class="form-control"
-						                    placeholder="Mô tả dịch vụ" th:field="*{dsc}" name="dsc" id="dsc" required autofocus>
-						                </div>
-						                <div class="form-group">
-						                    <label for="role">Thời gian trung bình:</label>
-						                   
-						                    <input placeholder="Thời gian trung bình"  required autofocus name="time_working"  type="text" id="time" th:field="*{time_working}"  style="width: 330px;" class="form-control"/>
-						                </div>
-						                <div class="form-group">
-						                    <label for="username">Giá tiền trung bình:</label>
-						                    <input type="number" placeholder="Gía dịch vụ" style="width: 330px;" class="form-control" th:field="*{price}" name="price" id="price" required autofocus>
-						                </div>
-						                <button class="btn btn-primary" type="submit" style="margin-left:270px;">Save</button>
-						            </form>
-						     
-				
+				<h1 class="h3 mb-2 text-gray-800 mb-5" style="margin-left: 100px;">Thêm
+					dịch vụ</h1>
+				<form style="padding: 10px;" action="#" th:action="@{/save1}"
+					th:object="${service}" method="post" enctype="multipart/form-data">
+					<div class="form-group row">
+
+						<div class="col-lg-9 col-xl-6">
+							<img th:src="*{'/assets/img/'+{image}}" id="thumbnail"
+								alt="Ảnh nhân viên"
+								style="height: 100px; width: 150px; object-fit: cover; margin-left: 33%;" />
+							<input type="file" name="fileImage" id="fileImage"
+								accept="image/png,image/ipeg" />
+
+						</div>
+
+					</div>
+					<div class="form-group">
+						<label for="name">Tên dịch vụ:</label> <input type="text"
+							style="width: 330px;" class="form-control"
+							placeholder="Tên dịch vụ" th:field="*{name}" name="name"
+							id="name" required autofocus>
+					</div>
+					<div class="form-group">
+						<label for="username">Mô tả:</label> <input type="text"
+							style="width: 330px;" class="form-control"
+							placeholder="Mô tả dịch vụ" th:field="*{dsc}" name="dsc" id="dsc"
+							required autofocus>
+					</div>
+					<div class="form-group">
+						<label for="role">Thời gian trung bình:</label> <input
+							placeholder="Thời gian trung bình" required autofocus
+							name="time_working" type="text" id="time"
+							th:field="*{time_working}" style="width: 330px;"
+							class="form-control" />
+					</div>
+					<div class="form-group">
+						<label for="username">Giá tiền trung bình:</label> <input
+							type="number" placeholder="Gía dịch vụ" style="width: 330px;"
+							class="form-control" th:field="*{price}" name="price" id="price"
+							required autofocus>
+					</div>
+					<a class="btn btn-warning" href="/dashboard/services/">Quay
+						lại</a>
+					<button class="btn btn-primary" type="submit"
+						style="margin-left: 197px;">Lưu</button>
+
+				</form>
+
+
 			</div>
 
 		</div>
@@ -241,65 +195,76 @@ width:30%;
 	<script src="/webjars/startbootstrap-sb-admin-2/1.0.2/js/sb-admin-2.js"></script>
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-		<script type="text/javascript">
-    $(document).ready(function () {
-    	$('#fileImage').change(function(){
-    		showImageThumbnail(this);
-    	});
-        $("#myInput").on("keyup", function () {
-            var value = $(this).val().toLowerCase();
-            $("#myTable tr").filter(function () {
-                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-            });
-        });
-    });
-    function showImageThumbnail(fileInput){
-    	file = fileInput.files[0];
-    	reader = new FileReader();
-    	
-    	reader.onload= function(e){
-    		$('#thumbnail').attr('src', e.target.result);
-    	};
-    	reader.readAsDataURL(file); 
-    };
-    var timepicker = new TimePicker('time', {
-  	  lang: 'en',
-  	  theme: 'dark'
-  	});
-  	timepicker.on('change', function(evt) {
-  	  
-  	  var value = (evt.hour || '00') + ':' + (evt.minute || '00') ;
-  	  evt.element.value = value + ':00';
+	<script type="text/javascript">
+		$(document)
+				.ready(
+						function() {
+							$('#fileImage').change(function() {
+								showImageThumbnail(this);
+							});
+							$("#myInput")
+									.on(
+											"keyup",
+											function() {
+												var value = $(this).val()
+														.toLowerCase();
+												$("#myTable tr")
+														.filter(
+																function() {
+																	$(this)
+																			.toggle(
+																					$(
+																							this)
+																							.text()
+																							.toLowerCase()
+																							.indexOf(
+																									value) > -1)
+																});
+											});
+						});
+		function showImageThumbnail(fileInput) {
+			file = fileInput.files[0];
+			reader = new FileReader();
 
-  	});
-  	function code() {
-		// check trong
-		var name = document.getElementById("name").value.trim();
-		var dsc = document.getElementById("dsc").value.trim();
-	
-		var price = document.getElementById("price").value
-				.trim();
-	
+			reader.onload = function(e) {
+				$('#thumbnail').attr('src', e.target.result);
+			};
+			reader.readAsDataURL(file);
+		};
+		var timepicker = new TimePicker('time', {
+			lang : 'en',
+			theme : 'dark'
+		});
+		timepicker.on('change', function(evt) {
 
-		if (name.trim().length == 0) {
-			alert("Mời bạn nhập họ và tên");
-			return false;
-		}
-		if (dsc.trim().length == 0) {
-			alert("Mời bạn nhập mô tả");
-			return false;
-		}
-		
-		if (price.trim().length == 0) {
-			alert("Mời bạn nhập giá");
-			return false;
-		}
-		
+			var value = (evt.hour || '00') + ':' + (evt.minute || '00');
+			evt.element.value = value + ':00';
 
-		return true;
-	}
-   
-</script>
+		});
+		function code() {
+			// check trong
+			var name = document.getElementById("name").value.trim();
+			var dsc = document.getElementById("dsc").value.trim();
+
+			var price = document.getElementById("price").value.trim();
+
+			if (name.trim().length == 0) {
+				alert("Mời bạn nhập họ và tên");
+				return false;
+			}
+			if (dsc.trim().length == 0) {
+				alert("Mời bạn nhập mô tả");
+				return false;
+			}
+
+			if (price.trim().length == 0) {
+				alert("Mời bạn nhập giá");
+				return false;
+			}
+
+			return true;
+		}
+	</script>
 </body>
 
 </html>
