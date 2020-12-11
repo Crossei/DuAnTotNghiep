@@ -2159,7 +2159,7 @@ textarea.form-control {
 }
 
 .form-check-input:disabled ~.form-check-label, .form-check-input[disabled]
-	~.form-check-label {
+	 ~.form-check-label {
 	color: #6c757d
 }
 
@@ -2207,7 +2207,7 @@ textarea.form-control {
 }
 
 .is-valid ~.valid-feedback, .is-valid ~.valid-tooltip, .was-validated :valid
-	~.valid-feedback, .was-validated :valid ~.valid-tooltip {
+	 ~.valid-feedback, .was-validated :valid ~.valid-tooltip {
 	display: block
 }
 
@@ -2251,18 +2251,18 @@ textarea.form-control {
 }
 
 .form-check-input.is-valid ~.form-check-label, .was-validated .form-check-input:valid
-	~.form-check-label {
+	 ~.form-check-label {
 	color: #28a745
 }
 
 .form-check-input.is-valid ~.valid-feedback, .form-check-input.is-valid
-	~.valid-tooltip, .was-validated .form-check-input:valid ~.valid-feedback,
+	 ~.valid-tooltip, .was-validated .form-check-input:valid ~.valid-feedback,
 	.was-validated .form-check-input:valid ~.valid-tooltip {
 	display: block
 }
 
 .custom-control-input.is-valid ~.custom-control-label, .was-validated .custom-control-input:valid
-	~.custom-control-label {
+	 ~.custom-control-label {
 	color: #28a745
 }
 
@@ -2292,12 +2292,12 @@ textarea.form-control {
 }
 
 .custom-file-input.is-valid ~.custom-file-label, .was-validated .custom-file-input:valid
-	~.custom-file-label {
+	 ~.custom-file-label {
 	border-color: #28a745
 }
 
 .custom-file-input.is-valid:focus ~.custom-file-label, .was-validated .custom-file-input:valid:focus
-	~.custom-file-label {
+	 ~.custom-file-label {
 	border-color: #28a745;
 	box-shadow: 0 0 0 .2rem rgba(40, 167, 69, .25)
 }
@@ -2372,18 +2372,18 @@ textarea.form-control {
 }
 
 .form-check-input.is-invalid ~.form-check-label, .was-validated .form-check-input:invalid
-	~.form-check-label {
+	 ~.form-check-label {
 	color: #dc3545
 }
 
 .form-check-input.is-invalid ~.invalid-feedback, .form-check-input.is-invalid
-	~.invalid-tooltip, .was-validated .form-check-input:invalid ~.invalid-feedback,
+	 ~.invalid-tooltip, .was-validated .form-check-input:invalid ~.invalid-feedback,
 	.was-validated .form-check-input:invalid ~.invalid-tooltip {
 	display: block
 }
 
 .custom-control-input.is-invalid ~.custom-control-label, .was-validated .custom-control-input:invalid
-	~.custom-control-label {
+	 ~.custom-control-label {
 	color: #dc3545
 }
 
@@ -2413,12 +2413,12 @@ textarea.form-control {
 }
 
 .custom-file-input.is-invalid ~.custom-file-label, .was-validated .custom-file-input:invalid
-	~.custom-file-label {
+	 ~.custom-file-label {
 	border-color: #dc3545
 }
 
 .custom-file-input.is-invalid:focus ~.custom-file-label, .was-validated .custom-file-input:invalid:focus
-	~.custom-file-label {
+	 ~.custom-file-label {
 	border-color: #dc3545;
 	box-shadow: 0 0 0 .2rem rgba(220, 53, 69, .25)
 }
@@ -2843,22 +2843,24 @@ a.btn.disabled, fieldset:disabled a.btn {
 }
 
 .btn-outline-primary {
-	color: #007bff;
-	border-color: #007bff
+	color: #009961;
+	border-color: #009961
 }
 
 .btn-outline-primary:hover {
 	color: #fff;
-	background-color: #007bff;
-	border-color: #007bff
+	background-color: #009961;
+	border-color: #03bb78
 }
 
 .btn-outline-primary.focus, .btn-outline-primary:focus {
-	box-shadow: 0 0 0 .2rem rgba(0, 123, 255, .5)
+	background-color: #03bb78;
+	box-shadow: 0 0 0 .1rem #03bb78;
+	border-color: #03bb78
 }
 
 .btn-outline-primary.disabled, .btn-outline-primary:disabled {
-	color: #007bff;
+	color: #009961;
 	background-color: transparent
 }
 
@@ -2866,14 +2868,15 @@ a.btn.disabled, fieldset:disabled a.btn {
 	.btn-outline-primary:not(:disabled):not(.disabled):active, .show>.btn-outline-primary.dropdown-toggle
 	{
 	color: #fff;
-	background-color: #007bff;
-	border-color: #007bff
+	background-color: #03bb78;
+	border-color: #03bb78
 }
 
 .btn-outline-primary:not(:disabled):not(.disabled).active:focus,
 	.btn-outline-primary:not(:disabled):not(.disabled):active:focus, .show>.btn-outline-primary.dropdown-toggle:focus
 	{
-	box-shadow: 0 0 0 .2rem rgba(0, 123, 255, .5)
+	background-color: #03bb78;
+	box-shadow: 0 0 0 .1rem #03bb78;
 }
 
 .btn-outline-secondary {
@@ -4003,7 +4006,7 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
 }
 
 .custom-file-input:disabled ~.custom-file-label, .custom-file-input[disabled]
-	~.custom-file-label {
+	 ~.custom-file-label {
 	background-color: #e9ecef
 }
 
@@ -6689,17 +6692,39 @@ keyframes spinner-border {
 }
 
 50
+
+
 %
 {
 opacity
+
+
 :
-1;
+
+
+1
+;
+
+
 -webkit-transform
+
+
 :
-none;
-transform
-:
+
+
 none
+;
+
+
+transform
+
+
+:
+
+
+none
+
+
 }
 }
 @
@@ -6709,17 +6734,39 @@ keyframes spinner-grow { 0%{
 }
 
 50
+
+
 %
 {
 opacity
+
+
 :
-1;
+
+
+1
+;
+
+
 -webkit-transform
+
+
 :
-none;
-transform
-:
+
+
 none
+;
+
+
+transform
+
+
+:
+
+
+none
+
+
 }
 }
 .spinner-grow {
