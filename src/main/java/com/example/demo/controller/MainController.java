@@ -138,6 +138,7 @@ public class MainController {
 		model.addAttribute("datLichDTO", datLichDTO);
 		return "datlich";
 	}
+	
 
 	@PostMapping(value = "/datlich")
 	public String datLichSave(@ModelAttribute("datLichDTO") DatLichDTO datLich, Model model) throws ParseException {

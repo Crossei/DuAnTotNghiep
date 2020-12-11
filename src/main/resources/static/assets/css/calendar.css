@@ -1,98 +1,101 @@
 .button-group {
-    display: inline-flex;
-    overflow: hidden;
-    
+	display: inline-flex;
+	overflow: hidden;
 }
 
-.button{
+.button {
 	display: none;
 }
 
-.label{
+.label {
 	padding: 8px 14px;
 	color: #ffffff;
 	background: #009961;
 	cursor: pointer;
 	transition: background 0.1s;
-	
 	padding: 10px;
 	width: 300px;
 	border-radius: 5px;
 	text-align: center;
 }
 
-
-.button:checked + .label{
+.button:checked+.label {
 	background-color: #00643f;
 }
+
 .label:not(:last-of-type) {
 	border-right: 2px solid #00643f;
 }
 
 /* ---------------------- */
-
 .button-group-1 {
-    display: inline-flex;
-    overflow: hidden;
-    
+	display: inline-flex;
+	overflow: hidden;
 }
 
-.button1{
+.button1 {
 	display: none;
 }
 
-.label1{
+.label1 {
 	padding: 8px 14px;
 	color: #ffffff;
 	background: #009961;
 	cursor: pointer;
 	transition: background 0.1s;
-	
 	padding: 10px;
 	width: 90px;
 	border-radius: 5px;
 	text-align: center;
 }
 
-
-.button1:checked + .label1{
+.button1:checked+.label1 {
 	background-color: #00643f;
 }
+
 .label1:not(:last-of-type) {
 	border-right: 2px solid #00643f;
 }
 
-
 /* ---------------------- */
-
 .button-group-2 {
-    width: 1200px;
-    display: inline-flex;
-    overflow: hidden;
-    
+	width: 1200px;
+	display: inline-flex;
+	overflow: hidden;
 }
 
-.button2{
+.button2 {
 	display: none;
 }
 
-.label2{
+.label2 {
 	padding: 8px 14px;
 	color: #ffffff;
 	background: #009961;
 	cursor: pointer;
 	transition: background 0.1s;
-	
 	padding: 10px;
 	width: 100px;
-	border-radius: 5px;
+	border-radius: 50%;
 	text-align: center;
+	margin-right: 30px;
 }
 
+#image {
+	border-radius: 50%;
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	-webkit-transform: scale(1.1);
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
 
-.button2:checked + .label2{
+.button2:checked+.label2 {
 	background-color: #00643f;
+	box-shadow: 0 0 3px 3px #004a2f;
 }
+
 .label2:not(:last-of-type) {
 	border-right: 2px solid #00643f;
 }
