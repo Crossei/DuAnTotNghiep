@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>Dashboard - Quản lý nhân viên</title>
+
+<!-- Bootstrap Core CSS -->
+<link
+	href="/webjars/startbootstrap-sb-admin-2/1.0.2/css/bootstrap.min.css"
+	rel="stylesheet" />
+
+<!-- MetisMenu CSS -->
+<link
+	href="/webjars/startbootstrap-sb-admin-2/1.0.2/css/plugins/metisMenu/metisMenu.min.css"
+	rel="stylesheet" />
+
+<!-- Timeline CSS -->
+<script
+	src="https://cdn.jsdelivr.net/timepicker.js/latest/timepicker.min.js"></script>
+<link
+	href="https://cdn.jsdelivr.net/timepicker.js/latest/timepicker.min.css"
+	rel="stylesheet" />
+
+
+<link
+	href="/webjars/startbootstrap-sb-admin-2/1.0.2/css/plugins/timeline.css"
+	rel="stylesheet" />
+
+<!-- Custom CSS -->
+<link href="/webjars/startbootstrap-sb-admin-2/1.0.2/css/sb-admin-2.css"
+	rel="stylesheet" />
+
+<!-- Morris Charts CSS -->
+<link
+	href="/webjars/startbootstrap-sb-admin-2/1.0.2/css/plugins/morris.css"
+	rel="stylesheet" />
+
+<!-- Custom Fonts -->
+<link
+	href="/webjars/startbootstrap-sb-admin-2/1.0.2/font-awesome/css/font-awesome.min.css"
+	rel="stylesheet" type="text/css" />
+
+
+</head>
+
+<body>
+
+	<div id="wrapper">
+
+		<!-- Navigation -->
+		<nav class="navbar navbar-default navbar-static-top" role="navigation"
+			style="margin-bottom: 0">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="/dashboard/">SB Admin v2.0</a>
+			</div>
+			<!-- /.navbar-header -->
+
+			<ul class="nav navbar-top-links navbar-right">
+
+				<!-- /.dropdown -->
+
+				<li class="dropdown">
+					<!-- /.dropdown -->
+				<li class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" href="#"> <i class="fa fa-user fa-fw"></i>
+						<i class="fa fa-caret-down"></i>
+				</a>
+					<ul class="dropdown-menu dropdown-user">
+						<li><a href="#"><i class="fa fa-user fa-fw"></i> User
+								Profile</a></li>
+						<li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+						</li>
+						<li class="divider"></li>
+						<li><a th:href="@{/logout}"><i
+								class="fa fa-sign-out fa-fw"></i> Logout</a></li>
+					</ul> <!-- /.dropdown-user --></li>
+				<!-- /.dropdown -->
+			</ul>
+			<!-- /.navbar-top-links -->
+
+			<div class="navbar-default sidebar" role="navigation">
+				<div class="sidebar-nav navbar-collapse">
+					<ul class="nav" id="side-menu">
+						<li class="sidebar-search">
+							<div class="input-group custom-search-form">
+								<input type="text" class="form-control" placeholder="Search..." />
+								<span class="input-group-btn">
+									<button class="btn btn-default" type="button">
+										<i class="fa fa-search"></i>
+									</button>
+								</span>
+							</div> <!-- /input-group -->
+						</li>
+						<li><a href="/dashboard/"><i
+								class="fa fa-dashboard fa-fw"></i> Dashboard</a></li>
+						<li><a href="/dashboard/staff/"><i class="fa fa-user"></i>
+								Quản lý nhân viên</a></li>
+						<li><a href="/dashboard/quanlylichkham/"><i
+								class="fa fa-user"></i> Quản lý lịch làm việc</a></li>
+						<li><a href="/dashboard/services/"><i class="fa fa-user"></i>
+								Quản lý dịch vụ</a></li>
+						<li><a href="/dashboard/customer/"><i class="fa fa-user"></i>
+								Quản lý khách hàng</a></li>
+						<li><a href="/dashboard/account/"><i class="fa fa-user"></i>
+								Quản lý tài khoản</a></li>
+						<li><a href="/dashboard/lichkham/"><i class="fa fa-user"></i>Tiếp
+								nhận lịch khám</a></li>
+
+					</ul>
+				</div>
+				<!-- /.sidebar-collapse -->
+			</div>
+			<!-- /.navbar-static-side -->
+		</nav>
+
+		<div id="page-wrapper">
+			<div class="container" style="margin-left: 30%;">
+
+				<h1 class="h3 mb-2 text-gray-800 mb-5">Cập nhật thông tin nhân
+					viên</h1>
+				<form action="#" th:action="@{/dashboard/lichkham/luu}"
+					th:object="${bookItem}" method="post">
+					<input type="hidden" th:field="*{id_detail}" />
+					<div class="form-group">
+						<label>Tên khách hàng</label> <input type="text"
+							style="width: 30%" class="form-control" th:field="*{name}"
+							readonly="readonly">
+					</div>
+					<div class="form-group">
+						<label>Số điện thoại</label> <input type="text"
+							style="width: 30%" class="form-control" th:field="*{sdt}"
+							readonly="readonly">
+					</div>
+					<div class="form-group">
+						<label>Tên dịch vụ</label> <input type="text" style="width: 30%"
+							class="form-control" th:field="*{tendv}" readonly="readonly" />
+					</div>
+					<div class="form-group">
+						<label>Bác sĩ khám</label> <select th:field="*{tenbs}">
+							<option th:each="bsList :${staffList}"
+								th:value=${bsList.id_staff} th:text=${bsList.name_staff} />
+						</select>
+					</div>
+					<div class="form-group">
+						<label>Ngày Đặt</label> <input class="form-control"
+							style="width: 30%" type="date" th:field="*{ngayDat}" id="txtDate">
+					</div>
+					<div class="form-group">
+						<label>Giờ bắt đầu</label> <select th:field="*{gioBatDau}">
+							<option th:value="${'8:00'}">8:00</option>
+							<option th:value="${'8:30'}">8:30</option>
+							<option th:value="${'9:00'}">9:00</option>
+							<option th:value="${'9:30'}">9:30</option>
+							<option th:value="${'10:00'}">10:00</option>
+							<option th:value="${'10:30'}">10:30</option>
+						</select>
+					</div>
+
+					<div class="form-group">
+						<label>Giá tiền</label> <input type="text" style="width: 30%"
+							class="form-control" th:field="*{giaTien}" readonly="readonly">
+					</div>
+
+
+					<button class="btn btn-primary" type="submit">Lưu</button>
+					<button th:href="@{/dashboard/lichkham}" class="btn btn-warning"
+						type="submit">Quay lại</button>
+				</form>
+
+
+
+			</div>
+
+		</div>
+		<!-- /#page-wrapper -->
+
+	</div>
+	<!-- /#wrapper -->
+
+	<!-- jQuery -->
+	<script src="/webjars/startbootstrap-sb-admin-2/1.0.2/js/jquery.js"></script>
+
+	<!-- Bootstrap Core JavaScript -->
+	<script
+		src="/webjars/startbootstrap-sb-admin-2/1.0.2/js/bootstrap.min.js"></script>
+
+	<!-- Metis Menu Plugin JavaScript -->
+	<script
+		src="/webjars/startbootstrap-sb-admin-2/1.0.2/js/plugins/metisMenu/metisMenu.min.js"></script>
+
+	<!-- Morris Charts JavaScript -->
+	<script
+		src="/webjars/startbootstrap-sb-admin-2/1.0.2/js/plugins/morris/raphael.min.js"></script>
+	<script
+		src="/webjars/startbootstrap-sb-admin-2/1.0.2/js/plugins/morris/morris.min.js"></script>
+	<script
+		src="/webjars/startbootstrap-sb-admin-2/1.0.2/js/plugins/morris/morris-data.js"></script>
+
+	<!-- Custom Theme JavaScript -->
+	<script src="/webjars/startbootstrap-sb-admin-2/1.0.2/js/sb-admin-2.js"></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			var dtToday = new Date();
+
+			var month = dtToday.getMonth() + 1;
+			var day = dtToday.getDate();
+			var year = dtToday.getFullYear();
+			if (month < 10)
+				month = '0' + month.toString();
+			if (day < 10)
+				day = '0' + day.toString();
+
+			var today = new Date();
+			var day1 = (today.getDate() + 7) > 9 ? (today.getDate() + 14) : "0"
+					+ (today.getDate() + 14); // format should be "DD" not "D" e.g 09
+			var month1 = (today.getMonth() + 1) > 9 ? (today.getMonth() + 1)
+					: "0" + (today.getMonth() + 1);
+			var year1 = today.getFullYear();
+
+			var maxDate = year + '-' + month + '-' + day;
+			var minDate = year1 + '-' + month1 + '-' + day1;
+			$('#txtDate').attr('min', maxDate);
+
+		});
+	</script>
+</body>
+
+</html>
