@@ -158,7 +158,9 @@
 												xác thực</span></td>
 										<td th:if="${lichSuDatList.trangThai == 1}"><span>Đã
 												nhận lịch đặt</span></td>
-										<td th:if="${lichSuDatList.trangThai == 1}">
+												<td th:if="${lichSuDatList.trangThai == 2}"><span>Tái khám</span></td>
+												<td th:if="${lichSuDatList.trangThai == 3}"><span>Đã hoàn thành</span></td>
+										<td th:if="${lichSuDatList.trangThai == 1 ||  lichSuDatList.trangThai == 3 }">
 											<button style="font-size: 15px" class="btn btn-warning"
 												disabled="true">
 												<img src="/assets/img/edit-pencil.png" />
@@ -168,7 +170,7 @@
 												<img src="/assets/img/cancel.png" />
 											</button>
 										</td>
-										<td th:if="${lichSuDatList.trangThai == 0}">
+										<td th:if="${lichSuDatList.trangThai == 0 || lichSuDatList.trangThai == 2}">
 											<button style="font-size: 15px" class="btn btn-warning">
 												<img src="/assets/img/edit-pencil.png" />
 											</button>

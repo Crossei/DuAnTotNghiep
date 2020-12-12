@@ -19,7 +19,7 @@ public class TiepNhanLichKhamDTO {
 	private Date ngayDat;
 	@DateTimeFormat(pattern = "HH:mm")
 	private Date gioBatDau;
-	private float giaTien;
+	private String giaTien;
 	private int status;
 	private int active;
 	
@@ -97,10 +97,10 @@ public class TiepNhanLichKhamDTO {
 	public void setGioBatDau(Date gioBatDau) {
 		this.gioBatDau = gioBatDau;
 	}
-	public float getGiaTien() {
+	public String getGiaTien() {
 		return giaTien;
 	}
-	public void setGiaTien(float giaTien) {
+	public void setGiaTien(String giaTien) {
 		this.giaTien = giaTien;
 	}
 	public int getStatus() {

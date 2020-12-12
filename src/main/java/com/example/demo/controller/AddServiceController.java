@@ -6,10 +6,12 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -97,10 +99,19 @@ public class AddServiceController {
 //	
 	@RequestMapping(value="/save1",method =  RequestMethod.POST)
 	public String saveService1(@ModelAttribute(name="service") Service service, Model model,
-		
+			@RequestParam("price") float price,
 			RedirectAttributes ra,@RequestParam("fileImage") MultipartFile multipartFile) throws IOException, ParseException{
 		
-			String fileName= StringUtils.cleanPath(multipartFile.getOriginalFilename());
+		String fileName= StringUtils.cleanPath(multipartFile.getOriginalFilename());
+		Locale localeVN = new Locale("vi", "VN");
+	    NumberFormat currencyVN = NumberFormat.getCurrencyInstance(localeVN);
+	    String str1 = currencyVN.format(price);
+	    System.out.println("Số " + price + " sau khi định dạng = " + str1);
+	    if(str1.length()!=0) {
+	    	service.setPrice(str1);
+	    }else {
+		   service.setPrice("");
+	    }
 			if(fileName.length()!=0) {
 				service.setImage(fileName);
 
@@ -129,9 +140,19 @@ public class AddServiceController {
 	@RequestMapping(value="/save",method =  RequestMethod.POST)
 	public String saveService(@ModelAttribute(name="service") Service service, Model model,
 		@RequestParam("image") String image,
+		@RequestParam("price") float price,
 			RedirectAttributes ra,@RequestParam("fileImage") MultipartFile multipartFile) throws IOException, ParseException{
 		
-			String fileName= StringUtils.cleanPath(multipartFile.getOriginalFilename());
+		String fileName= StringUtils.cleanPath(multipartFile.getOriginalFilename());
+		Locale localeVN = new Locale("vi", "VN");
+	    NumberFormat currencyVN = NumberFormat.getCurrencyInstance(localeVN);
+	    String str1 = currencyVN.format(price);
+	    System.out.println("Số " + price + " sau khi định dạng = " + str1);
+	    if(str1.length()!=0) {
+	    	service.setPrice(str1);
+	    }else {
+		   service.setPrice("");
+	    }
 			if(fileName.length()!=0) {
 				service.setImage(fileName);
 
