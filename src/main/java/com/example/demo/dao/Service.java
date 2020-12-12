@@ -24,7 +24,7 @@ public class Service  implements Serializable{
 	private String image;
 	private Time time_working;
 	private String dsc ; 	
-	private float price;
+	private String price;
 	private Boolean status;
 	
 	
@@ -35,10 +35,10 @@ public class Service  implements Serializable{
 	public void setImage(String image) {
 		this.image = image;
 	}
-	public float getPrice() {
+	public String getPrice() {
 		return price;
 	}
-	public void setPrice(float price) {
+	public void setPrice(String price) {
 		this.price = price;
 	}
 	public int getId_ser() {

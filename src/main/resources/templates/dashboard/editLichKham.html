@@ -8,7 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<title>Dashboard - QUản lý lịch khám</title>
+<title>Dashboard - Quản lý nhân viên</title>
 
 <!-- Bootstrap Core CSS -->
 <link
@@ -46,6 +46,11 @@
 	href="/webjars/startbootstrap-sb-admin-2/1.0.2/font-awesome/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css" />
 
+<style>
+input: {
+	width: 30%;
+}
+</style>
 
 </head>
 
@@ -53,6 +58,7 @@
 
 	<div id="wrapper">
 
+		<!-- Navigation -->
 		<nav class="navbar navbar-default navbar-static-top" role="navigation"
 			style="margin-bottom: 0">
 			<a href="/dashboard/"><img src="/assets/img/favicon.png"
@@ -104,68 +110,106 @@
 			</div>
 			<!-- /.navbar-static-side -->
 		</nav>
+		
 
 		<div id="page-wrapper">
-			<div class="container" style="margin-left: 30%;">
+			<div
+				class="kt-grid kt-grid--desktop kt-grid--ver kt-grid--ver-desktop kt-app"
+				style="width: 100%; display: flex; padding: 40px;">
 
-				<h1 class="h3 mb-2 text-gray-800 mb-5">Cập nhật thông tin nhân
-					viên</h1>
+				<div id="form1"
+					style="width: 75%; background-color: #f8f8f8; border-radius: 10px 10px 10px 10px; padding-left: 30px; margin-left:13%;
+					box-shadow: 8px 8px 10px #c2bbbb;border: 1px solid #dddada;">
+					<div class="row">
+						<div class="col-xl-12">
+							<div>
+
 				<form action="#" th:action="@{/dashboard/lichkham/luu}"
 					th:object="${bookItem}" method="post">
+					<div class="row">
+						<div  style="margin-left:190px;">
+						<h3 class="kt-section__title kt-section__title-sm">Cập nhật thông tin lịch khám</h3>
+						
+							</div>
+							</div>
+					<table>
+					<tbody>
+					<td style="width:350px;">
+					<div style="margin:30px;">
 					<input type="hidden" th:field="*{id_detail}" />
 					<div class="form-group">
-						<label>Tên khách hàng</label> <input type="text"
-							style="width: 30%" class="form-control" th:field="*{name}"
+						<label>Tên khách hàng:</label> <input type="text"
+							 class="form-control" th:field="*{name}"
 							readonly="readonly">
 					</div>
 					<div class="form-group">
-						<label>Số điện thoại</label> <input type="text" style="width: 30%"
+						<label>Số điện thoại:</label> <input type="text" 
 							class="form-control" th:field="*{sdt}" readonly="readonly">
 					</div>
 					<div class="form-group">
-						<label>Tên dịch vụ</label> <input type="text" style="width: 30%"
+						<label>Tên dịch vụ:</label> <input type="text" 
 							class="form-control" th:field="*{tendv}" readonly="readonly" />
 					</div>
+				
+					</div>
+					 </td>
+					<td> 
+					<div style="width:280px;margin:30px;">
 					<div class="form-group">
-						<label>Bác sĩ khám</label> <select th:field="*{tenbs}">
+						<label>Bác sĩ khám:</label> <br><select th:field="*{tenbs}">
 							<option th:each="bsList :${staffList}"
 								th:value=${bsList.id_staff} th:text=${bsList.name_staff} />
 						</select>
 					</div>
 					<div class="form-group">
-						<label>Ngày Đặt</label> <input class="form-control"
-							style="width: 30%" type="date" th:field="*{ngayDat}" id="txtDate">
+						<label>Ngày Đặt:</label> <input class="form-control"
+							 type="date" th:field="*{ngayDat}" id="txtDate">
 					</div>
 					<div class="form-group">
-						<label>Giờ bắt đầu</label> <select th:field="*{gioBatDau}">
+						<label>Giờ bắt đầu:</label> <select th:field="*{gioBatDau}">
 							<option th:value="${'8:00'}">8:00</option>
 							<option th:value="${'8:30'}">8:30</option>
 							<option th:value="${'9:00'}">9:00</option>
 							<option th:value="${'9:30'}">9:30</option>
 							<option th:value="${'10:00'}">10:00</option>
 							<option th:value="${'10:30'}">10:30</option>
+							<option th:value="${'11:00'}">11:00</option>
+							<option th:value="${'11:30'}">11:30</option>
+							<option th:value="${'13:30'}">13:30</option>
+							<option th:value="${'14:30'}">14:30</option>
+							<option th:value="${'15:30'}">15:30</option>
+							<option th:value="${'16:30'}">16:30</option>
+							<option th:value="${'17:30'}">17:30</option>
 						</select>
 					</div>
 
-					<div class="form-group">
-						<label>Giá tiền</label> <input type="text" style="width: 30%"
-							class="form-control" th:field="*{giaTien}" readonly="readonly">
-					</div>
-
-
-					<button class="btn btn-primary" type="submit">Lưu</button>
+					<button class="btn btn-primary" type="submit" style="margin-left:146px;">Lưu</button>
 					<button th:href="@{/dashboard/lichkham}" class="btn btn-warning"
 						type="submit">Quay lại</button>
+					</div>
+					</td>
+					
+					</tbody>
+					</table>
+					
+					
 				</form>
 
 
+						</div>
+						</div>
+
+					</div>
+				</div>
 
 			</div>
+			<!-- /#page-wrapper -->
+
+		</div>
 
 		</div>
 		<!-- /#page-wrapper -->
 
-	</div>
 	<!-- /#wrapper -->
 
 	<!-- jQuery -->

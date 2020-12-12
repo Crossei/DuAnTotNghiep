@@ -46,6 +46,11 @@
 	href="/webjars/startbootstrap-sb-admin-2/1.0.2/font-awesome/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css" />
 
+<style>
+input: {
+	width: 30%;
+}
+</style>
 
 </head>
 
@@ -56,36 +61,26 @@
 		<!-- Navigation -->
 		<nav class="navbar navbar-default navbar-static-top" role="navigation"
 			style="margin-bottom: 0">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target=".navbar-collapse">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="/dashboard/">SB Admin v2.0</a>
-			</div>
-			<!-- /.navbar-header -->
+			<a href="/dashboard/"><img src="/assets/img/favicon.png"
+				style="width: 13%;"></a>
 
 			<ul class="nav navbar-top-links navbar-right">
 
-				<!-- /.dropdown -->
-
-				<li class="dropdown">
-					<!-- /.dropdown -->
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown" href="#"> <i class="fa fa-user fa-fw"></i>
-						<i class="fa fa-caret-down"></i>
+						<i class="fa fa-caret-down"></i>[[${#request.userPrincipal.principal.username}]]
 				</a>
 					<ul class="dropdown-menu dropdown-user">
-						<li><a href="#"><i class="fa fa-user fa-fw"></i> User
-								Profile</a></li>
-						<li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-						</li>
+						<li><a href="/profile/"><i class="fa fa-user fa-fw"></i>
+								Thông tin tài khoản</a></li>
+						<li><a href="/changePass"><i class="fa fa-gear fa-fw"></i> Đổi mật
+								khẩu</a></li>
 						<li class="divider"></li>
 						<li><a th:href="@{/logout}"><i
-								class="fa fa-sign-out fa-fw"></i> Logout</a></li>
+								class="fa fa-sign-out fa-fw"></i> Đăng xuất</a></li>
 					</ul> <!-- /.dropdown-user --></li>
+
+
 				<!-- /.dropdown -->
 			</ul>
 			<!-- /.navbar-top-links -->
@@ -93,16 +88,7 @@
 			<div class="navbar-default sidebar" role="navigation">
 				<div class="sidebar-nav navbar-collapse">
 					<ul class="nav" id="side-menu">
-						<li class="sidebar-search">
-							<div class="input-group custom-search-form">
-								<input type="text" class="form-control" placeholder="Search..." />
-								<span class="input-group-btn">
-									<button class="btn btn-default" type="button">
-										<i class="fa fa-search"></i>
-									</button>
-								</span>
-							</div> <!-- /input-group -->
-						</li>
+
 						<li><a href="/dashboard/"><i
 								class="fa fa-dashboard fa-fw"></i> Dashboard</a></li>
 						<li><a href="/dashboard/staff/"><i class="fa fa-user"></i>
@@ -124,36 +110,63 @@
 			</div>
 			<!-- /.navbar-static-side -->
 		</nav>
+		
 
+		
 		<div id="page-wrapper">
-			<div class="container" style="margin-left: 30%;">
+			<div
+				class="kt-grid kt-grid--desktop kt-grid--ver kt-grid--ver-desktop kt-app"
+				style="width: 100%; display: flex; padding: 40px;">
 
-				<h1 class="h3 mb-2 text-gray-800 mb-5">Cập nhật thông tin nhân
-					viên</h1>
+				<div id="form1"
+					style="width: 75%; background-color: #f8f8f8; border-radius: 10px 10px 10px 10px; padding-left: 30px; margin-left:13%;
+					box-shadow: 8px 8px 10px #c2bbbb;border: 1px solid #dddada;">
+					<div class="row">
+						<div class="col-xl-12">
+							<div>
 				<form action="#" th:action="@{/dashboard/lichtaikham/luu}"
 					th:object="${bookItem}" method="post">
+					<div class="row">
+						<div  style="margin-left:270px;">
+						<h3 class="kt-section__title kt-section__title-sm">Hẹn lịch tái khám</h3>
+						
+							</div>
+							</div>
+					<table>
+					<tbody>
+					<td style="width:350px;">
+					<div style="margin:30px;">
 					<input type="hidden" th:field="*{id_detail}" />
 					<div class="form-group">
-						<label>Tên khách hàng</label> <input type="text"
-							style="width: 30%" class="form-control" th:field="*{name}"
+						<label>Tên khách hàng:</label> <input type="text"
+							 class="form-control" th:field="*{name}"
 							readonly="readonly">
 					</div>
 					<div class="form-group">
-						<label>Số điện thoại</label> <input type="text"
-							style="width: 30%" class="form-control" th:field="*{sdt}"
+						<label>Số điện thoại:</label> <input type="text"
+							 class="form-control" th:field="*{sdt}"
 							readonly="readonly">
 					</div>
 					<div class="form-group">
-						<label>Tên dịch vụ</label> <input type="text" style="width: 30%"
-							class="form-control" th:field="*{tendv}" readonly="readonly" />
+						<label>Tên dịch vụ:</label> <input type="text" 
+							class="form-control" th:field="*{tendv}" disabled />
+					</div>
+					<div class="form-group" style="display:none;">
+						<label>Giá tiền:</label> <input type="text" 
+							class="form-control" th:field="*{giaTien}" readonly="readonly" >
 					</div>
 					
+					</div>
+					 </td>
+					<td > 
+					<div style="width:280px;margin:30px;">
+					
 					<div class="form-group">
-						<label>Ngày Đặt</label> <input class="form-control"
-							style="width: 30%" type="date" th:field="*{ngayDat}" id="txtDate">
+						<label>Ngày Đặt:</label> <input class="form-control"
+							 type="date" th:field="*{ngayDat}" id="txtDate">
 					</div>
 					<div class="form-group">
-						<label>Giờ bắt đầu</label> <select th:field="*{gioBatDau}">
+						<label>Giờ bắt đầu:</label> <select th:field="*{gioBatDau}">
 							<option th:value="${'8:00'}">8:00</option>
 							<option th:value="${'8:30'}">8:30</option>
 							<option th:value="${'9:00'}">9:00</option>
@@ -170,26 +183,35 @@
 							
 						</select>
 					</div>
-
 					<div class="form-group">
-						<label>Giá tiền</label> <input type="text" style="width: 30%"
-							class="form-control" th:field="*{giaTien}" readonly="readonly">
+						<label>Ghi chú:</label> 
+						
+						<textarea rows="3" cols="37" >
+						</textarea>
 					</div>
 
-
-					<button class="btn btn-primary" type="submit">Lưu</button>
+					<button class="btn btn-primary" type="submit" style="margin-left:145px;">Lưu</button>
 					<button th:href="@{/dashboard/quanlylichkham}" class="btn btn-warning"
 						type="submit">Quay lại</button>
+					</div>
+					</td>
+					
+					</tbody>
+					</table>
 				</form>
 
+						</div>
+						</div>
 
+					</div>
+				</div>
 
 			</div>
+			<!-- /#page-wrapper -->
 
 		</div>
-		<!-- /#page-wrapper -->
 
-	</div>
+		</div>
 	<!-- /#wrapper -->
 
 	<!-- jQuery -->

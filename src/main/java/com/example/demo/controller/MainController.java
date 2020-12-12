@@ -233,10 +233,7 @@ public class MainController {
 		return "dashboard/customer";
 	}
 
-	@RequestMapping("/changePass")
-	public String changePass() {
-		return "doiMatKhau";
-	}
+	
 
 	@RequestMapping("/logout-success")
 	public String logoutPage() {
@@ -346,14 +343,6 @@ public class MainController {
 		this.staffList = staffList;
 	}
 
-	/*
-	 * @PostMapping("/changePass") public User changePass(User user) { List<User>
-	 * userName = repo.findAll(); for (User user1 : userName) {
-	 * System.out.println(user1.getPassword());
-	 * 
-	 * if (user1.getUsername().equals(user.getUsername())) {
-	 * 
-	 * } else { System.out.println("ok email ko ngon"); } } return user; }
-	 */
+	
 
 }

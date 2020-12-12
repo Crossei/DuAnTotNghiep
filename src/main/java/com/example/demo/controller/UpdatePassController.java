@@ -49,7 +49,7 @@ public class UpdatePassController {
 	
 	
 	
-	@GetMapping("/doipass")
+	@GetMapping("/changePass")
 	public String showUpdatePasswordForm( Model model) {
 		Authentication authentication =SecurityContextHolder.getContext().getAuthentication();
 		User user =repo.findByUsernameIs(authentication.getName());
@@ -78,7 +78,7 @@ public class UpdatePassController {
 //		return "login";
 //	}
 	
-	@PostMapping("/doipass")
+	@PostMapping("/changePass")
 	public String processUpdatePassword(HttpServletRequest rq,Model model) {
 	
 		Authentication authentication =SecurityContextHolder.getContext().getAuthentication();

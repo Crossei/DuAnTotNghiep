@@ -145,7 +145,7 @@
 								<th>Bác sĩ khám</th>
 								<th>Ngày Đặt</th>
 								<th>Giờ bắt đầu</th>
-								<th>Giá tiền</th>
+								
 								<th>Trạng thái</th>
 								<th>Hành động</th>
 
@@ -162,7 +162,7 @@
 										<td
 											th:text="${#dates.format(tiepNhanList.ngayDat, 'dd-MM-yyyy')}"></td>
 										<td th:text="${tiepNhanList.gioBatDau}"></td>
-										<td th:text="${tiepNhanList.giaTien}"></td>
+								
 										<td th:if="${tiepNhanList.status == 0}">Chờ xác nhận</td>
 										<td th:if="${tiepNhanList.status == 1}">Đã xác nhận</td>
 										<td th:if="${tiepNhanList.status == 2}">Tái khám</td>
