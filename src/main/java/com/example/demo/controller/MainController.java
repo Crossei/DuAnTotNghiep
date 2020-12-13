@@ -78,11 +78,15 @@ public class MainController {
 		binder.registerCustomEditor(Date.class, null, new CustomDateEditor(dateFormat, true));
 	}
 
-	@RequestMapping("/datlich2")
+	@RequestMapping("/doctor-list")
 	public String docList() {
-		return "datlich2";
+		return "doctor-list";
 	}
 
+	@RequestMapping("/service-list")
+	public String serviceList() {
+		return "service-list";
+	}
 
 	@RequestMapping("/")
 	public String homePage() {
@@ -153,7 +157,6 @@ public class MainController {
 		model.addAttribute("datLichDTO", datLichDTO);
 		return "datlich";
 	}
-	
 
 	@PostMapping(value = "/datlich")
 	public String datLichSave(@ModelAttribute("datLichDTO") DatLichDTO datLich, Model model) throws ParseException {
@@ -270,7 +273,11 @@ public class MainController {
 	}
 	// end tin tuc
 
-	
+	// dat lich - thong tin them
+	@RequestMapping("/thongtinthem")
+	public String thongTinThem(Model model) {
+		return "thongtinthem";
+	}
 
 	// chi tiet cac dich vu
 	@RequestMapping("/nhakhoatongquat")
