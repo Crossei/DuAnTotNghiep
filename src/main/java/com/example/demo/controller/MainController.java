@@ -77,15 +77,11 @@ public class MainController {
 		binder.registerCustomEditor(Date.class, null, new CustomDateEditor(dateFormat, true));
 	}
 
-	@RequestMapping("/doctor-list")
+	@RequestMapping("/datlich2")
 	public String docList() {
-		return "doctor-list";
+		return "datlich2";
 	}
 
-	@RequestMapping("/service-list")
-	public String serviceList() {
-		return "service-list";
-	}
 
 	@RequestMapping("/")
 	public String homePage() {
@@ -258,11 +254,7 @@ public class MainController {
 	}
 	// end tin tuc
 
-	// dat lich - thong tin them
-	@RequestMapping("/thongtinthem")
-	public String thongTinThem(Model model) {
-		return "thongtinthem";
-	}
+	
 
 	// chi tiet cac dich vu
 	@RequestMapping("/nhakhoatongquat")

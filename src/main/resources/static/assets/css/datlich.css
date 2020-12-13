@@ -1,21 +1,24 @@
-/* .tab {
+.tab {
 	display: none;
-} */
+}
 
-#sub {
-    background-color: #009961;
-    color: #ffffff;
+.sub {
     border: none;
     padding: 10px 20px;
     font-size: 19px;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 50px;
+    color: white;
 }
 
-#sub:hover {
+.sub:hover {
     opacity: 0.8;
 }
-
+ h5{
+ 	font-weight: 700;
+ 	font-family: UVN Phuong Tay;
+ 	font-size: 33px;
+ }
 .prevBtn {
     background-color: #bbbbbb;
 }
