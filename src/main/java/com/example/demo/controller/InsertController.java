@@ -74,6 +74,7 @@ public class InsertController {
 	
 	@RequestMapping(value="/saveStaff",method =  RequestMethod.POST)
 public String saveStaff(@ModelAttribute(name="staff") AddStaffDTO staffDto, Model model,
+		
 			RedirectAttributes ra,@RequestParam("fileImage") MultipartFile multipartFile) throws IOException, ParseException{
 			
 			String fileName= StringUtils.cleanPath(multipartFile.getOriginalFilename());
@@ -94,7 +95,7 @@ public String saveStaff(@ModelAttribute(name="staff") AddStaffDTO staffDto, Mode
 				}else {
 					role = "ROLE_LETAN";
 				}
-				User user = new User(staffDto.getName_staff(),staffDto.getEmail(),passEnCoder.encode("123"),role);
+				User user = new User(staffDto.getName_staff(),staffDto.getEmail(),passEnCoder.encode("123"),role,1);
 				user2Repo.save(user);
 				
 			}else {

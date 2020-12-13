@@ -19,9 +19,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.example.demo.dao.Customer;
 import com.example.demo.dao.Service;
 import com.example.demo.dao.Staff;
+import com.example.demo.dao.User;
 import com.example.demo.service.CustomerRepository;
 import com.example.demo.service.ServiceRepository;
 import com.example.demo.service.StaffRepository;
+import com.example.demo.service.UserRepository;
 
 @Controller
 public class UserController {
@@ -31,7 +33,8 @@ public class UserController {
 	
 	@Autowired
 	private ServiceRepository serRepo;
-	
+	@Autowired
+	private UserRepository repo;
 
 	@Autowired
 	private CustomerRepository cusRepo;
@@ -51,10 +54,29 @@ public class UserController {
 		return "redirect:/dashboard/customer";
 	}
 	
+	@RequestMapping("/dashboard/account/delete/{id}")
+	public String KhoaUser(@PathVariable(name = "id") int id) {
+		User user =repo.findById(id);
+		user.setStatus(0);
+		repo.save(user);
+		
+		return "redirect:/dashboard/account/";
+	}
+	
+	@RequestMapping("/dashboard/account/open/{id}")
+	public String OpenUser(@PathVariable(name = "id") int id) {
+		User user =repo.findById(id);
+		user.setStatus(1);
+		repo.save(user);
+		
+		return "redirect:/dashboard/account";
+	}
 	@RequestMapping("dashboard/services/delete/{id_ser}")
-	@Transactional
 	public String deleteService(@PathVariable(name = "id_ser") int id) {
-		serRepo.deleteById(id);
+		
+		Service ser = serRepo.findById(id);
+		ser.setStatus(0);
+		serRepo.save(ser);
 		//serRepo.deleteById(id);
 		return "redirect:/dashboard/services";
 	}

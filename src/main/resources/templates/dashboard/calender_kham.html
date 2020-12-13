@@ -132,7 +132,8 @@
                             <h6 class="m-0 font-weight-bold text-primary">Hiển thị chi tiết lịch khám bệnh</h6>                          
                              <a th:if=${dangKyLich} th:href="@{/dashboard/quanlylichkham/dangky}" class="btn btn-default">Đăng ký lịch</a>
                              <a th:if="${dangKyLich == false}" th:href="@{/dashboard/quanlylichkham/dangky}" class="btn btn-default" disabled>Đăng ký lịch</a>
-                            
+                            <a th:href="@{/dashboard/staff/export}"
+						class="btn btn-warning">Export Excel</a>
 
                         </div>
                         
@@ -187,10 +188,7 @@
 													<li role="presentation"><a role="menuitem"
 														tabindex="-1"
 														th:href="@{'/dashboard/quanlylichkham/taikham/'+${tiepNhanList.id_detail}}">Tái khám</a></li>
-													<li role="presentation"><a role="menuitem"
-														tabindex="-1" data-target="#myModal"
-														th:attr="data-target='#myModal'+${tiepNhanList.id_detail}"
-														data-toggle="modal" href="">Hủy lịch</a></li>
+													
 													<!-- -->
 												</ul>
 											</div>

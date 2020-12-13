@@ -40,6 +40,18 @@
 <link
 	href="/webjars/startbootstrap-sb-admin-2/1.0.2/font-awesome/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css" />
+
+<!-- jQuery -->
+<script src="/webjars/startbootstrap-sb-admin-2/1.0.2/js/jquery.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script
+	src="/webjars/startbootstrap-sb-admin-2/1.0.2/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/webjars/startbootstrap-sb-admin-2/1.0.2/js/sb-admin-2.js"></script>
+
+
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script
 	src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
@@ -49,11 +61,6 @@
 	src="https://cdn.datatables.net/responsive/2.2.6/js/dataTables.responsive.min.js"></script>
 <script
 	src="https://cdn.datatables.net/responsive/2.2.6/js/responsive.bootstrap4.min.js"></script>
-
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
-	integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
-	crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -146,17 +153,76 @@
 										<td th:text="${userList.name}"></td>
 
 										<td th:text="${userList.username}"></td>
-										<td th:text="${userList.status}"></td>
+										<td th:text="${userList.status} eq '1' ? 'Đang kích hoạt' : 'Khóa'"></td>
 										<td th:text="${userList.roles}"></td>
 
 										<td>
 
 
-											<button data-target="#myModal"
-												th:attr="data-target='#myModal'+${userList.id}"
-												class="btn btn-danger" data-toggle="modal">Khóa</button>
-
+											<div  class="dropdown">
+												<button  class="btn btn-default dropdown-toggle"
+													type="button" id="menu1" data-toggle="dropdown">
+													Hành động <span class="caret"></span>
+												</button>
+												<ul class="dropdown-menu" role="menu"
+													aria-labelledby="menu1">
+													
+													<li role="presentation"><a data-target="#myModal1"
+											th:attr="data-target='#myModal1'+${userList.id}" id="kichhoat"
+											 data-toggle="modal">Kích hoạt</a></li>
+													<li role="presentation"><a data-target="#myModal" id="khoa"
+											th:attr="data-target='#myModal'+${userList.id}"
+											 data-toggle="modal">Khóa</a></li>
+													<!-- -->
+												</ul>
+											</div>
 										</td>
+										<div th:id="myModal1+${userList.id}" class="modal fade">
+											<div class="modal-dialog modal-confirm">
+												<div class="modal-content">
+													<div class="modal-header flex-column">
+
+														<h4 class="modal-title w-100">Bạn có chắc chắn muốn
+															kịch hoạt tài khoản này?</h4>
+														<button type="button" class="close" data-dismiss="modal"
+															aria-hidden="true">&times;</button>
+													</div>
+													<div class="modal-body">
+														<p>Bạn có muốn kích hoạt tài khoản này chứ ?</p>
+													</div>
+													<div class="modal-footer justify-content-center">
+														<a
+															th:href="@{/dashboard/account/open/{id}(id=${userList.id})}"
+															type="button" class="btn btn-danger">Kích hoạt</a>
+														<button type="button" class="btn btn-secondary"
+															data-dismiss="modal">Không</button>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div th:id="myModal+${userList.id}" class="modal fade">
+											<div class="modal-dialog modal-confirm">
+												<div class="modal-content">
+													<div class="modal-header flex-column">
+
+														<h4 class="modal-title w-100">Bạn có chắc chắn muốn
+															khóa tài khoản này?</h4>
+														<button type="button" class="close" data-dismiss="modal"
+															aria-hidden="true">&times;</button>
+													</div>
+													<div class="modal-body">
+														<p>Bạn có muốn khóa tài khoản này chứ ?</p>
+													</div>
+													<div class="modal-footer justify-content-center">
+														<a
+															th:href="@{/dashboard/account/delete/{id}(id=${userList.id})}"
+															type="button" class="btn btn-danger">Khóa</a>
+														<button type="button" class="btn btn-secondary"
+															data-dismiss="modal">Không</button>
+													</div>
+												</div>
+											</div>
+										</div>
 									</tr>
 								</th:block>
 							</tbody>
@@ -174,24 +240,48 @@
 	<!-- /#page-wrapper -->
 
 
-	<script type="text/javascript">
-		$(document).ready(function() {
-			$('#example').DataTable({
-				"language" : {
-					"lengthMenu" : "Hiển thị _MENU_ item mỗi trang",
-					"zeroRecords" : "Không có dữ liệu",
-					"info" : "Hiển thị _PAGE_ trong tổng _PAGES_",
-					"infoEmpty" : "Không có dữ liệu",
-					"paginate" : {
-						"first" : "Đầu tiền",
-						"last" : "Cuối",
-						"next" : "Tiếp",
-						"previous" : "Trước"
-					},
-					"search" : "Tìm kiếm:",
-				}
-			});
-		});
+<script>
+		$(document)
+				.ready(
+						function() {
+							$("#myInput")
+									.on(
+											"keyup",
+											function() {
+												var value = $(this).val()
+														.toLowerCase();
+												$("#myTable tr")
+														.filter(
+																function() {
+																	$(this)
+																			.toggle(
+																					$(
+																							this)
+																							.text()
+																							.toLowerCase()
+																							.indexOf(
+																									value) > -1)
+																});
+											});
+							$('#example')
+									.DataTable(
+											{
+												"language" : {
+													"lengthMenu" : "Hiển thị _MENU_ item mỗi trang",
+													"zeroRecords" : "Không có dữ liệu",
+													"info" : "Hiển thị _PAGE_ trong tổng _PAGES_",
+													"infoEmpty" : "Không có dữ liệu",
+													"paginate" : {
+														"first" : "Đầu tiền",
+														"last" : "Cuối",
+														"next" : "Tiếp",
+														"previous" : "Trước"
+													},
+													"search" : "Tìm kiếm:",
+												}
+											});
+
+						});
 	</script>
 	<style>
 /* 	.dataTables_filter, .dataTables_info , .dataTables_length { display: none; } */
