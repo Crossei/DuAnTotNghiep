@@ -9,8 +9,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
 <title>Dashboard - Quản lý nhân viên</title>
-
+<link href="/assets/css/calendar.css" rel="stylesheet" />
 <!-- Bootstrap Core CSS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link
 	href="/webjars/startbootstrap-sb-admin-2/1.0.2/css/bootstrap.min.css"
 	rel="stylesheet" />
@@ -47,9 +48,6 @@
 	rel="stylesheet" type="text/css" />
 
 <style>
-input: {
-	width: 30%;
-}
 </style>
 
 </head>
@@ -73,8 +71,8 @@ input: {
 					<ul class="dropdown-menu dropdown-user">
 						<li><a href="/profile/"><i class="fa fa-user fa-fw"></i>
 								Thông tin tài khoản</a></li>
-						<li><a href="/changePass"><i class="fa fa-gear fa-fw"></i> Đổi mật
-								khẩu</a></li>
+						<li><a href="/changePass"><i class="fa fa-gear fa-fw"></i>
+								Đổi mật khẩu</a></li>
 						<li class="divider"></li>
 						<li><a th:href="@{/logout}"><i
 								class="fa fa-sign-out fa-fw"></i> Đăng xuất</a></li>
@@ -110,7 +108,7 @@ input: {
 			</div>
 			<!-- /.navbar-static-side -->
 		</nav>
-		
+
 
 		<div id="page-wrapper">
 			<div
@@ -118,85 +116,176 @@ input: {
 				style="width: 100%; display: flex; padding: 40px;">
 
 				<div id="form1"
-					style="width: 75%; background-color: #f8f8f8; border-radius: 10px 10px 10px 10px; padding-left: 30px; margin-left:13%;
-					box-shadow: 8px 8px 10px #c2bbbb;border: 1px solid #dddada;">
+					style="width: 75%; background-color: #f8f8f8; border-radius: 10px 10px 10px 10px; padding-left: 30px; margin-left: 13%; box-shadow: 8px 8px 10px #c2bbbb; border: 1px solid #dddada;">
 					<div class="row">
 						<div class="col-xl-12">
 							<div>
 
-				<form action="#" th:action="@{/dashboard/lichkham/luu}"
-					th:object="${bookItem}" method="post">
-					<div class="row">
-						<div  style="margin-left:190px;">
-						<h3 class="kt-section__title kt-section__title-sm">Cập nhật thông tin lịch khám</h3>
-						
+								<form action="#" th:action="@{/dashboard/lichkham/luu}"
+									th:object="${bookItem}" method="post">
+									<div class="row">
+										<div style="margin-left: 190px;">
+											<h3 class="kt-section__title kt-section__title-sm">Cập
+												nhật thông tin lịch khám</h3>
+
+										</div>
+									</div>
+									<table>
+										<tbody>
+											<td style="width: 350px;">
+												<div style="margin: 30px;">
+													<input type="hidden" th:field="*{id_detail}" />
+													<div class="form-group">
+														<label>Tên khách hàng:</label> <input type="text"
+															class="form-control" th:field="*{name}"
+															readonly="readonly">
+													</div>
+													<div class="form-group">
+														<label>Số điện thoại:</label> <input type="text"
+															class="form-control" th:field="*{sdt}"
+															readonly="readonly">
+													</div>
+													<div class="form-group">
+														<label>Tên dịch vụ:</label> <input type="text"
+															class="form-control" th:field="*{tendv}"
+															readonly="readonly" />
+													</div>
+
+												</div>
+											</td>
+											<td>
+												<div style="width: 280px; margin: 30px;">
+													<div class="form-group">
+														<label>Bác sĩ khám:</label> <br> <select id="bacsi"
+															th:field="*{tenbs}">
+															<option th:each="bsList :${staffList}"
+																th:value=${bsList.id_staff} th:text=${bsList.name_staff} />
+														</select>
+													</div>
+													<div class="form-group">
+														<label>Ngày Đặt:</label> <input class="form-control"
+															onChange="searchViaAjax()" type="date"
+															th:field="*{ngayDat}" id="txtDate" />
+													</div>
+													<div class="col-10 form-group">
+														<h3>Chọn giờ khám</h3>
+														<br />
+														<div class="button-group-1 ">
+															<input type="radio" th:value="${'9:00'}" name="ca1"
+																id="bton1" class="button1" th:field="*{gioBatDau}">
+															<label for="bton1" class="label1">9h00</label> <input
+																type="radio" th:value="${'10:00'}"  name="ca1"
+																id="bton2" class="button1" th:field="*{gioBatDau}" >
+															<label for="bton2" class="label1">10h00</label> <input
+																type="radio" th:value="${'11:00'}"  name="ca1"
+																id="bton3" class="button1" th:field="*{gioBatDau}">
+															<label for="bton3" class="label1">11h00</label> <input
+																type="radio" th:value="${'13:00'}"  name="ca2"
+																id="bton4" class="button1" th:field="*{gioBatDau}">
+															<label for="bton4" class="label1">13h00</label> <input
+																type="radio" th:value="${'14:00'}"  name="ca2"
+																id="bton5" class="button1" th:field="*{gioBatDau}">
+															<label for="bton5" class="label1">14h00</label> <input
+																type="radio" th:value="${'15:00'}"  name="ca2"
+																id="bton6" class="button1" th:field="*{gioBatDau}">
+															<label for="bton6" class="label1">15h00</label> <input
+																type="radio" th:value="${'16:00'}"  name="ca2"
+																id="bton7" class="button1" th:field="*{gioBatDau}">
+															<label for="bton7" class="label1">16h00</label> <input
+																type="radio" th:value="${'17:00'}"  name="ca3"
+																id="bton8" class="button1" th:field="*{gioBatDau}">
+															<label for="bton8" class="label1">17h00</label> <input
+																type="radio" th:value="${'18:00'}"  name="ca3"
+																id="bton9" class="button1" th:field="*{gioBatDau}">
+															<label for="bton9" class="label1">18h00</label> <input
+																type="radio" th:value="${'19:00'}"  name="ca3"
+																id="bton10" class="button1" th:field="*{gioBatDau}">
+															<label for="bton10" class="label1">19h00</label>
+														</div>
+
+														<div class="button-group-1">
+															<input type="radio" th:value="${'9:20'}" name="ca1"
+																id="bton11" class="button1" th:field="*{gioBatDau}">
+															<label for="bton11" class="label1">9h20</label> <input
+																type="radio" th:value="${'10:20'}" name="ca1"
+																id="bton12" class="button1" th:field="*{gioBatDau}">
+															<label for="bton12" class="label1">10h20</label> <input
+																type="radio" th:value="${'11:20'}" name="ca1"
+																id="bton13" class="button1" th:field="*{gioBatDau}">
+															<label for="bton13" class="label1">11h20</label> <input
+																type="radio" th:value="${'13:20'}" name="ca2"
+																id="bton14" class="button1" th:field="*{gioBatDau}">
+															<label for="bton14" class="label1">13h20</label> <input
+																type="radio" th:value="${'14:20'}" name="ca2"
+																id="bton15" class="button1" th:field="*{gioBatDau}">
+															<label for="bton15" class="label1">14h20</label> <input
+																type="radio" th:value="${'15:20'}" name="ca2"
+																id="bton16" class="button1" th:field="*{gioBatDau}">
+															<label for="bton16" class="label1">15h20</label> <input
+																type="radio" th:value="${'16:20'}" name="ca2"
+																id="bton17" class="button1" th:field="*{gioBatDau}">
+															<label for="bton17" class="label1">16h20</label> <input
+																type="radio" th:value="${'17:20'}" name="ca3"
+																id="bton18" class="button1" th:field="*{gioBatDau}">
+															<label for="bton18" class="label1">17h20</label> <input
+																type="radio" th:value="${'18:20'}" name="ca3"
+																id="bton19" class="button1" th:field="*{gioBatDau}">
+															<label for="bton19" class="label1">18h20</label> <input
+																type="radio" th:value="${'19:20'}" name="ca3" 
+																id="bton20" class="button1" th:field="*{gioBatDau}">
+															<label for="bton20" class="label1">19h20</label>
+														</div>
+
+														<div class="button-group-1">
+															<input type="radio" th:value="${'9:40'}" name="ca1"
+																id="bton21" class="button1" th:field="*{gioBatDau}">
+															<label for="bton21" class="label1">9h40</label> <input
+																type="radio" th:value="${'10:40'}" name="ca1"
+																id="bton22" class="button1" th:field="*{gioBatDau}">
+															<label for="bton22" class="label1">10h40</label> <input
+																type="radio" th:value="${'11:40'}" name="ca1"
+																id="bton23" class="button1" th:field="*{gioBatDau}">
+															<label for="bton23" class="label1">11h40</label> <input
+																type="radio" th:value="${'13:40'}" name="ca2"
+																id="bton24" class="button1" th:field="*{gioBatDau}">
+															<label for="bton24" class="label1">13h40</label> <input
+																type="radio" th:value="${'14:40'}" name="ca2"
+																id="bton25" class="button1" th:field="*{gioBatDau}">
+															<label for="bton25" class="label1">14h40</label> <input
+																type="radio" th:value="${'15:40'}" name="ca2"
+																id="bton26" class="button1" th:field="*{gioBatDau}">
+															<label for="bton26" class="label1">15h40</label> <input
+																type="radio" th:value="${'16:40'}" name="ca2"
+																id="bton27" class="button1" th:field="*{gioBatDau}">
+															<label for="bton27" class="label1">16h40</label> <input
+																type="radio" th:value="${'17:40'}" name="ca3"
+																id="bton28" class="button1" th:field="*{gioBatDau}">
+															<label for="bton28" class="label1">17h40</label> <input
+																type="radio" th:value="${'18:40'}" name="ca3"
+																id="bton29" class="button1" th:field="*{gioBatDau}">
+															<label for="bton29" class="label1">18h40</label> <input
+																type="radio" th:value="${'19:40'}" name="ca3"
+																id="bton30" class="button1" th:field="*{gioBatDau}">
+																<label for="bton30" class="label1">19h40</label>
+														
+														</div>
+													</div>
+
+													<button class="btn btn-primary" type="submit"
+														style="margin-left: 146px;">Lưu</button>
+													<button th:href="@{/dashboard/lichkham}"
+														class="btn btn-warning" type="submit">Quay lại</button>
+												</div>
+											</td>
+
+										</tbody>
+									</table>
+
+
+								</form>
+
+
 							</div>
-							</div>
-					<table>
-					<tbody>
-					<td style="width:350px;">
-					<div style="margin:30px;">
-					<input type="hidden" th:field="*{id_detail}" />
-					<div class="form-group">
-						<label>Tên khách hàng:</label> <input type="text"
-							 class="form-control" th:field="*{name}"
-							readonly="readonly">
-					</div>
-					<div class="form-group">
-						<label>Số điện thoại:</label> <input type="text" 
-							class="form-control" th:field="*{sdt}" readonly="readonly">
-					</div>
-					<div class="form-group">
-						<label>Tên dịch vụ:</label> <input type="text" 
-							class="form-control" th:field="*{tendv}" readonly="readonly" />
-					</div>
-				
-					</div>
-					 </td>
-					<td> 
-					<div style="width:280px;margin:30px;">
-					<div class="form-group">
-						<label>Bác sĩ khám:</label> <br><select th:field="*{tenbs}">
-							<option th:each="bsList :${staffList}"
-								th:value=${bsList.id_staff} th:text=${bsList.name_staff} />
-						</select>
-					</div>
-					<div class="form-group">
-						<label>Ngày Đặt:</label> <input class="form-control"
-							 type="date" th:field="*{ngayDat}" id="txtDate">
-					</div>
-					<div class="form-group">
-						<label>Giờ bắt đầu:</label> <select th:field="*{gioBatDau}">
-							<option th:value="${'8:00'}">8:00</option>
-							<option th:value="${'8:30'}">8:30</option>
-							<option th:value="${'9:00'}">9:00</option>
-							<option th:value="${'9:30'}">9:30</option>
-							<option th:value="${'10:00'}">10:00</option>
-							<option th:value="${'10:30'}">10:30</option>
-							<option th:value="${'11:00'}">11:00</option>
-							<option th:value="${'11:30'}">11:30</option>
-							<option th:value="${'13:30'}">13:30</option>
-							<option th:value="${'14:30'}">14:30</option>
-							<option th:value="${'15:30'}">15:30</option>
-							<option th:value="${'16:30'}">16:30</option>
-							<option th:value="${'17:30'}">17:30</option>
-						</select>
-					</div>
-
-					<button class="btn btn-primary" type="submit" style="margin-left:146px;">Lưu</button>
-					<button th:href="@{/dashboard/lichkham}" class="btn btn-warning"
-						type="submit">Quay lại</button>
-					</div>
-					</td>
-					
-					</tbody>
-					</table>
-					
-					
-				</form>
-
-
-						</div>
 						</div>
 
 					</div>
@@ -207,8 +296,8 @@ input: {
 
 		</div>
 
-		</div>
-		<!-- /#page-wrapper -->
+	</div>
+	<!-- /#page-wrapper -->
 
 	<!-- /#wrapper -->
 
@@ -235,7 +324,51 @@ input: {
 	<script src="/webjars/startbootstrap-sb-admin-2/1.0.2/js/sb-admin-2.js"></script>
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script type="text/javascript">
+	<script th:inline="javascript" >
+	function searchViaAjax() {
+		var url      = window.location.href; 
+		var bacsi = document.getElementById('bacsi').value;
+		var ngayDat = document.getElementById('txtDate').value;
+        $.ajax({
+            type : "GET",
+            contentType : "application/json",
+            url :  "/getSearchResult",
+            data : {
+            	bacsi : bacsi,
+            	ngayDat : ngayDat
+            },
+            dataType : 'json',
+            timeout : 100000,
+            success : function(data) {
+                console.log("SUCCESS: ", data);
+                if(data != null){
+            
+                	if (data.shift1 == 1){               		
+                		console.log(data.shift1);
+                		
+                		
+                	} if (data.shift2 == 0){            	
+                		console.log(data.shift2);
+                		$('#bton30').prop("disabled", true);
+
+                		
+                		
+                	} if (data.shift3 == 1);{               		
+                		console.log(data.shift3);	
+                	
+                		
+                	}
+                }
+            },
+            error : function(e) {
+                console.log("ERROR: ", e);
+            }
+            
+        });
+
+    }
+	
+		
 		$(function() {
 			var dtToday = new Date();
 

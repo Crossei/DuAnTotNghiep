@@ -1,15 +1,24 @@
 package com.example.demo.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.catalina.mapper.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.demo.dao.Booking;
@@ -18,6 +27,7 @@ import com.example.demo.dao.Customer;
 import com.example.demo.dao.Service;
 import com.example.demo.dao.Staff;
 import com.example.demo.dao.User;
+import com.example.demo.dao.WorkingCalendar;
 import com.example.demo.dto.TiepNhanLichKhamDTO;
 import com.example.demo.service.BookingDetailRepository;
 import com.example.demo.service.BookingRepository;
@@ -27,6 +37,9 @@ import com.example.demo.service.ServiceRepository;
 import com.example.demo.service.StaffRepository;
 import com.example.demo.service.User2Repository;
 import com.example.demo.service.UserRepository;
+import com.example.demo.service.WorkingCalendarRepository;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Controller
 public class TiepNhanLichKhamController {
@@ -46,6 +59,29 @@ public class TiepNhanLichKhamController {
 	private BookingDetailRepository bokDetailRepo;
 	@Autowired
 	private BookingRepository bokRepo;
+	@Autowired
+	private WorkingCalendarRepository workRepo;
+	
+	
+	@GetMapping(value = "/getSearchResult")
+	@ResponseBody
+    public   String homePage(HttpServletRequest request) throws ParseException {
+		String bacsi = request.getParameter("bacsi");
+		String ngayDat = request.getParameter("ngayDat");
+		SimpleDateFormat fomater = new SimpleDateFormat("yyyy-MM-dd");
+		Date date = fomater.parse(ngayDat);
+		WorkingCalendar workingValidate = workRepo.findByIdstaffAndDateWorking(Integer.parseInt(bacsi), date);
+		System.out.println(workingValidate);
+		ObjectMapper mapper = new ObjectMapper();
+		String ajaxResponse = "";
+		try {
+			ajaxResponse = mapper.writeValueAsString(workingValidate);
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+       return ajaxResponse;
+    }
+	
 
 
 	@RequestMapping("/dashboard/lichkham")
