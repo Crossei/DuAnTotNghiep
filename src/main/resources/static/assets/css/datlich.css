@@ -1,0 +1,46 @@
+.tab {
+	display: none;
+}
+
+.sub {
+    border: none;
+    padding: 10px 20px;
+    font-size: 19px;
+    cursor: pointer;
+    border-radius: 50px;
+    color: white;
+}
+
+.sub:hover {
+    opacity: 0.8;
+}
+ h5{
+ 	font-weight: 700;
+ 	font-family: UVN Phuong Tay;
+ 	font-size: 33px;
+ }
+.prevBtn {
+    background-color: #bbbbbb;
+}
+
+.step {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbbbbb;
+    border: none;
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.5;
+}
+
+.step.active {
+    opacity: 1;
+}
+
+
+/* Mark the steps that are finished and valid: */
+
+.step.finish {
+    background-color: #4CAF50;
+}
