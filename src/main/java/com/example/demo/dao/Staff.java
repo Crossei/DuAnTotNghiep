@@ -29,10 +29,17 @@ public class Staff {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date dateWorking_Start;
 	private Integer status;
-
+	private Integer role;
 	
 	
+	
 
+	public Integer getRole() {
+		return role;
+	}
+	public void setRole(Integer role) {
+		this.role = role;
+	}
 	public Integer getStatus() {
 	return status;
 	}
@@ -40,7 +47,7 @@ public class Staff {
 	
 	}
 	public Staff(int id_user, String name_staff, int sex, String address, String image, String email, String phone,
-			Date dateWorking_Start, Integer status) {
+			Date dateWorking_Start, Integer status, Integer role) {
 		super();
 		this.iduser = id_user;
 		this.name_staff = name_staff;
@@ -51,6 +58,7 @@ public class Staff {
 		this.phone = phone;
 		this.dateWorking_Start = dateWorking_Start;
 		this.status = status;
+		this.role = role;
 	}
 	public String getImage() {
 		return image;

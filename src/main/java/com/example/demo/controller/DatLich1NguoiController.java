@@ -1,17 +1,31 @@
 package com.example.demo.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.demo.dao.Booking;
+import com.example.demo.dao.BookingDetail;
+import com.example.demo.dao.Customer;
 import com.example.demo.dao.Service;
 import com.example.demo.dao.Staff;
+import com.example.demo.dao.User;
+import com.example.demo.dto.DatLichForm2DTO;
+import com.example.demo.service.BookingDetailRepository;
+import com.example.demo.service.BookingRepository;
 import com.example.demo.service.CustomerRepository;
 import com.example.demo.service.ServiceRepository;
 import com.example.demo.service.StaffRepository;
@@ -30,6 +44,32 @@ public class DatLich1NguoiController {
 	private ServiceRepository ser1Repo;
 	@Autowired
 	private CustomerRepository cusRepo;
+	@Autowired
+	private BookingRepository bokRepo;
+	@Autowired
+	private BookingDetailRepository bokDetailRepo;
+	
+	
+	@PostMapping("/datlich2")
+	public String datLich2(HttpServletRequest rq) throws ParseException {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		Customer cus = cusRepo.findByEmail(authentication.getName());
+		Booking book = new Booking(cus.getId_cus());
+		bokRepo.save(book);
+		
+		SimpleDateFormat fomat = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat fomatGio = new SimpleDateFormat("HH:mm");
+		Date date = fomat.parse(rq.getParameter("btn"));
+		Date gio = fomatGio.parse(rq.getParameter("btn1"));
+
+		
+		List<Booking> bookList = bokRepo.findAll();
+		Booking bookItem = bookList.get(bookList.size() - 1);
+		
+		BookingDetail bookDetail = new BookingDetail(Integer.parseInt(rq.getParameter("btn2")), Integer.parseInt(rq.getParameter("btn3")), bookItem.getId_booking(), date,gio, 0, 1);
+		bokDetailRepo.save(bookDetail);
+		return "redirect:/datlich2";
+	}
 	
 	@RequestMapping("/datlich2")
 	public String docList(Model model) {
@@ -55,7 +95,7 @@ public class DatLich1NguoiController {
 		model.addAttribute("ngayDatList", ngayDatList);
 		
 		//lay ds bacsi'
-		List<Staff> staffList =  staffRepo.findAll();
+		List<Staff> staffList =  staffRepo.findByRole(2);
 		model.addAttribute("staffList", staffList);
 		
 		return "datlich2";

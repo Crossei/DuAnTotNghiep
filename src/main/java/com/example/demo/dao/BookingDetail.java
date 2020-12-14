@@ -22,8 +22,8 @@ public class BookingDetail {
 	@Column(name = "id_booking")
 	private int idBooking;
 	private Date dateWorking_Start;
-	private Time time_start;
-	private Time time_end;
+	private Date time_start;
+	private Date time_end;
 	private Integer status;
 	private Integer active;
 	
@@ -49,6 +49,17 @@ public class BookingDetail {
 	
 	
 	
+	public BookingDetail(int idstaff, int id_service, int idBooking, Date dateWorking_Start, Date time_start,
+			Integer status, Integer active) {
+		super();
+		this.idstaff = idstaff;
+		this.id_service = id_service;
+		this.idBooking = idBooking;
+		this.dateWorking_Start = dateWorking_Start;
+		this.time_start = time_start;
+		this.status = status;
+		this.active = active;
+	}
 	public BookingDetail(int id_staff, Date dateWorking_Start, Time time_start) {
 		super();
 		this.idstaff = id_staff;
@@ -94,16 +105,16 @@ public class BookingDetail {
 	public void setDateWorking_Start(Date dateWorking_Start) {
 		this.dateWorking_Start = dateWorking_Start;
 	}
-	public Time getTime_start() {
+	public Date getTime_start() {
 		return time_start;
 	}
-	public void setTime_start(Time time_start) {
+	public void setTime_start(Date time_start) {
 		this.time_start = time_start;
 	}
-	public Time getTime_end() {
+	public Date getTime_end() {
 		return time_end;
 	}
-	public void setTime_end(Time time_end) {
+	public void setTime_end(Date time_end) {
 		this.time_end = time_end;
 	}
 	public Integer getStatus() {

@@ -88,11 +88,14 @@ public String saveStaff(@ModelAttribute(name="staff") AddStaffDTO staffDto, Mode
 			// save tai khoan 
 			List<User> user1 = user2Repo.findByUsername(staffDto.getEmail());
 			String role;
+			Integer role_bacsi ;
 			if(user1.isEmpty()) {
 				if(staffDto.getRole() == 1) {
 					role = "ROLE_BACSI";
+					role_bacsi = 2;
 				}else {
 					role = "ROLE_LETAN";
+					role_bacsi = 3;
 				}
 				User user = new User(staffDto.getName_staff(),staffDto.getEmail(),passEnCoder.encode("123"),role);
 				user2Repo.save(user);
@@ -104,7 +107,7 @@ public String saveStaff(@ModelAttribute(name="staff") AddStaffDTO staffDto, Mode
 			List<User> userAll = user2Repo.findAll();
 			User newUser = userAll.get(userAll.size() - 1);
 			Staff staffSae = new Staff(newUser.getId(), staffDto.getName_staff(), staffDto.getSex(), staffDto.getAddress(), staffDto.getImage(),
-					staffDto.getEmail(), staffDto.getPhone(), staffDto.getDateWorking_Start(), 1);
+					staffDto.getEmail(), staffDto.getPhone(), staffDto.getDateWorking_Start(), 1,role_bacsi);
 			
 			Staff saveStaff =staffRepo.save(staffSae);
 			

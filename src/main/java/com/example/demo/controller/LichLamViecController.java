@@ -288,9 +288,6 @@ public class LichLamViecController {
 	}
 
 	public boolean soSanhTime(Date dateDv, String caBatDau, String caKetthuc) throws ParseException {
-		String ca1S = "8:30:00";
-		String ca1E = "12:00:00";
-
 		Date time1 = new SimpleDateFormat("HH:mm:ss").parse(caBatDau);
 		Calendar calendar1 = Calendar.getInstance();
 		calendar1.setTime(time1);

@@ -151,7 +151,7 @@
 										<td  th:text="${lichSuDatList.tenbs}"></td>
 										<td
 											th:text="${#dates.format(lichSuDatList.ngayDat, 'dd-MM-yyyy')}"></td>
-										<td></td>
+										<td th:text="${#dates.format(lichSuDatList.gioBatDau, 'HH:mm')}"></td>
 										<td th:text="${lichSuDatList.giaTien}"></td>
 
 										<td th:if="${lichSuDatList.trangThai == 0}"><span> Chờ
