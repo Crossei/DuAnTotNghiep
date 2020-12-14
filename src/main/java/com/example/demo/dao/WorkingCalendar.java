@@ -26,6 +26,11 @@ public class WorkingCalendar {
 	
 	
 	
+	@Override
+	public String toString() {
+		return "WorkingCalendar [id_working=" + id_working + ", idstaff=" + idstaff + ", shift1=" + shift1 + ", shift2="
+				+ shift2 + ", shift3=" + shift3 + ", dateWorking=" + dateWorking + ", status=" + status + "]";
+	}
 	public WorkingCalendar() {
 		super();
 		// TODO Auto-generated constructor stub
