@@ -115,95 +115,19 @@
                     <br/>
 
                     <div class="row">
+                    <th:block th:each="serList,stt : ${ser}">
                         <div class="col-lg-3 col-md-6 d-flex align-items-stretch mt-4">
                             <div class="icon-box-2">
-                                <img src="/assets/img/d1.png" style="width: 100%; height: 120px; margin-bottom: 20px;" alt="">
-                                <h6>Chỉnh nha cơ chức năng</h6>
-                                <p>Giá tiền: 1.000.000đ</p>
+                                <img th:src="@{'/assets/img/'+${serList.image}}" style="width: 100%; height: 120px; margin-bottom: 20px;" alt="">
+                                <h6 th:text="${serList.name}"></h6>
+                                <p th:text="${serList.price}"></p>
                                 <br>
-                                <input type="radio" value="1" name="btn3" id="b1" class="button1">
-                                <label for="b1" class="label1" style="position: absolute; bottom: 10px;">Chọn</label>
+                                <input type="radio" value="1" name="btn3" th:id="|id${stt.index}|" class="button1">
+                                <label th:for="|id${stt.index}|" class="label1" style="position: absolute; bottom: 10px;">Chọn</label>
                             </div>
 
                         </div>
-
-                        <div class="col-lg-3 col-md-6 d-flex align-items-stretch mt-4">
-                            <div class="icon-box-2">
-                                <img src="/assets/img/d2.jpg" style="width: 100%; height: 120px; margin-bottom: 20px;" alt="">
-                                <h6>Răng trẻ em</h6>
-                                <p>Giá tiền: 500.000đ</p>
-                                <br>
-                                <input type="radio" value="2" name="btn3" id="b2" class="button1">
-                                <label for="b2" class="label1" style="position: absolute; bottom: 10px;">Chọn</label>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3 col-md-6 d-flex align-items-stretch mt-4">
-                            <div class="icon-box-2">
-                                <img src="/assets/img/d3.jpg" style="width: 100%; height: 120px; margin-bottom: 20px;" alt="">
-                                <h6>Nắn chỉnh răng</h6>
-                                <p>Giá tiền: 300.000đ</p>
-                                <br>
-                                <input type="radio" value="2" name="btn3" id="b3" class="button1">
-                                <label for="b3" class="label1" style="position: absolute; bottom: 10px;">Chọn</label>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3 col-md-6 d-flex align-items-stretch mt-4">
-                            <div class="icon-box-2">
-                                <img src="/assets/img/d4.jpg" style="width: 100%; height: 120px; margin-bottom: 20px;" alt="">
-                                <h6>Nha khoa thẩm mỹ</h6>
-                                <p>Giá tiền: 600.000đ</p>
-                                <br>
-                                <input type="radio" value="2" name="btn3" id="b4" class="button1">
-                                <label for="b4" class="label1" style="position: absolute; bottom: 10px;">Chọn</label>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3 col-md-6 d-flex align-items-stretch mt-4">
-                            <div class="icon-box-2">
-                                <img src="/assets/img/d5.png" style="width: 100%; height: 120px; margin-bottom: 20px;" alt="">
-                                <h6>Nha khoa phục hình</h6>
-                                <p>Giá tiền: 700.000đ</p>
-                                <br>
-                                <input type="radio" value="2" name="btn3" id="b5" class="button1">
-                                <label for="b5" class="label1" style="position: absolute; bottom: 10px;">Chọn</label>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3 col-md-6 d-flex align-items-stretch mt-4">
-                            <div class="icon-box-2">
-                                <img src="/assets/img/d6.png" style="width: 100%; height: 120px; margin-bottom: 20px;" alt="">
-                                <h6>Điều trị nội nha</h6>
-                                <p>Giá tiền: 800.000đ</p>
-                                <br>
-                                <input type="radio" value="2" name="btn3" id="b6" class="button1">
-                                <label for="b6" class="label1" style="position: absolute; bottom: 10px;">Chọn</label>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 d-flex align-items-stretch mt-4">
-                            <div class="icon-box-2">
-                                <img src="/assets/img/d7.jpg" style="width: 100%; height: 120px; margin-bottom: 20px;" alt="">
-                                <h6>Cấy ghép Implant</h6>
-                                <p>Giá tiền: 1.500.000đ</p>
-                                <br>
-                                <input type="radio" value="2" name="btn3" id="b7" class="button1">
-                                <label for="b7" class="label1" style="position: absolute; bottom: 10px;">Chọn</label>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3 col-md-6 d-flex align-items-stretch mt-4">
-                            <div class="icon-box-2">
-                                <img src="/assets/img/d8.jpg" style="width: 100%;  height: 120px; margin-bottom: 20px;" alt="">
-                                <h6>Phẫu thuật răng miệng</h6>
-                                <p>Giá tiền: 2.500.000đ</p>
-                                <br>
-                                <input type="radio" value="2" name="btn3" id="b8" class="button1">
-                                <label for="b8" class="label1" style="position: absolute; bottom: 10px;">Chọn</label>
-                            </div>
-                        </div>
-
-
+                        </th:block>
                     </div>
 
                 </div>
@@ -218,80 +142,76 @@
                         <div class="col-10" style="margin-bottom: 40px">
                             <h5>Chọn ngày khám</h5>
                             <div class="button-group">
-                                <input type="radio" value="op1" name="btn" id="btn1" class="button">
-                                <label for="btn1" class="label" style="margin-right: 104px;">Hôm nay</label>
-
-                                <input type="radio" value="op2" name="btn" id="btn2" class="button">
-                                <label for="btn2" class="label" style="margin-right: 104px;">Ngày mai</label>
-
-                                <input type="radio" value="op3" name="btn" id="btn3" class="button">
-                                <label for="btn3" class="label">Ngày kia</label>
+                            <th:block th:each="ngayDat,stts : ${ngayDatList}">
+                                <input type="radio" value="op1" name="btn" th:id="|bt${stts.index}|" class="button">
+                                <label th:for="|bt${stts.index}|" class="label" th:text="${#dates.format(ngayDat ,'dd-MM-yyyy')}" style="margin-right: 10px"></label>
+                             </th:block>
                             </div>
                         </div>
                         <div class="col-10">
                             <h5>Chọn giờ khám</h5>
                             <div class="button-group-1">
-                                <input type="radio" value="opt1" name="btn1" id="bton1" class="button1">
+                                <input type="radio" th:value="${'9:00'}" name="btn1" id="bton1" class="button1">
                                 <label for="bton1" class="label1" style="margin-right: 15px;">9h00</label>
 
-                                <input type="radio" value="opt2" name="btn1" id="bton2" class="button1">
+                                <input type="radio" th:value="${'10:00'}" name="btn1" id="bton2" class="button1">
                                 <label for="bton2" class="label1" style="margin-right: 15px;">10h00</label>
 
-                                <input type="radio" value="opt3" name="btn1" id="bton3" class="button1">
+                                <input type="radio" th:value="${'11:00'}" name="btn1" id="bton3" class="button1">
                                 <label for="bton3" class="label1" style="margin-right: 50px;">11h00</label>
 
-                                <input type="radio" value="opt4" name="btn1" id="bton4" class="button1">
+                                <input type="radio" th:value="${'13:00'}" name="btn1" id="bton4" class="button1">
                                 <label for="bton4" class="label1" style="margin-right: 15px;">13h00</label>
 
-                                <input type="radio" value="opt5" name="btn1" id="bton5" class="button1">
+                                <input type="radio" th:value="${'14:00'}" name="btn1" id="bton5" class="button1">
                                 <label for="bton5" class="label1" style="margin-right: 15px;">14h00</label>
 
-                                <input type="radio" value="opt6" name="btn1" id="bton6" class="button1">
+                                <input type="radio" th:value="${'15:00'}" name="btn1" id="bton6" class="button1">
                                 <label for="bton6" class="label1" style="margin-right: 15px;">15h00</label>
 
-                                <input type="radio" value="opt7" name="btn1" id="bton7" class="button1">
+                                <input type="radio" th:value="${'16:00'}" name="btn1" id="bton7" class="button1">
                                 <label for="bton7" class="label1" style="margin-right: 15px;">16h00</label>
 
-                                <input type="radio" value="opt8" name="btn1" id="bton8" class="button1">
-                                <label for="bton8" class="label1" style="margin-right: 50px;">17h00</label>
+                                <input type="radio" th:value="${'17:00'}" name="btn1" id="bton8" class="button1">
+                                <label for="bton8" class="label1" style="margin-right: 55px;">17h00</label>
 
-                                <input type="radio" value="opt9" name="btn1" id="bton9" class="button1">
+                                <input type="radio" th:value="${'18:00'}" name="btn1" id="bton9" class="button1">
                                 <label for="bton9" class="label1" style="margin-right: 15px;">18h00</label>
 
-                                <input type="radio" value="opt10" name="btn1" id="bton10" class="button1">
+                                <input type="radio" th:value="${'19:00'}" name="btn1" id="bton10" class="button1">
                                 <label for="bton10" class="label1">19h00</label>
 
                             </div>
 
                             <div class="button-group-1">
-                                <input type="radio" value="opt1" name="btn1" id="bton11" class="button1">
+                                <input type="radio" th:value="${'9:30'}" name="btn1" id="bton11" class="button1">
                                 <label for="bton11" class="label1" style="margin-right: 15px;">9h30</label>
 
-                                <input type="radio" value="opt2" name="btn1" id="bton12" class="button1">
+                                <input type="radio" th:value="${'10:30'}" name="btn1" id="bton12" class="button1">
                                 <label for="bton12" class="label1" style="margin-right: 15px;">10h30</label>
 
-                                <input type="radio" value="opt3" name="btn1" id="bton13" class="button1">
+                                <input type="radio" th:value="${'11:30'}" name="btn1" id="bton13" class="button1">
                                 <label for="bton13" class="label1" style="margin-right: 50px;">11h30</label>
 
-                                <input type="radio" value="opt4" name="btn1" id="bton14" class="button1">
+                                <input type="radio" th:value="${'13:30'}" name="btn1" id="bton14" class="button1">
                                 <label for="bton14" class="label1" style="margin-right: 15px;">13h30</label>
 
-                                <input type="radio" value="opt5" name="btn1" id="bton15" class="button1">
+                                <input type="radio" th:value="${'14:30'}" name="btn1" id="bton15" class="button1">
                                 <label for="bton15" class="label1" style="margin-right: 15px;">14h30</label>
 
-                                <input type="radio" value="opt6" name="btn1" id="bton16" class="button1">
+                                <input type="radio" th:value="${'15:30'}" name="btn1" id="bton16" class="button1">
                                 <label for="bton16" class="label1" style="margin-right: 15px;">15h30</label>
 
-                                <input type="radio" value="opt7" name="btn1" id="bton17" class="button1">
+                                <input type="radio" th:value="${'16:30'}" name="btn1" id="bton17" class="button1">
                                 <label for="bton17" class="label1" style="margin-right: 15px;">16h30</label>
 
-                                <input type="radio" value="opt8" name="btn1" id="bton18" class="button1">
-                                <label for="bton18" class="label1" style="margin-right: 50px;">17h30</label>
+                                <input type="radio" th:value="${'17:30'}" name="btn1" id="bton18" class="button1">
+                                <label for="bton18" class="label1" style="margin-right: 55px;">17h30</label>
 
-                                <input type="radio" value="opt9" name="btn1" id="bton19" class="button1">
+                                <input type="radio" th:value="${'18:30'}" name="btn1" id="bton19" class="button1">
                                 <label for="bton19" class="label1" style="margin-right: 15px;">18h30</label>
 
-                                <input type="radio" value="opt10" name="btn1" id="bton20" class="button1">
+                                <input type="radio" th:value="${'19:30'}" name="btn1" id="bton20" class="button1">
                                 <label for="bton20" class="label1">19h30</label>
 
                             </div>
@@ -304,7 +224,7 @@
 
 
                     <div style="display: table; clear: both;">
-                        <input type="radio" value="o1" name="btn" id="butn1" class="button2"> <label for="butn1" class="label2">
+                        <input type="radio" value="o1" name="btn2" id="butn1" class="button2"> <label for="butn1" class="label2">
 							<img src="assets/img/b1.jpg" class="img-fluid" id="image"
 							title="Tiến sĩ. Phạm Dương Hiếu">
 

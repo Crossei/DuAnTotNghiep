@@ -78,10 +78,7 @@ public class MainController {
 		binder.registerCustomEditor(Date.class, null, new CustomDateEditor(dateFormat, true));
 	}
 
-	@RequestMapping("/datlich2")
-	public String docList() {
-		return "datlich2";
-	}
+	
 
 
 	@RequestMapping("/")
