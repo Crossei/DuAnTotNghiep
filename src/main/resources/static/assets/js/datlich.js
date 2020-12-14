@@ -56,7 +56,7 @@ function nextPrev(n) {
 
     var x = document.getElementsByClassName("tab");
 
-    if (n == 0 && !validateForm()) return false;
+    if (n == 1 && !validateForm()) return false;
 
     x[currentTab].style.display = "none";
 
@@ -69,20 +69,29 @@ function validateForm() {
 
     var x, y, i, valid = true;
     x = document.getElementsByClassName("tab");
-    y = x[currentTab].getElementsByTagName("input");
-    // A loop that checks every input field in the current tab:
-    for (i = 0; i < y.length; i++) {
-        // If a field is empty...
-        if (y[i].checked) {
-            // add an "invalid" class to the field:
-            alert("Vui lòng chọn")
-                // and set the current valid status to false
-            valid = false;
-        }
+    y = document.querySelectorAll('input[name=btn3]');
+
+
+
+    if (y[0].checked == false &&
+        y[1].checked == false &&
+        y[2].checked == false &&
+        y[3].checked == false &&
+        y[4].checked == false &&
+        y[5].checked == false &&
+        y[6].checked == false &&
+        y[7].checked == false) {
+
+        alert("Mời chọn dịch vụ!")
+
+        y.focus();
+
+        valid = false;
     }
-    // If the valid status is true, mark the step as finished and valid:
+
+
     if (valid) {
-        alert("suc");
+        document.getElementsByClassName("step")[currentTab].className += " finish";
     }
-    return valid; // return the valid status
+    return valid;
 }
