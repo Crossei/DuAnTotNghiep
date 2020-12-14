@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.dao.Service;
+import com.example.demo.dao.Staff;
 import com.example.demo.service.CustomerRepository;
 import com.example.demo.service.ServiceRepository;
 import com.example.demo.service.StaffRepository;
@@ -52,6 +53,10 @@ public class DatLich1NguoiController {
 			bookDat = c.getTime();		
 		}
 		model.addAttribute("ngayDatList", ngayDatList);
+		
+		//lay ds bacsi'
+		List<Staff> staffList =  staffRepo.findAll();
+		model.addAttribute("staffList", staffList);
 		
 		return "datlich2";
 	}
