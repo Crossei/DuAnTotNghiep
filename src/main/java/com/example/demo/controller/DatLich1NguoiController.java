@@ -66,7 +66,7 @@ public class DatLich1NguoiController {
 		SimpleDateFormat fomaterGio = new SimpleDateFormat("HH:mm");
 		Date date = fomater.parse(rq.getParameter("getNgayDat"));
 		Date gio = fomaterGio.parse(rq.getParameter("getThoiGian"));
-
+		
 		if(soSanhTime(gio,"8:59","11:31")) {
 			ca1 = 1;
 		} else if(soSanhTime(gio,"12:59","17:31")) {
@@ -91,16 +91,25 @@ public class DatLich1NguoiController {
 						staffList1.remove(staff);
 					}
 					}
-				}
-				
+				}			
 			}
-			System.out.println(staffList1);
+		
 			
 		}else {			
 		staffList1 =  staffRepo.findByRole(2);
 		};
-				
+	
+		List<BookingDetail> bookD = bokDetailRepo.findByDateworkingstart(date);
 		
+		if(!bookD.isEmpty()) {
+			for (BookingDetail bookingDetail : bookD) {				
+				Staff staffD = staffRepo.findById(bookingDetail.getId_staff());					
+				String gio1 = fomaterGio.format(bookingDetail.getTime_start());		
+				if(gio1.equalsIgnoreCase(rq.getParameter("getThoiGian"))) {
+				staffList1.remove(staffD);
+				}
+			}
+		}
 		
 		ObjectMapper mapper = new ObjectMapper();
 		String ajaxResponse = "";
