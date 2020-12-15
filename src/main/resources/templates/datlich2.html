@@ -93,7 +93,7 @@
 							<li id="drop-down" class="drop-down"><span
 								style="font-size: 15px; color: white;">[[${#request.userPrincipal.principal.username}]]</span>
 								<ul>
-									<li><a href="/acc-info">Thông tin tài khoản</a></li>
+									<li><a href="/profile2">Thông tin tài khoản</a></li>
 									<li><a href="/lichsudat">Lịch sử đặt lịch</a></li>
 									<li><a href="/changePass">Đổi mật khẩu</a></li>
 									<li><a href="/logout">Đăng xuất</a></li>
@@ -142,6 +142,7 @@
 										<label th:for="|id${stt.index}|" class="label1"
 											style="position: absolute; bottom: 10px;">Chọn</label>
 									</div>
+
 
 								</div>
 							</th:block>
@@ -241,7 +242,6 @@
 						<h5>Chọn bác sĩ</h5>
 						<br />
 
-
 						<div id="showBs" style="display: table; text-align: center; clear: both;">
 							
 						</div>
@@ -254,6 +254,7 @@
 									th:title="${bacsi.name_staff}">
 								</label>
 							</th:block> -->
+
 					</div>
 				</section>
 			</div>
@@ -311,9 +312,8 @@
 		<hr />
 
 		<div class="form-btn" style="text-align: center; margin-top: 30px;">
-			<a role="button" class="sub" id="prevBtn" onclick="nextPrev(-1)">Trở
-				về</a> <a role="button" class="sub" id="nextBtn" onclick="nextPrev(1)">Tiếp
-				tục</a>
+			<a role="button" class="sub" id="prevBtn" onclick="nextPrev(-1)">Trở về</a> 
+			<a role="button" class="sub" id="nextBtn" onclick="nextPrev(1)">Tiếp tục</a>
 		</div>
 
 		<div
@@ -378,7 +378,6 @@
 	</footer>
 
 	<div id="preloader"></div>
-	<a href="#" class="back-to-top"><i class="ri-arrow-up-line"></i></a>
 
 	<!-- Vendor JS Files -->
 	<script src="assets/vendor/jquery/jquery.min.js"></script>

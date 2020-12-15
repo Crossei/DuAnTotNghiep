@@ -12,7 +12,7 @@
     color: #ffffff;
     background: #009961;
     cursor: pointer;
-    transition: background 0.1s;
+    transition: background 0.3s;
     padding: 10px;
     width: 150px;
     border-radius: 5px;
@@ -21,6 +21,8 @@
 
 .button:checked+.label {
     background-color: #00643f;
+    color: #fcff6f;
+    box-shadow: 2px 2px 3px 4px #004a2f;
 }
 
 .label:not(:last-of-type) {
@@ -44,7 +46,7 @@
     color: #ffffff;
     background: #009961;
     cursor: pointer;
-    transition: background 0.1s;
+    transition: background 0.3s;
     padding: 10px;
     width: 90px;
     border-radius: 5px;
@@ -53,6 +55,8 @@
 
 .button1:checked+.label1 {
     background-color: #00643f;
+    color: #fcff6f;
+    box-shadow: 2px 2px 3px 4px #004a2f;
 }
 
 .label1:not(:last-of-type) {
@@ -77,23 +81,21 @@
     color: #ffffff;
     background: #009961;
     cursor: pointer;
-    transition: background 0.1s;
+    transition: background 0.3s;
     padding: 10px;
     width: 100px;
-    border-radius: 50%;
     text-align: center;
     margin-right: 30px;
+    
 }
 
-#image {
-    border-radius: 50%;
-    -moz-border-radius: 50%;
-    -webkit-border-radius: 50%;
+ #image {
+    
     -webkit-transform: scale(1.1);
     display: block;
     margin-left: auto;
     margin-right: auto;
-}
+} 
 
 .button2:checked+.label2 {
     background-color: #00643f;

@@ -63,35 +63,32 @@ function nextPrev(n) {
     currentTab = currentTab + n;
 
     showTab(currentTab);
+    document.body.scrollTop = 100;
+    document.documentElement.scrollTop = 100;
 }
 
 function validateForm() {
 
-    var x, y, i, valid = true;
+    var x, y, i = true;
+    var valid = false;
     x = document.getElementsByClassName("tab");
-    y = document.querySelectorAll('input[name=btn3]');
+    // y = document.querySelectorAll('input[name=btn3]');
 
+    y = x[currentTab].getElementsByTagName("input");
 
+    for (i = 0; i < y.length; i++) {
 
-    if (y[0].checked == false &&
-        y[1].checked == false &&
-        y[2].checked == false &&
-        y[3].checked == false &&
-        y[4].checked == false &&
-        y[5].checked == false &&
-        y[6].checked == false &&
-        y[7].checked == false) {
+        if (y[i].checked) {
+            valid = true;
+        }
 
-        alert("Mời chọn dịch vụ!")
-
-        y.focus();
-
-        valid = false;
     }
-
 
     if (valid) {
         document.getElementsByClassName("step")[currentTab].className += " finish";
+
+    } else {
+        alert("Hãy chọn 1 trong những lựa chọn trên đây để tiếp tục!")
     }
     return valid;
 }

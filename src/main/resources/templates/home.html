@@ -43,29 +43,30 @@
                     </h1>
 
                     <nav class="nav-menu d-none d-lg-block">
-                        <ul>
-                            <li class="active"><a href="/">Trang chủ</a></li>
-                            <li><a href="#about">Giới thiệu</a></li>
-                            <li class="drop-down"><a href="#services">Dịch vụ</a>
-                                <ul>
-                                    <li><a href="#">Nha khoa tổng quát</a></li>
-                                    <li><a href="#">Răng trẻ em</a></li>
-                                    <li><a href="#">Nắn chỉnh răng</a></li>
-                                    <li><a href="#">Chỉnh nha cơ chức năng</a></li>
-                                    <li><a href="#">Nha khoa thẩm mỹ</a></li>
-                                    <li><a href="#">Nha khoa phục hình</a></li>
-                                    <li><a href="#">Điều trị nội nha</a></li>
-                                    <li><a href="#">Cấy ghép Implant</a></li>
-                                    <li><a href="#">Phẩu thuật răng miệng</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#portfolio">Các bác sĩ</a></li>
-                            <li th:if="${@mainController.checkLoggedIn() == true} "><a href="/datlich">Đặt lịch</a></li>
-                            <li><a href="/tintuc">Tin tức</a></li>
-                            <li><a href="#contact">Liên hệ</a></li>
+						<ul>
+							<li class="active"><a href="/">Trang chủ</a></li>
+							<li><a href="#about">Giới thiệu</a></li>
+							<li class="drop-down"><a href="#services">Dịch vụ</a>
+								<ul>
+									<li><a href="/nhakhoatongquat">Nha khoa tổng quát</a></li>
+									<li><a href="/rangtreem">Răng trẻ em</a></li>
+									<li><a href="/nanchinhrang">Nắn chỉnh răng</a></li>
+									<li><a href="/chinhnhacochucnang">Chỉnh nha cơ chức
+											năng</a></li>
+									<li><a href="/nhakhoathammy">Nha khoa thẩm mỹ</a></li>
+									<li><a href="/nhakhoaphuchinh">Nha khoa phục hình</a></li>
+									<li><a href="/dieutrinoinha">Điều trị nội nha</a></li>
+									<li><a href="/cayghep">Cấy ghép Implant</a></li>
+									<li><a href="/phauthuatrm">Phẩu thuật răng miệng</a></li>
+								</ul></li>
+							<li><a href="#portfolio">Các bác sĩ</a></li>
+							<li th:if="${@mainController.checkLoggedIn() == true} "><a
+								href="/datlich2">Đặt lịch</a></li>
+							<li><a href="/tintuc">Tin tức</a></li>
+							<li><a href="#contact">Liên hệ</a></li>
 
-                        </ul>
-                    </nav>
+						</ul>
+					</nav>
                     <!-- .nav-menu -->
 
                  <a th:if="${@mainController.checkLoggedIn() == false }" href="/login" class="get-started-btn scrollto">Đăng nhập</a>
@@ -146,90 +147,158 @@
 
         <!-- ======= Services  ======= -->
         <section id="services" class="services">
-            <div class="container">
+			<div class="container">
 
-                <div class="section-title">
-                    <h2>Dịch vụ</h2>
+				<div class="section-title">
+					<h2>Dịch vụ</h2>
 
-                </div>
+				</div>
 
-                <div class="row">
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-                        <div class="icon-box">
-                            <img src="/assets/img/d1.png" style="width: 100%; margin-bottom: 20px;" alt="">
-                            <h4><a href="">Chỉnh nha cơ chức năng</a></h4>
-                            <p>Mỗi ngày có tới hàng ngàn trẻ em bước ra phòng khám răng nhưng vẫn không được điều trị đúng nhu cầu. 75% trẻ đang tăng trưởng có khớp cắn sai và sự phát triển mặt không đúng</p>
-                        </div>
-                    </div>
+				<div class="row">
+					<div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+						<div class="icon-box">
+							<img src="/assets/img/d1.png"
+								style="width: 100%; margin-bottom: 20px;" alt="">
+							<h4>
+								<a href="">Chỉnh nha cơ chức năng</a>
+							</h4>
+							<p>Mỗi ngày có tới hàng ngàn trẻ em bước ra phòng khám răng
+								nhưng vẫn không được điều trị đúng nhu cầu. 75% trẻ đang tăng
+								trưởng có khớp cắn sai và sự phát triển mặt không đúng</p>
+							<br /> <a href="/chinhnhacochucnang"
+								class="get-started-btn scrollto"
+								style="position: absolute; bottom: 20px;">Xem thêm</a>
+						</div>
 
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
-                        <div class="icon-box">
-                            <img src="/assets/img/d2.jpg" style="width: 100%; margin-bottom: 20px;" alt="">
-                            <h4><a href="">Răng trẻ em</a></h4>
-                            <p>PhamDuong Dental Studio thiết kế dành riêng cho răng trẻ em, bố mẹ hoàn toàn yên tâm và thoải mái ngay cạnh con suốt quá trình điều trị.</p>
-                        </div>
-                    </div>
+					</div>
 
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
-                        <div class="icon-box">
-                            <img src="/assets/img/d3.jpg" style="width: 100%; margin-bottom: 20px;" alt="">
-                            <h4><a href="">Nắn chỉnh răng</a></h4>
-                            <p>Nắn chỉnh răng là một chuyên ngành sâu trong nha khoa có nhiệm vụ chẩn đoán, phòng ngừa, can thiệp và điều trị tất cả các loại lệch lạc về răng – hàm – mặt bằng việc sử dụng các khí cụ trong miệng hoặc ngoài mặt để tạo được
-                                khuôn mặt hài hòa về thẩm mỹ và chức năng.</p>
-                        </div>
-                    </div>
+					<div
+						class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
+						<div class="icon-box">
+							<img src="/assets/img/d2.jpg"
+								style="width: 100%; margin-bottom: 20px;" alt="">
+							<h4>
+								<a href="">Răng trẻ em</a>
+							</h4>
+							<p>PhamDuong Dental Studio thiết kế dành riêng cho răng trẻ
+								em, bố mẹ hoàn toàn yên tâm và thoải mái ngay cạnh con suốt quá
+								trình điều trị.</p>
+							<br /> <a href="/rangtreem" class="get-started-btn scrollto"
+								style="position: absolute; bottom: 20px;">Xem thêm</a>
+						</div>
+					</div>
 
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-                        <div class="icon-box">
-                            <img src="/assets/img/d4.jpg" style="width: 100%; margin-bottom: 20px;" alt="">
-                            <h4><a href="">Nha khoa thẩm mỹ</a></h4>
-                            <p>Việc răng ố vàng, mất một số răng hay sâu răng ở vị trí răng cửa không chỉ kiến bạn mất tự tin mà còn gây ấn tượng không tốt với người đối diện. Nha khoa thẩm mỹ là sự kết hợp hoàn của nhiều lĩnh vực chuyên sâu để đưa ra giải
-                                pháp hiệu quả nhất giúp bạn có được hàm răng trắng sáng, đều và đẹp.</p>
-                        </div>
-                    </div>
+					<div
+						class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
+						<div class="icon-box">
+							<img src="/assets/img/d3.jpg"
+								style="width: 100%; margin-bottom: 20px;" alt="">
+							<h4>
+								<a href="">Nắn chỉnh răng</a>
+							</h4>
+							<p>Nắn chỉnh răng là một chuyên ngành sâu trong nha khoa có
+								nhiệm vụ chẩn đoán, phòng ngừa, can thiệp và điều trị tất cả các
+								loại lệch lạc về răng – hàm – mặt bằng việc sử dụng các khí cụ
+								trong miệng hoặc ngoài mặt để tạo được khuôn mặt hài hòa về thẩm
+								mỹ và chức năng.</p>
+							<br /> <a href="/nanchinhrang" class="get-started-btn scrollto"
+								style="position: absolute; bottom: 20px;">Xem thêm</a>
+						</div>
+					</div>
 
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-                        <div class="icon-box">
-                            <img src="/assets/img/d5.png" style="width: 100%; margin-bottom: 20px;" alt="">
-                            <h4><a href="">Nha khoa phục hình</a></h4>
-                            <p>Việc mất một hoặc một số răng, răng sâu hư hỏng không thể hàn nắn không chỉ gây mất thẩm mỹ mà còn trở ngai trong việc nhai nuốt hơn nữa có thể khiến hàm bị xô lệch không mong muốn. Nha khoa phục hình chính là phương pháp tối
-                                ưu giúp bạn có thể khôi phục răng bị thiếu và những chiếc răng hư hỏng không thể hàn khắc phục.</p>
-                        </div>
-                    </div>
+					<div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+						<div class="icon-box">
+							<img src="/assets/img/d4.jpg"
+								style="width: 100%; margin-bottom: 20px;" alt="">
+							<h4>
+								<a href="">Nha khoa thẩm mỹ</a>
+							</h4>
+							<p>Việc răng ố vàng, mất một số răng hay sâu răng ở vị trí
+								răng cửa không chỉ kiến bạn mất tự tin mà còn gây ấn tượng không
+								tốt với người đối diện. Nha khoa thẩm mỹ là sự kết hợp hoàn của
+								nhiều lĩnh vực chuyên sâu để đưa ra giải pháp hiệu quả nhất giúp
+								bạn có được hàm răng trắng sáng, đều và đẹp.</p>
+							<br /> <a href="/nhakhoathammy" class="get-started-btn scrollto"
+								style="position: absolute; bottom: 20px;">Xem thêm</a>
+						</div>
+					</div>
 
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-                        <div class="icon-box">
-                            <img src="/assets/img/d6.png" style="width: 100%; margin-bottom: 20px;" alt="">
-                            <h4><a href="">Điều trị nội nha</a></h4>
-                            <p>Nếu như bạn đã 1 lần đau răng đến tủy bạn sẽ nhớ những cơn vừa đau vừa buốt không ăn không ngủ được. Mỗi cơn đau thường kéo dài 3-30 phút, có thể đau mức độ nhẹ tại chỗ hoặc đau dữ dội lan ra xung quanh và lên đầu..</p>
-                        </div>
-                    </div>
+					<div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+						<div class="icon-box">
+							<img src="/assets/img/d5.png"
+								style="width: 100%; margin-bottom: 20px;" alt="">
+							<h4>
+								<a href="">Nha khoa phục hình</a>
+							</h4>
+							<p>Việc mất một hoặc một số răng, răng sâu hư hỏng không thể
+								hàn nắn không chỉ gây mất thẩm mỹ mà còn trở ngai trong việc
+								nhai nuốt hơn nữa có thể khiến hàm bị xô lệch không mong muốn.
+								Nha khoa phục hình chính là phương pháp tối ưu giúp bạn có thể
+								khôi phục răng bị thiếu và những chiếc răng hư hỏng không thể
+								hàn khắc phục.</p>
+							<br /> <a href="/nhakhoaphuchinh"
+								class="get-started-btn scrollto"
+								style="position: absolute; bottom: 20px;">Xem thêm</a>
+						</div>
+					</div>
 
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-                        <div class="icon-box">
-                            <img src="/assets/img/d7.jpg" style="width: 100%; margin-bottom: 20px;" alt="">
-                            <h4><a href="">Cấy ghép Implant</a></h4>
-                            <p>Cấy ghép răng implant là một phương pháp phục hình răng giả mới nhất nên nó còn khá mới mẻ với mọi người tại Việt Nam. Tuy nhiên, tại PhamDuong Dental Studio, chúng tôi đã bắt đầu thực hiện phương pháp cấy ghép răng Implant
-                                từ thập niên 90 sử dụng hệ thống Bicon của ý và ACE của Mỹ...</p>
-                        </div>
-                    </div>
+					<div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+						<div class="icon-box">
+							<img src="/assets/img/d6.png"
+								style="width: 100%; margin-bottom: 20px;" alt="">
+							<h4>
+								<a href="">Điều trị nội nha</a>
+							</h4>
+							<p>Nếu như bạn đã 1 lần đau răng đến tủy bạn sẽ nhớ những cơn
+								vừa đau vừa buốt không ăn không ngủ được. Mỗi cơn đau thường kéo
+								dài 3-30 phút, có thể đau mức độ nhẹ tại chỗ hoặc đau dữ dội lan
+								ra xung quanh và lên đầu..</p>
+							<br /> <a href="/dieutrinoinha" class="get-started-btn scrollto"
+								style="position: absolute; bottom: 20px;">Xem thêm</a>
+						</div>
+					</div>
 
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-                        <div class="icon-box">
-                            <img src="/assets/img/d8.jpg" style="width: 100%; margin-bottom: 20px;" alt="">
-                            <h4><a href="">Phẫu thuật răng miệng</a></h4>
-                            <p>Tại PhamDuong Dental Studio, chúng tôi thực hiện các phẫu thuật gây tê thuộc nhiều lĩnh vực như sau: Phẫu thuật tiền phục hình như cắt thắng môi, má lưỡi, mài chỉnh gai xương …giúp việc phục hình đạt
-                                kết quả tốt hơn...</p>
-                        </div>
-                    </div>
-                </div>
+					<div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+						<div class="icon-box">
+							<img src="/assets/img/d7.jpg"
+								style="width: 100%; margin-bottom: 20px;" alt="">
+							<h4>
+								<a href="">Cấy ghép Implant</a>
+							</h4>
+							<p>Cấy ghép răng implant là một phương pháp phục hình răng
+								giả mới nhất nên nó còn khá mới mẻ với mọi người tại Việt Nam.
+								Tuy nhiên, tại PhamDuong Dental Studio, chúng tôi đã bắt đầu
+								thực hiện phương pháp cấy ghép răng Implant từ thập niên 90 sử
+								dụng hệ thống Bicon của ý và ACE của Mỹ...</p>
+							<br /> <a href="/cayghep" class="get-started-btn scrollto"
+								style="position: absolute; bottom: 20px;">Xem thêm</a>
+						</div>
+					</div>
 
-            </div>
-        </section>
+					<div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+						<div class="icon-box">
+							<img src="/assets/img/d8.jpg"
+								style="width: 100%; margin-bottom: 20px;" alt="">
+							<h4>
+								<a href="">Phẫu thuật răng miệng</a>
+							</h4>
+							<p>Tại PhamDuong Dental Studio, chúng tôi thực hiện các
+								phẫu thuật gây tê thuộc nhiều lĩnh vực như sau: Phẫu
+								thuật tiền phục hình như cắt thắng môi, má lưỡi, mài
+								chỉnh gai xương …giúp việc phục hình đạt kết quả tốt
+								hơn...</p>
+							<br /> <a href="/phauthuatrm" class="get-started-btn scrollto"
+								style="position: absolute; bottom: 20px;">Xem thêm</a>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</section>
         <!-- End -->
 
         <!-- ======= Đặt lịch ======= -->
-        <section th:if="${@mainController.checkLoggedIn() == true}" id="cta" class="cta">
+        <section id="cta" class="cta">
             <div class="container">
 
                 <div class="row">
@@ -340,9 +409,8 @@
                             <ul>
                                 <li>
                                     <a data-toggle="collapse" class="collapse" href="#accordion-list-1">Giá sản phẩm hoặc dịch vụ của bạn là bao nhiêu? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-                                    <div id="accordion-list-1" class="collapse show" data-parent=".accordion-list">
+                                    <div id="accordion-list-1" class="collapse" data-parent=".accordion-list">
                                         <p>
-
                                         </p>
                                     </div>
                                 </li>
