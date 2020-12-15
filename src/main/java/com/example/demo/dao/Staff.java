@@ -34,6 +34,10 @@ public class Staff {
 	
 	
 
+	@Override
+	public String toString() {
+		return "Staff [id_staff=" + id_staff + "]";
+	}
 	public Integer getRole() {
 		return role;
 	}

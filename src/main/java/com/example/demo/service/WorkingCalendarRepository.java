@@ -11,4 +11,5 @@ public interface WorkingCalendarRepository extends JpaRepository<WorkingCalendar
 		List findByIdstaff(int i);   
 		List findByIdstaffAndStatus(int s,int i);  
 		WorkingCalendar findByIdstaffAndDateWorking(int i, Date d);
+		List findByDateWorking(Date d);
 }

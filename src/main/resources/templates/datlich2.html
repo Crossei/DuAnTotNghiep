@@ -120,144 +120,145 @@
 
 			</div>
 		</section>
-	<form th:action="@{/datlich2}" method="POST" >
-		<div class="tab">
-			<section id="services" class="services">
-				<div class="container">
+		<form th:action="@{/datlich2}" method="POST">
+			<div class="tab">
+				<section id="services" class="services">
+					<div class="container">
 
-					<h5>Chọn dịch vụ</h5>
-					<br />
+						<h5>Chọn dịch vụ</h5>
+						<br />
 
-					<div class="row">
-						<th:block th:each="serList,stt : ${ser}">
-							<div class="col-lg-3 col-md-6 d-flex align-items-stretch mt-4">
-								<div class="icon-box-2">
-									<img th:src="@{'/assets/img/'+${serList.image}}"
-										style="width: 100%; height: 120px; margin-bottom: 20px;"
-										alt="">
-									<h6 th:text="${serList.name}"></h6>
-									<p th:text="${serList.price}"></p>
-									<br> <input type="radio" th:value="${serList.id_ser}" name="btn3" 
-										th:id="|id${stt.index}|" class="button1"> <label
-										th:for="|id${stt.index}|" class="label1"
-										style="position: absolute; bottom: 10px;">Chọn</label>
+						<div class="row">
+							<th:block th:each="serList,stt : ${ser}">
+								<div class="col-lg-3 col-md-6 d-flex align-items-stretch mt-4">
+									<div class="icon-box-2">
+										<img th:src="@{'/assets/img/'+${serList.image}}"
+											style="width: 100%; height: 120px; margin-bottom: 20px;"
+											alt="">
+										<h6 th:text="${serList.name}"></h6>
+										<p th:text="${serList.price}"></p>
+										<br> <input type="radio" th:value="${serList.id_ser}"
+											name="btn3" th:id="|id${stt.index}|" class="button1">
+										<label th:for="|id${stt.index}|" class="label1"
+											style="position: absolute; bottom: 10px;">Chọn</label>
+									</div>
+
+								</div>
+							</th:block>
+						</div>
+
+					</div>
+				</section>
+			</div>
+
+			<div class="tab">
+				<section id="services" class="services">
+					<div class="container">
+
+						<div class="form-group row">
+							<div class="col-10" style="margin-bottom: 40px">
+								<h5>Chọn ngày khám</h5>
+								<div class="button-group">
+									<th:block th:each="ngayDat,stts : ${ngayDatList}">
+										<input type="radio"
+											th:value="${#dates.format(ngayDat ,'dd-MM-yyyy')}" name="btn"
+											onChange="chonBacsi()" th:id="|bt${stts.index}|"
+											class="button">
+										<label th:for="|bt${stts.index}|" class="label"
+											th:text="${#dates.format(ngayDat ,'dd-MM-yyyy')}"
+											style="margin-right: 10px"></label>
+									</th:block>
+								</div>
+							</div>
+							<div class="col-10">
+								<h5>Chọn giờ khám</h5>
+								<div class="button-group-1">
+									<input type="radio" th:value="${'9:00'}" name="btn1" id="bton1"
+										class="button1"> <label for="bton1" class="label1"
+										style="margin-right: 15px;">9h00</label> <input type="radio"
+										th:value="${'10:00'}" name="btn1" id="bton2" class="button1">
+									<label for="bton2" class="label1" style="margin-right: 15px;">10h00</label>
+
+									<input type="radio" th:value="${'11:00'}" name="btn1"
+										id="bton3" class="button1"> <label for="bton3"
+										class="label1" style="margin-right: 50px;">11h00</label> <input
+										type="radio" th:value="${'13:00'}" name="btn1" id="bton4"
+										class="button1"> <label for="bton4" class="label1"
+										style="margin-right: 15px;">13h00</label> <input type="radio"
+										th:value="${'14:00'}" name="btn1" id="bton5" class="button1">
+									<label for="bton5" class="label1" style="margin-right: 15px;">14h00</label>
+									<input type="radio" th:value="${'15:00'}" name="btn1"
+										id="bton6" class="button1"> <label for="bton6"
+										class="label1" style="margin-right: 15px;">15h00</label> <input
+										type="radio" th:value="${'16:00'}" name="btn1" id="bton7"
+										class="button1"> <label for="bton7" class="label1"
+										style="margin-right: 15px;">16h00</label> <input type="radio"
+										th:value="${'17:00'}" name="btn1" id="bton8" class="button1">
+									<label for="bton8" class="label1" style="margin-right: 55px;">17h00</label>
+
+									<input type="radio" th:value="${'18:00'}" name="btn1"
+										id="bton9" class="button1"> <label for="bton9"
+										class="label1" style="margin-right: 15px;">18h00</label> <input
+										type="radio" th:value="${'19:00'}" name="btn1" id="bton10"
+										class="button1"> <label for="bton10" class="label1">19h00</label>
+
+								</div>
+
+								<div class="button-group-1">
+									<input type="radio" th:value="${'9:30'}" name="btn1"
+										id="bton11" class="button1"> <label for="bton11"
+										class="label1" style="margin-right: 15px;">9h30</label> <input
+										type="radio" th:value="${'10:30'}" name="btn1" id="bton12"
+										class="button1"> <label for="bton12" class="label1"
+										style="margin-right: 15px;">10h30</label> <input type="radio"
+										th:value="${'11:30'}" name="btn1" id="bton13" class="button1">
+									<label for="bton13" class="label1" style="margin-right: 50px;">11h30</label>
+									<input type="radio" th:value="${'13:30'}" name="btn1"
+										id="bton14" class="button1"> <label for="bton14"
+										class="label1" style="margin-right: 15px;">13h30</label> <input
+										type="radio" th:value="${'14:30'}" name="btn1" id="bton15"
+										class="button1"> <label for="bton15" class="label1"
+										style="margin-right: 15px;">14h30</label> <input type="radio"
+										th:value="${'15:30'}" name="btn1" id="bton16" class="button1">
+									<label for="bton16" class="label1" style="margin-right: 15px;">15h30</label>
+									<input type="radio" th:value="${'16:30'}" name="btn1"
+										id="bton17" class="button1"> <label for="bton17"
+										class="label1" style="margin-right: 15px;">16h30</label> <input
+										type="radio" th:value="${'17:30'}" name="btn1" id="bton18"
+										class="button1"> <label for="bton18" class="label1"
+										style="margin-right: 55px;">17h30</label> <input type="radio"
+										th:value="${'18:30'}" name="btn1" id="bton19" class="button1">
+									<label for="bton19" class="label1" style="margin-right: 15px;">18h30</label>
+									<input type="radio" th:value="${'19:30'}" name="btn1"
+										id="bton20" class="button1"> <label for="bton20"
+										class="label1">19h30</label>
+
 								</div>
 
 							</div>
-						</th:block>
-					</div>
-
-				</div>
-			</section>
-		</div>
-
-		<div class="tab">
-			<section id="services" class="services">
-				<div class="container">
-					
-					<div class="form-group row">
-						<div class="col-10" style="margin-bottom: 40px">
-							<h5>Chọn ngày khám</h5>
-							<div class="button-group">
-								<th:block th:each="ngayDat,stts : ${ngayDatList}">
-									<input type="radio" th:value="${#dates.format(ngayDat ,'dd-MM-yyyy')}" name="btn"
-										th:id="|bt${stts.index}|" class="button">
-									<label th:for="|bt${stts.index}|" class="label"
-										th:text="${#dates.format(ngayDat ,'dd-MM-yyyy')}"
-										style="margin-right: 10px"></label>
-								</th:block>
-							</div>
 						</div>
-						<div class="col-10">
-							<h5>Chọn giờ khám</h5>
-							<div class="button-group-1">
-								<input type="radio" th:value="${'9:00'}" name="btn1" id="bton1"
-									class="button1"> <label for="bton1" class="label1"
-									style="margin-right: 15px;">9h00</label> <input type="radio"
-									th:value="${'10:00'}" name="btn1" id="bton2" class="button1">
-								<label for="bton2" class="label1" style="margin-right: 15px;">10h00</label>
 
-								<input type="radio" th:value="${'11:00'}" name="btn1" id="bton3"
-									class="button1"> <label for="bton3" class="label1"
-									style="margin-right: 50px;">11h00</label> <input type="radio"
-									th:value="${'13:00'}" name="btn1" id="bton4" class="button1">
-								<label for="bton4" class="label1" style="margin-right: 15px;">13h00</label>
+						<h5>Chọn bác sĩ</h5>
+						<br />
 
-								<input type="radio" th:value="${'14:00'}" name="btn1" id="bton5"
-									class="button1"> <label for="bton5" class="label1"
-									style="margin-right: 15px;">14h00</label> <input type="radio"
-									th:value="${'15:00'}" name="btn1" id="bton6" class="button1">
-								<label for="bton6" class="label1" style="margin-right: 15px;">15h00</label>
 
-								<input type="radio" th:value="${'16:00'}" name="btn1" id="bton7"
-									class="button1"> <label for="bton7" class="label1"
-									style="margin-right: 15px;">16h00</label> <input type="radio"
-									th:value="${'17:00'}" name="btn1" id="bton8" class="button1">
-								<label for="bton8" class="label1" style="margin-right: 55px;">17h00</label>
-
-								<input type="radio" th:value="${'18:00'}" name="btn1" id="bton9"
-									class="button1"> <label for="bton9" class="label1"
-									style="margin-right: 15px;">18h00</label> <input type="radio"
-									th:value="${'19:00'}" name="btn1" id="bton10" class="button1">
-								<label for="bton10" class="label1">19h00</label>
-
-							</div>
-
-							<div class="button-group-1">
-								<input type="radio" th:value="${'9:30'}" name="btn1" id="bton11"
-									class="button1"> <label for="bton11" class="label1"
-									style="margin-right: 15px;">9h30</label> <input type="radio"
-									th:value="${'10:30'}" name="btn1" id="bton12" class="button1">
-								<label for="bton12" class="label1" style="margin-right: 15px;">10h30</label>
-
-								<input type="radio" th:value="${'11:30'}" name="btn1"
-									id="bton13" class="button1"> <label for="bton13"
-									class="label1" style="margin-right: 50px;">11h30</label> <input
-									type="radio" th:value="${'13:30'}" name="btn1" id="bton14"
-									class="button1"> <label for="bton14" class="label1"
-									style="margin-right: 15px;">13h30</label> <input type="radio"
-									th:value="${'14:30'}" name="btn1" id="bton15" class="button1">
-								<label for="bton15" class="label1" style="margin-right: 15px;">14h30</label>
-
-								<input type="radio" th:value="${'15:30'}" name="btn1"
-									id="bton16" class="button1"> <label for="bton16"
-									class="label1" style="margin-right: 15px;">15h30</label> <input
-									type="radio" th:value="${'16:30'}" name="btn1" id="bton17"
-									class="button1"> <label for="bton17" class="label1"
-									style="margin-right: 15px;">16h30</label> <input type="radio"
-									th:value="${'17:30'}" name="btn1" id="bton18" class="button1">
-								<label for="bton18" class="label1" style="margin-right: 55px;">17h30</label>
-
-								<input type="radio" th:value="${'18:30'}" name="btn1"
-									id="bton19" class="button1"> <label for="bton19"
-									class="label1" style="margin-right: 15px;">18h30</label> <input
-									type="radio" th:value="${'19:30'}" name="btn1" id="bton20"
-									class="button1"> <label for="bton20" class="label1">19h30</label>
-
-							</div>
-
+						<div id="showBs" style="display: table; text-align: center; clear: both;">
+							
 						</div>
+						
+						<!-- <th:block th:each="bacsi,stt:${staffList}">
+								<input type="radio" th:value="${bacsi.id_staff}" name="btn2"
+									th:id="|bs${stt.index}|" class="button2">
+								<label th:for="|bs${stt.index}|" class="label2"> <img
+									th:src="@{'/assets/img/'+${bacsi.image}}" class="img-fluid"
+									th:title="${bacsi.name_staff}">
+								</label>
+							</th:block> -->
 					</div>
+				</section>
+			</div>
 
-					<h5>Chọn bác sĩ</h5>
-					<br />
-
-
-					<div style="display: table; text-align: center; clear: both;">
-						<th:block th:each="bacsi,stt:${staffList}">
-							<input type="radio" th:value="${bacsi.id_staff}" name="btn2" th:id="|bs${stt.index}|"
-								class="button2">
-							<label th:for="|bs${stt.index}|" class="label2"> <img
-								th:src="@{'/assets/img/'+${bacsi.image}}" class="img-fluid" 
-								th:title="${bacsi.name_staff}">
-							</label>
-						</th:block>
-					</div>
-				</div>
-			</section>
-		</div>
-
-		<!-- <div class="tab">
+			<!-- <div class="tab">
             <section id="services" class="services">
                 <div class="container">
                     
@@ -265,19 +266,19 @@
             </section>
         </div> -->
 
-		<div class="tab">
-			<section class="inner-page">
-				<div id="booking">
-					<div class="section-center">
+			<div class="tab">
+				<section class="inner-page">
+					<div id="booking">
+						<div class="section-center">
 
-						<div class="container">
-							<h5>Nhập thông tin</h5>
-							<br />
-							<div class="row">
+							<div class="container">
+								<h5>Nhập thông tin</h5>
+								<br />
+								<div class="row">
 
-								<div class="booking-form">
+									<div class="booking-form">
 
-									
+
 
 										<br>
 										<div class="form-group">
@@ -297,15 +298,15 @@
 										<div class="form-btn">
 											<button type="submit" class="submit-btn">Đặt ngay!</button>
 										</div>
-									
+
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-			</section>
-		</div>
-	</form>
+				</section>
+			</div>
+		</form>
 
 		<hr />
 
@@ -391,7 +392,76 @@
 	<script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
 	<script src="assets/js/datlich.js"></script>
 	<script src="assets/js/main.js"></script>
-
+	<script th:inline="javascript">
+	var getThoiGian;
+	var getNgayDat;
+	function chonBacsi() {
+		var url      = window.location.href; 	
+		var ngayDats = document.getElementsByName('btn');
+		
+		for (var i = 0, length = ngayDats.length; i < length; i++) {
+		    if (ngayDats[i].checked) {
+		        // do whatever you want with the checked radio
+		       	 getNgayDat = ngayDats[i].value;			
+		        // only one radio can be logically checked, don't check the rest
+		        break;
+		    }
+		}			
+		ajx();
+	}
+	
+	if (document.querySelector('input[name="btn1"]')) {
+		  document.querySelectorAll('input[name="btn1"]').forEach((elem) => {
+		    elem.addEventListener("change", function(event) {
+		    	getThoiGian = event.target.value;    	
+		    	ajx();
+		    });
+		  });
+			
+		};	
+		
+		
+		function ajx() {
+			console.log(getNgayDat);
+			console.log(getThoiGian);
+		if(getThoiGian != null && getNgayDat != null){
+	        $.ajax({
+	            type : "GET",
+	            contentType : "application/json",
+	            url :  "/getListBacSi",
+	            data : {
+	            	getThoiGian : getThoiGian,
+	            	getNgayDat : getNgayDat
+	            },
+	            dataType : 'json',
+	            timeout : 100000,
+	            success : function(data) {
+	                console.log("SUCCESS: ", data);
+	                var len = data.length;
+	                var $data = $('#showBs');
+	                $('#showBs').empty();
+	                $.each( data, function(index, bacsi) {	   
+	                	var html = '<input type="radio" value="'+bacsi.id_staff+'" id="bs'+index+'" class="button2" name="btn2"/> <label for="bs'+index+'" class="label2"><img src="/assets/img/'+bacsi.image+'" class="img-fluid" title="'+bacsi.name_staff+'"/> </label> ';
+	                	//$data.append(html).fadeIn(1000);
+	                	$(html).hide().appendTo("#showBs").fadeIn(1000);
+	                	
+	                });
+	                
+	            },
+	            error : function(e) {
+	                console.log("ERROR: ", e);
+	            }
+	            
+	        });
+	    }}
+	
+	
+	
+	
+	</script>
+	<style>
+	
+	</style>
 </body>
 
 </html>
