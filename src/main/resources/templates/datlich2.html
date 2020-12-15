@@ -443,6 +443,7 @@
 	                	var html = '<input type="radio" value="'+bacsi.id_staff+'" id="bs'+index+'" class="button2" name="btn2"/> <label for="bs'+index+'" class="label2"><img src="/assets/img/'+bacsi.image+'" class="img-fluid" title="'+bacsi.name_staff+'"/> </label> ';
 	                	//$data.append(html).fadeIn(1000);
 	                	$(html).hide().appendTo("#showBs").fadeIn(1000);
+	                	$("#bs"+index).css("display", "none");
 	                	
 	                });
 	                
