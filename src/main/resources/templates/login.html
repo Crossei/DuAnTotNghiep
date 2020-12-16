@@ -19,7 +19,11 @@
 <body>
 
 	<section class="form-login">
-
+<div class="notify">
+					<div th:if="${message}">
+						<span id="snackbar"  style="color: white;font-size:16px;" th:text="${message}"></span>
+					</div>
+				</div>
 	<div class="background-login">
 
 		<div class="row">
@@ -30,11 +34,15 @@
 			</div>
 
 			<div class="col-lg-6">
-
+				
 				<form action="login" method="post" class="login-group">
 					<div class="form-group">
 						<h2>ĐĂNG NHẬP</h2>
-						<br /> <label for="email">Email</label>
+						<br /> 
+						<div>
+					<p class="text-danger">[[${error}]]</p>
+				</div>
+						<label for="email">Email</label>
 						<div class="login-content">
 							<input type="email" class="form-control" name="username" required
 								autofocus placeholder="Email" id="email" />
@@ -57,6 +65,7 @@
 							khẩu</label> <a style="color: red;" href="/forgot-password"
 							class="forgot">Quên mật khẩu?</a>
 					</div>
+					
 
 					<button type="submit" class="btn btn-primary">Đăng nhập</button>
 					<a class="btn btn-primary" href="/register">Đăng ký</a>
@@ -72,9 +81,17 @@
 	<script src="bootstrap/js/jquery-1.11.1.min.js"></script>
 	<script src="bootstrap/js/bootstrap.min.js"></script>
 	<script>
-		function code() {
-			// check trong
+	$(document)
+	.ready(
+			function() {
+				
+				var x = document.getElementById("snackbar");
+				  x.className = "show";
+				  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
 
+			
+			// check trong
+			function code() {
 			var email = document.getElementById("email").value.trim();
 			var pass = document.getElementById("pwd").value.trim();
 
@@ -96,8 +113,55 @@
 			}
 
 			return true;
-		}
+		};
+			});
 	</script>
+	<style>
+	
+#snackbar {
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -125px;
+  background-color: #58a9e9;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  top: 50px;
+  font-size: 17px;
+}
+
+#snackbar.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+  from {top: 0; opacity: 0;} 
+  to {top: 50px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {top: 0; opacity: 0;}
+  to {top: 50px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {top: 50px; opacity: 1;} 
+  to {top: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {top: 50px; opacity: 1;}
+  to {top: 0; opacity: 0;}
+}
+
+</style>
+
 </body>
 
 </html>

@@ -40,7 +40,7 @@
 <link
 	href="/webjars/startbootstrap-sb-admin-2/1.0.2/font-awesome/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css" />
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <!-- jQuery -->
 <script src="/webjars/startbootstrap-sb-admin-2/1.0.2/js/jquery.js"></script>
 
@@ -73,7 +73,7 @@
 				style="width: 13%;"></a>
 
 			<ul class="nav navbar-top-links navbar-right">
-
+						
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown" href="#"> <i class="fa fa-user fa-fw"></i>
 						<i class="fa fa-caret-down"></i>[[${#request.userPrincipal.principal.username}]]
@@ -118,13 +118,21 @@
 			</div>
 			<!-- /.navbar-static-side -->
 		</nav>
-
+		
+		
+		<div class="notify">
+					<div th:if="${message}">
+						<span id="snackbar"  style="color: white;font-size:16px;" th:text="${message}"></span>
+					</div>
+				</div>
+				
+				
 		<div id="page-wrapper">
 			<div class="container-fluid">
 
 				<!-- Page Heading -->
 				<h1 class="h3 mb-2 text-gray-800 mb-5">Quản lý dịch vụ</h1>
-
+				
 			</div>
 
 			<br>
@@ -150,7 +158,8 @@
 								</tr>
 							</thead>
 							<tbody class="text-justify" id="myTable">
-								<th:block th:each="ser1,stt : ${ser1}">
+								<th:block th:each="ser1,stt : ${ser1}"
+								th:if="${ser1.status == 1}">
 									<tr>
 										<td th:text="${stt.count}"></td>
 										<td th:text="${ser1.name}"></td>
@@ -223,6 +232,7 @@
 		$(document)
 				.ready(
 						function() {
+							
 							$("#myInput")
 									.on(
 											"keyup",
@@ -241,7 +251,9 @@
 																							.indexOf(
 																									value) > -1)
 																});
+											
 											});
+							
 							$('#example')
 									.DataTable(
 											{
@@ -259,10 +271,55 @@
 													"search" : "Tìm kiếm:",
 												}
 											});
-
+							
+							 var x = document.getElementById("snackbar");
+							  x.className = "show";
+							  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
 						});
 	</script>
 	<style>
+	
+#snackbar {
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -125px;
+  background-color: #58a9e9;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  top: 50px;
+  font-size: 17px;
+}
+
+#snackbar.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+  from {top: 0; opacity: 0;} 
+  to {top: 50px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {top: 0; opacity: 0;}
+  to {top: 50px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {top: 50px; opacity: 1;} 
+  to {top: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {top: 50px; opacity: 1;}
+  to {top: 0; opacity: 0;}
+}
 /* 	.dataTables_filter, .dataTables_info , .dataTables_length { display: none; } */
 .table-responsive {
 	overflow-x: hidden;

@@ -122,7 +122,7 @@ public String saveStaff(@ModelAttribute(name="staff") AddStaffDTO staffDto, Mode
 			}catch(IOException e) {
 				throw new IOException("lỗi"+ fileName);
 			}
-			
+			ra.addFlashAttribute("message","Thêm nhân viên thành công!");
 			
 		return "redirect:/dashboard/staff";
 	}
@@ -161,7 +161,7 @@ public String saveStaff(@ModelAttribute(name="staff") AddStaffDTO staffDto, Mode
 				if(!Files.exists(uploadPath)) {
 					Files.createDirectories(uploadPath);
 				}
-				ra.addFlashAttribute("message","oki");
+				
 				
 				try(InputStream inputStream =multipartFile.getInputStream()){
 				Path filePath = uploadPath.resolve(fileName);
@@ -173,7 +173,7 @@ public String saveStaff(@ModelAttribute(name="staff") AddStaffDTO staffDto, Mode
 					staff.setImage(image);
 					staffRepo.save(staff);
 				}
-				
+				ra.addFlashAttribute("message","Cập nhật thông tin thành công!");
 				
 			return "redirect:/dashboard/staff";
 		}
@@ -212,7 +212,7 @@ public String saveStaff(@ModelAttribute(name="staff") AddStaffDTO staffDto, Mode
 				if(!Files.exists(uploadPath)) {
 					Files.createDirectories(uploadPath);
 				}
-				ra.addFlashAttribute("message","oki");
+				
 				
 				try(InputStream inputStream =multipartFile.getInputStream()){
 				Path filePath = uploadPath.resolve(fileName);
@@ -224,7 +224,7 @@ public String saveStaff(@ModelAttribute(name="staff") AddStaffDTO staffDto, Mode
 					staff.setImage(image);
 					staffRepo.save(staff);
 				}
-				
+				ra.addFlashAttribute("message","Cập nhật thông tin thành công!");
 				
 			return "redirect:/dashboard";
 		}
@@ -283,7 +283,7 @@ public String saveStaff(@ModelAttribute(name="staff") AddStaffDTO staffDto, Mode
 			if(!Files.exists(uploadPath)) {
 				Files.createDirectories(uploadPath);
 			}
-			ra.addFlashAttribute("message","oki");
+			
 			
 			try(InputStream inputStream =multipartFile.getInputStream()){
 			Path filePath = uploadPath.resolve(fileName);
@@ -295,7 +295,7 @@ public String saveStaff(@ModelAttribute(name="staff") AddStaffDTO staffDto, Mode
 				cusRepo.save(cus);
 			}
 			
-			
+			ra.addFlashAttribute("message","Thêm khách hàng thành công!");
 		return "redirect:/";
 	}
 	

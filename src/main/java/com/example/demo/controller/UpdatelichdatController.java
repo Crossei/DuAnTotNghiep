@@ -8,7 +8,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.catalina.mapper.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,7 +16,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -42,8 +40,9 @@ import com.example.demo.service.WorkingCalendarRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+
 @Controller
-public class TiepNhanLichKhamController {
+public class UpdatelichdatController {
 	@Autowired
 	private MyUserDetailService service;
 	@Autowired
@@ -63,10 +62,9 @@ public class TiepNhanLichKhamController {
 	@Autowired
 	private WorkingCalendarRepository workRepo;
 	
-	
-	@GetMapping(value = "/getSearchResult")
+	@GetMapping(value = "/getSearchResult1")
 	@ResponseBody
-    public   String homePage(HttpServletRequest request) throws ParseException {
+    public   String homePage1(HttpServletRequest request) throws ParseException {
 		String bacsi = request.getParameter("bacsi");
 		String ngayDat = request.getParameter("ngayDat");
 		SimpleDateFormat fomater = new SimpleDateFormat("yyyy-MM-dd");
@@ -83,70 +81,10 @@ public class TiepNhanLichKhamController {
        return ajaxResponse;
     }
 	
-
-
-	@RequestMapping("/dashboard/lichkham")
-	public String nhanLichKham(Model model) {
-		List<TiepNhanLichKhamDTO> tiepNhanList = new ArrayList<>();
-		List<BookingDetail> bookingItems = bokDetailRepo.findAll();
-		List<Booking> bookingCus = bokRepo.findAll();
-		List<Customer> cusList = cusRepo.findAll();
-		for(BookingDetail bookList : bookingItems) {
-			for(Booking bookCusList : bookingCus) {
-				if(bookList.getId_booking() == bookCusList.getId_booking() && bookList.getActive() == 1) {
-					TiepNhanLichKhamDTO tiepNhapLich = new TiepNhanLichKhamDTO();
-					Customer cus = cusRepo.findById(bookCusList.getId_cus());
-					tiepNhapLich.setId_detail(bookList.getId_detail());
-					tiepNhapLich.setName(cus.getName_cus());
-					tiepNhapLich.setSdt(cus.getPhone());
-					
-					Service ser = ser1Repo.findById(bookList.getId_service());
-					tiepNhapLich.setTendv(ser.getName());
-					tiepNhapLich.setGiaTien(ser.getPrice());
-				
-					tiepNhapLich.setStatus(bookList.getStatus());
-					tiepNhapLich.setGioBatDau(bookList.getTime_start());
-					tiepNhapLich.setNgayDat(bookList.getDateWorking_Start());
-					tiepNhapLich.setActive(bookList.getActive());
-					//ten bacsi
-					Staff staf = staffRepo.findById(bookList.getId_staff());
-					if(bookList.getId_staff() == 1) {
-						tiepNhapLich.setTenbs("N/A");
-					}else {
-						tiepNhapLich.setTenbs(staf.getName_staff());
-					}
-					tiepNhanList.add(tiepNhapLich);
-				}
-			}
-		}
-		model.addAttribute("tiepNhanList", tiepNhanList);
-		return "dashboard/tiepNhanLichKham";
-	}
-	
-	@RequestMapping("/dashboard/lichkham/xacnhan/{id_detail}")
-	public String xacNhanDatLich(@PathVariable(name = "id_detail") int id,Model model, RedirectAttributes ra) {
-		BookingDetail bookItem = new BookingDetail();
-		bookItem = bokDetailRepo.findById(id);
-		bookItem.setStatus(1);
-		bokDetailRepo.save(bookItem);
-		ra.addFlashAttribute("message","Xác nhận lịch khám thành công!");
-		return "redirect:/dashboard/lichkham";
-	}
-	
-	@RequestMapping("/dashboard/lichkham/huylich/{id_detail}")
-	public String huyDatLich(@PathVariable(name = "id_detail") int id,Model model, RedirectAttributes ra) {
-		BookingDetail bookItem = new BookingDetail();
-		bookItem = bokDetailRepo.findById(id);
-		bookItem.setActive(0);
-		bokDetailRepo.save(bookItem);
-		ra.addFlashAttribute("message","Hủy lịch thành công!");
-		return "redirect:/dashboard/lichkham";
-	}
-	
-	@RequestMapping("/dashboard/lichkham/thaydoi/{id_bookingDetail}")
-	public ModelAndView thayDoiLich(@PathVariable(name="id_bookingDetail") Integer id_bookingDetail,Model model
+	@RequestMapping("/lichkham/thaydoi/{id_bookingDetail}")
+	public ModelAndView thayDoiLich1(@PathVariable(name="id_bookingDetail") Integer id_bookingDetail,Model model
 			, RedirectAttributes ra) {
-		ModelAndView mav= new ModelAndView("dashboard/editLichKham");
+		ModelAndView mav= new ModelAndView("editLichDat");
 		TiepNhanLichKhamDTO tiepNhanItem = new TiepNhanLichKhamDTO();
 		BookingDetail bookItem =bokDetailRepo.getOne(id_bookingDetail);
 		List<Booking> bookingCus = bokRepo.findAll();
@@ -183,8 +121,8 @@ public class TiepNhanLichKhamController {
 		return mav;
 	}
 	
-	@PostMapping("/dashboard/lichkham/luu")
-	public String thayDoiLichKham(@ModelAttribute("bookItem") TiepNhanLichKhamDTO bookItem
+	@PostMapping("/lichdat/luu")
+	public String thayDoiLichKham1(@ModelAttribute("bookItem") TiepNhanLichKhamDTO bookItem
 			, RedirectAttributes ra){
 		BookingDetail getBookDetail = bokDetailRepo.findById(bookItem.getId_detail());
 		
@@ -194,7 +132,7 @@ public class TiepNhanLichKhamController {
 		getBookDetail.setTime_start(sqlTime);
 		
 		bokDetailRepo.save(getBookDetail);
-		ra.addFlashAttribute("message","Xếp lịch thành công!");
-		return "redirect:/dashboard/lichkham";
+		ra.addFlashAttribute("message","Cập nhật lịch đặt thành công!");
+		return "redirect:/lichsudat";
 	}
 }
