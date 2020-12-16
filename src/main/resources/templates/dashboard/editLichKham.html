@@ -341,23 +341,15 @@
             timeout : 100000,
             success : function(data) {
                 console.log("SUCCESS: ", data);
-                if(data != null){
-            
+                if(data != null){           
                 	if (data.shift1 == 1){               		
-                		console.log(data.shift1);
-                		
-                		
+                		console.log(data.shift1);                		                		
                 	} if (data.shift2 == 0){            	
                 		console.log(data.shift2);
-                		$('#bton30').prop("disabled", true);
-
-                		
-                		
+                		$('#bton30').prop("disabled", true);           		
                 	} if (data.shift3 == 1);{               		
                 		console.log(data.shift3);	
-                	
-                		
-                	}
+               	}
                 }
             },
             error : function(e) {

@@ -65,50 +65,7 @@
 
 				<!-- /.dropdown -->
 
-				<li class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="#"> <i class="fa fa-bell fa-fw"></i>
-						<i class="fa fa-caret-down"></i>
-				</a>
-					<ul class="dropdown-menu dropdown-alerts">
-						<li><a href="#">
-								<div>
-									<i class="fa fa-comment fa-fw"></i> New Comment <span
-										class="pull-right text-muted small">4 minutes ago</span>
-								</div>
-						</a></li>
-						<li class="divider"></li>
-						<li><a href="#">
-								<div>
-									<i class="fa fa-twitter fa-fw"></i> 3 New Followers <span
-										class="pull-right text-muted small">12 minutes ago</span>
-								</div>
-						</a></li>
-						<li class="divider"></li>
-						<li><a href="#">
-								<div>
-									<i class="fa fa-envelope fa-fw"></i> Message Sent <span
-										class="pull-right text-muted small">4 minutes ago</span>
-								</div>
-						</a></li>
-						<li class="divider"></li>
-						<li><a href="#">
-								<div>
-									<i class="fa fa-tasks fa-fw"></i> New Task <span
-										class="pull-right text-muted small">4 minutes ago</span>
-								</div>
-						</a></li>
-						<li class="divider"></li>
-						<li><a href="#">
-								<div>
-									<i class="fa fa-upload fa-fw"></i> Server Rebooted <span
-										class="pull-right text-muted small">4 minutes ago</span>
-								</div>
-						</a></li>
-						<li class="divider"></li>
-						<li><a class="text-center" href="#"> <strong>See
-									All Alerts</strong> <i class="fa fa-angle-right"></i>
-						</a></li>
-					</ul> <!-- /.dropdown-alerts --></li>
+
 				<!-- /.dropdown -->
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown" href="#"> <i class="fa fa-user fa-fw"></i>
@@ -164,7 +121,7 @@
 
 
 				<div id="form1"
-					style="width: 58%; background-color: #f8f8f8; border-radius: 10px 10px 10px 10px; padding-left: 30px; margin-left: 20%; box-shadow: 8px 8px 10px #c2bbbb; border: 1px solid #dddada;">
+					style="width: 58%; background-color: #f8f8f8; border-radius: 10px 10px 10px 10px; margin: 0 auto; box-shadow: 0 2px 6px #4a4747; border: 1px solid #dddada;">
 					<div class="row">
 						<div class="col-xl-12">
 							<div>
@@ -177,11 +134,10 @@
 											<div>
 												<div class="row">
 
-													<div style="margin-left: 190px;">
-														<h3 class="kt-section__title kt-section__title-sm">Thông
-															tin cá nhân</h3>
-														<br>
-													</div>
+
+													<h3 style="text-align: center;">Thông tin cá nhân</h3>
+													<br>
+
 												</div>
 												<div class="form-group" style="display: none;">
 													<label for="name">Id nhân viên</label> <input type="text"
@@ -203,74 +159,66 @@
 														style="width: 30%; display:" none";" class="form-control"
 														th:field="*{dateWorking_Start}" readonly="readonly">
 												</div>
-												<div class="form-group row">
 
-													<div class="col-lg-9 col-xl-6">
 
-														<img th:src="*{'/assets/img/'+{image}}" id="thumbnail"
-															alt="Ảnh nhân viên"
-															style="height: 150px; width: 250px; object-fit: cover; margin-left: 40%;" />
-														<input type="file" name="fileImage" id="fileImage"
-															accept="image/png,image/ipeg"
-															style="margin-left: 165px; display: none;" />
 
-													</div>
 
-												</div>
-												<div class="form-group row">
-													<label class="col-xl-3 col-lg-3 col-form-label">Họ
-														và tên</label>
-													<div class="col-lg-9 col-xl-6">
+												<img th:src="*{'/assets/img/'+{image}}" id="thumbnail"
+													alt="Ảnh nhân viên"
+													style="display: block; margin-left: auto; margin-right: auto; width: 50%;" />
+												<input type="file" name="fileImage" id="fileImage"
+													accept="image/png,image/ipeg"
+													style="margin: 0 auto; display: none; padding: 25px 0 0 0" />
+												<br />
 
-														<input type="text" id="ten" th:field="*{name_staff}"
-															style="width: 330px;" readonly="readonly" required
-															autofocus placeholder="Họ và tên" class="form-control">
-													</div>
+												<div style="padding: 10px 30px 10px 30px;">
+													<label class="col-xl-3 col-lg-3 col-form-label"
+														style="font-size: 15px; font-weight: 600">Họ và
+														tên</label> <input type="text" id="ten" th:field="*{name_staff}"
+														style="" readonly="readonly" required
+														autofocus placeholder="Họ và tên" class="form-control">
+
 
 												</div>
-												<div class="form-group row">
-													<label class="col-xl-3 col-lg-3 col-form-label">Địa
-														chỉ</label>
-													<div class="col-lg-9 col-xl-6">
+												<div style="padding: 10px 30px 10px 30px;">
+													<label class="col-xl-3 col-lg-3 col-form-label"
+														style="font-size: 15px; font-weight: 600">Địa chỉ</label>
 
-														<input type="text" id="diachi" th:field="*{address}"
-															style="width: 330px;" readonly="readonly"
-															placeholder="Địa chỉ" class="form-control">
-													</div>
+
+													<input type="text" id="diachi" th:field="*{address}"
+														style="" readonly="readonly"
+														placeholder="Địa chỉ" class="form-control">
+
 												</div>
 
 
 
-												<div class="form-group row">
-													<label class="col-xl-3 col-lg-3 col-form-label">Giới
-														tính</label>
-													<div class="col-lg-9 col-xl-6">
-
-														<input type="radio" th:field="*{sex}" value="1"
-															readonly="readonly"> Nam <input type="radio"
-															th:field="*{sex}" value="2" readonly="readonly">
-														Nữ
-													</div>
-												</div>
-
-												<div class="form-group row" style="display: none;">
-													<label class="col-xl-3 col-lg-3 col-form-label">Email</label>
-													<div class="col-lg-9 col-xl-6">
-
-														<input type="text" th:field="*{email}" readonly="readonly"
-															class="form-control">
-													</div>
+												<div style="padding: 10px 30px 10px 30px;">
+													<label class="col-xl-3 col-lg-3 col-form-label"
+														style="font-size: 15px; font-weight: 600">Giới
+														tính</label> <input type="radio" th:field="*{sex}" value="1"
+														readonly="readonly"> Nam <input type="radio"
+														th:field="*{sex}" value="2" readonly="readonly">
+													Nữ
 
 												</div>
-												<div class="form-group row">
-													<label class="col-xl-3 col-lg-3 col-form-label">Số
-														điện thoại</label>
-													<div class="col-lg-9 col-xl-6">
 
-														<input type="text" id="sdt" th:field="*{phone}"
-															style="width: 330px;" readonly="readonly"
-															placeholder="Số điện thoại" class="form-control">
-													</div>
+
+												<div style="padding: 10px 30px 10px 30px;">
+													<label class="col-xl-3 col-lg-3 col-form-label"
+														style="font-size: 15px; font-weight: 600">Email</label> <input
+														type="text" th:field="*{email}" readonly="readonly"
+														class="form-control">
+
+
+												</div>
+												<div style="padding: 10px 30px 30px 30px;">
+													<label class="col-xl-3 col-lg-3 col-form-label"
+														style="font-size: 15px; font-weight: 600">Số điện
+														thoại</label> <input type="text" id="sdt" th:field="*{phone}"
+														style="" readonly="readonly"
+														placeholder="Số điện thoại" class="form-control">
+
 												</div>
 
 
@@ -278,10 +226,11 @@
 										</div>
 									</div>
 									<input id="binh" type="button" class="btn btn-primary"
-										style="margin-left: 335px;" value="Cập nhật thông tin"
-										onClick="hien()">
-									<button id="chien" style="display: none; margin-left: 418px;"
-										class="btn btn-primary" type="submit">Save</button>
+										style="display: block; margin-left: auto; margin-right: auto; margin-bottom: 40px"
+										value="Cập nhật thông tin" onClick="hien()">
+									<button id="chien"
+										style="display: none; margin-left: auto; margin-right: auto; margin-bottom: 40px"
+										class="btn btn-primary" type="submit">Lưu</button>
 								</form>
 							</div>
 						</div>

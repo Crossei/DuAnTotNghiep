@@ -121,6 +121,10 @@
     font-size: 15px;
 }
 
+.booking-form .form-control:hover {
+    background-color: #d1dcd6;
+}
+
 .booking-form .btnSelect {
 	color: #fff;
     background-color: #009961;

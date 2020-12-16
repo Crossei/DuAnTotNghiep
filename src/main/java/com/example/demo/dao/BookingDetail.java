@@ -21,9 +21,11 @@ public class BookingDetail {
 	private int id_service;
 	@Column(name = "id_booking")
 	private int idBooking;
-	private Date dateWorking_Start;
-	private Time time_start;
-	private Time time_end;
+	@Column(name = "dateWorking_Start")
+	private Date dateworkingstart;
+	@Column(name= "time_start")
+	private Date timestart;
+	private Date time_end;
 	private Integer status;
 	private Integer active;
 	
@@ -36,11 +38,12 @@ public class BookingDetail {
 	public void setActive(Integer active) {
 		this.active = active;
 	}
+	
 	@Override
 	public String toString() {
-		return "BookingDetail [id_detail=" + id_detail + ", id_staff=" + idstaff + ", id_service=" + id_service
-				+ ", idBooking=" + idBooking + ", dateWorking_Start=" + dateWorking_Start + ", time_start=" + time_start
-				+ ", time_end=" + time_end + ", status=" + status + "]";
+		return "BookingDetail [id_detail=" + id_detail + ", idstaff=" + idstaff + ", id_service=" + id_service
+				+ ", idBooking=" + idBooking + ", dateworkingstart=" + dateworkingstart + ", timestart=" + timestart
+				+ ", time_end=" + time_end + ", status=" + status + ", active=" + active + "]";
 	}
 	public BookingDetail() {
 		
@@ -49,18 +52,29 @@ public class BookingDetail {
 	
 	
 	
+	public BookingDetail(int idstaff, int id_service, int idBooking, Date dateWorking_Start, Date time_start,
+			Integer status, Integer active) {
+		super();
+		this.idstaff = idstaff;
+		this.id_service = id_service;
+		this.idBooking = idBooking;
+		this.dateworkingstart = dateWorking_Start;
+		this.timestart = time_start;
+		this.status = status;
+		this.active = active;
+	}
 	public BookingDetail(int id_staff, Date dateWorking_Start, Time time_start) {
 		super();
 		this.idstaff = id_staff;
-		this.dateWorking_Start = dateWorking_Start;
-		this.time_start = time_start;
+		this.dateworkingstart = dateWorking_Start;
+		this.timestart = time_start;
 	}
 	public BookingDetail(int id_staff, int id_service, int id_booking, Date dateWorking_Start, Integer status,Integer active) {
 		super();
 		this.idstaff = id_staff;
 		this.id_service = id_service;
 		this.idBooking = id_booking;
-		this.dateWorking_Start = dateWorking_Start;
+		this.dateworkingstart = dateWorking_Start;
 		this.status = status;
 		this.active = active;
 	}
@@ -89,21 +103,21 @@ public class BookingDetail {
 		this.idBooking = id_booking;
 	}
 	public Date getDateWorking_Start() {
-		return dateWorking_Start;
+		return dateworkingstart;
 	}
 	public void setDateWorking_Start(Date dateWorking_Start) {
-		this.dateWorking_Start = dateWorking_Start;
+		this.dateworkingstart = dateWorking_Start;
 	}
-	public Time getTime_start() {
-		return time_start;
+	public Date getTime_start() {
+		return timestart;
 	}
-	public void setTime_start(Time time_start) {
-		this.time_start = time_start;
+	public void setTime_start(Date time_start) {
+		this.timestart = time_start;
 	}
-	public Time getTime_end() {
+	public Date getTime_end() {
 		return time_end;
 	}
-	public void setTime_end(Time time_end) {
+	public void setTime_end(Date time_end) {
 		this.time_end = time_end;
 	}
 	public Integer getStatus() {
