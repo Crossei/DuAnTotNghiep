@@ -113,6 +113,9 @@
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.webjars/font-awesome -->
+		
+
 	</dependencies>
 
 	<build>

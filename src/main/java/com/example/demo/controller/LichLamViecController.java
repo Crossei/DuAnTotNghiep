@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.thymeleaf.util.DateUtils;
 
 import com.example.demo.dao.Booking;
@@ -60,13 +61,15 @@ public class LichLamViecController {
 	private CustomerRepository cusRepo;
 	
 	@PostMapping("/dashboard/lichtaikham/luu")
-	public String thayDoiLichKham(@ModelAttribute("bookItem") TiepNhanLichKhamDTO bookItem){
+	public String thayDoiLichKham(@ModelAttribute("bookItem") TiepNhanLichKhamDTO bookItem
+			, RedirectAttributes ra){
 		BookingDetail getBookDetail = bookDettailRepo.findById(bookItem.getId_detail());
 		getBookDetail.setDateWorking_Start(bookItem.getNgayDat());
 		 java.sql.Time sqlTime = new java.sql.Time(bookItem.getGioBatDau().getTime());
 		getBookDetail.setTime_start(sqlTime);
 		getBookDetail.setStatus(2);
 		bookDettailRepo.save(getBookDetail);
+		ra.addFlashAttribute("message","Cập nhật dịch vụ thành công!");
 		return "redirect:/dashboard/quanlylichkham";
 	}
 	
@@ -101,12 +104,13 @@ public class LichLamViecController {
 	}
 	
 	@RequestMapping("/dashboard/quanlylichkham/xacnhan/{id_detail}")
-	public String xacNhanDatLich(@PathVariable(name = "id_detail") int id,Model model) {
+	public String xacNhanDatLich(@PathVariable(name = "id_detail") int id,Model model
+			, RedirectAttributes ra) {
 		BookingDetail bookItem = new BookingDetail();
 		bookItem = bookDettailRepo.findById(id);
 		bookItem.setStatus(3);
 		bookDettailRepo.save(bookItem);
-		
+		ra.addFlashAttribute("message","Xác nhận lịch thành công!");
 		return "redirect:/dashboard/lichkham";
 	}
 
@@ -220,7 +224,7 @@ public class LichLamViecController {
 	}
 
 	@PostMapping("/dashboard/quanlylichkham/dangky/xacnhan")
-	public String dangKyLichAct(@ModelAttribute(name = "dangKy") DangKyLichLamViecDTO dangKy) {
+	public String dangKyLichAct(@ModelAttribute(name = "dangKy") DangKyLichLamViecDTO dangKy, RedirectAttributes ra) {
 
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		User user = repo.findByUsernameIs(authentication.getName());
@@ -276,7 +280,7 @@ public class LichLamViecController {
 		WorkingCalendar work7 = new WorkingCalendar(staff.getId_staff(), thu7.contains(1) == true ? 1 : 0,
 				thu7.contains(2) == true ? 1 : 0, thu7.contains(3) == true ? 1 : 0, dt, 1);
 		workRepo.save(work7);
-
+		ra.addFlashAttribute("message","Đăng ký lịch làm việc thành công!");
 		return "redirect:/dashboard/quanlylichkham";
 	}
 

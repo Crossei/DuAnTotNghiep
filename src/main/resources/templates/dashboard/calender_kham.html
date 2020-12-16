@@ -118,6 +118,12 @@
 			<!-- /.navbar-static-side -->
 		</nav>
 
+<div class="notify">
+					<div th:if="${message}">
+						<span id="snackbar"  style="color: white;font-size:16px;" th:text="${message}"></span>
+					</div>
+				</div>
+
     <div id="page-wrapper">
 
         <div class="container-fluid">
@@ -132,7 +138,8 @@
                             <h6 class="m-0 font-weight-bold text-primary">Hiển thị chi tiết lịch khám bệnh</h6>                          
                              <a th:if=${dangKyLich} th:href="@{/dashboard/quanlylichkham/dangky}" class="btn btn-default">Đăng ký lịch</a>
                              <a th:if="${dangKyLich == false}" th:href="@{/dashboard/quanlylichkham/dangky}" class="btn btn-default" disabled>Đăng ký lịch</a>
-                            
+                            <a th:href="@{/dashboard/staff/export}"
+						class="btn btn-warning">Export Excel</a>
 
                         </div>
                         
@@ -187,10 +194,7 @@
 													<li role="presentation"><a role="menuitem"
 														tabindex="-1"
 														th:href="@{'/dashboard/quanlylichkham/taikham/'+${tiepNhanList.id_detail}}">Tái khám</a></li>
-													<li role="presentation"><a role="menuitem"
-														tabindex="-1" data-target="#myModal"
-														th:attr="data-target='#myModal'+${tiepNhanList.id_detail}"
-														data-toggle="modal" href="">Hủy lịch</a></li>
+													
 													<!-- -->
 												</ul>
 											</div>
@@ -352,6 +356,48 @@
 <!-- /#wrapper -->
 
 <style>
+
+#snackbar {
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -125px;
+  background-color: #58a9e9;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  top: 50px;
+  font-size: 17px;
+}
+
+#snackbar.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+  from {top: 0; opacity: 0;} 
+  to {top: 50px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {top: 0; opacity: 0;}
+  to {top: 50px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {top: 50px; opacity: 1;} 
+  to {top: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {top: 50px; opacity: 1;}
+  to {top: 0; opacity: 0;}
+}
 * { 
   word-wrap:break-word;
 }
@@ -390,6 +436,9 @@ table {
 				},
 			 "order": [ 5, 'desc' ],
 			});
+			 var x = document.getElementById("snackbar");
+			  x.className = "show";
+			  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
 		});
 	</script>
 

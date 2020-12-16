@@ -25,7 +25,7 @@ public class Service  implements Serializable{
 	private Time time_working;
 	private String dsc ; 	
 	private String price;
-	private Boolean status;
+	private Integer status;
 	
 	
 	
@@ -65,10 +65,10 @@ public class Service  implements Serializable{
 	public void setDsc(String dsc) {
 		this.dsc = dsc;
 	}
-	public Boolean getStatus() {
+	public Integer getStatus() {
 		return status;
 	}
-	public void setStatus(Boolean status) {
+	public void setStatus(Integer status) {
 		this.status = status;
 	}
 	

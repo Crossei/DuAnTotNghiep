@@ -8,7 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<title>Dashboard - Quản lý nhân viên</title>
+<title>Dashboard - Thêm dịch vụ</title>
 
 <!-- Bootstrap Core CSS -->
 <link
@@ -45,7 +45,7 @@
 <link
 	href="/webjars/startbootstrap-sb-admin-2/1.0.2/font-awesome/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css" />
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <style>
 input: {
 	width: 30%;
@@ -160,7 +160,7 @@ input: {
 					<a class="btn btn-warning" href="/dashboard/services/">Quay
 						lại</a>
 					<button class="btn btn-primary" type="submit"
-						style="margin-left: 197px;">Lưu</button>
+						style="margin-left: 197px;" >Lưu</button>
 
 				</form>
 
@@ -222,7 +222,11 @@ input: {
 																									value) > -1)
 																});
 											});
+							
 						});
+		
+		
+		
 		function showImageThumbnail(fileInput) {
 			file = fileInput.files[0];
 			reader = new FileReader();

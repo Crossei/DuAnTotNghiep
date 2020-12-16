@@ -35,11 +35,12 @@ public class User {
 		this.status = status;
 	}
 
-	public User(String name,String username, String password,String roles) {
+	public User(String name,String username, String password,String roles, int status) {
 		this.name = name;
 		this.username = username;
 		this.password = password;
 		this.roles =  roles;
+		this.status = status;
 	}
 	public int getId() {
 		return id;

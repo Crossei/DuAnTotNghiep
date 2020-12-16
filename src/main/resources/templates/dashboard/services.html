@@ -40,6 +40,18 @@
 <link
 	href="/webjars/startbootstrap-sb-admin-2/1.0.2/font-awesome/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- jQuery -->
+<script src="/webjars/startbootstrap-sb-admin-2/1.0.2/js/jquery.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script
+	src="/webjars/startbootstrap-sb-admin-2/1.0.2/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/webjars/startbootstrap-sb-admin-2/1.0.2/js/sb-admin-2.js"></script>
+
+
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script
 	src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
@@ -49,11 +61,6 @@
 	src="https://cdn.datatables.net/responsive/2.2.6/js/dataTables.responsive.min.js"></script>
 <script
 	src="https://cdn.datatables.net/responsive/2.2.6/js/responsive.bootstrap4.min.js"></script>
-
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
-	integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
-	crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -66,7 +73,7 @@
 				style="width: 13%;"></a>
 
 			<ul class="nav navbar-top-links navbar-right">
-
+						
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown" href="#"> <i class="fa fa-user fa-fw"></i>
 						<i class="fa fa-caret-down"></i>[[${#request.userPrincipal.principal.username}]]
@@ -111,13 +118,21 @@
 			</div>
 			<!-- /.navbar-static-side -->
 		</nav>
-
+		
+		
+		<div class="notify">
+					<div th:if="${message}">
+						<span id="snackbar"  style="color: white;font-size:16px;" th:text="${message}"></span>
+					</div>
+				</div>
+				
+				
 		<div id="page-wrapper">
 			<div class="container-fluid">
 
 				<!-- Page Heading -->
 				<h1 class="h3 mb-2 text-gray-800 mb-5">Quản lý dịch vụ</h1>
-
+				
 			</div>
 
 			<br>
@@ -143,7 +158,8 @@
 								</tr>
 							</thead>
 							<tbody class="text-justify" id="myTable">
-								<th:block th:each="ser1,stt : ${ser1}">
+								<th:block th:each="ser1,stt : ${ser1}"
+								th:if="${ser1.status == 1}">
 									<tr>
 										<td th:text="${stt.count}"></td>
 										<td th:text="${ser1.name}"></td>
@@ -152,23 +168,39 @@
 										<td th:text="${ser1.dsc}"></td>
 										<td th:text="${#dates.format(ser1.time_working, 'HH:mm')}"></td>
 										<td th:text="${ser1.price}"></td>
-										<td><a th:href="@{'/editService/'+ ${ser1.id_ser}}"
-											class="btn btn-info">Sửa</a>
-											<button data-target="#myModal"
-												th:attr="data-target='#myModal'+${ser1.id_ser}"
-												class="btn btn-danger" data-toggle="modal">Xóa</button>
+										<td>
+										
+										<div  class="dropdown" >
+												<button  class="btn btn-default dropdown-toggle"
+													type="button" id="menu1" data-toggle="dropdown">
+													Hành động <span class="caret"></span>
+												</button>
+												<ul class="dropdown-menu" role="menu"
+													aria-labelledby="menu1">
+													<li role="presentation"><a th:href="@{'/editService/'+ ${ser1.id_ser}}"
+											>Cập nhật</a></li>
+													<li role="presentation"><a data-target="#myModal"
+											th:attr="data-target='#myModal'+${ser1.id_ser}"
+											 data-toggle="modal">
+													Xóa</a></li>
+													
+													<!-- -->
+												</ul>
+											</div>
+										
+										
 											<div th:id="myModal+${ser1.id_ser}" class="modal fade">
 												<div class="modal-dialog modal-confirm">
 													<div class="modal-content">
 														<div class="modal-header flex-column">
 
 															<h4 class="modal-title w-100">Bạn có chắc chắn muốn
-																xóa lịch làm việc này chứ ?</h4>
+																xóa lịch dịch vụ này chứ ?</h4>
 															<button type="button" class="close" data-dismiss="modal"
 																aria-hidden="true">&times;</button>
 														</div>
 														<div class="modal-body">
-															<p>Bạn có muốn lịch làm việc này chứ ?</p>
+															<p>Bạn có muốn xóa dịch vụ này chứ ?</p>
 														</div>
 														<div class="modal-footer justify-content-center">
 															<a
@@ -196,27 +228,98 @@
 	</div>
 	<!-- /#page-wrapper -->
 
-
-	<script type="text/javascript">
-		$(document).ready(function() {
-			$('#example').DataTable({
-				"language" : {
-					"lengthMenu" : "Hiển thị _MENU_  mỗi trang",
-					"zeroRecords" : "Không có dữ liệu",
-					"info" : "Hiển thị _PAGE_ trong tổng _PAGES_",
-					"infoEmpty" : "Không có dữ liệu",
-					"paginate" : {
-						"first" : "Đầu tiền",
-						"last" : "Cuối",
-						"next" : "Tiếp",
-						"previous" : "Trước"
-					},
-					"search" : "Tìm kiếm:",
-				}
-			});
-		});
+<script>
+		$(document)
+				.ready(
+						function() {
+							
+							$("#myInput")
+									.on(
+											"keyup",
+											function() {
+												var value = $(this).val()
+														.toLowerCase();
+												$("#myTable tr")
+														.filter(
+																function() {
+																	$(this)
+																			.toggle(
+																					$(
+																							this)
+																							.text()
+																							.toLowerCase()
+																							.indexOf(
+																									value) > -1)
+																});
+											
+											});
+							
+							$('#example')
+									.DataTable(
+											{
+												"language" : {
+													"lengthMenu" : "Hiển thị _MENU_ item mỗi trang",
+													"zeroRecords" : "Không có dữ liệu",
+													"info" : "Hiển thị _PAGE_ trong tổng _PAGES_",
+													"infoEmpty" : "Không có dữ liệu",
+													"paginate" : {
+														"first" : "Đầu tiền",
+														"last" : "Cuối",
+														"next" : "Tiếp",
+														"previous" : "Trước"
+													},
+													"search" : "Tìm kiếm:",
+												}
+											});
+							
+							 var x = document.getElementById("snackbar");
+							  x.className = "show";
+							  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+						});
 	</script>
 	<style>
+	
+#snackbar {
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -125px;
+  background-color: #58a9e9;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  top: 50px;
+  font-size: 17px;
+}
+
+#snackbar.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+  from {top: 0; opacity: 0;} 
+  to {top: 50px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {top: 0; opacity: 0;}
+  to {top: 50px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {top: 50px; opacity: 1;} 
+  to {top: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {top: 50px; opacity: 1;}
+  to {top: 0; opacity: 0;}
+}
 /* 	.dataTables_filter, .dataTables_info , .dataTables_length { display: none; } */
 .table-responsive {
 	overflow-x: hidden;

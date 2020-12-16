@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.dao.Booking;
 import com.example.demo.dao.BookingDetail;
@@ -132,12 +133,12 @@ public class MainController {
 	}
 
 	@GetMapping("lichsudat/delete/{id_detail}")
-	public String deleteLichDat(@PathVariable(name = "id_detail") int id) {
+	public String deleteLichDat(@PathVariable(name = "id_detail") int id, RedirectAttributes ra) {
 		BookingDetail bookItem = new BookingDetail();
 		bookItem = bokDetailRepo.findById(id);
 		bookItem.setActive(0);
 		bokDetailRepo.save(bookItem);
-
+		ra.addFlashAttribute("message","Hủy lịch thành công!");
 		return "redirect:/lichsudat";
 	}
 
@@ -153,7 +154,8 @@ public class MainController {
 	
 
 	@PostMapping(value = "/datlich")
-	public String datLichSave(@ModelAttribute("datLichDTO") DatLichDTO datLich, Model model) throws ParseException {
+	public String datLichSave(@ModelAttribute("datLichDTO") DatLichDTO datLich, Model model
+			, RedirectAttributes ra) throws ParseException {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		if (checkLoggedIn() == false) {
 			return "login";
@@ -173,7 +175,7 @@ public class MainController {
 
 		BookingDetail bookDetail = new BookingDetail(1, datLich.getId_ser(), bookItem.getId_booking(), date, 0, 1);
 		bokDetailRepo.save(bookDetail);
-
+		ra.addFlashAttribute("message","Đặt lịch thành công!");
 		return "home";
 	}
 
@@ -186,6 +188,7 @@ public class MainController {
 	public String loginPage() {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		if (authentication == null || authentication instanceof AnonymousAuthenticationToken) {
+			
 			return "login";
 		}
 
@@ -214,9 +217,10 @@ public class MainController {
 	}
 
 	@RequestMapping("/dashboard/services")
-	public String dashboardServices(Model model) {
+	public String dashboardServices(Model model,RedirectAttributes redirect) {
 		List<Service> ser1 = ser1Repo.findAll();
 		model.addAttribute("ser1", ser1);
+		redirect.addFlashAttribute("success", "");
 		return "dashboard/services";
 	}
 
@@ -235,7 +239,7 @@ public class MainController {
 	}
 
 	@PostMapping("/register")
-	public String registerUserAccount(User user, Model model) {
+	public String registerUserAccount(User user, Model model, RedirectAttributes ra) {
 
 		List<User> user1 = repo2.findByUsername(user.getUsername());
 		if (user1.isEmpty()) {
@@ -249,7 +253,7 @@ public class MainController {
 			model.addAttribute("error", "Email này đã được đăng ký");
 			return "register";
 		}
-
+		ra.addFlashAttribute("message","Đăng ký tài khoản thành công!");
 		// service.save(user);
 		return "login";
 	}
@@ -320,8 +324,10 @@ public class MainController {
 	
 	public boolean checkLoggedIn() {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		if (authentication == null || authentication instanceof AnonymousAuthenticationToken)
+		if (authentication == null || authentication instanceof AnonymousAuthenticationToken) {
+			
 			return false;
+			}
 		return true;
 	}
 

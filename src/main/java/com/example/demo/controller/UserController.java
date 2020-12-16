@@ -15,13 +15,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.dao.Customer;
 import com.example.demo.dao.Service;
 import com.example.demo.dao.Staff;
+import com.example.demo.dao.User;
 import com.example.demo.service.CustomerRepository;
 import com.example.demo.service.ServiceRepository;
 import com.example.demo.service.StaffRepository;
+import com.example.demo.service.UserRepository;
 
 @Controller
 public class UserController {
@@ -31,7 +34,8 @@ public class UserController {
 	
 	@Autowired
 	private ServiceRepository serRepo;
-	
+	@Autowired
+	private UserRepository repo;
 
 	@Autowired
 	private CustomerRepository cusRepo;
@@ -39,28 +43,49 @@ public class UserController {
 	int id_staff;
 
 	@RequestMapping("dashboard/staff/delete/{id_staff}")
-	public String delete(@PathVariable(name = "id_staff") int id) {
+	public String delete(@PathVariable(name = "id_staff") int id,RedirectAttributes ra) {
 		Staff staff = staffRepo.findById(id);
 		staff.setStatus(0);
 		staffRepo.save(staff);
+		ra.addFlashAttribute("message","Xóa nhân viên thành công!");
 		return "redirect:/dashboard/staff";
 	}
 	@RequestMapping("dashboard/customer/delete/{id_cus}")
-	public String deleteCus(@PathVariable(name = "id_cus") int id) {
+	public String deleteCus(@PathVariable(name = "id_cus") int id, RedirectAttributes ra) {
 		cusRepo.deleteById(id);
 		return "redirect:/dashboard/customer";
 	}
 	
+	@RequestMapping("/dashboard/account/delete/{id}")
+	public String KhoaUser(@PathVariable(name = "id") int id, RedirectAttributes ra) {
+		User user =repo.findById(id);
+		user.setStatus(0);
+		repo.save(user);
+		ra.addFlashAttribute("message","Khoá tài khoản thành công!");
+		return "redirect:/dashboard/account/";
+	}
+	
+	@RequestMapping("/dashboard/account/open/{id}")
+	public String OpenUser(@PathVariable(name = "id") int id, RedirectAttributes ra) {
+		User user =repo.findById(id);
+		user.setStatus(1);
+		repo.save(user);
+		ra.addFlashAttribute("message","Kích hoạt thành công!");
+		return "redirect:/dashboard/account";
+	}
 	@RequestMapping("dashboard/services/delete/{id_ser}")
-	@Transactional
-	public String deleteService(@PathVariable(name = "id_ser") int id) {
-		serRepo.deleteById(id);
+	public String deleteService(@PathVariable(name = "id_ser") int id, RedirectAttributes ra) {
+		
+		Service ser = serRepo.findById(id);
+		ser.setStatus(0);
+		serRepo.save(ser);
 		//serRepo.deleteById(id);
+		ra.addFlashAttribute("message","Xóa dịch vụ thành công!");
 		return "redirect:/dashboard/services";
 	}
 
 	@GetMapping("/dashboard/staff/export")
-	public void exportExcel(HttpServletResponse rp) throws IOException, InvalidFormatException {
+	public void exportExcel(HttpServletResponse rp, RedirectAttributes ra) throws IOException, InvalidFormatException {
 		rp.setContentType("application/octet-stream");
 		DateFormat curDate = new SimpleDateFormat("dd-MM-YYYY");
 		String curDateTime = curDate.format(new Date());
@@ -71,11 +96,12 @@ public class UserController {
 	 	List<Staff> staffList = staffRepo.findAll();
 		ExcelExporter ex = new ExcelExporter(staffList);
 		ex.export(rp);
+		ra.addFlashAttribute("message","Export thành công!");
 
 	}
 	
 	@GetMapping("/dashboard/services/export")
-	public void exportExcelService(HttpServletResponse rp) throws IOException, InvalidFormatException {
+	public void exportExcelService(HttpServletResponse rp, RedirectAttributes ra) throws IOException, InvalidFormatException {
 		rp.setContentType("application/octet-stream");
 		DateFormat curDate = new SimpleDateFormat("dd-MM-YYYY");
 		String curDateTime = curDate.format(new Date());
@@ -86,11 +112,11 @@ public class UserController {
 	 	List<Service> service = serRepo.findAll();
 		ServiceExport ex = new ServiceExport(service);
 		ex.export(rp);
-
+		ra.addFlashAttribute("message","Export thành công!");
 	}
 	
 	@GetMapping("/dashboard/customer/export")
-	public void ExportCus(HttpServletResponse rp) throws IOException, InvalidFormatException {
+	public void ExportCus(HttpServletResponse rp, RedirectAttributes ra) throws IOException, InvalidFormatException {
 		rp.setContentType("application/octet-stream");
 		DateFormat curDate = new SimpleDateFormat("dd-MM-YYYY");
 		String curDateTime = curDate.format(new Date());
@@ -101,7 +127,7 @@ public class UserController {
 	 	List<Customer> cus = cusRepo.findAll();
 	 	ExportCus ex = new ExportCus(cus);
 		ex.export(rp);
-
+		ra.addFlashAttribute("message","Export thành công!");
 	}
 
 }

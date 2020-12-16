@@ -118,6 +118,13 @@
 			<!-- /.navbar-static-side -->
 		</nav>
 
+
+		<div class="notify">
+					<div th:if="${message}">
+						<span id="snackbar"  style="color: white;font-size:16px;" th:text="${message}"></span>
+					</div>
+				</div>
+
 		<div id="page-wrapper">
 			<div class="container-fluid">
 
@@ -169,22 +176,39 @@
 											th:text="${#dates.format(staffList.dateWorking_Start, 'dd-MM-yyyy')}"></td>
 
 
-										<td><a th:href="@{'/editStaff/'+ ${staffList.id_staff}}"
-											class="btn btn-info">Sửa</a> <a data-target="#myModal"
+										<td>
+										<div  class="dropdown">
+												<button  class="btn btn-default dropdown-toggle"
+													type="button" id="menu1" data-toggle="dropdown">
+													Hành động <span class="caret"></span>
+												</button>
+												<ul class="dropdown-menu" role="menu"
+													aria-labelledby="menu1">
+													<li role="presentation"><a th:href="@{'/editStaff/'+ ${staffList.id_staff}}"
+											>Cập nhật</a></li>
+													<li role="presentation"><a th:href="@{'/dashboard/ql_lichkham/'+ ${staffList.id_staff}}"
+											>Lịch làm việc</a></li>
+													<li role="presentation"><a data-target="#myModal"
 											th:attr="data-target='#myModal'+${staffList.id_staff}"
-											class="btn btn-danger" data-toggle="modal">Xóa</a></td>
+											 data-toggle="modal">Xóa</a></li>
+													<!-- -->
+												</ul>
+											</div>
+										
+										
+											</td>
 										<div th:id="myModal+${staffList.id_staff}" class="modal fade">
 											<div class="modal-dialog modal-confirm">
 												<div class="modal-content">
 													<div class="modal-header flex-column">
 
 														<h4 class="modal-title w-100">Bạn có chắc chắn muốn
-															xóa lịch làm việc này chứ ?</h4>
+															xóa nhân viên này?</h4>
 														<button type="button" class="close" data-dismiss="modal"
 															aria-hidden="true">&times;</button>
 													</div>
 													<div class="modal-body">
-														<p>Bạn có muốn lịch làm việc này chứ ?</p>
+														<p>Bạn có muốn xóa nhân viên này chứ ?</p>
 													</div>
 													<div class="modal-footer justify-content-center">
 														<a
@@ -253,10 +277,55 @@
 													"search" : "Tìm kiếm:",
 												}
 											});
+							var x = document.getElementById("snackbar");
+							  x.className = "show";
+							  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
 
 						});
 	</script>
 	<style>
+	
+#snackbar {
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -125px;
+  background-color: #58a9e9;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  top: 50px;
+  font-size: 17px;
+}
+
+#snackbar.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+  from {top: 0; opacity: 0;} 
+  to {top: 50px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {top: 0; opacity: 0;}
+  to {top: 50px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {top: 50px; opacity: 1;} 
+  to {top: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {top: 50px; opacity: 1;}
+  to {top: 0; opacity: 0;}
+}
 /* 	.dataTables_filter, .dataTables_info , .dataTables_length { display: none; } */
 .table-responsive {
 	overflow-x: hidden;

@@ -13,7 +13,7 @@ import com.example.demo.service.UserRepository;;
 
 
 @Controller
-public class LoadUser {
+public class LoadUserController {
 	
 	@Autowired
 	private UserRepository userRepo;

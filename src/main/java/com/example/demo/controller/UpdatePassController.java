@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.Exception.UserNotFoundException;
 import com.example.demo.configure.Utility;
@@ -79,7 +80,7 @@ public class UpdatePassController {
 //	}
 	
 	@PostMapping("/changePass")
-	public String processUpdatePassword(HttpServletRequest rq,Model model) {
+	public String processUpdatePassword(HttpServletRequest rq,Model model, RedirectAttributes ra) {
 	
 		Authentication authentication =SecurityContextHolder.getContext().getAuthentication();
 		User user =repo.findByUsernameIs(authentication.getName());
@@ -92,6 +93,7 @@ public class UpdatePassController {
 		user.setReset_password_token(null);
 
 		repo2.save(user);
+		ra.addFlashAttribute("message","Đổi mật khẩu thành công!");
 		return "login";
 	}
 	

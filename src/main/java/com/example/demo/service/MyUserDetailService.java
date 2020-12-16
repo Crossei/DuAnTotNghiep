@@ -33,7 +33,7 @@ public class MyUserDetailService implements UserDetailsService {
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		Optional<User> user = repo.findByUsername(username);
+		Optional<User> user = repo.findByUsernameAndStatus(username, 1);
 
 		user.orElseThrow(() -> new UsernameNotFoundException("Not found" + username));
 
@@ -42,7 +42,7 @@ public class MyUserDetailService implements UserDetailsService {
 
 	public User save(User userDto) {
 		User user = new User(userDto.getName(), userDto.getUsername(), passwordEncoder.encode(userDto.getPassword()),
-				"ROLE_USER");
+				"ROLE_USER",1);
 		return repo.save(user);
 	}
 

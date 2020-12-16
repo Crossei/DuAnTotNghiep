@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.thymeleaf.engine.AttributeName;
 
 import com.example.demo.dao.Service;
 import com.example.demo.dao.Staff;
@@ -107,6 +108,7 @@ public class AddServiceController {
 	    NumberFormat currencyVN = NumberFormat.getCurrencyInstance(localeVN);
 	    String str1 = currencyVN.format(price);
 	    System.out.println("Số " + price + " sau khi định dạng = " + str1);
+	    service.setStatus(1);
 	    if(str1.length()!=0) {
 	    	service.setPrice(str1);
 	    }else {
@@ -122,7 +124,7 @@ public class AddServiceController {
 			if(!Files.exists(uploadPath)) {
 				Files.createDirectories(uploadPath);
 			}
-			ra.addFlashAttribute("message","oki");
+			
 			
 			try(InputStream inputStream =multipartFile.getInputStream()){
 			Path filePath = uploadPath.resolve(fileName);
@@ -130,16 +132,15 @@ public class AddServiceController {
 			}catch(IOException e) {
 				throw new IOException("lỗi"+ fileName);
 			}}else {
-				service.setImage("1.png");
+				service.setImage("tay-trang-rang.jpg");
 				ser1Repo.save(service);
 			}
-			
-			
+			ra.addFlashAttribute("message","Thêm dịch vụ thành công!");
 		return "redirect:/dashboard/services";
 	}
 	@RequestMapping(value="/save",method =  RequestMethod.POST)
 	public String saveService(@ModelAttribute(name="service") Service service, Model model,
-		@RequestParam("image") String image,
+		@RequestParam("image") String image, 
 		@RequestParam("price") float price,
 			RedirectAttributes ra,@RequestParam("fileImage") MultipartFile multipartFile) throws IOException, ParseException{
 		
@@ -148,6 +149,7 @@ public class AddServiceController {
 	    NumberFormat currencyVN = NumberFormat.getCurrencyInstance(localeVN);
 	    String str1 = currencyVN.format(price);
 	    System.out.println("Số " + price + " sau khi định dạng = " + str1);
+	    service.setStatus(1);
 	    if(str1.length()!=0) {
 	    	service.setPrice(str1);
 	    }else {
@@ -163,7 +165,7 @@ public class AddServiceController {
 			if(!Files.exists(uploadPath)) {
 				Files.createDirectories(uploadPath);
 			}
-			ra.addFlashAttribute("message","oki");
+			
 			
 			try(InputStream inputStream =multipartFile.getInputStream()){
 			Path filePath = uploadPath.resolve(fileName);
@@ -174,8 +176,8 @@ public class AddServiceController {
 				service.setImage(image);
 				ser1Repo.save(service);
 			}
-			
-			
+			ra.addFlashAttribute("message","Cập nhật dịch vụ thành công!");
+		
 		return "redirect:/dashboard/services";
 	}
 	

@@ -7,7 +7,7 @@
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-<title>Đặt lịch</title>
+<title>Lịch sử đặt lịch</title>
 <meta content="" name="descriptison">
 <meta content="" name="keywords">
 
@@ -17,7 +17,7 @@
 <!-- Bootstrap -->
 
 <!-- Custom stlylesheet -->
-<link type="text/css" rel="stylesheet" href="assets/css/stylef.css" />
+<!-- <link type="text/css" rel="stylesheet" href="assets/css/stylef.css" /> -->
 <link
 	href="http://bizweb.dktcdn.net/100/167/865/themes/222134/assets/favicon.png?1568890987754"
 	rel="icon">
@@ -25,7 +25,7 @@
 	href="http://bizweb.dktcdn.net/100/167/865/themes/222134/assets/favicon.png?1568890987754"
 	rel="apple-touch-icon">
 
-<link rel="stylesheet" href="assets/css/stylec.css">
+<!-- <link rel="stylesheet" href="assets/css/stylec.css"> -->
 <link rel="stylesheet" href="assets/css/trangchu.css">
 <link
 	href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
@@ -65,7 +65,8 @@
 						<ul>
 							<li><a href="/">Trang chủ</a></li>
 							<li><a href="/#about">Giới thiệu</a></li>
-							<li class="drop-down"><a href="/#services">Dịch vụ</a>
+							<li class="drop-down"><a href="home.html#services">Dịch
+									vụ</a>
 								<ul>
 									<li><a href="/nhakhoatongquat">Nha khoa tổng quát</a></li>
 									<li><a href="/rangtreem">Răng trẻ em</a></li>
@@ -77,7 +78,6 @@
 									<li><a href="/dieutrinoinha">Điều trị nội nha</a></li>
 									<li><a href="/cayghep">Cấy ghép Implant</a></li>
 									<li><a href="/phauthuatrm">Phẩu thuật răng miệng</a></li>
-<<<<<<< HEAD
 								</ul></li>
 							<li><a href="/#portfolio">Các bác sĩ</a></li>
 							<li th:if="${@mainController.checkLoggedIn() == true} "><a
@@ -100,10 +100,11 @@
 							<li id="drop-down" class="drop-down"><span
 								style="font-size: 15px; color: white;">[[${#request.userPrincipal.principal.username}]]</span>
 								<ul>
-									<li><a href="/profile2">Thông tin tài khoản</a></li>
+									<li><a href="/acc-info">Thông tin tài khoản</a></li>
 									<li><a href="/lichsudat">Lịch sử đặt lịch</a></li>
 									<li><a href="/changePass">Đổi mật khẩu</a></li>
 									<li><a href="/logout">Đăng xuất</a></li>
+
 								</ul></li>
 
 						</ul>
@@ -114,116 +115,120 @@
 		</div>
 	</header>
 	<!-- End Header -->
-
+				<div class="notify">
+					<div th:if="${message}">
+						<span id="snackbar"  style="color: white;font-size:16px;" th:text="${message}"></span>
+					</div>
+				</div>
 
 	<section id="breadcrumbs" class="breadcrumbs">
 		<div class="container">
 			<ol>
 				<li><a href="/">Trang chủ</a></li>
-				<li>Hồ sơ</li>
+				<li>Đặt lịch</li>
 			</ol>
-			<h2>Thông tin chi tiết</h2>
+			<h2>Lịch sử đặt lịch</h2>
 		</div>
 	</section>
 
-	<section id="services" class="services">
-		<div id="page-wrapper">
-			<div
-				class="kt-grid kt-grid--desktop kt-grid--ver kt-grid--ver-desktop kt-app">
+	<section class="inner-page">
+		<div class="section-center">
+			<div class="container">
+				<form class="">
+					<table class="table table-hover" id="myTable">
+						<thead style="text-align: center">
+							<th>STT</th>
+							<th>Tên dịch vụ</th>
+							<th>Bác sĩ khám</th>
+							<th>Ngày đặt</th>
+							<th>Giờ bắt đầu</th>
+							<th>Giá tiền</th>
+							<th>Trạng thái</th>
+							<th>Hành động</th>
+						</thead>
+						<tbody class="text-justify" id="myTable">
+							<th:block th:each="lichSuDatList,stt : ${lichSuDatList}">
+								<tr style="text-align: center">
+					
+										<td th:text="${stt.count}"></td>
+										<td th:text="${lichSuDatList.tendv}"></td>
+										<td  th:text="${lichSuDatList.tenbs}"></td>
+										<td
+											th:text="${#dates.format(lichSuDatList.ngayDat, 'dd-MM-yyyy')}"></td>
+										<td></td>
+										<td th:text="${lichSuDatList.giaTien}"></td>
 
-				<div id="form1"
-					style="width: 50%; background-color: #f8f8f8; border-radius: 10px 10px 10px 10px; margin: 0 auto; box-shadow: 0 2px 6px #4a4747; border: 1px solid #dddada;">
-					<div class="row">
-						<div class="col-xl-12">
-							<div>
-
-								<form action="#" th:action="@{/saveCus}" th:object="${customer}"
-									method="post" enctype="multipart/form-data">
-									<div class="kt-portlet__body">
-										<div>
-											<div>
-
-
-
-												<h1 style="text-align: center; padding: 20px">Thông tin
-													cá nhân</h1>
-												<br>
-
-
-												<div class="form-group" style="display: none;">
-													<label for="name">Id nhân viên</label> <input type="text"
-														style="display: none;" class="form-control"
-														th:field="*{id_cus}" readonly="readonly">
-												</div>
-												<div class="form-group" style="display: none;">
-													<label for="name">Id người dùng</label> <input type="text"
-														style="width: 30%; display: none;" class="form-control"
-														th:field="*{id_user}" readonly="readonly">
-												</div>
-												<div class="form-group" style="display: none;">
-													<label for="name">Id người dùng</label> <input type="text"
-														style="width: 30%; display: none;" class="form-control"
-														th:field="*{image}" readonly="readonly">
-												</div>
-
-
-												<img th:src="*{'/assets/img/'+{image}}" id="thumbnail"
-													alt="Ảnh nhân viên"
-													style="display: block; margin-left: auto; margin-right: auto; width: 50%;" />
-
-
-												<input type="file" name="fileImage" id="fileImage"
-													accept="image/png,image/ipeg"
-													style="margin: 0 auto; display: none; padding: 25px 0 0 0" /> <br />
-
-												<div style="padding: 10px 30px 10px 30px; ">
-													<label class="col-xl-3 col-lg-3 col-form-label"
-													style="font-size: 15px; font-weight: 600">Họ và tên:</label> 
-													<input type="text" id="ten" th:field="*{name_cus}"
-													style="font-size: 13px;" readonly="readonly"
-													required autofocus placeholder="Họ và tên"
-													class="form-control">
-												</div>
+										<td th:if="${lichSuDatList.trangThai == 0}"><span> Chờ
+												xác thực</span></td>
+										<td th:if="${lichSuDatList.trangThai == 1}"><span>Đã
+												nhận lịch đặt</span></td>
+												<td th:if="${lichSuDatList.trangThai == 2}"><span>Tái khám</span></td>
+												<td th:if="${lichSuDatList.trangThai == 3}"><span>Đã hoàn thành</span></td>
+										<td th:if="${lichSuDatList.trangThai == 1 ||  lichSuDatList.trangThai == 3 }">
+											<a style="font-size: 15px" class="btn btn-warning" 
+											th:href="@{'/lichkham/thaydoi/'+${lichSuDatList.id_detail}}">
+												<img src="/assets/img/edit-pencil.png"
 												
+												 />
+											</a>
+											<button style="font-size: 15px" class="btn btn-danger"
+												disabled="true">
+												<img src="/assets/img/cancel.png" />
+											</button>
+										</td>
+										<td th:if="${lichSuDatList.trangThai == 0 || lichSuDatList.trangThai == 2}">
+											
+											<a style="font-size: 15px" class="btn btn-warning" 
+											th:href="@{'/lichkham/thaydoi/'+${lichSuDatList.id_detail}}">
+												<img src="/assets/img/edit-pencil.png"
 												
-												<div style="padding: 5px 30px 10px 30px">
-												<label class="col-xl-3 col-lg-3 col-form-label"
-													style="font-size: 15px; font-weight: 600">Email:</label> 
-												<input type="text" th:field="*{email}" readonly="readonly"
-													style="font-size: 13px;"
-													class="form-control">
-												</div>
-												
-												<div style="padding: 10px 30px 30px 30px">
-												<label class="col-xl-3 col-lg-3 col-form-label"
-													style="font-size: 15px; font-weight: 600">Số điện thoại:</label> 
-												<input type="text" id="sdt" th:field="*{phone}"
-													style="font-size: 13px;" readonly="readonly"
-													placeholder="Số điện thoại" class="form-control">
+												 />
+											</a>
+											<button type="button" class="btn btn-danger"
+												th:attr="data-target='#myModal'+${lichSuDatList.id_detail}"
+												data-toggle="modal" data-target="#myModal">
+												<img src="/assets/img/cancel.png" />
+											</button>
+											<div class="modal fade"
+												th:id="myModal+${lichSuDatList.id_detail}">
+												<div class="modal-dialog">
+													<div class="modal-content">
+														<div class="modal-header flex-column">
+
+															<h4 class="modal-title w-100">Bạn có chắc chắn muốn
+																hủy lịch đặt này chứ ?</h4>
+															<button type="button" class="close" data-dismiss="modal"
+																aria-hidden="true">&times;</button>
+														</div>
+														<div class="modal-body">
+															<p>Bạn có muốn hủy lịch này chứ ?</p>
+														</div>
+														<div class="modal-footer justify-content-center">
+															<a
+																th:href="@{/lichsudat/delete/{id}(id=${lichSuDatList.id_detail})}"
+																type="button" class="btn btn-danger">Xác nhận</a>
+															<button type="button" class="btn btn-secondary"
+																data-dismiss="modal">Hủy bỏ</button>
+														</div>
+													</div>
 												</div>
 											</div>
-
-										</div>
-									</div>
-									<input id="binh" type="button" class="btn btn-primary"
-										style="display: block; margin-left: auto; margin-right: auto; margin-bottom: 40px"
-										value="Cập nhật thông tin" onClick="hien()">
-									<button id="chien"
-										style="display: none; margin-left: auto; margin-right: auto; margin-bottom: 40px"
-										class="btn btn-primary" type="submit">Lưu</button>
-								</form>
-							</div>
-						</div>
-
-					</div>
-				</div>
+										</td>
+								
+								</tr>
+							</th:block>
+						</tbody>
+					</table>
+				</form>
 
 			</div>
-			<!-- /#page-wrapper -->
-
 		</div>
-		<!-- End #main -->
+
 	</section>
+
+
+	<!-- End #main -->
+
 	<!-- footer -->
 	<div id="footer11">
 		<div id="footer-1">
@@ -295,66 +300,60 @@
 	<!-- Template Main JS File -->
 	<script src="assets/js/main.js"></script>
 	<script type="text/javascript">
-		$(document)
-				.ready(
-						function() {
-							$('#fileImage').change(function() {
-								showImageThumbnail(this);
-							});
-							$("#myInput")
-									.on(
-											"keyup",
-											function() {
-												var value = $(this).val()
-														.toLowerCase();
-												$("#myTable tr")
-														.filter(
-																function() {
-																	$(this)
-																			.toggle(
-																					$(
-																							this)
-																							.text()
-																							.toLowerCase()
-																							.indexOf(
-																									value) > -1)
-																});
-											});
-						});
-
-		function showImageThumbnail(fileInput) {
-			file = fileInput.files[0];
-			reader = new FileReader();
-
-			reader.onload = function(e) {
-				$('#thumbnail').attr('src', e.target.result);
-			};
-			reader.readAsDataURL(file);
-		};
-
-		function code() {
-			// check trong
-			var name = document.getElementById("ten").value.trim();
-
-			if (name.trim().length == 0) {
-				alert("Mời bạn nhập họ và tên");
-				return false;
-			}
-
-			return true;
-		};
-		function hien() {
-			document.getElementById("chien").style.display = "block";
-			document.getElementById("binh").style.display = "none";
-			document.getElementById("fileImage").style.display = "block";
-			$('#fileImage').prop('type', "file");
-			$('#ten').prop('readonly', false);
-			$('#diachi').prop('readonly', false);
-			$('#sdt').prop('readonly', false);
-
-		}
+	$(document)
+	.ready(
+			function() {
+		
+			var x = document.getElementById("snackbar");
+			  x.className = "show";
+			  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+			
+		});
 	</script>
+	<style>
+	
+#snackbar {
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -125px;
+  background-color: #58a9e9;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  top: 80px;
+  font-size: 17px;
+}
 
+#snackbar.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+  from {top: 0; opacity: 0;} 
+  to {top: 80px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {top: 0; opacity: 0;}
+  to {top: 80px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {top: 80px; opacity: 1;} 
+  to {top: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {top: 80px; opacity: 1;}
+  to {top: 0; opacity: 0;}
+}
+</style>
 </body>
 
 </html>
