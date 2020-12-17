@@ -152,6 +152,30 @@
 									class="form-control" type="date" id="txtDate"
 									th:field="*{date}" required>
 							</div>
+							<div class="form-group">
+								<span class="form-label">Chọn giờ khám: </span>
+								<select class="form-control" th:field=*{gioKham} required>
+									<option th:value="${'9:00'}">9:00</option>
+									<option th:value="${'9:30'}">9:30</option>
+									<option th:value="${'10:00'}">10:00</option>
+									<option th:value="${'10:30'}">10:30</option>
+									<option th:value="${'11:00'}">11:00</option>
+									<option th:value="${'11:30'}">11:30</option>
+									<option th:value="${'13:00'}">13:00</option>
+									<option th:value="${'13:30'}">13:30</option>
+									<option th:value="${'14:00'}">14:00</option>
+									<option th:value="${'14:30'}">14:30</option>
+									<option th:value="${'15:00'}">15:00</option>
+									<option th:value="${'15:30'}">15:30</option>
+									<option th:value="${'16:00'}">16:00</option>
+									<option th:value="${'16:30'}">16:30</option>
+									<option th:value="${'17:00'}">17:00</option>
+									<option th:value="${'17:30'}">17:30</option>
+									<option th:value="${'18:00'}">18:00</option>
+									<option th:value="${'18:30'}">18:30</option>
+									<option th:value="${'19:00'}">19:00</option>
+								</select>
+							</div>
 							<input class="btnSelect" id="chien" type="button"
 								value="Chọn dịch vụ" onClick="hien()">
 							<div style="font-size: 15px;" class="table-responsive" id="hide">
@@ -169,7 +193,7 @@
 									<tbody>
 										<th:block th:each="ser1 : ${serList}">
 											<tr>
-												<td><input type="radio" id="item"
+												<td><input type="checkbox" id="item" class="checkbox"
 													th:value="${ser1.id_ser}" th:field="*{id_ser}" /></td>
 												<td style="text-align: justify" th:text="${ser1.name}"></td>
 												<td th:text="${ser1.price}"></td>
@@ -265,7 +289,12 @@
 	<script src="assets/js/main.js"></script>
 	<script type="text/javascript">
 		document.getElementById("hide").style.display = "none";
-
+		$('.checkbox').on('change', function() {
+			   if($('.checkbox:checked').length > 3) {
+			       this.checked = false;
+			       alert('Bạn chỉ được chọn tối đa 3 dịch vụ');
+			   }
+			});
 		function hien() {
 			var x = document.getElementById("hide");
 			if (x.style.display === "none") {

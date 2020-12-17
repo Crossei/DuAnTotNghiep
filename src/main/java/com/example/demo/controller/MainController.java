@@ -165,16 +165,20 @@ public class MainController {
 		cusRepo.save(cus);
 		DatLichDTO datLich1 = new DatLichDTO();
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat formatterGIO = new SimpleDateFormat("HH:mm");
 		Date date = formatter.parse(datLich.getDate());
+		Date gio = formatterGIO.parse(datLich.getGioKham());
 
 		Booking book = new Booking(cus.getId_cus());
 		bokRepo.save(book);
 
 		List<Booking> bookList = bokRepo.findAll();
 		Booking bookItem = bookList.get(bookList.size() - 1);
-
-		BookingDetail bookDetail = new BookingDetail(1, datLich.getId_ser(), bookItem.getId_booking(), date, 0, 1);
-		bokDetailRepo.save(bookDetail);
+		List<Integer> datLichSer = datLich.getId_ser();
+		for (Integer integer : datLichSer) {
+			BookingDetail bookDetail = new BookingDetail(1, integer, bookItem.getId_booking(), date,gio, 0, 1);
+			bokDetailRepo.save(bookDetail);
+		}
 		ra.addFlashAttribute("message","Đặt lịch thành công!");
 		return "home";
 	}

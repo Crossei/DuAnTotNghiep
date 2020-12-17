@@ -1,9 +1,11 @@
 package com.example.demo.dto;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.annotation.ManagedBean;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
 
@@ -12,7 +14,18 @@ public class DatLichDTO {
 	private String sdt;
 	private String email;
 	private String date;
-	private int id_ser;
+	private List<Integer> id_ser;
+	@DateTimeFormat(pattern = "HH:mm")
+	private String gioKham;
+	
+	
+	
+	public String getGioKham() {
+		return gioKham;
+	}
+	public void setGioKham(String gioKham) {
+		this.gioKham = gioKham;
+	}
 	public String getName() {
 		return name;
 	}
@@ -38,10 +51,10 @@ public class DatLichDTO {
 	public void setDate(String date) {
 		this.date = date;
 	}
-	public int getId_ser() {
+	public List<Integer> getId_ser() {
 		return id_ser;
 	}
-	public void setId_ser(int id_ser) {
+	public void setId_ser(List<Integer> id_ser) {
 		this.id_ser = id_ser;
 	}
 		
