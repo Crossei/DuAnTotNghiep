@@ -294,7 +294,10 @@
 
 		$('.checkbox').on('change', function() {
 			var total = 0;
-
+			if ($('.checkbox:checked').length > 3) {
+				this.checked = false;
+				alert('Bạn chỉ được chọn tối đa 3 dịch vụ');
+			}
 			$('input:checkbox:checked').each(function() {
 				var price = $(this).closest('tr').find("td:eq(2)").text();
 				var lastChar = price.substr(0, price.length - 1);
@@ -305,10 +308,7 @@
 
 			$("#total").html(total+ " VNĐ");
 			// 			      console.log(total);
-			if ($('.checkbox:checked').length > 3) {
-				this.checked = false;
-				alert('Bạn chỉ được chọn tối đa 3 dịch vụ');
-			}
+			
 
 		});
 
