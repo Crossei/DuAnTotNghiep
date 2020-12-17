@@ -34,7 +34,9 @@ public class securityConfiguaration extends WebSecurityConfigurerAdapter {
 			.authorizeRequests()
 			.antMatchers("/static/css/**","/static/img/**","/static/js/**"
 					,"/static/bootstrap/css/**","/static/bootstrap/js/**","/templates/assets/img/**").permitAll()
-			.antMatchers("/dashboard","/dashboard/**").hasAnyRole("ADMIN","BACSI","LETAN")
+			.antMatchers("/dashboard/quanlylichkham").hasRole("BACSI")
+			.antMatchers("/dashboard/lichkham","/dashboard/quanlylichkham/").hasRole("LETAN")
+			.antMatchers("/dashboard","/dashboard/**").hasAnyRole("ADMIN","QUANLY")	
 			.antMatchers("/user").hasAnyRole("ADMIN","USER")
 			.antMatchers("/").permitAll()
 			.and()
