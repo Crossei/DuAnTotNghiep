@@ -105,7 +105,7 @@ public class DatLich1NguoiController {
 			for (BookingDetail bookingDetail : bookD) {				
 				Staff staffD = staffRepo.findById(bookingDetail.getId_staff());					
 				String gio1 = fomaterGio.format(bookingDetail.getTime_start());		
-				if(gio1.equalsIgnoreCase(rq.getParameter("getThoiGian"))) {
+				if(gio1.equalsIgnoreCase(rq.getParameter("getThoiGian")) && bookingDetail.getActive() == 1 &&  bookingDetail.getStatus() == 0) {
 				staffList1.remove(staffD);
 				}
 			}
