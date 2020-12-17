@@ -53,8 +53,9 @@
 			<version>5.2.5.RELEASE</version>
 		</dependency>
 
-		<!-- <dependency> <groupId>org.thymeleaf.extras</groupId> <artifactId>thymeleaf-extras-springsecurity5</artifactId> 
-			</dependency> -->
+		 <dependency> <groupId>org.thymeleaf.extras</groupId> 
+		 <artifactId>thymeleaf-extras-springsecurity5</artifactId> 
+			</dependency> 
 		<dependency>
 			<groupId>org.webjars.bower</groupId>
 			<artifactId>startbootstrap-sb-admin-2</artifactId>

@@ -32,16 +32,31 @@ public class SimpleAuthenticationSuccessHandler implements AuthenticationSuccess
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-			} else if(authority.getAuthority().equals("ROLE_ADMIN") 
-					|| authority.getAuthority().equals("ROLE_BACSI") 
-					|| authority.getAuthority().equals("ROLE_LETAN")) {
+			} else if(authority.getAuthority().equals("ROLE_ADMIN")) {
 				try {
 					redirectStrategy.sendRedirect(arg0, arg1, "/dashboard");
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-			} else {
+			}else if(authority.getAuthority().equals("ROLE_BACSI") ) {
+				try {
+					redirectStrategy.sendRedirect(arg0, arg1, "/dashboard/quanlylichkham");
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}else if( authority.getAuthority().equals("ROLE_LETAN")) {
+				try {
+					redirectStrategy.sendRedirect(arg0, arg1, "/dashboard/lichkham");
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			
+			
+			else {
 	            throw new IllegalStateException();
 	        }
 		});

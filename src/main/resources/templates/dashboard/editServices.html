@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	xmlns:th="http://www.thymeleaf.org">
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
 <meta charset="utf-8" />
@@ -86,24 +87,32 @@ input: {
 
 			<div class="navbar-default sidebar" role="navigation">
 				<div class="sidebar-nav navbar-collapse">
-					<ul class="nav" id="side-menu">
+					 <ul class="nav" id="side-menu">
+                    
+                    <li sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_QUANLY')">
+                        <a href="/dashboard/"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                    </li>
+                    <li sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_QUANLY')">
+                        <a href="/dashboard/staff/"><i class="fa fa-user"></i> Quản lý nhân viên</a>
+                    </li>
+                   
+                    <li sec:authorize="hasAnyRole('ROLE_BACSI','ROLE_LETAN')">
+                        <a href="/dashboard/quanlylichkham/"><i class="fa fa-user"></i> Quản lý lịch làm việc</a>
+                    </li>
+                    <li sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_QUANLY')">
+                        <a href="/dashboard/services/"><i class="fa fa-user"></i> Quản lý dịch vụ</a>
+                    </li>
+                    <li sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_QUANLY')">
+                        <a href="/dashboard/customer/"><i class="fa fa-user"></i> Quản lý khách hàng</a>
+                    </li>
+                    <li sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_QUANLY')">
+                        <a href="/dashboard/account/"><i class="fa fa-user"></i> Quản lý tài khoản</a>
+                    </li>
+                    <li sec:authorize="hasAnyRole('ROLE_LETAN','ROLE_QUANLY')">
+                        <a href="/dashboard/lichkham/"><i class="fa fa-user"></i>Tiếp nhận lịch khám</a>
+                    </li>
 
-						<li><a href="/dashboard/"><i
-								class="fa fa-dashboard fa-fw"></i> Dashboard</a></li>
-						<li><a href="/dashboard/staff/"><i class="fa fa-user"></i>
-								Quản lý nhân viên</a></li>
-						<li><a href="/dashboard/quanlylichkham/"><i
-								class="fa fa-user"></i> Quản lý lịch làm việc</a></li>
-						<li><a href="/dashboard/services/"><i class="fa fa-user"></i>
-								Quản lý dịch vụ</a></li>
-						<li><a href="/dashboard/customer/"><i class="fa fa-user"></i>
-								Quản lý khách hàng</a></li>
-						<li><a href="/dashboard/account/"><i class="fa fa-user"></i>
-								Quản lý tài khoản</a></li>
-						<li><a href="/dashboard/lichkham/"><i class="fa fa-user"></i>Tiếp
-								nhận lịch khám</a></li>
-
-					</ul>
+                </ul>
 				</div>
 				<!-- /.sidebar-collapse -->
 			</div>
