@@ -37,7 +37,7 @@ public class securityConfiguaration extends WebSecurityConfigurerAdapter {
 			.antMatchers("/dashboard/quanlylichkham").hasRole("BACSI")
 			.antMatchers("/dashboard/lichkham","/dashboard/quanlylichkham/").hasRole("LETAN")
 			.antMatchers("/dashboard","/dashboard/**").hasAnyRole("ADMIN","QUANLY")	
-			.antMatchers("/user").hasAnyRole("ADMIN","USER")
+			.antMatchers("/user").hasAnyRole("ADMIN","USER","QUANLY")
 			.antMatchers("/").permitAll()
 			.and()
 			.csrf().disable()
