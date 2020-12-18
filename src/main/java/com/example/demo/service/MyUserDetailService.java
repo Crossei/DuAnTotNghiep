@@ -34,7 +34,7 @@ public class MyUserDetailService implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		Optional<User> user = repo.findByUsernameAndStatus(username, 1);
-
+		
 		user.orElseThrow(() -> new UsernameNotFoundException("Not found" + username));
 
 		return user.map(MyUserDetail::new).get();

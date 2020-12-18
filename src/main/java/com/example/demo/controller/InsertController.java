@@ -298,7 +298,7 @@ public String saveStaff(@ModelAttribute(name="staff") AddStaffDTO staffDto, Mode
 				cusRepo.save(cus);
 			}
 			
-			ra.addFlashAttribute("message","Thêm khách hàng thành công!");
+			ra.addFlashAttribute("message","Cập nhật thông tin thành công!");
 		return "redirect:/";
 	}
 	

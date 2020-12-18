@@ -100,7 +100,7 @@
 				<div class="sidebar-nav navbar-collapse">
 					 <ul class="nav" id="side-menu">
                     
-                    <li sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_QUANLY')">
+                    <li sec:authorize="hasAnyRole('ROLE_QUANLY')">
                         <a href="/dashboard/"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                     </li>
                     <li sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_QUANLY')">
@@ -120,7 +120,7 @@
                         <a href="/dashboard/account/"><i class="fa fa-user"></i> Quản lý tài khoản</a>
                     </li>
                     <li sec:authorize="hasAnyRole('ROLE_LETAN','ROLE_QUANLY')">
-                        <a href="/dashboard/lichkham/"><i class="fa fa-user"></i>Tiếp nhận lịch khám</a>
+                        <a href="/dashboard/lichkham"><i class="fa fa-user"></i>Tiếp nhận lịch khám</a>
                     </li>
 
                 </ul>

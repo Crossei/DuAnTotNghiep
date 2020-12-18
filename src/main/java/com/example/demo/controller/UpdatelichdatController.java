@@ -128,8 +128,12 @@ public class UpdatelichdatController {
 		
 		getBookDetail.setId_staff(Integer.parseInt(bookItem.getTenbs()));
 		getBookDetail.setDateWorking_Start(bookItem.getNgayDat());
-		 java.sql.Time sqlTime = new java.sql.Time(bookItem.getGioBatDau().getTime());
-		getBookDetail.setTime_start(sqlTime);
+		
+		if(bookItem.getGioBatDau() != null) {
+			java.sql.Time sqlTime = new java.sql.Time(bookItem.getGioBatDau().getTime());
+		 getBookDetail.setTime_start(sqlTime);
+		}
+		
 		
 		bokDetailRepo.save(getBookDetail);
 		ra.addFlashAttribute("message","Cập nhật lịch đặt thành công!");
