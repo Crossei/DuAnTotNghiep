@@ -144,7 +144,8 @@ public class TiepNhanLichKhamController {
 	}
 	
 	@RequestMapping("/dashboard/lichkham/thaydoi/{id_bookingDetail}")
-	public ModelAndView thayDoiLich(@PathVariable(name="id_bookingDetail") Integer id_bookingDetail,Model model
+	public ModelAndView thayDoiLich(@PathVariable(name="id_bookingDetail") Integer id_bookingDetail,
+			Model model
 			, RedirectAttributes ra) {
 		ModelAndView mav= new ModelAndView("dashboard/editLichKham");
 		TiepNhanLichKhamDTO tiepNhanItem = new TiepNhanLichKhamDTO();
@@ -160,7 +161,7 @@ public class TiepNhanLichKhamController {
 				Service ser = ser1Repo.findById(bookItem.getId_service());
 				tiepNhanItem.setTendv(ser.getName());
 				tiepNhanItem.setGiaTien(ser.getPrice());		
-
+				
 				tiepNhanItem.setGioBatDau(tiepNhanItem.getGioBatDau());
 				tiepNhanItem.setNgayDat(bookItem.getDateWorking_Start());
 
@@ -177,7 +178,6 @@ public class TiepNhanLichKhamController {
 				break;
 			}
 		}
-		
 		
 		mav.addObject("bookItem",tiepNhanItem);
 		return mav;

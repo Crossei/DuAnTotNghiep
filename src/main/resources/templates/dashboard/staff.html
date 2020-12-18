@@ -104,7 +104,7 @@
                         <a href="/dashboard/staff/"><i class="fa fa-user"></i> Quản lý nhân viên</a>
                     </li>
                    
-                    <li sec:authorize="hasAnyRole('ROLE_BACSI','ROLE_LETAN')">
+                    <li sec:authorize="hasAnyRole('ROLE_BACSI','ROLE_LETAN','ROLE_ADMIN','ROLE_QUANLY')">
                         <a href="/dashboard/quanlylichkham/"><i class="fa fa-user"></i> Quản lý lịch làm việc</a>
                     </li>
                     <li sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_QUANLY')">

@@ -10,7 +10,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<title>Dashboard - Quản lý nhân viên</title>
+<title>Dashboard - Quản lý lịch làm việc</title>
 
 <!-- Bootstrap Core CSS -->
 <link
@@ -104,8 +104,8 @@
                         <a href="/dashboard/staff/"><i class="fa fa-user"></i> Quản lý nhân viên</a>
                     </li>
                    
-                    <li sec:authorize="hasAnyRole('ROLE_BACSI','ROLE_LETAN')">
-                        <a href="/dashboard/quanlylichkham"><i class="fa fa-user"></i> Quản lý lịch làm việc</a>
+                    <li sec:authorize="hasAnyRole('ROLE_BACSI','ROLE_LETAN','ROLE_ADMIN','ROLE_QUANLY')">
+                        <a href="/dashboard/quanlylichkham/"><i class="fa fa-user"></i> Quản lý lịch làm việc</a>
                     </li>
                     <li sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_QUANLY')">
                         <a href="/dashboard/services/"><i class="fa fa-user"></i> Quản lý dịch vụ</a>
@@ -117,7 +117,7 @@
                         <a href="/dashboard/account/"><i class="fa fa-user"></i> Quản lý tài khoản</a>
                     </li>
                     <li sec:authorize="hasAnyRole('ROLE_LETAN','ROLE_QUANLY')">
-                        <a href="/dashboard/lichkham"><i class="fa fa-user"></i>Tiếp nhận lịch khám</a>
+                        <a href="/dashboard/lichkham/"><i class="fa fa-user"></i>Tiếp nhận lịch khám</a>
                     </li>
 
                 </ul>
