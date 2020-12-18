@@ -139,11 +139,12 @@
                         </div>
                     </div>
                 </div>
+                <h2>[[${thongBao}]]</h2>
                 <br>
                 <div class="card-body">
-                    <div class="table-responsive">
+                    <div th:if="${hien}" class="table-responsive">
                     <h4>Ngày 30/11/2020 - 05/12/2020</h4>
-                        <table class="table table-bordered" cellspacing="0" >
+                        <table  class="table table-bordered" cellspacing="0" >
                             <thead>
                             <tr  class="text-center">
               					<th style="width: 50px;">Ca</th>

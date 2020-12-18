@@ -50,75 +50,56 @@ public class LichLamViecController {
 
 	@RequestMapping("/dashboard/quanlylichkham")
 	public String quanLyLichKhamCalendar(Model model) throws ParseException {
+		List<WorkingCalendar> workCheck1 = workRepo.findByIdstaffAndStatus(layIDStaff(), 1);
+		List<WorkingCalendar> workLay0 = workRepo.findByIdstaffAndStatus(layIDStaff(), 0);
 		Calendar dateNow = Calendar.getInstance();
 		dateNow.setTime(new Date());
 		int getToday = dateNow.get(Calendar.DAY_OF_WEEK);
-		if (getToday == 5 || getToday == 6) {
-			model.addAttribute("dangKyLich", true);
+		
+		
+		if (getToday == 6 || getToday == 7) {			
+			model.addAttribute("dangKyLich", true);		
 		} else {
 			model.addAttribute("dangKyLich", false);
 		}
-
-		List<WorkingCalendar> workWeek = workRepo.findByStatusAndIdstaff(1, layIDStaff());
-
-		model.addAttribute("workWeek", workWeek);
-		List<BookingDetail> bookIDstaff = bookDettailRepo.findByIdstaffAndActiveAndStatus(layIDStaff(), 1, 1);
-		WorkingCalendar workStart = workWeek.get(0);
-		WorkingCalendar workEnd = workWeek.get(workWeek.size() - 1);
-		List<ShowLichDTO> showLichdtoCa1 = new ArrayList<>();
-		List<ShowLichDTO> showLichdtoCa2 = new ArrayList<>();
-		List<ShowLichDTO> showLichdtoCa3 = new ArrayList<>();
-
-		for (BookingDetail getBooked : bookIDstaff) {
-			if (!workStart.getDateWorking().after(getBooked.getDateWorking_Start())
-					&& !workEnd.getDateWorking().before(getBooked.getDateWorking_Start())) {
-				ShowLichDTO layLich = new ShowLichDTO();
-				Service ser = serRepo.findById(getBooked.getId_service());
-				Calendar date = Calendar.getInstance();
-				date.setTime(getBooked.getDateWorking_Start());
-
-				if (soSanhTime(getBooked.getTime_start(), "8:30:00", "12:00:00")) {
-					layLich.setGetDate(date.get(Calendar.DAY_OF_WEEK));
-					layLich.setTendv(ser.getName());
-					layLich.setThoiGianDat(getBooked.getTime_start());
-					showLichdtoCa1.add(layLich);
-
-				} else if (soSanhTime(getBooked.getTime_start(), "13:00:00", "17:00:00")) {
-					layLich.setGetDate(date.get(Calendar.DAY_OF_WEEK));
-					layLich.setTendv(ser.getName());
-					layLich.setThoiGianDat(getBooked.getTime_start());
-					showLichdtoCa2.add(layLich);
-				} else if (soSanhTime(getBooked.getTime_start(), "18:00:00", "19:30:00")) {
-					layLich.setGetDate(date.get(Calendar.DAY_OF_WEEK));
-					layLich.setTendv(ser.getName());
-					layLich.setThoiGianDat(getBooked.getTime_start());
-					showLichdtoCa3.add(layLich);
-				}
+		
+		if(!workCheck1.isEmpty()) { //check neu = 1 -> da dang ky
+			model.addAttribute("dangKyLich", false);
+		}
+		
+		if (getToday == 1 && !workLay0.isEmpty()) {
+			for (WorkingCalendar workingCalendar : workLay0) {
+				workRepo.delete(workingCalendar);
 			}
 		}
-
-		model.addAttribute("ca1", showLichdtoCa1);
-		model.addAttribute("ca2", showLichdtoCa2);
-		model.addAttribute("ca3", showLichdtoCa3);
-
+		List<WorkingCalendar> workWeek = workRepo.findByIdstaff(layIDStaff());
+		if(workWeek.isEmpty()) {
+			model.addAttribute("thongBao", "Bạn chưa đăng ký lịch khám");
+			model.addAttribute("hien", false);
+			return "dashboard/calender_kham";
+		}
+		model.addAttribute("workWeek", workWeek);
+		model.addAttribute("hien", true);
 		return "dashboard/calender_kham";
 	}
 
 	@RequestMapping("/dashboard/quanlylichkham/dangky")
 	public String dangKyLich(Model model) {
 
-		final DateFormat dateFormat1 = new SimpleDateFormat("dd/MM/YYYY");
+		final DateFormat dateFormat1 = new SimpleDateFormat("dd/MM/yyyy");
 
 		DangKyLichLamViecDTO dangKy = new DangKyLichLamViecDTO();
 		model.addAttribute("dangKy", dangKy);
 		Calendar dateMonday = Calendar.getInstance();
 		dateMonday.setTime(new Date()); // Now use today date.
+		
 		int getToday = dateMonday.get(Calendar.DAY_OF_WEEK);
-		if (getToday == 6) {
+		if (getToday == 6) { 
 			dateMonday.add(Calendar.DATE, 3);
 		} else if (getToday == 7) {
 			dateMonday.add(Calendar.DATE, 2);
 		}
+		
 		Date date = dateMonday.getTime();
 		Calendar dateFuture = Calendar.getInstance();
 		dateFuture.setTime(date); // Now use today date.
@@ -126,6 +107,7 @@ public class LichLamViecController {
 
 		dangKy.setDangKyNgay(dateMonday.getTime());
 		model.addAttribute("dateNow", dateFormat1.format(dateMonday.getTime()));
+		
 		model.addAttribute("dateFuture", dateFormat1.format(dateFuture.getTime()));
 
 		return "dashboard/register_work";
@@ -148,7 +130,13 @@ public class LichLamViecController {
 		Calendar dateMonday = Calendar.getInstance();
 		dateMonday.setTime(dangKy.getDangKyNgay()); // Now use today date.
 		dt = dateMonday.getTime();
-
+		// set = 0 
+		List<WorkingCalendar> workCheck = workRepo.findByIdstaffAndStatus(layIDStaff(), 1);
+		for (WorkingCalendar workingCalendar : workCheck) {
+			workingCalendar.setStatus(0);
+			workRepo.save(workingCalendar);
+		}
+		
 		WorkingCalendar work2 = new WorkingCalendar(staff.getId_staff(), thu2.contains(1) == true ? 1 : 0,
 				thu2.contains(2) == true ? 1 : 0, thu2.contains(3) == true ? 1 : 0, dt, 1);
 		workRepo.save(work2);

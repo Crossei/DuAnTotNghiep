@@ -7,5 +7,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.example.demo.dao.WorkingCalendar;
 
 public interface WorkingCalendarRepository extends JpaRepository<WorkingCalendar, Integer> {
-		List findByStatusAndIdstaff(int s,int i);   
+		List findByIdstaff(int i);   
+		List findByIdstaffAndStatus(int s,int i);  
 }
