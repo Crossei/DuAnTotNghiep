@@ -20,6 +20,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.Exception.UserNotFoundException;
 import com.example.demo.configure.Utility;
@@ -116,7 +117,7 @@ public class ForgotPasswordController {
 	}
 	
 	@PostMapping("/reset-password")
-	public String processResetPassword(HttpServletRequest rq,Model model) {
+	public String processResetPassword(HttpServletRequest rq,Model model, RedirectAttributes ra) {
 		String token = rq.getParameter("token");
 		String pss = rq.getParameter("password");
 		
@@ -126,7 +127,8 @@ public class ForgotPasswordController {
 		}else {
 			service.updatePassword(user, pss);	
 		}
-		return "login";
+		ra.addFlashAttribute("message","Đổi mật khẩu thành công!");
+		return "redirect:/login";
 	}
 	
 }

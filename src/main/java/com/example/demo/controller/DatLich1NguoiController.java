@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.dao.Booking;
 import com.example.demo.dao.BookingDetail;
@@ -125,7 +126,7 @@ public class DatLich1NguoiController {
 	}
 	
 	@PostMapping("/datlich2")
-	public String datLich2(HttpServletRequest rq) throws ParseException {
+	public String datLich2(HttpServletRequest rq, RedirectAttributes ra) throws ParseException {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		Customer cus = cusRepo.findByEmail(authentication.getName());
 		Booking book = new Booking(cus.getId_cus());
@@ -142,6 +143,7 @@ public class DatLich1NguoiController {
 		
 		BookingDetail bookDetail = new BookingDetail(Integer.parseInt(rq.getParameter("btn2")), Integer.parseInt(rq.getParameter("btn3")), bookItem.getId_booking(), date,gio, 0, 1);
 		bokDetailRepo.save(bookDetail);
+		ra.addFlashAttribute("message","Đặt lịch thành công!");
 		return "redirect:/datlich2";
 	}
 	

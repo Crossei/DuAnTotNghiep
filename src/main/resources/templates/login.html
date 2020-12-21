@@ -40,7 +40,7 @@
 						<h2>ĐĂNG NHẬP</h2>
 						<br /> 
 						<div>
-					<p class="text-danger">[[${error}]]</p>
+					<p class="text-danger" id="hide" style="display:none;">[[${error}]]</p>
 				</div>
 						<label for="email">Email</label>
 						<div class="login-content">
@@ -67,7 +67,7 @@
 					</div>
 					
 
-					<button type="submit" class="btn btn-primary">Đăng nhập</button>
+					<button type="submit" class="btn btn-primary" >Đăng nhập</button>
 					<a class="btn btn-primary" href="/register">Đăng ký</a>
 					<a class="btn btn-primary" href="/">Về trang chủ</a>
 				</form>
@@ -89,7 +89,7 @@
 				  x.className = "show";
 				  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
 
-			
+				  
 			// check trong
 			function code() {
 			var email = document.getElementById("email").value.trim();
@@ -115,6 +115,10 @@
 			return true;
 		};
 			});
+	function hien() {
+		  document.getElementById("hide").style.display ="block";
+		  
+	  }
 	</script>
 	<style>
 	

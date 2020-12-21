@@ -194,7 +194,7 @@ public class MainController {
 			bokDetailRepo.save(bookDetail);
 		}
 		ra.addFlashAttribute("message","Đặt lịch thành công!");
-		return "home";
+		return "redirect:/";
 	}
 
 	@RequestMapping("/about")
@@ -206,7 +206,7 @@ public class MainController {
 	public String loginPage() {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		if (authentication == null || authentication instanceof AnonymousAuthenticationToken) {
-			
+		
 			return "login";
 		}
 
