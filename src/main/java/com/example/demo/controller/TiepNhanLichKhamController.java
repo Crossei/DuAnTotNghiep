@@ -93,7 +93,11 @@ public class TiepNhanLichKhamController {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		User user = repo.findByUsernameIs(authentication.getName());
 		String userRole = user.getRoles();
-		Date dateNow = new Date();
+		Date dt = new Date();
+		Calendar c = Calendar.getInstance(); 
+		c.setTime(dt); 
+		c.add(Calendar.DATE, -1);
+		dt = c.getTime();
 		
 		List<TiepNhanLichKhamDTO> tiepNhanList = new ArrayList<>();
 		List<BookingDetail> bookingItems = bokDetailRepo.findAll();
@@ -125,7 +129,7 @@ public class TiepNhanLichKhamController {
 					}
 					tiepNhanList.add(tiepNhapLich);
 					if(userRole.equalsIgnoreCase("ROLE_LETAN")) {
-						if(!dateNow.before(bookList.getDateWorking_Start())) {
+						if(!dt.before(bookList.getDateWorking_Start())) {
 							tiepNhanList.remove(tiepNhapLich);
 						}
 					}
@@ -140,6 +144,10 @@ public class TiepNhanLichKhamController {
 	public String xacNhanDatLich(@PathVariable(name = "id_detail") int id,Model model, RedirectAttributes ra) {
 		BookingDetail bookItem = new BookingDetail();
 		bookItem = bokDetailRepo.findById(id);
+		if(bookItem.getActive() == 0) {
+			ra.addFlashAttribute("messageError","Lịch khám này đã bị hủy bỏ!");
+			return "redirect:/dashboard/lichkham";
+		}
 		bookItem.setStatus(1);
 		bokDetailRepo.save(bookItem);
 		ra.addFlashAttribute("message","Xác nhận lịch khám thành công!");
@@ -150,6 +158,10 @@ public class TiepNhanLichKhamController {
 	public String huyDatLich(@PathVariable(name = "id_detail") int id,Model model, RedirectAttributes ra) {
 		BookingDetail bookItem = new BookingDetail();
 		bookItem = bokDetailRepo.findById(id);
+		if(bookItem.getActive() == 0) {
+			ra.addFlashAttribute("messageError","Lịch khám này đã bị hủy bỏ!");
+			return "redirect:/dashboard/lichkham";
+		}
 		bookItem.setActive(0);
 		bokDetailRepo.save(bookItem);
 		ra.addFlashAttribute("message","Hủy lịch thành công!");
@@ -162,6 +174,11 @@ public class TiepNhanLichKhamController {
 		ModelAndView mav= new ModelAndView("dashboard/editLichKham");
 		TiepNhanLichKhamDTO tiepNhanItem = new TiepNhanLichKhamDTO();
 		BookingDetail bookItem =bokDetailRepo.getOne(id_bookingDetail);
+		if(bookItem.getActive() == 0) {
+			ra.addFlashAttribute("messageError","Lịch khám này đã bị hủy bỏ!");
+			ModelAndView mav1= new ModelAndView("redirect:/dashboard/lichkham");	
+			return mav1;
+		}else {
 		List<Booking> bookingCus = bokRepo.findAll();
 		
 		for(Booking bookCusList : bookingCus) {
@@ -194,6 +211,7 @@ public class TiepNhanLichKhamController {
 		
 		mav.addObject("bookItem",tiepNhanItem);
 		return mav;
+		}
 	}
 	
 	@PostMapping("/dashboard/lichkham/luu")

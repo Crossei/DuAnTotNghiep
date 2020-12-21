@@ -134,6 +134,9 @@
 					<div th:if="${message}">
 						<span id="snackbar"  style="color: white;font-size:16px;" th:text="${message}"></span>
 					</div>
+					<div th:if="${messageError}">
+						<span id="error"  style="color: white;font-size:16px;" th:text="${messageError}"></span>
+					</div>
 				</div>
 
 		<div id="page-wrapper">
@@ -274,6 +277,9 @@
 			 var x = document.getElementById("snackbar");
 			  x.className = "show";
 			  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+			  var err = document.getElementById("error");
+			  err.className = "show";
+			  setTimeout(function(){ err.className = err.className.replace("show", ""); }, 5000);
 		});
 		
 	</script>
@@ -296,6 +302,28 @@
 }
 
 #snackbar.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+#error {
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -125px;
+  background-color: #fc9ab6;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  top: 50px;
+  font-size: 17px;
+}
+
+#error.show {
   visibility: visible;
   -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
   animation: fadein 0.5s, fadeout 0.5s 2.5s;
