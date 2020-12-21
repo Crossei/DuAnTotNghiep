@@ -10,5 +10,5 @@ import com.example.demo.dao.Staff;
 public interface StaffRepository extends JpaRepository<Staff, Integer> {
 		Staff findByIduser(int id);
 		Staff findById(int id);
-		List findByRole(int r);
+		List findByRoleAndLevel(int r,int l);
 }

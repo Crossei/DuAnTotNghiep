@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -10,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.catalina.mapper.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -87,6 +90,11 @@ public class TiepNhanLichKhamController {
 
 	@RequestMapping("/dashboard/lichkham")
 	public String nhanLichKham(Model model) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		User user = repo.findByUsernameIs(authentication.getName());
+		String userRole = user.getRoles();
+		Date dateNow = new Date();
+		
 		List<TiepNhanLichKhamDTO> tiepNhanList = new ArrayList<>();
 		List<BookingDetail> bookingItems = bokDetailRepo.findAll();
 		List<Booking> bookingCus = bokRepo.findAll();
@@ -103,7 +111,7 @@ public class TiepNhanLichKhamController {
 					Service ser = ser1Repo.findById(bookList.getId_service());
 					tiepNhapLich.setTendv(ser.getName());
 					tiepNhapLich.setGiaTien(ser.getPrice());
-				
+					
 					tiepNhapLich.setStatus(bookList.getStatus());
 					tiepNhapLich.setGioBatDau(bookList.getTime_start());
 					tiepNhapLich.setNgayDat(bookList.getDateWorking_Start());
@@ -116,6 +124,11 @@ public class TiepNhanLichKhamController {
 						tiepNhapLich.setTenbs(staf.getName_staff());
 					}
 					tiepNhanList.add(tiepNhapLich);
+					if(userRole.equalsIgnoreCase("ROLE_LETAN")) {
+						if(!dateNow.before(bookList.getDateWorking_Start())) {
+							tiepNhanList.remove(tiepNhapLich);
+						}
+					}
 				}
 			}
 		}

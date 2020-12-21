@@ -30,10 +30,17 @@ public class Staff {
 	private Date dateWorking_Start;
 	private Integer status;
 	private Integer role;
+	private Integer level;
 	
 	
 	
 
+	public Integer getLevel() {
+		return level;
+	}
+	public void setLevel(Integer level) {
+		this.level = level;
+	}
 	@Override
 	public String toString() {
 		return "Staff [id_staff=" + id_staff + "]";

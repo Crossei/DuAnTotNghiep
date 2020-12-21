@@ -26,9 +26,16 @@ public class Service  implements Serializable{
 	private String dsc ; 	
 	private String price;
 	private Integer status;
+	private Integer level;
 	
 	
 	
+	public Integer getLevel() {
+		return level;
+	}
+	public void setLevel(Integer level) {
+		this.level = level;
+	}
 	public String getImage() {
 		return image;
 	}
