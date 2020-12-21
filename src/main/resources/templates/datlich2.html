@@ -138,9 +138,9 @@
 										<h6 th:text="${serList.name}"></h6>
 										<p th:text="${serList.price}"></p>
 										<br> <input type="radio" th:value="${serList.id_ser}"
-											name="btn3" th:id="|id${stt.index}|" class="button1">
-										<label th:for="|id${stt.index}|" class="label1"
-											style="position: absolute; bottom: 10px;">Chọn</label>
+											onchange="chonDichVu()" name="btn3" th:id="|id${stt.index}|"
+											class="button1"> <label th:for="|id${stt.index}|"
+											class="label1" style="position: absolute; bottom: 10px;">Chọn</label>
 									</div>
 
 
@@ -163,7 +163,7 @@
 									<th:block th:each="ngayDat,stts : ${ngayDatList}">
 										<input type="radio"
 											th:value="${#dates.format(ngayDat ,'dd-MM-yyyy')}" name="btn"
-											onChange="chonBacsi()" th:id="|bt${stts.index}|"
+											onChange="chonNgayKham()" th:id="|bt${stts.index}|"
 											class="button">
 										<label th:for="|bt${stts.index}|" class="label"
 											th:text="${#dates.format(ngayDat ,'dd-MM-yyyy')}"
@@ -242,10 +242,9 @@
 						<h5>Chọn bác sĩ</h5>
 						<br />
 
-						<div id="showBs" style="display: table; text-align: center; clear: both;">
-							
-						</div>
-						
+						<div id="showBs"
+							style="display: table; text-align: center; clear: both;"></div>
+
 						<!-- <th:block th:each="bacsi,stt:${staffList}">
 								<input type="radio" th:value="${bacsi.id_staff}" name="btn2"
 									th:id="|bs${stt.index}|" class="button2">
@@ -312,8 +311,9 @@
 		<hr />
 
 		<div class="form-btn" style="text-align: center; margin-top: 30px;">
-			<a role="button" class="sub" id="prevBtn" onclick="nextPrev(-1)">Trở về</a> 
-			<a role="button" class="sub" id="nextBtn" onclick="nextPrev(1)">Tiếp tục</a>
+			<a role="button" class="sub" id="prevBtn" onclick="nextPrev(-1)">Trở
+				về</a> <a role="button" class="sub" id="nextBtn" onclick="nextPrev(1)">Tiếp
+				tục</a>
 		</div>
 
 		<div
@@ -394,7 +394,8 @@
 	<script th:inline="javascript">
 	var getThoiGian;
 	var getNgayDat;
-	function chonBacsi() {
+	var getDichVu;
+	function chonNgayKham() {
 		var url      = window.location.href; 	
 		var ngayDats = document.getElementsByName('btn');
 		
@@ -406,6 +407,19 @@
 		        break;
 		    }
 		}			
+		ajx();
+	}
+	function chonDichVu() {
+		var dichVus = document.getElementsByName('btn3');
+		
+		for (var i = 0, length = dichVus.length; i < length; i++) {
+		    if (dichVus[i].checked) {
+		        // do whatever you want with the checked radio
+		       	getDichVu = dichVus[i].value;			
+		        // only one radio can be logically checked, don't check the rest
+		        break;
+		    }
+		}
 		ajx();
 	}
 	
@@ -421,6 +435,7 @@
 		
 		
 		function ajx() {
+			console.log(getDichVu);
 			console.log(getNgayDat);
 			console.log(getThoiGian);
 		if(getThoiGian != null && getNgayDat != null){
@@ -430,7 +445,8 @@
 	            url :  "/getListBacSi",
 	            data : {
 	            	getThoiGian : getThoiGian,
-	            	getNgayDat : getNgayDat
+	            	getNgayDat : getNgayDat,
+	            	getDichVu : getDichVu
 	            },
 	            dataType : 'json',
 	            timeout : 100000,
@@ -460,8 +476,7 @@
 	
 	</script>
 	<style>
-	
-	</style>
+</style>
 </body>
 
 </html>
