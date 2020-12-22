@@ -178,10 +178,10 @@
 							<div class="col-10">
 								<h5>Chọn giờ khám</h5>
 								<div class="button-group-1">
-									<input type="radio" th:value="${'9:00'}" name="btn1" id="bton1"
+									<input type="radio" th:value="${'9:00'}"  name="btn1" id="bton1"
 										class="button1"> <label for="bton1" class="label1"
 										style="margin-right: 15px;">9h00</label> <input type="radio"
-										th:value="${'10:00'}" name="btn1" id="bton2" class="button1">
+										th:value="${'10:00'}"  name="btn1" id="bton2" class="button1">
 									<label for="bton2" class="label1" style="margin-right: 15px;">10h00</label>
 
 									<input type="radio" th:value="${'11:00'}" name="btn1"
@@ -234,7 +234,7 @@
 										style="margin-right: 55px;">17h30</label> <input type="radio"
 										th:value="${'18:30'}" name="btn1" id="bton19" class="button1">
 									<label for="bton19" class="label1" style="margin-right: 15px;">18h30</label>
-									<input type="radio" th:value="${'19:30'}" name="btn1"
+									<input type="radio" th:value="${'19:30'}" name="btn1" 
 										id="bton20" class="button1"> <label for="bton20"
 										class="label1">19h30</label>
 
@@ -402,15 +402,53 @@
 	function chonNgayKham() {
 		var url      = window.location.href; 	
 		var ngayDats = document.getElementsByName('btn');
-		
+		var gio = document.getElementsByName('btn1');
+		var gio2 = [];
+		for(var j = 0, length = gio.length; j < length;j++){
+			gio2.push(gio[j].value);
+		}
 		for (var i = 0, length = ngayDats.length; i < length; i++) {
+			 if (ngayDats[i].checked && i != 0){
+				 $("input[name*='btn1']").prop("disabled", false);  
+	 				$('.label1').css("background","#009961"); 	 	
+			 }
 		    if (ngayDats[i].checked) {
 		        // do whatever you want with the checked radio
 		       	 getNgayDat = ngayDats[i].value;			
 		        // only one radio can be logically checked, don't check the rest
 		        break;
 		    }
-		}			
+		}
+		if(ngayDats[0].checked ){
+			 $("input[name*='btn1']").prop("checked", false);
+		 $.ajax({		    
+	            type : "GET",
+	            contentType : "application/json",
+	            url :  "/getListGio",
+	            data : {            	
+	            	getNgayDat : getNgayDat
+	            },
+	            dataType : 'json',
+	            timeout : 100000,
+	            success : function(data) {
+	                console.log("SUCCESS: ", data);
+	                var lap = 0;
+					var lap2 = 1;
+	                $.each(gio2, function(index1, i) {                	                	          		 
+	 	                	if(!(data.includes(i))){
+	 	                		$("#bton"+(lap+1)).prop("disabled", "disabled");  
+				 				$('label[for="bton'+(lap+1)+'"]').css("background","#72ccab"); 	 			 				 
+	 	                	}else{
+	 	                		data.splice(data.indexOf(i),1);	 	                
+	 	                	} 	            	             
+	                	 lap++;
+	                });
+	            },
+	            error : function(e) {
+	                console.log("ERROR: ", e);
+	            }     
+	        });
+		}
 		ajx();
 	}
 	function chonDichVu() {
@@ -463,15 +501,12 @@
 	                	var html = '<input type="radio" value="'+bacsi.id_staff+'" id="bs'+index+'" class="button2" name="btn2"/> <label for="bs'+index+'" class="label2"><img src="/assets/img/'+bacsi.image+'" class="img-fluid" title="'+bacsi.name_staff+'"/> </label> ';
 	                	//$data.append(html).fadeIn(1000);
 	                	$(html).hide().appendTo("#showBs").fadeIn(1000);
-	                	$("#bs"+index).css("display", "none");
-	                	
-	                });
-	                
+	                	$("#bs"+index).css("display", "none");                	
+	                });   
 	            },
 	            error : function(e) {
 	                console.log("ERROR: ", e);
-	            }
-	            
+	            }     
 	        });
 	    }}
 	
