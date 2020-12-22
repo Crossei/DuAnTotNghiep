@@ -170,7 +170,7 @@
 										<td th:text="${userList.status} eq '1' ? 'Đang kích hoạt' : 'Khóa'"></td>
 										<td th:text="${userList.roles}"></td>
 
-										<td>
+										<td >
 
 
 											<div  class="dropdown">
@@ -179,12 +179,12 @@
 													Hành động <span class="caret"></span>
 												</button>
 												<ul class="dropdown-menu" role="menu"
-													aria-labelledby="menu1">
+													aria-labelledby="menu1" >
 													
-													<li role="presentation"><a data-target="#myModal1"
+													<li role="presentation" ><a th:if="${(userList.status == 0)}" data-target="#myModal1"
 											th:attr="data-target='#myModal1'+${userList.id}" id="kichhoat"
 											 data-toggle="modal">Kích hoạt</a></li>
-													<li role="presentation"><a data-target="#myModal" id="khoa"
+													<li role="presentation"><a th:if="${(userList.status == 1)}" data-target="#myModal" id="khoa"
 											th:attr="data-target='#myModal'+${userList.id}"
 											 data-toggle="modal">Khóa</a></li>
 													<!-- -->

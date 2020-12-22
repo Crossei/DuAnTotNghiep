@@ -76,7 +76,7 @@ public class InsertController {
 public String saveStaff(@ModelAttribute(name="staff") AddStaffDTO staffDto, Model model,
 		
 			RedirectAttributes ra,@RequestParam("fileImage") MultipartFile multipartFile) throws IOException, ParseException{
-		staffDto.setLevel(1);
+			staffDto.setLevel(1);
 			String fileName= StringUtils.cleanPath(multipartFile.getOriginalFilename());
 			if(fileName.length()!=0) {
 			staffDto.setImage(fileName);
