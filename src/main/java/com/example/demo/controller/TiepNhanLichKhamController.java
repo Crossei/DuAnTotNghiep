@@ -67,24 +67,68 @@ public class TiepNhanLichKhamController {
 	private WorkingCalendarRepository workRepo;
 	
 	
-	@GetMapping(value = "/getSearchResult")
+	@GetMapping("/getListBacSiEdit")
 	@ResponseBody
-    public   String homePage(HttpServletRequest request) throws ParseException {
-		String bacsi = request.getParameter("bacsi");
-		String ngayDat = request.getParameter("ngayDat");
-		SimpleDateFormat fomater = new SimpleDateFormat("yyyy-MM-dd");
-		Date date = fomater.parse(ngayDat);
-		WorkingCalendar workingValidate = workRepo.findByIdstaffAndDateWorking(Integer.parseInt(bacsi), date);
-		System.out.println(workingValidate);
+	public String layDSBacSi(HttpServletRequest rq)  throws ParseException {
+		Integer ca1 = null,ca2 = null,ca3 = null;
+		SimpleDateFormat fomater = new SimpleDateFormat("dd-MM-yyyy");
+		SimpleDateFormat fomaterGio = new SimpleDateFormat("HH:mm");
+		Date date = fomater.parse(rq.getParameter("getNgayDat"));
+		Date gio = fomaterGio.parse(rq.getParameter("getThoiGian"));
+		
+		if(soSanhTime(gio,"8:59","11:31")) {
+			ca1 = 1;
+		} else if(soSanhTime(gio,"12:59","17:31")) {
+			ca2 = 1;
+		} else if(soSanhTime(gio,"17:59","19:31"))  {
+			ca3 = 1;
+		}
+	
+		List<Staff> staffList1 = new ArrayList<>();
+		List<WorkingCalendar> workList = workRepo.findByDateWorking(date);
+		if(!workList.isEmpty()) {
+		List<Staff> staffList = staffRepo.findByRole(2);
+			for (Staff staff : staffList) {
+				staffList1.add(staff);												   // TH : staff ko có workingCalendar => van add vao staffList1
+				for (WorkingCalendar workingCalendar : workList) { // TH : workingCalendar của staff = 1 thì add vào staffList1
+					if(workingCalendar.getId_staff() == staff.getId_staff()) {
+					if( ca1 != null && workingCalendar.getShift1() != ca1 ) {
+						staffList1.remove(staff);
+					}else if(ca2 != null && workingCalendar.getShift2() != ca2 ) {
+						staffList1.remove(staff);
+					}else if(ca3 != null && workingCalendar.getShift3() != ca3) {
+						staffList1.remove(staff);
+					}
+					}
+				}			
+			}
+		
+			
+		}else {			
+		staffList1 =  staffRepo.findByRole(2);
+		};
+	
+		List<BookingDetail> bookD = bokDetailRepo.findByDateworkingstart(date);
+		
+		if(!bookD.isEmpty()) {
+			for (BookingDetail bookingDetail : bookD) {				
+				Staff staffD = staffRepo.findById(bookingDetail.getId_staff());					
+				String gio1 = fomaterGio.format(bookingDetail.getTime_start());		
+				if(gio1.equalsIgnoreCase(rq.getParameter("getThoiGian"))) {
+				staffList1.remove(staffD);
+				}
+			}
+		}
+		
 		ObjectMapper mapper = new ObjectMapper();
 		String ajaxResponse = "";
 		try {
-			ajaxResponse = mapper.writeValueAsString(workingValidate);
+			ajaxResponse = mapper.writeValueAsString(staffList1);
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
 		}
        return ajaxResponse;
-    }
+	}
 	
 
 
@@ -227,5 +271,19 @@ public class TiepNhanLichKhamController {
 		bokDetailRepo.save(getBookDetail);
 		ra.addFlashAttribute("message","Xếp lịch thành công!");
 		return "redirect:/dashboard/lichkham";
+	}
+	public boolean soSanhTime(Date dateDv, String caBatDau, String caKetthuc) throws ParseException {
+		Date time1 = new SimpleDateFormat("HH:mm").parse(caBatDau);
+		Calendar calendar1 = Calendar.getInstance();
+		calendar1.setTime(time1);
+
+		Date time2 = new SimpleDateFormat("HH:mm").parse(caKetthuc);
+		Calendar calendar2 = Calendar.getInstance();
+		calendar2.setTime(time2);
+
+		if (dateDv.after(calendar1.getTime()) && dateDv.before(calendar2.getTime())) {
+			return true;
+		}
+		return false;
 	}
 }
