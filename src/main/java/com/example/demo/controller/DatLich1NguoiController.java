@@ -57,6 +57,40 @@ public class DatLich1NguoiController {
 	@Autowired
 	private WorkingCalendarRepository workRepo;
 	
+	@GetMapping("/getListGio")
+	@ResponseBody
+	public String layDSNgayHienTai(HttpServletRequest rq)  throws ParseException {
+		String ngay = rq.getParameter("getNgayDat");
+		SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+		SimpleDateFormat formatGio1 = new SimpleDateFormat("HH:mm");
+		String[] gioLamViec = {"9:00","9:30","10:00","10:30","11:00","11:30","13:00","13:30","14:00"
+				,"14:30","15:00","15:30","16:00","16:30","17:00","17:30","18:00","18:30","19:00","19:30"}; 
+		
+		Date date = format.parse(ngay);
+		Date today = format.parse(format.format(new Date() ));
+		Date curTime = new Date();  //Lay giờ hiện tại
+		String curTime2 = formatGio1.format(curTime);
+		Date curTime3 = formatGio1.parse(curTime2);
+		List<String> gioList = new ArrayList<>();
+		if(date.equals(today)) {
+			for (String string : gioLamViec) {
+				SimpleDateFormat formatGio = new SimpleDateFormat("HH:mm");
+				Date gioTrong = formatGio.parse(string);
+				if(!gioTrong.before(curTime3)) {
+					gioList.add(formatGio.format(gioTrong));
+				}
+			}
+		}
+		ObjectMapper mapper = new ObjectMapper();
+		String ajaxResponse = "";
+		try {
+			ajaxResponse = mapper.writeValueAsString(gioList);
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+       return ajaxResponse;
+	}
+	
 	
 	@GetMapping("/getListBacSi")
 	@ResponseBody
