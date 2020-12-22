@@ -183,12 +183,15 @@ public class LichLamViecController {
 		}
 		model.addAttribute("workWeek", workWeek1);
 		if(!workWeek0.isEmpty()) {
+			model.addAttribute("thu20", workWeek0.get(0).getDateWorking());
+			model.addAttribute("thu70", workWeek0.get(workWeek0.size()-1).getDateWorking());
 			model.addAttribute("hien0", true);
 			model.addAttribute("workWeek0", workWeek0);
 		}else {
 			model.addAttribute("hien0", false);
 		}
-		
+		model.addAttribute("thu2", workWeek1.get(0).getDateWorking());
+		model.addAttribute("thu7", workWeek1.get(workWeek1.size()-1).getDateWorking());
 		model.addAttribute("hien", true);
 		return "dashboard/calender_kham";
 	}

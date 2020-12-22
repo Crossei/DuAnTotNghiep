@@ -178,7 +178,7 @@
 							<div class="col-10">
 								<h5>Chọn giờ khám</h5>
 								<div class="button-group-1">
-									<input type="radio" th:value="${'9:00'}"  name="btn1" id="bton1"
+									<input type="radio" th:value="${'09:00'}"  name="btn1" id="bton1"
 										class="button1"> <label for="bton1" class="label1"
 										style="margin-right: 15px;">9h00</label> <input type="radio"
 										th:value="${'10:00'}"  name="btn1" id="bton2" class="button1">
@@ -210,7 +210,7 @@
 								</div>
 
 								<div class="button-group-1">
-									<input type="radio" th:value="${'9:30'}" name="btn1"
+									<input type="radio" th:value="${'09:30'}" name="btn1"
 										id="bton11" class="button1"> <label for="bton11"
 										class="label1" style="margin-right: 15px;">9h30</label> <input
 										type="radio" th:value="${'10:30'}" name="btn1" id="bton12"
@@ -434,7 +434,7 @@
 	                console.log("SUCCESS: ", data);
 	                var lap = 0;
 					var lap2 = 1;
-	                $.each(gio2, function(index1, i) {                	                	          		 
+	                $.each(gio2, function(index1, i) { 
 	 	                	if(!(data.includes(i))){
 	 	                		$("#bton"+(lap+1)).prop("disabled", "disabled");  
 				 				$('label[for="bton'+(lap+1)+'"]').css("background","#72ccab"); 	 			 				 

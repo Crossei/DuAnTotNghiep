@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,20 +19,20 @@ public class LoadUserController {
 	@Autowired
 	private UserRepository userRepo;
 	
-	private List<User> userList;
+	
 	
 	@RequestMapping("/dashboard/account")
 	public String dashboardUser(Model model) {
-		userList = userRepo.findAll();
-		model.addAttribute("userLists", userList);
+		List<User> userList = userRepo.findAll();
+		List<User> userList1 = new ArrayList<>();
+		for (User user : userList) {
+			userList1.add(user);
+			if(user.getRoles().equalsIgnoreCase("ROLE_QUANLY")) {
+				userList1.remove(user);
+			}
+		}
+		model.addAttribute("userLists", userList1);
 		return "dashboard/account";
 	}
 	
-	public List<User> getUserList() {
-		return userList;
-	}
-
-	public void setUserList(List<User> userList) {
-		this.userList = userList;
-	}
 }

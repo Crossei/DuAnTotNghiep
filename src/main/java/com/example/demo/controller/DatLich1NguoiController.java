@@ -114,9 +114,15 @@ public class DatLich1NguoiController {
 		}
 	
 		List<Staff> staffList1 = new ArrayList<>();
+		List<Staff> staffList = new ArrayList<>();
 		List<WorkingCalendar> workList = workRepo.findByDateWorking(date);
+		
 		if(!workList.isEmpty()) {
-		List<Staff> staffList = staffRepo.findByRoleAndLevel(2,serLv);
+			if(serLv == 0) {
+				staffList = staffRepo.findByRole(2);
+			}else {
+		    staffList = staffRepo.findByRoleAndLevel(2,serLv);
+			}
 			for (Staff staff : staffList) {
 				staffList1.add(staff);												   // TH : staff ko có workingCalendar => van add vao staffList1
 				for (WorkingCalendar workingCalendar : workList) { // TH : workingCalendar của staff = 1 thì add vào staffList1
@@ -136,6 +142,7 @@ public class DatLich1NguoiController {
 		}else {			
 		staffList1 =  staffRepo.findByRoleAndLevel(2,serLv);
 		};
+		
 	
 		List<BookingDetail> bookD = bokDetailRepo.findByDateworkingstart(date);
 		
