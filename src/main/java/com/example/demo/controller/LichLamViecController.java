@@ -177,7 +177,7 @@ public class LichLamViecController {
 		List<WorkingCalendar> workWeek1 = workRepo.findByIdstaffAndStatus(layIDStaff(),1);
 		List<WorkingCalendar> workWeek0 = workRepo.findByIdstaffAndStatus(layIDStaff(),0);
 		if(workWeek.isEmpty()) {
-			model.addAttribute("thongBao", "Bạn chưa đăng ký lịch khám");
+			model.addAttribute("thongBao", "Bạn chưa đăng ký lịch làm việc");
 			model.addAttribute("hien", false);
 			return "dashboard/calender_kham";
 		}

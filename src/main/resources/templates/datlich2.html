@@ -43,7 +43,11 @@
 </head>
 
 <body>
-
+	<div class="notify">
+					<div th:if="${message}">
+						<span id="snackbar"  style="color: white;font-size:16px;" th:text="${message}"></span>
+					</div>
+				</div>
 	<!-- ======= Header ======= -->
 	<header id="header" class="fixed-top header-inner-pages">
 		<div class="container-fluid">
@@ -74,7 +78,7 @@
 								</ul></li>
 							<li><a href="/#portfolio">Các bác sĩ</a></li>
 							<li th:if="${@mainController.checkLoggedIn() == true} "><a
-								href="/datlich">Đặt lịch</a></li>
+								href="/datlich2">Đặt lịch</a></li>
 							<li><a href="/tintuc">Tin tức</a></li>
 							<li><a href="/#contact">Liên hệ</a></li>
 
@@ -506,11 +510,61 @@
 	        });
 	    }}
 	
-	
+		$(document)
+		.ready(
+				function() {
+			
+				var x = document.getElementById("snackbar");
+				  x.className = "show";
+				  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+				
+			});
 	
 	
 	</script>
 	<style>
+	
+#snackbar {
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -125px;
+  background-color: #58a9e9;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  top: 80px;
+  font-size: 17px;
+}
+
+#snackbar.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+  from {top: 0; opacity: 0;} 
+  to {top: 80px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {top: 0; opacity: 0;}
+  to {top: 80px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {top: 80px; opacity: 1;} 
+  to {top: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {top: 80px; opacity: 1;}
+  to {top: 0; opacity: 0;}
+}
 </style>
 </body>
 

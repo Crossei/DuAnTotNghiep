@@ -77,7 +77,7 @@
 								</ul></li>
 							<li><a href="/#portfolio">Các bác sĩ</a></li>
 							<li th:if="${@mainController.checkLoggedIn() == true} "><a
-								href="/datlich">Đặt lịch</a></li>
+								href="/datlich2">Đặt lịch</a></li>
 							<li><a href="/tintuc">Tin tức</a></li>
 							<li><a href="/#contact">Liên hệ</a></li>
 
@@ -332,8 +332,8 @@
 				day = '0' + day.toString();
 
 			var today = new Date();
-			var day1 = (today.getDate() + 7) > 9 ? (today.getDate() + 14) : "0"
-					+ (today.getDate() + 14); // format should be "DD" not "D" e.g 09
+			var day1 = (today.getDate()) > 9 ? (today.getDate()) : "0"
+					+ (today.getDate()); // format should be "DD" not "D" e.g 09
 			var month1 = (today.getMonth() + 1) > 9 ? (today.getMonth() + 1)
 					: "0" + (today.getMonth() + 1);
 			var year1 = today.getFullYear();
@@ -341,7 +341,7 @@
 			var maxDate = year + '-' + month + '-' + day;
 			var minDate = year1 + '-' + month1 + '-' + day1;
 			$('#txtDate').attr('min', maxDate);
-			$("#txtDate").attr('max', minDate);
+			
 		});
 	</script>
 

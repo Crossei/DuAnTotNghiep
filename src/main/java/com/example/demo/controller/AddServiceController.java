@@ -109,6 +109,7 @@ public class AddServiceController {
 	    String str1 = currencyVN.format(price);
 	    System.out.println("Số " + price + " sau khi định dạng = " + str1);
 	    service.setStatus(1);
+	    service.setLevel(1);
 	    if(str1.length()!=0) {
 	    	service.setPrice(str1);
 	    }else {
@@ -150,6 +151,7 @@ public class AddServiceController {
 	    String str1 = currencyVN.format(price);
 	    System.out.println("Số " + price + " sau khi định dạng = " + str1);
 	    service.setStatus(1);
+	    service.setLevel(1);
 	    if(str1.length()!=0) {
 	    	service.setPrice(str1);
 	    }else {

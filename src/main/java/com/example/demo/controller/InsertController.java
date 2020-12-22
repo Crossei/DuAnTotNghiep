@@ -76,7 +76,7 @@ public class InsertController {
 public String saveStaff(@ModelAttribute(name="staff") AddStaffDTO staffDto, Model model,
 		
 			RedirectAttributes ra,@RequestParam("fileImage") MultipartFile multipartFile) throws IOException, ParseException{
-			
+		staffDto.setLevel(1);
 			String fileName= StringUtils.cleanPath(multipartFile.getOriginalFilename());
 			if(fileName.length()!=0) {
 			staffDto.setImage(fileName);
@@ -141,6 +141,7 @@ public String saveStaff(@ModelAttribute(name="staff") AddStaffDTO staffDto, Mode
 		
 				staff.setDateWorking_Start(staffDto.getDateWorking_Start());
 				staff.setStatus(1);
+				staff.setLevel(1);
 				String fileName= StringUtils.cleanPath(multipartFile.getOriginalFilename());
 				if(fileName.length()!=0) {
 				staff.setImage(fileName);
@@ -189,9 +190,10 @@ public String saveStaff(@ModelAttribute(name="staff") AddStaffDTO staffDto, Mode
 				RedirectAttributes ra,@RequestParam("fileImage") MultipartFile multipartFile) throws IOException, ParseException{
 				SimpleDateFormat fomater = new SimpleDateFormat("YYYY-MM-dd");
 				
-		
+				
 				staff.setDateWorking_Start(staffDto.getDateWorking_Start());
 				staff.setStatus(1);
+				staff.setLevel(1);
 				String fileName= StringUtils.cleanPath(multipartFile.getOriginalFilename());
 				if(fileName.length()!=0) {
 				staff.setImage(fileName);
