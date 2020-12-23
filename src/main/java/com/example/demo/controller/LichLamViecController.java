@@ -111,7 +111,7 @@ public class LichLamViecController {
 		bookItem.setStatus(3);
 		bookDettailRepo.save(bookItem);
 		ra.addFlashAttribute("message","Xác nhận lịch thành công!");
-		return "redirect:/dashboard/lichkham";
+		return "redirect:/dashboard/quanlylichkham";
 	}
 
 	@RequestMapping("/dashboard/quanlylichkham")

@@ -172,7 +172,7 @@ public class MainController {
 			, RedirectAttributes ra) throws ParseException {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		if (checkLoggedIn() == false) {
-			return "login";
+			return "login"; 
 		}
 		Customer cus = cusRepo.findByEmail(authentication.getName());
 		cus.setPhone(datLich.getSdt());

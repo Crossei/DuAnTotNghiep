@@ -15,6 +15,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -27,6 +28,7 @@ import com.example.demo.dao.Service;
 import com.example.demo.dao.Staff;
 import com.example.demo.dao.User;
 import com.example.demo.dao.WorkingCalendar;
+import com.example.demo.dto.DatLichDTO;
 import com.example.demo.dto.DatLichForm2DTO;
 import com.example.demo.service.BookingDetailRepository;
 import com.example.demo.service.BookingRepository;
@@ -167,9 +169,11 @@ public class DatLich1NguoiController {
 	}
 	
 	@PostMapping("/datlich2")
-	public String datLich2(HttpServletRequest rq, RedirectAttributes ra) throws ParseException {
+	public String datLich2(@ModelAttribute("datLichDTO") DatLichDTO datLich,HttpServletRequest rq, RedirectAttributes ra) throws ParseException {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		Customer cus = cusRepo.findByEmail(authentication.getName());
+		cus.setPhone(datLich.getSdt());
+		cusRepo.save(cus);
 		Booking book = new Booking(cus.getId_cus());
 		bokRepo.save(book);
 		
@@ -190,6 +194,7 @@ public class DatLich1NguoiController {
 	
 	@RequestMapping("/datlich2")
 	public String docList(Model model) {
+		DatLichDTO datLichDTO = new DatLichDTO();
 		//lay ds dich vu
 		List<Service> ser = ser1Repo.findAll();
 		model.addAttribute("ser", ser);
@@ -210,6 +215,7 @@ public class DatLich1NguoiController {
 			bookDat = c.getTime();		
 		}
 		model.addAttribute("ngayDatList", ngayDatList);
+		model.addAttribute("datLichDTO", datLichDTO);
 		
 		//lay ds bacsi'
 //		List<Staff> staffList =  staffRepo.findByRole(2);
