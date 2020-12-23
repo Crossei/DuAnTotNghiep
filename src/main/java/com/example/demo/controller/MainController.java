@@ -89,15 +89,6 @@ public class MainController {
 
 	@RequestMapping("/lichsudat")
 	public String lichSuDat(Model model) {
-		boolean ngayQK = false;
-		boolean ngayHT = true;
-		Date dt = new Date();
-		Calendar c = Calendar.getInstance(); 
-		c.setTime(dt); 
-		c.add(Calendar.DATE, -1);
-		dt = c.getTime();
-		System.out.println(dt);
-		model.addAttribute("ngayHT", true);
 		
 		List<LichSuDatLichDTO> lichSuDatList = new ArrayList<>();
 		List<BookingDetail> detailList = new ArrayList<>();
@@ -134,10 +125,6 @@ public class MainController {
 						lichSuDat1.setTenbs(staf.getName_staff());
 					}
 					lichSuDatList.add(lichSuDat1);
-					if(!dt.before(bookList1.getDateWorking_Start())){
-						model.addAttribute("ngayQK", true);
-						model.addAttribute("ngayHT", false);
-					}
 				}
 			}
 		}
