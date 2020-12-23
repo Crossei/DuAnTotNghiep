@@ -69,7 +69,7 @@ public class LichLamViecController {
 		getBookDetail.setTime_start(sqlTime);
 		getBookDetail.setStatus(2);
 		bookDettailRepo.save(getBookDetail);
-		ra.addFlashAttribute("message","Cập nhật dịch vụ thành công!");
+		ra.addFlashAttribute("message","Đặt lịch tái khám thành công!");
 		return "redirect:/dashboard/quanlylichkham";
 	}
 	

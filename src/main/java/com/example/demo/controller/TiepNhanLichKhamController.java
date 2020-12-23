@@ -189,7 +189,7 @@ public class TiepNhanLichKhamController {
 		BookingDetail bookItem = new BookingDetail();
 		bookItem = bokDetailRepo.findById(id);
 		if(bookItem.getActive() == 0) {
-			ra.addFlashAttribute("messageError","Lịch khám này đã bị hủy bỏ!");
+			ra.addFlashAttribute("message","Lịch khám này đã bị hủy bỏ!");
 			return "redirect:/dashboard/lichkham";
 		}
 		bookItem.setStatus(1);
@@ -220,7 +220,7 @@ public class TiepNhanLichKhamController {
 		TiepNhanLichKhamDTO tiepNhanItem = new TiepNhanLichKhamDTO();
 		BookingDetail bookItem =bokDetailRepo.getOne(id_bookingDetail);
 		if(bookItem.getActive() == 0) {
-			ra.addFlashAttribute("messageError","Lịch khám này đã bị hủy bỏ!");
+			ra.addFlashAttribute("message","Lịch khám này đã bị hủy bỏ!");
 			ModelAndView mav1= new ModelAndView("redirect:/dashboard/lichkham");	
 			return mav1;
 		}else {

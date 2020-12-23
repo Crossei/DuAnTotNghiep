@@ -231,7 +231,7 @@ public String saveStaff(@ModelAttribute(name="staff") AddStaffDTO staffDto, Mode
 				}
 				ra.addFlashAttribute("message","Cập nhật thông tin thành công!");
 				
-			return "redirect:/dashboard";
+			return "redirect:/dashboard/quanlylichkham";
 		}
 	
 	@RequestMapping(value="/editStaff/{id_staff}")
