@@ -158,6 +158,9 @@ public class MainController {
 
 	@RequestMapping("/datlich")
 	public String datLich(Model model) {
+		if (checkLoggedIn() == false) {
+			return "login"; 
+		}
 		DatLichDTO datLichDTO = new DatLichDTO();
 
 		List<Service> serList = ser1Repo.findAll();

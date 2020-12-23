@@ -10,6 +10,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -194,6 +195,9 @@ public class DatLich1NguoiController {
 	
 	@RequestMapping("/datlich2")
 	public String docList(Model model) {
+		if (checkLoggedIn() == false) {
+			return "login"; 
+		}
 		DatLichDTO datLichDTO = new DatLichDTO();
 		//lay ds dich vu
 		List<Service> ser = ser1Repo.findAll();
@@ -237,5 +241,13 @@ public class DatLich1NguoiController {
 			return true;
 		}
 		return false;
+	}
+	public boolean checkLoggedIn() {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		if (authentication == null || authentication instanceof AnonymousAuthenticationToken) {
+			
+			return false;
+			}
+		return true;
 	}
 }
