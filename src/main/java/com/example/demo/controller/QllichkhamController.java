@@ -120,7 +120,7 @@ public class QllichkhamController {
 		List<WorkingCalendar> workWeek1 = workRepo.findByIdstaffAndStatus(id_staff,1);
 		List<WorkingCalendar> workWeek0 = workRepo.findByIdstaffAndStatus(id_staff,0);
 		if(workWeek.isEmpty()) {
-			model.addAttribute("thongBao", "Bạn chưa đăng ký lịch khám");
+			model.addAttribute("thongBao", "Nhân viên chưa đăng ký lịch làm việc");
 			model.addAttribute("hien", false);
 			return "dashboard/ql_lichkham";
 		}
