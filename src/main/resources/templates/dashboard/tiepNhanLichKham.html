@@ -134,8 +134,8 @@
 					<div th:if="${message}">
 						<span id="snackbar"  style="color: white;font-size:16px;" th:text="${message}"></span>
 					</div>
-					<div th:if="${messageError}">
-						<span id="error"  style="color: white;font-size:16px;" th:text="${messageError}"></span>
+					<div th:if="${error}">
+						<span id="error"  style="color: white;font-size:16px;" th:text="${error	}"></span>
 					</div>
 				</div>
 
@@ -161,8 +161,8 @@
 								<th>Số điện thoại</th>
 								<th>Tên dịch vụ</th>
 								<th>Bác sĩ khám</th>
-								<th>Ngày Đặt</th>
-								<th>Giờ bắt đầu</th>
+								<th style="width:100px;">Ngày Đặt</th>
+								<th style="width:100px;">Giờ bắt đầu</th>
 								
 								<th>Trạng thái</th>
 								<th>Hành động</th>
@@ -184,9 +184,9 @@
 										<td th:if="${tiepNhanList.status == 0}">Chờ xác nhận</td>
 										<td th:if="${tiepNhanList.status == 1}">Đã xác nhận</td>
 										<td th:if="${tiepNhanList.status == 2}">Tái khám</td>
-										<td th:if="${tiepNhanList.status == 3}">Đã hoàng thành dịch vụ</td>
+										<td th:if="${tiepNhanList.status == 3}">Đã hoàn thành</td>
 										<td>
-											<div th:if="${tiepNhanList.status != 3}" class="dropdown">
+											<div th:if="${tiepNhanList.status != 3 }" class="dropdown">
 												<button class="btn btn-default dropdown-toggle"
 													type="button" id="menu1" data-toggle="dropdown">
 													Hành động <span class="caret"></span>
@@ -194,8 +194,8 @@
 												<ul class="dropdown-menu" role="menu"
 													aria-labelledby="menu1">
 													<li role="presentation"><a
-														th:if="${tiepNhanList.status == 0 && tiepNhanList.tenbs != null}"  role="menuitem"
-														tabindex="-1"
+														th:if="${ tiepNhanList.status == 0 }"  role="menuitem"
+														tabindex="-1" 
 														th:href="@{'/dashboard/lichkham/xacnhan/'+${tiepNhanList.id_detail}}">Xác
 															nhận lịch đặt</a></li>
 													<li role="presentation"><a role="menuitem"

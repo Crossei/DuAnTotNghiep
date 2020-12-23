@@ -128,7 +128,7 @@ public class UpdatelichdatController {
 		
 		getBookDetail.setId_staff(Integer.parseInt(bookItem.getTenbs()));
 		getBookDetail.setDateWorking_Start(bookItem.getNgayDat());
-		
+		getBookDetail.setStatus(0);
 		if(bookItem.getGioBatDau() != null) {
 			java.sql.Time sqlTime = new java.sql.Time(bookItem.getGioBatDau().getTime());
 		 getBookDetail.setTime_start(sqlTime);

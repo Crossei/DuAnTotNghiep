@@ -32,9 +32,16 @@ public class SimpleAuthenticationSuccessHandler implements AuthenticationSuccess
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-			} else if(authority.getAuthority().equals("ROLE_ADMIN") || authority.getAuthority().equals("ROLE_QUANLY")) {
+			} else if( authority.getAuthority().equals("ROLE_QUANLY")) {
 				try {
 					redirectStrategy.sendRedirect(arg0, arg1, "/dashboard");
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}else if(authority.getAuthority().equals("ROLE_ADMIN") ) {
+				try {
+					redirectStrategy.sendRedirect(arg0, arg1, "/dashboard/staff");
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
