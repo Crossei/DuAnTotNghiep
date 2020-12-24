@@ -176,7 +176,7 @@
 										<td th:text="${tiepNhanList.tenbs}"></td>
 										<td
 											th:text="${#dates.format(tiepNhanList.ngayDat, 'dd-MM-yyyy')}"></td>
-										<td th:text="${tiepNhanList.gioBatDau}"></td>
+										<td th:text="${#dates.format(tiepNhanList.gioBatDau, 'HH:mm')}"></td>
 								
 										<td th:if="${tiepNhanList.status == 0}">Chờ xác nhận</td>
 										<td th:if="${tiepNhanList.status == 1}">Đã xác nhận</td>

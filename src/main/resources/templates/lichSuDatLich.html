@@ -164,25 +164,30 @@
 												nhận lịch đặt</span></td>
 												<td th:if="${lichSuDatList.trangThai == 2}"><span>Tái khám</span></td>
 												<td th:if="${lichSuDatList.trangThai == 3}"><span>Đã hoàn thành</span></td>
-										<td th:if="${lichSuDatList.trangThai == 1 ||  lichSuDatList.trangThai == 3 }">
+										<td th:if="${lichSuDatList.trangThai == 1 && ngayHT == true }">
 											<a style="font-size: 15px" class="btn btn-warning" 
 											th:href="@{'/lichkham/thaydoi/'+${lichSuDatList.id_detail}}">
-												<img src="/assets/img/edit-pencil.png"
-												
-												 />
+												<img src="/assets/img/edit-pencil.png" />
 											</a>
 											<button style="font-size: 15px" class="btn btn-danger"
 												disabled="true">
 												<img src="/assets/img/cancel.png" />
 											</button>
 										</td>
-										<td th:if="${lichSuDatList.trangThai == 0 || lichSuDatList.trangThai == 2}">
-											
+										<td th:if="${lichSuDatList.trangThai == 3 || ngayQK == true}">
+											<button style="font-size: 15px" class="btn btn-warning" 
+											th:href="@{'/lichkham/thaydoi/'+${lichSuDatList.id_detail}}" disabled="true"> 
+												<img src="/assets/img/edit-pencil.png" />
+											</button>
+											<button style="font-size: 15px" class="btn btn-danger"
+												disabled="true">
+												<img src="/assets/img/cancel.png" />
+											</button>
+										</td>
+										<td th:if="${(lichSuDatList.trangThai == 0 || lichSuDatList.trangThai == 2) && ngayHT == true}">											
 											<a style="font-size: 15px" class="btn btn-warning link-update" 
 											th:href="@{'/lichkham/thaydoi/'+${lichSuDatList.id_detail}}">
-												<img src="/assets/img/edit-pencil.png"
-												
-												 />
+												<img src="/assets/img/edit-pencil.png"/>
 											</a>
 											<button type="button" class="btn btn-danger"
 												th:attr="data-target='#myModal'+${lichSuDatList.id_detail}"
