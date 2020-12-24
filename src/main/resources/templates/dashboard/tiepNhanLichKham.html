@@ -187,8 +187,10 @@
 										<td th:text="${tiepNhanList.giaTien}"></td>
 										<td th:if="${tiepNhanList.status == 0}">Chờ xác nhận</td>
 										<td th:if="${tiepNhanList.status == 1}">Đã xác nhận</td>
+										<td th:if="${tiepNhanList.status == 2}">Tái khám</td>
+										<td th:if="${tiepNhanList.status == 3}">Đã hoàng thành dịch vụ</td>
 										<td>
-											<div class="dropdown">
+											<div th:if="${tiepNhanList.status != 3}" class="dropdown">
 												<button class="btn btn-default dropdown-toggle"
 													type="button" id="menu1" data-toggle="dropdown">
 													Hành động <span class="caret"></span>
@@ -259,6 +261,7 @@
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$('#example').DataTable({
+				  
 				"language" : {
 					"lengthMenu" : "Hiển thị _MENU_ item mỗi trang",
 					"zeroRecords" : "Không có dữ liệu",
@@ -271,9 +274,12 @@
 						"previous" : "Trước"
 					},
 					"search" : "Tìm kiếm:",
-				}
+				},
+
+			 
 			});
 		});
+		
 	</script>
 	<style>
 /* 	.dataTables_filter, .dataTables_info , .dataTables_length { display: none; } */
