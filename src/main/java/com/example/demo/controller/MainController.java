@@ -229,8 +229,17 @@ public class MainController {
 
 	@RequestMapping("/dashboard/staff")
 	public String dashboardStaff(Model model) {
-		staffList = staffRepo.findAll();
-		model.addAttribute("staffLists", staffList);
+		List<Staff> staffList = staffRepo.findAll();
+		List<Staff> staffList1 = new ArrayList<>();
+		for (Staff staff : staffList) {
+			staffList1.add(staff);
+			if(staff.getRole() != null) {
+			if(staff.getRole() == 1 ) {
+				staffList1.remove(staff);
+			}
+		}
+		}
+		model.addAttribute("staffLists", staffList1);
 		return "dashboard/staff";
 	}
 
