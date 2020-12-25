@@ -47,7 +47,7 @@ import com.example.demo.service.UserRepository;
 public class MainController {
 
 	private List<Staff> staffList;
-	 
+
 	@Autowired
 	private MyUserDetailService service;
 	@Autowired
@@ -72,11 +72,11 @@ public class MainController {
 
 	@InitBinder
 	protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
-	    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");   
-	    dateFormat.setLenient(false);
-	    binder.registerCustomEditor(Date.class, null,  new CustomDateEditor(dateFormat, true));
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		dateFormat.setLenient(false);
+		binder.registerCustomEditor(Date.class, null, new CustomDateEditor(dateFormat, true));
 	}
-	
+
 	@RequestMapping("/doctor-list")
 	public String docList() {
 		return "doctor-list";
@@ -91,24 +91,24 @@ public class MainController {
 	public String homePage() {
 		return "home";
 	}
-	
+
 	@RequestMapping("/lichsudat")
 	public String lichSuDat(Model model) {
-	
-		List<BookingDetail> detailList =  new ArrayList<>();
+
+		List<BookingDetail> detailList = new ArrayList<>();
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		Customer cus = cusRepo.findByEmail(authentication.getName());
-		
+
 		List<Booking> bookList;
-		if(checkLoggedIn()) {
+		if (checkLoggedIn()) {
 			bookList = bokRepo.findByIdCus(cus.getId_cus());
 		} else {
 			return "home";
 		}
-		
-		for(Booking bookItem: bookList) {	
-			List<BookingDetail>  detailList1 = bokDetailRepo.findByIdBooking(bookItem.getId_booking());			
-			if(!detailList1.isEmpty()) {
+
+		for (Booking bookItem : bookList) {
+			List<BookingDetail> detailList1 = bokDetailRepo.findByIdBooking(bookItem.getId_booking());
+			if (!detailList1.isEmpty()) {
 				BookingDetail bot = detailList1.get(0);
 				detailList.add(bot);
 			}
@@ -118,18 +118,16 @@ public class MainController {
 		model.addAttribute("detailList", detailList);
 		return "lichSuDatLich";
 	}
-	
-	
+
 	@GetMapping("lichsudat/delete/{id_detail}")
 	public String deleteLichDat(@PathVariable(name = "id_detail") int id) {
 		BookingDetail bookItem = new BookingDetail();
 		bookItem = bokDetailRepo.findById(id);
 		bookItem.setActive(0);
 		bokDetailRepo.save(bookItem);
-		
+
 		return "redirect:/lichsudat";
 	}
-	
 
 	@RequestMapping("/datlich")
 	public String datLich(Model model) {
@@ -140,8 +138,6 @@ public class MainController {
 		model.addAttribute("datLichDTO", datLichDTO);
 		return "datlich";
 	}
-	
-	
 
 	@PostMapping(value = "/datlich")
 	public String datLichSave(@ModelAttribute("datLichDTO") DatLichDTO datLich, Model model) throws ParseException {
@@ -155,14 +151,14 @@ public class MainController {
 		DatLichDTO datLich1 = new DatLichDTO();
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = formatter.parse(datLich.getDate());
-		
+
 		Booking book = new Booking(cus.getId_cus());
 		bokRepo.save(book);
-		
+
 		List<Booking> bookList = bokRepo.findAll();
-		Booking bookItem = bookList.get(bookList.size()-1);
-		
-		BookingDetail bookDetail = new BookingDetail(1,datLich.getId_ser(),bookItem.getId_booking(),date,0,1);
+		Booking bookItem = bookList.get(bookList.size() - 1);
+
+		BookingDetail bookDetail = new BookingDetail(1, datLich.getId_ser(), bookItem.getId_booking(), date, 0, 1);
 		bokDetailRepo.save(bookDetail);
 
 		return "home";
@@ -193,11 +189,10 @@ public class MainController {
 
 	@RequestMapping("/dashboard")
 	public String dashboardAdmin() {
-		
+
 		return "dashboard/admin";
 	}
 
-	
 	@RequestMapping("/dashboard/staff")
 	public String dashboardStaff(Model model) {
 		staffList = staffRepo.findAll();
@@ -218,8 +213,6 @@ public class MainController {
 		model.addAttribute("cusLists", cus);
 		return "dashboard/customer";
 	}
-	
-
 
 	@RequestMapping("/changePass")
 	public String changePass() {
@@ -238,8 +231,8 @@ public class MainController {
 		if (user1.isEmpty()) {
 			service.save(user);
 			List<User> userList = repo.findAll();
-			User getUser = userList.get(userList.size() -1 );
-			Customer cus = new Customer(getUser.getName(),getUser.getUsername(),getUser.getId(),1);
+			User getUser = userList.get(userList.size() - 1);
+			Customer cus = new Customer(getUser.getName(), getUser.getUsername(), getUser.getId(), 1);
 			cus.setImage("fb.png");
 			cusRepo.save(cus);
 		} else {
@@ -252,8 +245,73 @@ public class MainController {
 	}
 
 	
+	// tin tuc
+	@RequestMapping("/tintuc")
+	public String tinTuc(Model model) {
+		return "tintuc";
+	}
 
+	@RequestMapping("/tintuc2")
+	public String tinTuc2(Model model) {
+		return "tintuc2";
+	}
+	// end tin tuc
 
+	// dat lich - thong tin them
+	@RequestMapping("/thongtinthem")
+	public String thongTinThem(Model model) {
+		return "thongtinthem";
+	}
+
+	// chi tiet cac dich vu
+	@RequestMapping("/nhakhoatongquat")
+	public String dv1() {
+		return "chitietdichvu/NhaKhoaTongQuat";
+	}
+
+	@RequestMapping("/rangtreem")
+	public String dv2() {
+		return "chitietdichvu/RangTreEm";
+	}
+
+	@RequestMapping("/nanchinhrang")
+	public String dv3() {
+		return "chitietdichvu/NanChinhRang";
+	}
+
+	@RequestMapping("/chinhnhacochucnang")
+	public String dv4() {
+		return "chitietdichvu/ChinhNhaCoChucNang";
+	}
+
+	@RequestMapping("/nhakhoathammy")
+	public String dv5() {
+		return "chitietdichvu/NhaKhoaThamMy";
+	}
+
+	@RequestMapping("/nhakhoaphuchinh")
+	public String dv6() {
+		return "chitietdichvu/NhaKhoaPhucHinh";
+	}
+
+	@RequestMapping("/dieutrinoinha")
+	public String dv7() {
+		return "chitietdichvu/DieuTriNoiNha";
+	}
+
+	@RequestMapping("/cayghep")
+	public String dv8() {
+		return "chitietdichvu/CayGhepImplant";
+	}
+
+	@RequestMapping("/phauthuatrm")
+	public String dv9() {
+		return "chitietdichvu/PhauThuatRangMieng";
+	}
+	// end
+
+	
+	
 	public boolean checkLoggedIn() {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		if (authentication == null || authentication instanceof AnonymousAuthenticationToken)
@@ -268,8 +326,6 @@ public class MainController {
 	public void setStaffList(List<Staff> staffList) {
 		this.staffList = staffList;
 	}
-	
-	
 
 	/*
 	 * @PostMapping("/changePass") public User changePass(User user) { List<User>

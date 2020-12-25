@@ -63,79 +63,26 @@
 		<!-- Navigation -->
 		<nav class="navbar navbar-default navbar-static-top" role="navigation"
 			style="margin-bottom: 0">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target=".navbar-collapse">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="/dashboard/">SB Admin v2.0</a>
-			</div>
-			<!-- /.navbar-header -->
+			<a href="/dashboard/"><img src="/assets/img/favicon.png"
+				style="width: 13%;"></a>
 
 			<ul class="nav navbar-top-links navbar-right">
 
-				<!-- /.dropdown -->
-
-				<li class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="#"> <i class="fa fa-bell fa-fw"></i>
-						<i class="fa fa-caret-down"></i>
-				</a>
-					<ul class="dropdown-menu dropdown-alerts">
-						<li><a href="#">
-								<div>
-									<i class="fa fa-comment fa-fw"></i> New Comment <span
-										class="pull-right text-muted small">4 minutes ago</span>
-								</div>
-						</a></li>
-						<li class="divider"></li>
-						<li><a href="#">
-								<div>
-									<i class="fa fa-twitter fa-fw"></i> 3 New Followers <span
-										class="pull-right text-muted small">12 minutes ago</span>
-								</div>
-						</a></li>
-						<li class="divider"></li>
-						<li><a href="#">
-								<div>
-									<i class="fa fa-envelope fa-fw"></i> Message Sent <span
-										class="pull-right text-muted small">4 minutes ago</span>
-								</div>
-						</a></li>
-						<li class="divider"></li>
-						<li><a href="#">
-								<div>
-									<i class="fa fa-tasks fa-fw"></i> New Task <span
-										class="pull-right text-muted small">4 minutes ago</span>
-								</div>
-						</a></li>
-						<li class="divider"></li>
-						<li><a href="#">
-								<div>
-									<i class="fa fa-upload fa-fw"></i> Server Rebooted <span
-										class="pull-right text-muted small">4 minutes ago</span>
-								</div>
-						</a></li>
-						<li class="divider"></li>
-						<li><a class="text-center" href="#"> <strong>See
-									All Alerts</strong> <i class="fa fa-angle-right"></i>
-						</a></li>
-					</ul> <!-- /.dropdown-alerts --></li>
-				<!-- /.dropdown -->
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown" href="#"> <i class="fa fa-user fa-fw"></i>
-						<i class="fa fa-caret-down"></i>
+						<i class="fa fa-caret-down"></i>[[${#request.userPrincipal.principal.username}]]
 				</a>
 					<ul class="dropdown-menu dropdown-user">
-						<li><a href="#"><i class="fa fa-user fa-fw"></i> User
-								Profile</a></li>
-						<li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-						</li>
+						<li><a href="/profile/"><i class="fa fa-user fa-fw"></i>
+								Thông tin tài khoản</a></li>
+						<li><a href="/changePass"><i class="fa fa-gear fa-fw"></i> Đổi mật
+								khẩu</a></li>
 						<li class="divider"></li>
 						<li><a th:href="@{/logout}"><i
-								class="fa fa-sign-out fa-fw"></i> Logout</a></li>
+								class="fa fa-sign-out fa-fw"></i> Đăng xuất</a></li>
 					</ul> <!-- /.dropdown-user --></li>
+
+
 				<!-- /.dropdown -->
 			</ul>
 			<!-- /.navbar-top-links -->
@@ -143,16 +90,7 @@
 			<div class="navbar-default sidebar" role="navigation">
 				<div class="sidebar-nav navbar-collapse">
 					<ul class="nav" id="side-menu">
-						<li class="sidebar-search">
-							<div class="input-group custom-search-form">
-								<input type="text" class="form-control" placeholder="Search..." />
-								<span class="input-group-btn">
-									<button class="btn btn-default" type="button">
-										<i class="fa fa-search"></i>
-									</button>
-								</span>
-							</div> <!-- /input-group -->
-						</li>
+
 						<li><a href="/dashboard/"><i
 								class="fa fa-dashboard fa-fw"></i> Dashboard</a></li>
 						<li><a href="/dashboard/staff/"><i class="fa fa-user"></i>
@@ -165,6 +103,8 @@
 								Quản lý khách hàng</a></li>
 						<li><a href="/dashboard/account/"><i class="fa fa-user"></i>
 								Quản lý tài khoản</a></li>
+						<li><a href="/dashboard/lichkham/"><i class="fa fa-user"></i>Tiếp
+								nhận lịch khám</a></li>
 
 					</ul>
 				</div>
@@ -184,41 +124,43 @@
 			<br>
 			<div class="card-body">
 				<div class="table-responsive">
-				
-								 <a th:href="@{/dashboard/user/export}" class="btn btn-warning">Export Excel</a>
+
+					<a th:href="@{/dashboard/user/export}" class="btn btn-warning">Export
+						Excel</a>
 					<form>
 						<table id="example" class="table table-striped table-bordered"
 							style="width: 100%" cellspacing="0">
 							<thead>
-                            <tr class="text-center">
-                                <th>STT</th>
-                                <th>Họ và tên</th>
-                                <th>Username</th>
-                                <th>Trạng thái</th>
-                                <th>Chức vụ</th>
-                                <th>Hành động</th>
-                            </tr>
-                            </thead>
-                            <tbody tbody class="text-justify" id="myTable">
-                             <th:block th:each="userList,stt : ${userLists}">
-                            <tr>
-                                <td th:text="${stt.count}"></td>
-                                <td th:text="${userList.name}"></td>
-                             
-                                <td th:text="${userList.username}"></td>
-                                <td th:text="${userList.status}"></td>
-                                <td th:text="${userList.roles}"></td>
-                               
-                                <td>
+								<tr class="text-center">
+									<th>STT</th>
+									<th>Họ và tên</th>
+									<th>Username</th>
+									<th>Trạng thái</th>
+									<th>Chức vụ</th>
+									<th>Hành động</th>
+								</tr>
+							</thead>
+							<tbody tbody class="text-justify" id="myTable">
+								<th:block th:each="userList,stt : ${userLists}">
+									<tr>
+										<td th:text="${stt.count}"></td>
+										<td th:text="${userList.name}"></td>
 
-                                  
-                                    <button	data-target="#myModal" th:attr="data-target='#myModal'+${userList.id}"
+										<td th:text="${userList.username}"></td>
+										<td th:text="${userList.status}"></td>
+										<td th:text="${userList.roles}"></td>
+
+										<td>
+
+
+											<button data-target="#myModal"
+												th:attr="data-target='#myModal'+${userList.id}"
 												class="btn btn-danger" data-toggle="modal">Khóa</button>
-												
-                                </td>
-                            </tr>        
-                            </th:block>           
-                            </tbody>
+
+										</td>
+									</tr>
+								</th:block>
+							</tbody>
 
 						</table>
 
