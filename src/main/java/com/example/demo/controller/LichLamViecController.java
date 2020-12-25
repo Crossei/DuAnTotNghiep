@@ -224,7 +224,7 @@ public class LichLamViecController {
 
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		User user = repo.findByUsernameIs(authentication.getName());
-		Staff staff = staffRepo.findById(user.getId()); // lay staff id
+		Staff staff = staffRepo.findByIduser(user.getId()); // lay staff id
 		List<Integer> thu2 = dangKy.getThu2();
 		List<Integer> thu3 = dangKy.getThu3();
 		List<Integer> thu4 = dangKy.getThu4();
@@ -283,7 +283,7 @@ public class LichLamViecController {
 	public Integer layIDStaff() {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		User user = repo.findByUsernameIs(authentication.getName());
-		Staff staff = staffRepo.findById(user.getId()); // lay staff id
+	    Staff staff = staffRepo.findByIduser(user.getId()); // lay staff id
 		return staff.getId_staff();
 	}
 
