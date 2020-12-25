@@ -143,23 +143,22 @@
 							<th>Hành động</th>
 						</thead>
 						<tbody class="text-justify" id="myTable">
-							<th:block th:each="detailList,stt : ${detailList}">
+							<th:block th:each="lichSuDatList,stt : ${lichSuDatList}">
 								<tr style="text-align: center">
-									<th:block th:each="serLList : ${serLList}"
-										th:if="${detailList.id_service == serLList.id_ser && detailList.active == 1}">
+					
 										<td th:text="${stt.count}"></td>
-										<td th:text="${serLList.name}"></td>
-										<td th:if="${detailList.id_staff == 1}" th:text="${'N/A'}"></td>
+										<td th:text="${lichSuDatList.tendv}"></td>
+										<td  th:text="${lichSuDatList.tenbs}"></td>
 										<td
-											th:text="${#dates.format(detailList.dateWorking_Start, 'dd-MM-yyyy')}"></td>
+											th:text="${#dates.format(lichSuDatList.ngayDat, 'dd-MM-yyyy')}"></td>
 										<td></td>
-										<td th:text="${serLList.price}"></td>
+										<td th:text="${lichSuDatList.giaTien}"></td>
 
-										<td th:if="${detailList.status == 0}"><span> Chờ
+										<td th:if="${lichSuDatList.trangThai == 0}"><span> Chờ
 												xác thực</span></td>
-										<td th:if="${detailList.status == 1}"><span>Đã
+										<td th:if="${lichSuDatList.trangThai == 1}"><span>Đã
 												nhận lịch đặt</span></td>
-										<td th:if="${detailList.status == 1}">
+										<td th:if="${lichSuDatList.trangThai == 1}">
 											<button style="font-size: 15px" class="btn btn-warning"
 												disabled="true">
 												<img src="/assets/img/edit-pencil.png" />
@@ -169,17 +168,17 @@
 												<img src="/assets/img/cancel.png" />
 											</button>
 										</td>
-										<td th:if="${detailList.status == 0}">
+										<td th:if="${lichSuDatList.trangThai == 0}">
 											<button style="font-size: 15px" class="btn btn-warning">
 												<img src="/assets/img/edit-pencil.png" />
 											</button>
 											<button type="button" class="btn btn-danger"
-												th:attr="data-target='#myModal'+${detailList.id_detail}"
+												th:attr="data-target='#myModal'+${lichSuDatList.id_detail}"
 												data-toggle="modal" data-target="#myModal">
 												<img src="/assets/img/cancel.png" />
 											</button>
 											<div class="modal fade"
-												th:id="myModal+${detailList.id_detail}">
+												th:id="myModal+${lichSuDatList.id_detail}">
 												<div class="modal-dialog">
 													<div class="modal-content">
 														<div class="modal-header flex-column">
@@ -194,7 +193,7 @@
 														</div>
 														<div class="modal-footer justify-content-center">
 															<a
-																th:href="@{/lichsudat/delete/{id}(id=${detailList.id_detail})}"
+																th:href="@{/lichsudat/delete/{id}(id=${lichSuDatList.id_detail})}"
 																type="button" class="btn btn-danger">Xác nhận</a>
 															<button type="button" class="btn btn-secondary"
 																data-dismiss="modal">Hủy bỏ</button>
@@ -203,7 +202,7 @@
 												</div>
 											</div>
 										</td>
-									</th:block>
+								
 								</tr>
 							</th:block>
 						</tbody>

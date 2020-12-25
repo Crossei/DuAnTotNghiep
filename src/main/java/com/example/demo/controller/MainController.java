@@ -33,6 +33,7 @@ import com.example.demo.dao.Service;
 import com.example.demo.dao.Staff;
 import com.example.demo.dao.User;
 import com.example.demo.dto.DatLichDTO;
+import com.example.demo.dto.LichSuDatLichDTO;
 import com.example.demo.dto.TiepNhanLichKhamDTO;
 import com.example.demo.service.BookingDetailRepository;
 import com.example.demo.service.BookingRepository;
@@ -94,7 +95,7 @@ public class MainController {
 
 	@RequestMapping("/lichsudat")
 	public String lichSuDat(Model model) {
-
+		List<LichSuDatLichDTO> lichSuDatList = new ArrayList<>();
 		List<BookingDetail> detailList = new ArrayList<>();
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		Customer cus = cusRepo.findByEmail(authentication.getName());
@@ -105,17 +106,35 @@ public class MainController {
 		} else {
 			return "home";
 		}
-
-		for (Booking bookItem : bookList) {
-			List<BookingDetail> detailList1 = bokDetailRepo.findByIdBooking(bookItem.getId_booking());
-			if (!detailList1.isEmpty()) {
-				BookingDetail bot = detailList1.get(0);
-				detailList.add(bot);
+		
+		List<BookingDetail> bookingItems = bokDetailRepo.findAll();
+		List<Customer> cusList = cusRepo.findAll();
+		for(BookingDetail bookList1 : bookingItems) {
+			for(Booking bookCusList : bookList) {
+				if(bookList1.getId_booking() == bookCusList.getId_booking() && bookList1.getActive() == 1) {
+					LichSuDatLichDTO lichSuDat1 = new LichSuDatLichDTO();
+					Customer cus1 = cusRepo.findById(bookCusList.getId_cus());				
+					lichSuDat1.setId_detail(bookList1.getId_detail());
+					Service ser = ser1Repo.findById(bookList1.getId_service());
+					lichSuDat1.setTendv(ser.getName());
+					lichSuDat1.setGiaTien(ser.getPrice());
+				
+					lichSuDat1.setTrangThai(bookList1.getStatus());
+					lichSuDat1.setGioBatDau(bookList1.getTime_start());
+					lichSuDat1.setNgayDat(bookList1.getDateWorking_Start());
+					//ten bacsi
+					Staff staf = staffRepo.findById(bookList1.getId_staff());
+					if(bookList1.getId_staff() == 1) {
+						lichSuDat1.setTenbs("N/A");
+					}else {
+						lichSuDat1.setTenbs(staf.getName_staff());
+					}
+					lichSuDatList.add(lichSuDat1);
+				}
 			}
 		}
-		List<Service> service = ser1Repo.findAll();
-		model.addAttribute("serLList", service);
-		model.addAttribute("detailList", detailList);
+		model.addAttribute("lichSuDatList", lichSuDatList);
+		
 		return "lichSuDatLich";
 	}
 
