@@ -71,6 +71,7 @@
 
                  <a th:if="${@mainController.checkLoggedIn() == false }" href="/login" class="get-started-btn scrollto">Đăng nhập</a>
                     <!-- .nav-menu -->
+		<a th:if="${@mainController.checkLoggedIn() == false }" href="/register" class="get-started-btn-2 scrollto">Đăng ký</a>
 
                     <nav th:if="${@mainController.checkLoggedIn() == true} " class="nav-menu d-none d-lg-block">
                         <ul>
@@ -106,6 +107,8 @@
                     <h1>NHA KHOA PHẠM DƯƠNG</h1>
                     <h2>CHÚNG TÔI GỒM ĐỘI NGŨ BÁC SĨ CHUYÊN MÔN CAO</h2>
                     <a href="https://www.youtube.com/watch?v=Zhfy94vJeBQ" class="venobox play-btn mb-4" data-vbtype="video" data-autoplay="true"></a>
+		    <a href="/datlich" class="get-started-btn-3 scrollto">Đặt lịch</a>
+                    <a href="/datlich2" class="get-started-btn-3 scrollto">Đặt lịch</a>
                 </div>
             </div>
         </div>
